@@ -1,0 +1,375 @@
+/**
+* Appendix: Key Changes in the Upcoming ISO/IEC 17020:2026
+* For your QMS Generator project, the following updates to ISO 17020 are the most significant :
+* Independence Model: The old Type A, B, C classification is being replaced with a clearer system (Type A and non-Type A).
+* Structure Alignment: The clause structure is being re-organized to align with other key standards like ISO/IEC 17025, making integrated management systems easier to manage.
+* Risk & Impartiality: There are stronger, more explicit requirements for identifying and documenting risks to impartiality.
+* External Services: There are enhanced controls for outsourced activities, requiring inspection bodies to verify the competence of their subcontractors more rigorously.
+*/
+
+{
+  "standard": "ISO/IEC 17025",
+  "title": "General requirements for the competence of testing and calibration laboratories",
+  "year": "2017",
+  "status": "Current and valid (as of 2026)",
+  "introduction": "This standard sets out the requirements for the competence, impartiality, and consistent operation of laboratories. It is applicable to all organizations performing laboratory activities, regardless of the number of personnel, and covers testing, calibration, and sampling associated with subsequent testing or calibration.",
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Scope",
+      "summary": "Specifies general requirements for laboratories to demonstrate they operate competently and generate valid results.",
+      "requirements": [
+        "Applicable to testing and calibration laboratories, including first‑, second‑, and third‑party laboratories.",
+        "Covers sampling, testing, and calibration using standard, non‑standard, and laboratory‑developed methods.",
+        "Does not apply to inspection, product certification, or management system certification."
+      ]
+    },
+    {
+      "clause": "2",
+      "title": "Normative references",
+      "summary": "Lists normative documents referenced in the standard.",
+      "requirements": [
+        "ISO/IEC 17000, Conformity assessment – Vocabulary and general principles",
+        "ISO/IEC Guide 99, International vocabulary of metrology – Basic and general concepts and associated terms (VIM)",
+        "ISO 9000, Quality management systems – Fundamentals and vocabulary"
+      ]
+    },
+    {
+      "clause": "3",
+      "title": "Terms and definitions",
+      "summary": "Defines terms used in the document, drawn from ISO/IEC 17000 and VIM.",
+      "requirements": [
+        "Laboratory: body that performs one or more of the following activities: testing, calibration, sampling associated with subsequent testing or calibration.",
+        "Impartiality: presence of objectivity.",
+        "Complaint: expression of dissatisfaction by any person or organization to a laboratory relating to its activities.",
+        "Verification: provision of objective evidence that a given item fulfills specified requirements.",
+        "Validation: verification where the specified requirements are adequate for an intended use."
+      ]
+    },
+    {
+      "clause": "4",
+      "title": "General requirements",
+      "subclauses": [
+        {
+          "clause": "4.1",
+          "title": "Impartiality",
+          "summary": "Laboratory activities shall be structured and managed to safeguard impartiality.",
+          "requirements": [
+            "Laboratory management shall be committed to impartiality.",
+            "Identify risks to impartiality on an ongoing basis, including those arising from commercial, financial, or other pressures.",
+            "If a risk is identified, demonstrate how it is eliminated or minimized.",
+            "Personnel shall not allow commercial, financial, or other pressures to compromise impartiality."
+          ]
+        },
+        {
+          "clause": "4.2",
+          "title": "Confidentiality",
+          "summary": "The laboratory shall be responsible for managing all information obtained or created during laboratory activities.",
+          "requirements": [
+            "Inform the client in advance of the information intended to be placed in the public domain.",
+            "Treat all information obtained during laboratory activities as confidential, except as required by law or contract.",
+            "Ensure confidentiality of information transmitted electronically.",
+            "Personnel, including committee members and subcontractors, shall keep confidential all information obtained."
+          ]
+        }
+      ]
+    },
+    {
+      "clause": "5",
+      "title": "Structural requirements",
+      "summary": "The laboratory shall be a legal entity or defined part of a legal entity responsible for its activities.",
+      "requirements": [
+        "Define and document the range of laboratory activities.",
+        "Laboratory activities shall be performed in such a way as to meet the requirements of this document, clients, regulatory authorities, and organizations providing recognition.",
+        "Document the organizational and management structure of the laboratory, showing relationships among management, technical operations, and support services.",
+        "Specify the responsibility, authority, and interrelationships of all personnel who manage, perform, or verify work affecting the results.",
+        "Have technical management overall responsibility for technical operations and provision of resources.",
+        "Appoint a quality manager (however named) with responsibility and authority for ensuring the management system is implemented and followed."
+      ]
+    },
+    {
+      "clause": "6",
+      "title": "Resource requirements",
+      "subclauses": [
+        {
+          "clause": "6.1",
+          "title": "General",
+          "requirements": [
+            "The laboratory shall have available the personnel, facilities, equipment, and systems needed to perform its laboratory activities."
+          ]
+        },
+        {
+          "clause": "6.2",
+          "title": "Personnel",
+          "summary": "All personnel of the laboratory shall be competent and shall act impartially.",
+          "requirements": [
+            "Determine the competence requirements for each function influencing the results of laboratory activities.",
+            "Ensure personnel have the competence to perform their assigned activities.",
+            "Authorize personnel to perform specific laboratory activities, including assessment of results, reporting, and signing documents.",
+            "Maintain records of personnel qualifications, training, skills, experience, and authorizations.",
+            "Monitor the competence of personnel through observation, record review, and/or proficiency testing."
+          ]
+        },
+        {
+          "clause": "6.3",
+          "title": "Facilities and environmental conditions",
+          "summary": "Facilities and environmental conditions shall be suitable for the laboratory activities.",
+          "requirements": [
+            "Document the requirements for facilities and environmental conditions necessary for correct performance.",
+            "Monitor, control, and record environmental conditions as required.",
+            "Separate incompatible activities to prevent cross‑contamination.",
+            "Control access to and use of areas affecting the quality of activities."
+          ]
+        },
+        {
+          "clause": "6.4",
+          "title": "Equipment",
+          "summary": "The laboratory shall have access to equipment required for the correct performance of laboratory activities.",
+          "requirements": [
+            "Verify upon receipt that equipment complies with specified requirements.",
+            "Calibrate equipment before putting into service if it affects the validity of results.",
+            "Establish a calibration programme and review it periodically.",
+            "Label equipment to indicate calibration status.",
+            "Safeguard equipment from adjustments that would invalidate results.",
+            "Maintain records of equipment, including identification, manufacturer, type, serial number, location, calibration dates, results of checks, maintenance plan, and damage/malfunction history."
+          ]
+        },
+        {
+          "clause": "6.5",
+          "title": "Metrological traceability",
+          "summary": "The laboratory shall establish and maintain metrological traceability of its measurement results.",
+          "requirements": [
+            "Ensure results are traceable to the International System of Units (SI) through an unbroken chain of calibrations.",
+            "When traceability to SI is not possible, use an appropriate reference (certified reference materials, consensus standards, etc.).",
+            "Select calibration laboratories that comply with ISO/IEC 17025.",
+            "For calibration performed in‑house, ensure the same requirements are met."
+          ]
+        },
+        {
+          "clause": "6.6",
+          "title": "Externally provided products and services",
+          "summary": "The laboratory shall ensure that only suitable externally provided products and services are used.",
+          "requirements": [
+            "Define criteria for evaluation, selection, monitoring, and re‑evaluation of external providers.",
+            "Inform providers of requirements before supply.",
+            "Verify that externally provided products and services conform to specified requirements.",
+            "Maintain records of external provider evaluations and actions taken."
+          ]
+        }
+      ]
+    },
+    {
+      "clause": "7",
+      "title": "Process requirements",
+      "subclauses": [
+        {
+          "clause": "7.1",
+          "title": "Review of requests, tenders and contracts",
+          "summary": "The laboratory shall have a procedure for reviewing requests, tenders, and contracts.",
+          "requirements": [
+            "Ensure the requirements are adequately defined, documented, and understood.",
+            "Confirm the laboratory has the capability and resources to meet the requirements.",
+            "Inform the client when the requested method is considered inappropriate.",
+            "Resolve any differences between request and contract.",
+            "Record any significant changes during execution."
+          ]
+        },
+        {
+          "clause": "7.2",
+          "title": "Selection, verification and validation of methods",
+          "summary": "The laboratory shall use appropriate methods and procedures for all laboratory activities.",
+          "requirements": [
+            "Select methods that meet client needs and are fit for purpose; preferably use international, regional, or national standards.",
+            "If the laboratory develops its own method, validate it before use.",
+            "Verify that it can properly perform standard methods before introducing them.",
+            "Validate non‑standard methods, laboratory‑developed methods, and modified standard methods.",
+            "Record the validation results, including the procedure used and a statement of fitness for intended use."
+          ]
+        },
+        {
+          "clause": "7.3",
+          "title": "Sampling",
+          "summary": "When the laboratory performs sampling, it shall have a sampling plan and methods.",
+          "requirements": [
+            "Base the sampling plan on appropriate statistical methods.",
+            "Document sampling procedures describing selection, handling, and transportation of samples.",
+            "Record relevant data related to sampling (location, date, environmental conditions, deviations)."
+          ]
+        },
+        {
+          "clause": "7.4",
+          "title": "Handling of test or calibration items",
+          "summary": "The laboratory shall have a procedure for the transportation, receipt, handling, protection, storage, and disposal of items.",
+          "requirements": [
+            "Establish a system for unambiguous identification of items.",
+            "Record any abnormalities or deviations from specified conditions upon receipt.",
+            "Ensure items are stored under appropriate conditions to prevent deterioration or loss."
+          ]
+        },
+        {
+          "clause": "7.5",
+          "title": "Technical records",
+          "summary": "Technical records shall contain the results, report, and sufficient information to facilitate repetition of the activity.",
+          "requirements": [
+            "Retain records of original observations, derived data, and sufficient information to establish an audit trail.",
+            "Include identification of personnel performing the activity and checking results.",
+            "Record deviations, if any.",
+            "Ensure amendments to records are traceable to previous versions."
+          ]
+        },
+        {
+          "clause": "7.6",
+          "title": "Evaluation of measurement uncertainty",
+          "summary": "Laboratories shall identify the contributions to measurement uncertainty.",
+          "requirements": [
+            "Calibration laboratories shall evaluate measurement uncertainty for all calibrations.",
+            "Testing laboratories shall evaluate measurement uncertainty when required by the test method, client, or to interpret results.",
+            "Consider all significant contributions, including those from sampling."
+          ]
+        },
+        {
+          "clause": "7.7",
+          "title": "Ensuring the validity of results",
+          "summary": "The laboratory shall have a procedure for monitoring the validity of results.",
+          "requirements": [
+            "Monitor results using statistical techniques, e.g., use of reference materials, replicate tests, retesting, correlation of results.",
+            "Participate in proficiency testing when available and appropriate.",
+            "Analyze results of monitoring and, if they depart from predetermined criteria, take appropriate action."
+          ]
+        },
+        {
+          "clause": "7.8",
+          "title": "Reporting of results",
+          "summary": "Results shall be reviewed and authorized before release, and reported accurately, clearly, and objectively.",
+          "requirements": [
+            "Reports shall include: title, laboratory name and address, location of activities, unique identifier, client name, description of item, date of receipt and testing, reference to method, results, and authorized signatory.",
+            "When opinions and interpretations are provided, clearly identify them.",
+            "Amendments to a report after issue shall be made in a follow‑up document clearly identifying the amendment."
+          ]
+        },
+        {
+          "clause": "7.9",
+          "title": "Complaints",
+          "summary": "The laboratory shall have a documented process for receiving, evaluating, and making decisions on complaints.",
+          "requirements": [
+            "Acknowledge receipt of complaint and provide progress reports.",
+            "Gather and verify all necessary information to validate the complaint.",
+            "Record complaints and actions taken.",
+            "Ensure that any decision is made by persons not involved in the original activities."
+          ]
+        },
+        {
+          "clause": "7.10",
+          "title": "Nonconforming work",
+          "summary": "The laboratory shall have a procedure to be implemented when any aspect of its activities does not conform to its own procedures or client requirements.",
+          "requirements": [
+            "Designate responsibility and authority for managing nonconforming work.",
+            "Evaluate the significance of the nonconforming work, including impact on previous results.",
+            "Take action to correct the nonconformity and decide on acceptability of the work.",
+            "If necessary, notify the client and recall work.",
+            "Authorize resumption of work only after verification that the nonconformity is resolved."
+          ]
+        }
+      ]
+    },
+    {
+      "clause": "8",
+      "title": "Management system requirements",
+      "subclauses": [
+        {
+          "clause": "8.1",
+          "title": "Options",
+          "requirements": [
+            "Option A: The laboratory shall establish, document, implement, and maintain a management system in accordance with clauses 8.2 to 8.9.",
+            "Option B: The laboratory may maintain a management system in accordance with ISO 9001 that supports and demonstrates consistent fulfillment of ISO/IEC 17025 requirements."
+          ]
+        },
+        {
+          "clause": "8.2",
+          "title": "Management system documentation (Option A)",
+          "requirements": [
+            "Document policies, objectives, and commitments.",
+            "Maintain a quality manual (or equivalent) that includes or references supporting procedures.",
+            "Ensure that all personnel have access to relevant parts of the documentation."
+          ]
+        },
+        {
+          "clause": "8.3",
+          "title": "Control of management system documents (Option A)",
+          "requirements": [
+            "Control documents (internal and external) to ensure they are approved, reviewed, updated, and available at points of use.",
+            "Prevent unintended use of obsolete documents."
+          ]
+        },
+        {
+          "clause": "8.4",
+          "title": "Control of records (Option A)",
+          "requirements": [
+            "Establish a procedure for identification, storage, protection, retrieval, retention, and disposal of records.",
+            "Records shall remain legible, readily identifiable, and retrievable."
+          ]
+        },
+        {
+          "clause": "8.5",
+          "title": "Actions to address risks and opportunities (Option A)",
+          "requirements": [
+            "Identify risks and opportunities related to laboratory activities.",
+            "Plan actions to address them and integrate into the management system.",
+            "Evaluate effectiveness of these actions."
+          ]
+        },
+        {
+          "clause": "8.6",
+          "title": "Improvement (Option A)",
+          "requirements": [
+            "Continually improve the effectiveness of the management system through the use of quality policy, objectives, audit results, analysis of data, corrective actions, and management review."
+          ]
+        },
+        {
+          "clause": "8.7",
+          "title": "Corrective actions (Option A)",
+          "requirements": [
+            "When a nonconformity occurs, react, evaluate need for action to eliminate causes, implement required action, review effectiveness, and update risks/opportunities if necessary."
+          ]
+        },
+        {
+          "clause": "8.8",
+          "title": "Internal audits (Option A)",
+          "requirements": [
+            "Conduct internal audits at planned intervals covering all elements of the management system and laboratory activities.",
+            "Auditors shall be independent of the activity audited.",
+            "Report results to relevant management and take timely corrective actions."
+          ]
+        },
+        {
+          "clause": "8.9",
+          "title": "Management reviews (Option A)",
+          "requirements": [
+            "Top management shall review the management system at planned intervals.",
+            "Inputs include: audit results, client feedback, complaints, performance of external providers, risk assessment results, and status of corrective actions.",
+            "Outputs include decisions and actions related to improvement, resource needs, and changes to the management system."
+          ]
+        }
+      ]
+    },
+    {
+      "clause": "Annex A",
+      "title": "Metrological traceability",
+      "summary": "Provides informative guidance on establishing and demonstrating metrological traceability.",
+      "requirements": [
+        "Traceability chain: unbroken chain of calibrations linking results to appropriate reference standards.",
+        "Role of national metrology institutes and accredited calibration laboratories.",
+        "When SI traceability is not possible, use certified reference materials or specified methods."
+      ]
+    },
+    {
+      "clause": "Annex B",
+      "title": "Management system options",
+      "summary": "Explains the two management system options (A and B) and their equivalence.",
+      "requirements": [
+        "Option A requires documented procedures for all elements listed in clause 8.",
+        "Option B allows a laboratory with an ISO 9001‑certified system to demonstrate compliance, provided it covers all ISO/IEC 17025 requirements."
+      ]
+    }
+  ]
+}

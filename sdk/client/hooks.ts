@@ -1,0 +1,244 @@
+import { useState, useCallback } from 'react';
+import { trpc } from './trpc';
+import type { Agent, Message, Document, Process } from '../types';
+
+// Agent Hooks
+export function useAgent(agentId: string) {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [sessionId] = useState(() => `session-${Date.now()}`);
+
+  const { data: agent } = trpc.agent.get.useQuery({ id: agentId });
+  const chatMutation = trpc.agent.chat.useMutation();
+  const toolMutation = trpc.agent.executeTool.useMutation();
+
+  const sendMessage = useCallback(async (content: string) => {
+    if (!agent) return;
+
+    const result = await chatMutation.mutateAsync({
+      agentId,
+      message: content,
+      sessionId,
+    });
+
+    setMessages(prev => [...prev, result.userMessage, result.agentResponse]);
+    return result;
+  }, [agent, agentId, sessionId, chatMutation]);
+
+  const executeTool = useCallback(async (toolId: string, parameters: Record<string, any>) => {
+    if (!agent) return;
+
+    return await toolMutation.mutateAsync({
+      agentId,
+      toolId,
+      parameters,
+    });
+  }, [agent, agentId, toolMutation]);
+
+  return {
+    agent,
+    messages,
+    sendMessage,
+    executeTool,
+    isLoading: chatMutation.isPending || toolMutation.isPending,
+  };
+}
+
+export function useAgents() {
+  return trpc.agent.list.useQuery();
+}
+
+// Document Hooks
+export function useDocuments(filters?: {
+  type?: string;
+  status?: string;
+  tags?: string[];
+}) {
+  return trpc.document.list.useQuery(filters || {});
+}
+
+export function useCreateDocument() {
+  const utils = trpc.useUtils();
+  
+  return trpc.document.create.useMutation({
+    onSuccess: () => {
+      utils.document.list.invalidate();
+    },
+  });
+}
+
+export function useUpdateDocument() {
+  const utils = trpc.useUtils();
+  
+  return trpc.document.update.useMutation({
+    onSuccess: () => {
+      utils.document.list.invalidate();
+    },
+  });
+}
+
+export function useValidateDocument() {
+  return trpc.document.validate.useMutation();
+}
+
+// Process Hooks
+export function useProcesses() {
+  return trpc.process.list.useQuery();
+}
+
+export function useCreateProcess() {
+  const utils = trpc.useUtils();
+  
+  return trpc.process.create.useMutation({
+    onSuccess: () => {
+      utils.process.list.invalidate();
+    },
+  });
+}
+
+export function useUpdateProcess() {
+  const utils = trpc.useUtils();
+  
+  return trpc.process.update.useMutation({
+    onSuccess: () => {
+      utils.process.list.invalidate();
+    },
+  });
+}
+
+export function useValidateProcess() {
+  return trpc.process.validate.useMutation();
+}
+
+// Compliance Hooks
+export function useComplianceCheck() {
+  return trpc.compliance.check.useMutation();
+}
+
+export function useComplianceReport(standard: string) {
+  return trpc.compliance.getReport.useQuery({ standard });
+}
+
+// Audit Hooks
+export function useAudits() {
+  return trpc.audit.list.useQuery();
+}
+
+export function useGenerateAuditChecklist() {
+  return trpc.audit.generateChecklist.useMutation();
+}
+
+export function useCreateAudit() {
+  const utils = trpc.useUtils();
+  
+  return trpc.audit.create.useMutation({
+    onSuccess: () => {
+      utils.audit.list.invalidate();
+    },
+  });
+}
+
+// Testing Hooks
+export function useCreateTestCase() {
+  return trpc.testing.createTestCase.useMutation();
+}
+
+export function useExecuteTest() {
+  return trpc.testing.executeTest.useMutation();
+}
+
+export function useTestCoverage() {
+  return trpc.testing.getCoverage.useQuery();
+}
+
+// Manufacturing Hooks
+export function useRecordMetrics() {
+  return trpc.manufacturing.recordMetrics.useMutation();
+}
+
+export function useOEE(startDate: Date, endDate: Date) {
+  return trpc.manufacturing.getOEE.useQuery({ startDate, endDate });
+}
+
+// Construction Hooks
+export function useCreateProject() {
+  return trpc.construction.createProject.useMutation();
+}
+
+export function useUpdateProjectProgress() {
+  return trpc.construction.updateProgress.useMutation();
+}
+
+export function useEstimateCost() {
+  return trpc.construction.estimateCost.useMutation();
+}
+
+// Insurance Hooks
+export function useCreateClaim() {
+  return trpc.insurance.createClaim.useMutation();
+}
+
+export function useProcessClaim() {
+  return trpc.insurance.processClaim.useMutation();
+}
+
+export function useGenerateQuote() {
+  return trpc.insurance.generateQuote.useMutation();
+}
+
+// Multi-Agent Chat Hook
+export function useMultiAgentChat() {
+  const [activeAgents, setActiveAgents] = useState<string[]>([]);
+  const [messages, setMessages] = useState<(Message & { agentName?: string })[]>([]);
+
+  const { data: agents } = useAgents();
+  const chatMutation = trpc.agent.chat.useMutation();
+
+  const addAgent = useCallback((agentId: string) => {
+    if (!activeAgents.includes(agentId)) {
+      setActiveAgents(prev => [...prev, agentId]);
+    }
+  }, [activeAgents]);
+
+  const removeAgent = useCallback((agentId: string) => {
+    setActiveAgents(prev => prev.filter(id => id !== agentId));
+  }, []);
+
+  const sendToAgent = useCallback(async (agentId: string, message: string) => {
+    const agent = agents?.find(a => a.id === agentId);
+    if (!agent) return;
+
+    const result = await chatMutation.mutateAsync({
+      agentId,
+      message,
+    });
+
+    setMessages(prev => [
+      ...prev,
+      { ...result.userMessage, agentName: 'User' },
+      { ...result.agentResponse, agentName: agent.name },
+    ]);
+
+    return result;
+  }, [agents, chatMutation]);
+
+  const broadcastMessage = useCallback(async (message: string) => {
+    const results = await Promise.all(
+      activeAgents.map(agentId => sendToAgent(agentId, message))
+    );
+    return results;
+  }, [activeAgents, sendToAgent]);
+
+  return {
+    agents: agents || [],
+    activeAgents,
+    messages,
+    addAgent,
+    removeAgent,
+    sendToAgent,
+    broadcastMessage,
+    isLoading: chatMutation.isPending,
+  };
+}
+
+// Malaysian Standards Hooks
+export * from './ms-hooks';

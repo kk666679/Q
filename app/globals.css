@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+/* 2. Theme variables – light mode defaults + dark mode */
+@theme {
+  /* Light mode – clean white background */
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  --color-primary: #3b82f6;        /* blue-500 – accent */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f5f5f5;       /* subtle light gray */
+  --color-secondary-foreground: #171717;
+  --color-muted: #f5f5f5;           /* borders, separators */
+  --color-muted-foreground: #737373;
+  --color-accent: #3b82f6;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;      /* red-500 */
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #3b82f6;
+
+  /* Status colors */
+  --color-success: #22c55e;          /* green-500 */
+  --color-success-foreground: #ffffff;
+  --color-warning: #f59e0b;           /* amber-500 */
+  --color-warning-foreground: #000000;
+  --color-info: #0ea5e9;             /* sky-500 */
+  --color-info-foreground: #ffffff;
+
+  /* Glassmorphism variables – fully customisable */
+  --glass-bg: rgba(255, 255, 255, 0.7);           /* semi‑transparent white */
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-blur: blur(12px);
+  --glass-blur-sm: blur(8px);
+  --glass-blur-lg: blur(20px);
+
+  /* Border radius */
+  --radius: 0.5rem;
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Dark mode overrides */
+.dark {
+  /* Core palette – deep black background, crisp white text */
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-primary: #3b82f6;        /* blue-500 – accent */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1e1e1e;       /* subtle dark gray */
+  --color-secondary-foreground: #e5e5e5;
+  --color-muted: #262626;            /* borders, separators */
+  --color-muted-foreground: #a3a3a3;
+  --color-accent: #3b82f6;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;      /* red-500 */
+  --color-destructive-foreground: #ffffff;
+  --color-border: #262626;
+  --color-input: #262626;
+  --color-ring: #3b82f6;
+
+  /* Status colors */
+  --color-success: #22c55e;          /* green-500 */
+  --color-success-foreground: #ffffff;
+  --color-warning: #f59e0b;           /* amber-500 */
+  --color-warning-foreground: #000000;
+  --color-info: #0ea5e9;             /* sky-500 */
+  --color-info-foreground: #ffffff;
+
+  /* Glassmorphism variables – fully customisable */
+  --glass-bg: rgba(0, 0, 0, 0.7);           /* semi‑transparent black */
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* 3. Base layer – reset and global styles */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: var(--color-border, currentColor);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    height: 100%;                       /* full viewport height */
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;                  /* prevent horizontal scroll */
+  }
+
+  /* Root containers for frameworks (Next.js, Remix, CRA, Vite) */
+  #root,
+  #__next {
+    height: 100%;
+    isolation: isolate;                  /* new stacking context */
+  }
+
+  /* Media defaults */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Form elements inherit typography */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  /* Buttons are clickable */
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role='button']:disabled {
+    cursor: default;
+    opacity: 0.6;
+  }
+
+  /* Respect user motion preferences */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Accessible focus rings */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* 4. Glassmorphism component layer */
+@layer components {
+  /* Base glass effect – apply to any element */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur); /* Safari */
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+  }
+
+  /* Glass card – with padding and shadow for depth */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Glass panel – wider, e.g., navbar or sidebar */
+  .glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Subtle blur */
+  .glass-sm {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid var(--glass-border);
+    border-radius: calc(var(--radius) - 0.125rem);
+  }
+
+  /* Strong blur – dreamy effect */
+  .glass-lg {
+    background: rgba(0, 0, 0, 0.6); /* slightly lower opacity */
+    backdrop-filter: var(--glass-blur-lg);
+    -webkit-backdrop-filter: var(--glass-blur-lg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: calc(var(--radius) + 0.25rem);
+  }
+
+  /* Glass without border – ideal for overlays */
+  .glass-borderless {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: none;
+    border-radius: var(--radius);
+  }
+}
+
+/* 5. Framer Motion utilities – performance & accessibility */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .motion-safe {
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all 0.2s ease;
+    }
+  }
+}
+
+/* 6. Responsive container adjustments */
+@layer utilities {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}

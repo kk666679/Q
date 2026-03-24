@@ -1,0 +1,272 @@
+/**
+* Appendix: Key Changes in the Upcoming ISO/IEC 17020:2026
+* For your QMS Generator project, the following updates to ISO 17020 are the most significant :
+* Independence Model: The old Type A, B, C classification is being replaced with a clearer system (Type A and non-Type A).
+* Structure Alignment: The clause structure is being re-organized to align with other key standards like ISO/IEC 17025, making integrated management systems easier to manage.
+* Risk & Impartiality: There are stronger, more explicit requirements for identifying and documenting risks to impartiality.
+* External Services: There are enhanced controls for outsourced activities, requiring inspection bodies to verify the competence of their subcontractors more rigorously.
+*/
+
+{
+  "standard": "ISO/IEC 17020",
+  "title": "Conformity assessment — Requirements for the operation of various types of bodies performing inspection",
+  "year": "2026 (expected)",
+  "status": "Draft based on FDIS (final publication anticipated late 2025/early 2026)",
+  "introduction": "This standard specifies requirements for the competence of inspection bodies and for the impartiality and consistency of their inspection activities. The 2026 revision introduces a simplified independence model (Type A and non-Type A), aligns terminology with other ISO conformity assessment standards, and strengthens requirements for risk management, impartiality, and control of outsourced activities.",
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Scope",
+      "summary": "Defines the field of application – bodies performing inspection, regardless of the sector or type of inspection.",
+      "requirements": [
+        "Applicable to inspection bodies of Type A (third‑party) and non‑Type A (former Types B and C).",
+        "Covers all stages of inspection: planning, execution, reporting, and follow‑up.",
+        "Does not apply to testing laboratories (covered by ISO/IEC 17025) or certification bodies (covered by ISO/IEC 17021 series)."
+      ]
+    },
+    {
+      "clause": "2",
+      "title": "Normative references",
+      "summary": "Lists standards that are indispensable for the application of this document.",
+      "requirements": [
+        "ISO/IEC 17000, Conformity assessment – Vocabulary and general principles",
+        "ISO/IEC 17011, Conformity assessment – Requirements for accreditation bodies accrediting conformity assessment bodies"
+      ]
+    },
+    {
+      "clause": "3",
+      "title": "Terms and definitions",
+      "summary": "Provides definitions of key terms used in the standard, aligned with ISO/IEC 17000.",
+      "requirements": [
+        "Inspection: examination of a product, process, service, or installation and determination of its conformity with specific requirements.",
+        "Inspection body: body that performs inspection.",
+        "Impartiality: presence of objectivity.",
+        "Type A inspection body: independent third‑party body offering inspection services to a wide range of clients.",
+        "Non‑Type A inspection body: body that may be part of an organization and performs inspections for its parent organization or external clients under defined safeguards."
+      ]
+    },
+    {
+      "clause": "4",
+      "title": "General requirements",
+      "summary": "Fundamental principles that all inspection bodies must follow.",
+      "subclauses": [
+        {
+          "clause": "4.1",
+          "title": "Impartiality and independence",
+          "summary": "The inspection body shall be impartial and structurally independent to ensure that inspection results are not influenced.",
+          "requirements": [
+            "Identify, analyze, and document risks to impartiality on an ongoing basis.",
+            "Top management shall demonstrate commitment to impartiality.",
+            "Type A bodies shall be independent legal entities or clearly distinguishable parts of a larger organization with documented safeguards.",
+            "Non‑Type A bodies shall implement measures to prevent commercial, financial, or other pressures from compromising impartiality.",
+            "Personnel shall be free from any undue commercial, financial, or other pressures."
+          ]
+        },
+        {
+          "clause": "4.2",
+          "title": "Confidentiality",
+          "summary": "The inspection body shall protect confidential information obtained during inspection activities.",
+          "requirements": [
+            "Establish a legally enforceable commitment to confidentiality.",
+            "Inform clients in advance about information the body intends to place in the public domain.",
+            "Ensure personnel and subcontractors maintain confidentiality.",
+            "Safeguard information transmitted electronically."
+          ]
+        }
+      ]
+    },
+    {
+      "clause": "5",
+      "title": "Structural requirements",
+      "summary": "Organizational structure and top management responsibilities.",
+      "requirements": [
+        "The inspection body shall be a legal entity, or a defined part of a legal entity, that is legally responsible for its inspection activities.",
+        "Document the organizational structure showing relationships among management, technical operations, and support services.",
+        "Define the responsibilities and authorities of personnel involved in inspection activities.",
+        "Top management shall appoint a person or persons having overall responsibility for technical operations."
+      ]
+    },
+    {
+      "clause": "6",
+      "title": "Resource requirements",
+      "summary": "Personnel, facilities, equipment, and externally provided services.",
+      "subclauses": [
+        {
+          "clause": "6.1",
+          "title": "Personnel",
+          "summary": "The inspection body shall employ or contract competent personnel.",
+          "requirements": [
+            "Define competence criteria for each inspection role (education, training, technical knowledge, skills, and experience).",
+            "Maintain records of qualification, training, and authorization of each person.",
+            "Provide supervision for personnel under training.",
+            "Monitor the performance of personnel through observation, record review, and/or proficiency testing.",
+            "Continually improve competence through ongoing training."
+          ]
+        },
+        {
+          "clause": "6.2",
+          "title": "Facilities and equipment",
+          "summary": "Facilities and equipment shall be suitable for the inspections performed.",
+          "requirements": [
+            "Provide access to appropriate facilities and environmental conditions.",
+            "Ensure equipment is properly maintained, calibrated (where applicable), and uniquely identified.",
+            "Maintain records of maintenance and calibration.",
+            "When equipment is used outside the permanent premises, ensure its integrity and functionality."
+          ]
+        },
+        {
+          "clause": "6.3",
+          "title": "Externally provided services",
+          "summary": "Control of outsourced activities and subcontractors.",
+          "requirements": [
+            "Define criteria for selection and evaluation of subcontractors.",
+            "Maintain a register of approved subcontractors.",
+            "Ensure that any subcontracted part of the inspection conforms to the same requirements.",
+            "Inform the client of any intention to subcontract, and obtain client approval when required.",
+            "Retain responsibility for all subcontracted work."
+          ]
+        }
+      ]
+    },
+    {
+      "clause": "7",
+      "title": "Process requirements",
+      "summary": "Core inspection processes, methods, handling, reporting, and complaints.",
+      "subclauses": [
+        {
+          "clause": "7.1",
+          "title": "Inspection methods and procedures",
+          "summary": "Inspection activities shall be carried out using defined methods and procedures.",
+          "requirements": [
+            "Use methods specified in the inspection scope; if none are prescribed, develop appropriate methods.",
+            "Validate non‑standard methods before use.",
+            "Provide clear work instructions to personnel.",
+            "Ensure that inspection data is recorded accurately and legibly."
+          ]
+        },
+        {
+          "clause": "7.2",
+          "title": "Handling inspection items",
+          "summary": "Procedures for identification, handling, and preservation of items to be inspected.",
+          "requirements": [
+            "Establish a system to uniquely identify items throughout the inspection process.",
+            "Prevent deterioration, contamination, or loss of items.",
+            "Document any abnormalities or deviations noted upon receipt.",
+            "If items require storage under specific conditions, monitor and record those conditions."
+          ]
+        },
+        {
+          "clause": "7.3",
+          "title": "Inspection records",
+          "summary": "Technical records shall contain sufficient information to permit repetition of the inspection.",
+          "requirements": [
+            "Retain records of all inspections, including raw data, calculations, and derived data.",
+            "Records shall be legible, identifiable, and retrievable.",
+            "Include identification of personnel who performed and checked the inspection.",
+            "Protect records against damage, loss, or unauthorized alteration."
+          ]
+        },
+        {
+          "clause": "7.4",
+          "title": "Inspection reports and certificates",
+          "summary": "Inspection results shall be reported accurately and clearly.",
+          "requirements": [
+            "Each inspection shall have a report or certificate that includes all results and any opinions or interpretations.",
+            "The report shall contain: issuing body identification, unique report identifier, date, client identification, description of inspected item, inspection method, reference to sampling (if applicable), results, and any deviations.",
+            "Reports shall be reviewed and approved before release.",
+            "Amendments to issued reports shall be clearly identified."
+          ]
+        },
+        {
+          "clause": "7.5",
+          "title": "Appeals and complaints",
+          "summary": "The inspection body shall have a documented process for handling appeals and complaints.",
+          "requirements": [
+            "Make information about the handling process available to clients and other parties.",
+            "Acknowledge receipt of a complaint or appeal and provide progress reports.",
+            "Investigate the root cause and take appropriate corrective actions.",
+            "Document all actions and decisions."
+          ]
+        }
+      ]
+    },
+    {
+      "clause": "8",
+      "title": "Management system requirements",
+      "summary": "Requirements for the inspection body's management system, offering two options (Option A – full manual; Option B – ISO 9001 based).",
+      "subclauses": [
+        {
+          "clause": "8.1",
+          "title": "Options",
+          "requirements": [
+            "Option A: Establish and maintain a management system in accordance with clauses 8.2 to 8.8.",
+            "Option B: Maintain a management system in accordance with ISO 9001 that supports and demonstrates consistent fulfillment of ISO/IEC 17020 requirements."
+          ]
+        },
+        {
+          "clause": "8.2",
+          "title": "Management system documentation (Option A)",
+          "requirements": [
+            "Document policies, objectives, and commitments.",
+            "Maintain a quality manual that references procedures and support documents.",
+            "Ensure that all personnel have access to relevant documentation."
+          ]
+        },
+        {
+          "clause": "8.3",
+          "title": "Control of documents (Option A)",
+          "requirements": [
+            "Establish a procedure to control documents (internal and external).",
+            "Approve documents for adequacy prior to issue.",
+            "Review and update documents as necessary.",
+            "Ensure that relevant versions are available at points of use."
+          ]
+        },
+        {
+          "clause": "8.4",
+          "title": "Control of records (Option A)",
+          "requirements": [
+            "Establish a procedure for identification, storage, protection, retrieval, retention, and disposition of records.",
+            "Records shall remain legible, readily identifiable, and retrievable."
+          ]
+        },
+        {
+          "clause": "8.5",
+          "title": "Management review (Option A)",
+          "requirements": [
+            "Top management shall review the management system at planned intervals.",
+            "Inputs include: audit results, client feedback, complaints, performance indicators, and status of corrective actions.",
+            "Outputs include decisions on improvement and resource needs."
+          ]
+        },
+        {
+          "clause": "8.6",
+          "title": "Internal audit (Option A)",
+          "requirements": [
+            "Conduct internal audits at planned intervals to verify conformity to the management system and ISO/IEC 17020.",
+            "Auditors shall be independent of the activity audited.",
+            "Report audit results to relevant management and take timely corrective actions."
+          ]
+        },
+        {
+          "clause": "8.7",
+          "title": "Corrective actions (Option A)",
+          "requirements": [
+            "Establish a procedure for handling nonconformities.",
+            "Investigate root causes and implement actions to prevent recurrence.",
+            "Monitor the effectiveness of corrective actions taken."
+          ]
+        },
+        {
+          "clause": "8.8",
+          "title": "Actions to address risks and opportunities (Option A)",
+          "requirements": [
+            "Identify risks and opportunities related to inspection activities.",
+            "Plan actions to address them and integrate into the management system.",
+            "Evaluate the effectiveness of these actions."
+          ]
+        }
+      ]
+    }
+  ]
+}

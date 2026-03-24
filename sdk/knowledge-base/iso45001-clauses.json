@@ -1,0 +1,581 @@
+{
+  "iso45001_clauses": [
+    {
+      "clause": "1",
+      "title": "Scope",
+      "summary": "This document specifies requirements for an occupational health and safety (OH&S) management system and gives guidance for its use, to enable organizations to provide safe and healthy workplaces by preventing work-related injury and ill health, as well as by proactively improving its OH&S performance. The 2026 revision expands scope to include worker wellbeing, mental health, and new work modalities.",
+      "requirements": [
+        "Specifies requirements for an OH&S management system",
+        "Applicable to any organization regardless of size, type, and activities",
+        "Intended to prevent work-related injury and ill health",
+        "Addresses worker wellbeing including physical, mental, social, and cognitive needs [citation:1]",
+        "Covers all work modalities including remote and hybrid work [citation:2]",
+        "Provides framework for managing OH&S risks and opportunities"
+      ]
+    },
+    {
+      "clause": "2",
+      "title": "Normative references",
+      "summary": "There are no normative references in this document.",
+      "requirements": []
+    },
+    {
+      "clause": "3",
+      "title": "Terms and definitions",
+      "summary": "For the purposes of this document, the terms and definitions given in ISO 45001 apply. Key terms include: OH&S management system, worker, participation, consultation, workplace, hazard, risk, opportunity, incident, worker wellbeing, psychosocial risk, remote work.",
+      "requirements": [
+        "Refer to ISO 45001 for complete list of terms and definitions",
+        "New definitions expected for worker wellbeing, psychosocial risks, and new work modalities"
+      ]
+    },
+    {
+      "clause": "4",
+      "title": "Context of the organization",
+      "summary": "The organization must determine external and internal issues relevant to its purpose and strategic direction that affect its ability to achieve the intended outcomes of the OH&S management system. It must identify interested parties, their needs and expectations, define the scope, and establish the OH&S management system.",
+      "requirements": [
+        "Determine external and internal issues relevant to OH&S",
+        "Consider climate change as a relevant external issue [citation:2]",
+        "Identify workers and other interested parties and their requirements",
+        "Define the scope of the OH&S management system",
+        "Establish, implement, maintain, and continually improve the OH&S management system"
+      ]
+    },
+    {
+      "clause": "4.1",
+      "title": "Understanding the organization and its context",
+      "summary": "The organization shall determine external and internal issues that are relevant to its purpose and that affect its ability to achieve the intended outcomes of its OH&S management system.",
+      "requirements": [
+        "Determine external issues (legal, technological, competitive, market, cultural, social, economic, environmental, climate)",
+        "Determine internal issues (values, culture, knowledge, OH&S performance, worker demographics)",
+        "Consider climate change impacts on OH&S (heat stress, extreme weather, changing risk patterns) [citation:2]",
+        "Consider technological evolution including AI and digitalization [citation:2]",
+        "Monitor and review information about these issues"
+      ]
+    },
+    {
+      "clause": "4.2",
+      "title": "Understanding the needs and expectations of workers and other interested parties",
+      "summary": "The organization shall determine the workers and other interested parties that are relevant to the OH&S management system, and the relevant needs and expectations of these interested parties. The revision adds emphasis on diverse worker needs and expectations.",
+      "requirements": [
+        "Identify workers and other interested parties relevant to OH&S",
+        "Determine their needs and expectations",
+        "Consider diversity aspects (gender, age, disability, language, culture, religion, caregiving responsibilities, pregnancy, menopause, chronic health conditions) [citation:1]",
+        "Determine which needs and expectations are compliance obligations",
+        "Monitor and review information about interested parties and their requirements"
+      ]
+    },
+    {
+      "clause": "4.3",
+      "title": "Determining the scope of the OH&S management system",
+      "summary": "The organization shall determine the boundaries and applicability of the OH&S management system to establish its scope. The scope shall be documented and consider external and internal issues, interested party requirements, and organizational activities, products, and services, including all work modalities.",
+      "requirements": [
+        "Consider issues from 4.1 and requirements from 4.2",
+        "Consider activities, products, and services",
+        "Consider authority and ability to exercise control and influence",
+        "Include all work arrangements (on-site, remote, hybrid, field work) [citation:2]",
+        "Define boundaries and applicability",
+        "Document the scope and make it available"
+      ]
+    },
+    {
+      "clause": "4.4",
+      "title": "OH&S management system",
+      "summary": "The organization shall establish, implement, maintain and continually improve an OH&S management system, including the processes needed and their interactions, in accordance with the requirements of ISO 45001.",
+      "requirements": [
+        "Establish, implement, maintain, and continually improve OH&S management system",
+        "Include processes needed and their interactions"
+      ]
+    },
+    {
+      "clause": "5",
+      "title": "Leadership and worker participation",
+      "summary": "Top management must demonstrate leadership and commitment, establish an OH&S policy, assign organizational roles, responsibilities, and authorities, and ensure consultation and participation of workers with enhanced focus on worker wellbeing and diversity.",
+      "requirements": [
+        "Demonstrate leadership and commitment",
+        "Establish, implement, and maintain OH&S policy",
+        "Assign responsibilities and authorities",
+        "Ensure consultation and participation of workers including diverse representation"
+      ]
+    },
+    {
+      "clause": "5.1",
+      "title": "Leadership and commitment",
+      "summary": "Top management shall demonstrate leadership and commitment by taking overall responsibility for the protection of workers' health, safety, and wellbeing, ensuring OH&S policy and objectives are established, integrating OH&S into business processes, promoting continual improvement, providing resources, and communicating the importance of effective OH&S management.",
+      "requirements": [
+        "Take overall responsibility and accountability for OH&S including worker wellbeing",
+        "Ensure OH&S policy and objectives are established and compatible with strategic direction",
+        "Integrate OH&S requirements into business processes",
+        "Promote a preventive safety culture [citation:1]",
+        "Ensure resources are available",
+        "Communicate the importance of effective OH&S management",
+        "Ensure OH&S achieves intended outcomes",
+        "Direct and support persons to contribute to OH&S effectiveness",
+        "Demonstrate commitment to worker wellbeing (physical, mental, social, cognitive) [citation:1]",
+        "Promote continual improvement",
+        "Support other relevant management roles"
+      ]
+    },
+    {
+      "clause": "5.2",
+      "title": "OH&S policy",
+      "summary": "Top management shall establish, implement, and maintain an OH&S policy that is appropriate to the organization's purpose and context, provides a framework for setting OH&S objectives, includes commitments to prevent work-related injury and ill health, fulfill compliance obligations, and continual improvement, and includes a commitment to consultation and participation of workers and to worker wellbeing. The policy must be documented, communicated, and available to interested parties.",
+      "requirements": [
+        "Establish OH&S policy appropriate to purpose, context, and OH&S risks",
+        "Provide framework for setting OH&S objectives",
+        "Include commitment to prevent work-related injury and ill health",
+        "Include commitment to fulfill compliance obligations",
+        "Include commitment to continual improvement",
+        "Include commitment to consultation and participation of workers",
+        "Include commitment to worker wellbeing (physical, mental, social) [citation:1]",
+        "Be maintained as documented information",
+        "Be communicated within organization",
+        "Be available to interested parties",
+        "Be relevant and appropriate"
+      ]
+    },
+    {
+      "clause": "5.3",
+      "title": "Organizational roles, responsibilities and authorities",
+      "summary": "Top management shall ensure that the responsibilities and authorities for relevant roles are assigned, communicated, and understood within the organization. It shall assign responsibility and authority for ensuring OH&S conformity and reporting on OH&S performance.",
+      "requirements": [
+        "Assign responsibilities and authorities for relevant roles",
+        "Communicate responsibilities and authorities",
+        "Ensure they are understood",
+        "Assign specific responsibility for OH&S management system conformity to ISO 45001 requirements",
+        "Assign responsibility for reporting on OH&S performance to top management"
+      ]
+    },
+    {
+      "clause": "5.4",
+      "title": "Consultation and participation of workers",
+      "summary": "The organization shall establish, implement, and maintain processes for consultation and participation of workers at all applicable levels and functions. It shall provide mechanisms, time, training, and resources for participation, ensure timely access to information, and remove barriers to participation, including barriers related to diversity.",
+      "requirements": [
+        "Establish processes for consultation and participation of workers",
+        "Involve workers in development, planning, implementation, evaluation, and improvement of OH&S",
+        "Provide mechanisms, time, training, and resources for participation",
+        "Ensure timely access to clear, understandable, and relevant OH&S information",
+        "Remove barriers to participation (language, literacy, culture, gender, disability, work arrangements) [citation:1]",
+        "Ensure consultation of non-managerial workers on OH&S issues",
+        "Consider diverse worker representation in participation processes"
+      ]
+    },
+    {
+      "clause": "6",
+      "title": "Planning",
+      "summary": "The organization shall take actions to address risks and opportunities, determine hazards and OH&S risks including psychosocial risks, compliance obligations, plan actions, and establish OH&S objectives and plans to achieve them.",
+      "requirements": [
+        "Address risks and opportunities related to OH&S",
+        "Determine hazards and OH&S risks including psychosocial risks",
+        "Determine compliance obligations",
+        "Plan actions to address them",
+        "Establish OH&S objectives and plans"
+      ]
+    },
+    {
+      "clause": "6.1",
+      "title": "Actions to address risks and opportunities",
+      "summary": "The organization shall establish processes to determine risks and opportunities related to OH&S that need to be addressed to give assurance the OH&S management system can achieve its intended outcomes, prevent or reduce undesired effects, and achieve continual improvement.",
+      "requirements": [
+        "Establish processes to determine risks and opportunities",
+        "Consider hazards (6.1.2), OH&S risks and opportunities, and compliance obligations (6.1.3)",
+        "Determine risks and opportunities related to OH&S",
+        "Plan actions to address them",
+        "Integrate and implement actions into OH&S processes",
+        "Evaluate effectiveness of actions"
+      ]
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Hazard identification and assessment of risks and opportunities",
+      "summary": "The organization shall establish, implement, and maintain processes for ongoing proactive hazard identification, assessment of OH&S risks, and identification of opportunities. It shall consider routine and non-routine activities, human factors, design of work, psychosocial hazards, and new work modalities.",
+      "requirements": [
+        "Establish processes for hazard identification",
+        "Consider routine and non-routine activities",
+        "Consider human factors",
+        "Consider design of work, organization, jobs, and processes",
+        "Consider psychosocial hazards (stress, burnout, harassment, violence) [citation:2][citation:7]",
+        "Consider remote and hybrid work arrangements [citation:2]",
+        "Consider situations and circumstances that can lead to hazards",
+        "Consider actual or proposed changes",
+        "Consider knowledge and information about hazards",
+        "Assess OH&S risks and opportunities",
+        "Identify opportunities for improvement"
+      ]
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Determination of legal requirements and other requirements",
+      "summary": "The organization shall determine and have access to legal requirements and other requirements related to its OH&S hazards and OH&S management system. It shall determine how these requirements apply and take them into account when establishing, implementing, and maintaining its OH&S management system.",
+      "requirements": [
+        "Determine legal requirements related to OH&S",
+        "Determine other requirements (collective agreements, industry standards, guidelines)",
+        "Have access to these requirements",
+        "Determine how they apply",
+        "Take them into account in OH&S management system",
+        "Maintain documented information of compliance obligations"
+      ]
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Planning action",
+      "summary": "The organization shall plan actions to address its significant OH&S risks and OH&S opportunities, compliance obligations, and risks and opportunities identified in 6.1.1. It shall plan how to integrate and implement these actions and evaluate their effectiveness.",
+      "requirements": [
+        "Plan actions to address significant OH&S risks including psychosocial risks",
+        "Plan actions to address OH&S opportunities",
+        "Plan actions to address compliance obligations",
+        "Plan actions to address other risks and opportunities",
+        "Integrate actions into OH&S processes",
+        "Evaluate effectiveness of actions"
+      ]
+    },
+    {
+      "clause": "6.2",
+      "title": "OH&S objectives and planning to achieve them",
+      "summary": "The organization shall establish OH&S objectives at relevant functions and levels, considering its significant OH&S risks and opportunities and compliance obligations. Objectives shall be consistent with OH&S policy, measurable, monitored, communicated, and updated. Plans for achieving them shall determine what will be done, resources, responsibilities, timing, and how results will be evaluated. The revision emphasizes objectives related to worker wellbeing.",
+      "requirements": [
+        "Establish OH&S objectives for relevant functions and levels",
+        "Consider significant OH&S risks and opportunities and compliance obligations",
+        "Consider worker wellbeing objectives",
+        "Be consistent with OH&S policy",
+        "Be measurable (if practicable) or capable of evaluation",
+        "Be monitored",
+        "Be communicated",
+        "Be updated as appropriate",
+        "Maintain documented information on objectives",
+        "Determine what will be done",
+        "Determine resources required",
+        "Assign responsibility",
+        "Set timing for completion",
+        "Define how results will be evaluated"
+      ]
+    },
+    {
+      "clause": "7",
+      "title": "Support",
+      "summary": "The organization must determine and provide resources needed for the OH&S management system, ensure persons are competent, establish awareness including wellbeing awareness, determine communication including for diverse workers, and control documented information. New emphasis on digital resources and support for diverse worker needs.",
+      "requirements": [
+        "Provide resources including digital monitoring resources [citation:3][citation:9]",
+        "Ensure competence of persons",
+        "Establish awareness including wellbeing and diversity awareness",
+        "Determine internal and external communication accessible to all workers",
+        "Control documented information including digital records"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "title": "Resources",
+      "summary": "The organization shall determine and provide the resources needed for the establishment, implementation, maintenance, and continual improvement of the OH&S management system, including digital monitoring systems for high-risk activities.",
+      "requirements": [
+        "Determine resources needed for OH&S management system",
+        "Provide resources",
+        "Consider digital monitoring resources for high-risk activities [citation:3][citation:9]",
+        "Provide resources supporting worker wellbeing [citation:1]"
+      ]
+    },
+    {
+      "clause": "7.2",
+      "title": "Competence",
+      "summary": "The organization shall determine the necessary competence of persons doing work under its control that affects its OH&S performance and ability to fulfill its compliance obligations. It shall ensure these persons are competent on the basis of education, training, or experience. Where applicable, take actions to acquire necessary competence and evaluate effectiveness. Retain documented information as evidence.",
+      "requirements": [
+        "Determine necessary competence of persons affecting OH&S performance",
+        "Include competence in psychosocial risk management for relevant roles",
+        "Include competence in managing diverse worker needs",
+        "Ensure persons are competent based on education, training, or experience",
+        "Take actions to acquire necessary competence",
+        "Evaluate effectiveness of actions",
+        "Retain documented information as evidence of competence"
+      ]
+    },
+    {
+      "clause": "7.3",
+      "title": "Awareness",
+      "summary": "The organization shall ensure that persons doing work under its control are aware of the OH&S policy, their contribution to OH&S effectiveness, the implications of not conforming to OH&S requirements, incidents and relevant learning, and the importance of worker wellbeing.",
+      "requirements": [
+        "Ensure awareness of OH&S policy",
+        "Ensure awareness of contribution to OH&S effectiveness",
+        "Ensure awareness of implications of not conforming",
+        "Ensure awareness of incidents and relevant learning",
+        "Ensure awareness of worker wellbeing expectations [citation:1]",
+        "Ensure awareness of resources available for mental health support [citation:3]"
+      ]
+    },
+    {
+      "clause": "7.4",
+      "title": "Communication",
+      "summary": "The organization shall establish processes for internal and external communication relevant to the OH&S management system, including what, when, with whom, how, and who communicates. It shall consider compliance obligations, ensure that communicated information is consistent and reliable, and is accessible to all workers considering diversity factors.",
+      "requirements": [
+        "Establish processes for internal communication",
+        "Establish processes for external communication",
+        "Determine what to communicate",
+        "Determine when to communicate",
+        "Determine with whom to communicate",
+        "Determine how to communicate (considering language, literacy, accessibility) [citation:1]",
+        "Ensure information is consistent and reliable",
+        "Address communication of OH&S risks and opportunities",
+        "Ensure communication is accessible to diverse workers [citation:1]"
+      ]
+    },
+    {
+      "clause": "7.5",
+      "title": "Documented information",
+      "summary": "The OH&S management system shall include documented information required by ISO 45001 and determined by the organization as necessary for effectiveness. Creation, update, and control of documented information must be managed to ensure availability and protection, including digital records from monitoring systems.",
+      "requirements": [
+        "Include documented information required by ISO 45001",
+        "Include documented information determined necessary for OH&S effectiveness",
+        "Ensure appropriate identification and description (title, date, author, reference)",
+        "Ensure appropriate format and media including digital formats",
+        "Ensure review and approval for suitability and adequacy",
+        "Control documented information (distribution, access, retrieval, use, storage, preservation, version control, retention, disposition)",
+        "Manage documented information of external origin",
+        "Prevent unintended use of obsolete documented information",
+        "Maintain digital records from monitoring systems [citation:3]"
+      ]
+    },
+    {
+      "clause": "7.6",
+      "title": "Diversity and inclusion (New Clause)",
+      "summary": "The organization shall consider diversity among workers and other interested parties when establishing, implementing, and maintaining the OH&S management system. The revision includes an entire paragraph in Annex A dedicated to diversity.",
+      "requirements": [
+        "Consider diversity aspects in all OH&S processes",
+        "Address gender, age, disability, abilities, language skills, literacy and numeracy levels [citation:1]",
+        "Consider caregiving responsibilities for children, elderly parents, or family members with disabilities [citation:1]",
+        "Address culture and religion considerations",
+        "Consider sexuality, menstruation, menstrual health and menopause [citation:1][citation:2]",
+        "Address pregnancy and reproductive health needs [citation:1]",
+        "Consider immigration status and chronic health conditions [citation:1]",
+        "Ensure OH&S measures are inclusive and accessible to all workers"
+      ]
+    },
+    {
+      "clause": "8",
+      "title": "Operation",
+      "summary": "The organization must plan, implement, and control processes needed to meet OH&S requirements, including operational planning and control, management of change, procurement, and emergency preparedness and response. New emphasis on digital monitoring and remote work.",
+      "requirements": [
+        "Plan, implement, and control operational processes",
+        "Establish operational criteria including for remote work",
+        "Control processes per criteria",
+        "Manage planned changes",
+        "Control outsourced processes including contractors",
+        "Establish emergency preparedness and response"
+      ]
+    },
+    {
+      "clause": "8.1",
+      "title": "Operational planning and control",
+      "summary": "The organization shall establish, implement, and control processes needed to meet OH&S requirements and implement actions determined in Clause 6, by establishing operating criteria and controlling processes in accordance with criteria. It shall control planned changes and review consequences of unintended changes. It shall ensure outsourced processes are controlled.",
+      "requirements": [
+        "Establish processes to meet OH&S requirements and actions from Clause 6",
+        "Establish operating criteria including for all work modalities",
+        "Control processes in accordance with criteria",
+        "Deploy digital monitoring for high-risk activities [citation:3][citation:9]",
+        "Control planned changes and review unintended changes",
+        "Ensure outsourced processes are controlled",
+        "Coordinate OH&S with other business processes"
+      ]
+    },
+    {
+      "clause": "8.1.2",
+      "title": "Eliminating hazards and reducing OH&S risks",
+      "summary": "The organization shall establish, implement, and maintain processes for elimination of hazards and reduction of OH&S risks using the hierarchy of controls. This includes psychosocial hazards and risks associated with new work modalities.",
+      "requirements": [
+        "Establish processes for hazard elimination and risk reduction",
+        "Apply hierarchy of controls: elimination, substitution, engineering controls, administrative controls, personal protective equipment",
+        "Address psychosocial hazards using appropriate controls",
+        "Address risks from remote and hybrid work arrangements",
+        "Maintain and retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "8.1.3",
+      "title": "Management of change",
+      "summary": "The organization shall establish processes for the planning and control of temporary and permanent changes that impact OH&S performance, including new products, processes, technology, or changes to legal requirements, and changes to work arrangements.",
+      "requirements": [
+        "Establish processes for management of change",
+        "Review consequences of changes including impacts on worker wellbeing",
+        "Take actions to mitigate adverse effects",
+        "Consider changes to work arrangements (remote, hybrid, flexible working)",
+        "Maintain documented information"
+      ]
+    },
+    {
+      "clause": "8.1.4",
+      "title": "Procurement",
+      "summary": "The organization shall establish processes to ensure that purchased products and services conform to OH&S requirements, including controls for contractors and outsourcing. Enhanced requirements for contractor management and supply chain OH&S performance.",
+      "requirements": [
+        "Establish processes for procurement",
+        "Define OH&S criteria for selection and evaluation of contractors",
+        "Ensure contractors meet OH&S requirements",
+        "Apply same safety standards to contractors as to employees [citation:3]",
+        "Verify contractor safety competencies and certifications",
+        "Coordinate with contractors on hazard identification and risk control",
+        "Maintain documented information"
+      ]
+    },
+    {
+      "clause": "8.1.4.1",
+      "title": "Outsourcing and contractor management (Enhanced)",
+      "summary": "The organization shall ensure that outsourced processes and contractor activities are controlled. Contractors must be integrated into the OH&S management system with the same requirements as employees.",
+      "requirements": [
+        "Apply OH&S requirements to all outsourced activities",
+        "Ensure contractors have appropriate safety competencies",
+        "Provide safety induction and training for all contractor personnel [citation:3]",
+        "Monitor contractor OH&S performance",
+        "Maintain documented information on contractor management",
+        "Clarify OH&S responsibilities in contracts"
+      ]
+    },
+    {
+      "clause": "8.1.5",
+      "title": "Remote and hybrid work (New Clause)",
+      "summary": "The organization shall establish processes to manage OH&S for remote and hybrid work arrangements, addressing ergonomics, psychosocial factors, isolation, and work-life balance.",
+      "requirements": [
+        "Establish OH&S requirements for remote and hybrid work [citation:2]",
+        "Address ergonomic requirements for home workplaces",
+        "Manage psychosocial risks including isolation and work-life boundaries",
+        "Ensure communication and connectivity for remote workers",
+        "Provide guidance for managers on supporting remote workers [citation:2]",
+        "Consider flexibility in working modalities to support wellbeing [citation:1]"
+      ]
+    },
+    {
+      "clause": "8.2",
+      "title": "Emergency preparedness and response",
+      "summary": "The organization shall establish, implement, and maintain processes needed to prepare for and respond to potential emergency situations. It shall take action to prevent or mitigate OH&S consequences from emergencies, periodically test response procedures, review and revise processes after incidents, and provide information and training. Enhanced requirements for emergency planning considering climate-related events.",
+      "requirements": [
+        "Establish, implement, and maintain processes for emergency preparedness and response",
+        "Plan actions to prevent or mitigate OH&S consequences",
+        "Consider climate-related emergencies (extreme heat, floods, storms) [citation:2]",
+        "Respond to actual emergency situations",
+        "Take action to mitigate consequences",
+        "Periodically test and exercise response procedures",
+        "Review and revise processes after incidents and tests",
+        "Provide information and training",
+        "Maintain documented information",
+        "Include pandemic preparedness considerations [citation:2]"
+      ]
+    },
+    {
+      "clause": "9",
+      "title": "Performance evaluation",
+      "summary": "The organization must monitor, measure, analyze, and evaluate its OH&S performance including wellbeing indicators, evaluate compliance, conduct internal audits, and perform management reviews with consideration of climate change and diversity factors.",
+      "requirements": [
+        "Monitor, measure, analyze, and evaluate OH&S performance including wellbeing metrics",
+        "Evaluate compliance with obligations",
+        "Conduct internal audits",
+        "Perform management reviews"
+      ]
+    },
+    {
+      "clause": "9.1",
+      "title": "Monitoring, measurement, analysis and performance evaluation",
+      "summary": "The organization shall determine what needs to be monitored and measured, methods, criteria, and when to analyze and evaluate results. It shall ensure calibrated or verified monitoring and measurement equipment including digital monitoring systems. It shall evaluate OH&S performance and effectiveness of OH&S management system including worker wellbeing.",
+      "requirements": [
+        "Determine what needs to be monitored and measured including wellbeing indicators",
+        "Determine methods for monitoring, measurement, analysis, and evaluation",
+        "Incorporate digital monitoring data [citation:3]",
+        "Determine criteria against which to evaluate OH&S performance",
+        "Determine when monitoring and measuring shall be performed",
+        "Determine when results shall be analyzed and evaluated",
+        "Ensure monitoring and measurement equipment is calibrated/verified",
+        "Evaluate OH&S performance and OH&S management system effectiveness",
+        "Monitor worker wellbeing indicators [citation:1]",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "9.1.2",
+      "title": "Evaluation of compliance",
+      "summary": "The organization shall establish, implement, and maintain processes for evaluating fulfillment of its legal requirements and other requirements. It shall determine frequency of compliance evaluation, take action if needed, maintain knowledge of compliance status, and retain documented information.",
+      "requirements": [
+        "Establish, implement, and maintain processes for compliance evaluation",
+        "Determine frequency of compliance evaluation",
+        "Take action if needed (corrective actions)",
+        "Maintain knowledge and understanding of compliance status",
+        "Retain documented information as evidence of compliance evaluation results"
+      ]
+    },
+    {
+      "clause": "9.2",
+      "title": "Internal audit",
+      "summary": "The organization shall conduct internal audits at planned intervals to provide information on whether the OH&S management system conforms to the organization's own requirements and ISO 45001, and is effectively implemented and maintained. It shall establish an audit programme, define audit criteria and scope, select auditors, and report results. Audit scope shall include new requirements for wellbeing, diversity, and remote work.",
+      "requirements": [
+        "Conduct internal audits at planned intervals",
+        "Determine if OH&S management system conforms to organization's requirements and ISO 45001",
+        "Determine if OH&S management system is effectively implemented and maintained",
+        "Include audit of wellbeing and mental health provisions",
+        "Include audit of remote work OH&S management",
+        "Establish, implement, and maintain audit programme(s)",
+        "Define audit frequency, methods, responsibilities, planning requirements, and reporting",
+        "Define audit criteria and scope for each audit",
+        "Select auditors and conduct audits to ensure objectivity and impartiality",
+        "Report results to relevant management",
+        "Take appropriate correction and corrective actions",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "9.3",
+      "title": "Management review",
+      "summary": "Top management shall review the OH&S management system at planned intervals to ensure its continuing suitability, adequacy, and effectiveness. The review shall consider status of previous actions, changes in context and interested parties including climate change, OH&S performance including wellbeing, compliance status, audit results, resources, and opportunities for improvement. Outputs shall include decisions on improvement opportunities, changes to OH&S management system, and resource needs.",
+      "requirements": [
+        "Review OH&S management system at planned intervals",
+        "Ensure continuing suitability, adequacy, and effectiveness",
+        "Consider status of actions from previous reviews",
+        "Consider changes in external and internal issues including climate change [citation:2]",
+        "Consider needs and expectations of interested parties including diversity aspects",
+        "Consider OH&S performance (objectives, incidents, hazards, risks, wellbeing indicators)",
+        "Consider compliance status",
+        "Consider audit results",
+        "Consider adequacy of resources",
+        "Consider communications from interested parties",
+        "Consider opportunities for improvement",
+        "Outputs include decisions on improvement opportunities",
+        "Outputs include any need for changes to OH&S management system",
+        "Outputs include resource needs",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "10",
+      "title": "Improvement",
+      "summary": "The organization must determine opportunities for improvement, react to incidents and nonconformities, take corrective action, and continually improve the suitability, adequacy, and effectiveness of the OH&S management system including worker wellbeing.",
+      "requirements": [
+        "Determine opportunities for improvement",
+        "React to incidents and nonconformities and take corrective action",
+        "Continually improve OH&S management system including wellbeing outcomes"
+      ]
+    },
+    {
+      "clause": "10.2",
+      "title": "Incident, nonconformity and corrective action",
+      "summary": "When an incident or nonconformity occurs, the organization shall react, take action to control and correct it, deal with consequences, evaluate need for action to eliminate causes, implement any action needed, review effectiveness of corrective action, make changes to OH&S management system if necessary, and retain documented information. Incidents include psychological harm and wellbeing-related issues.",
+      "requirements": [
+        "React to incidents and nonconformities in a timely manner",
+        "Include incidents related to psychological harm and wellbeing",
+        "Take action to control and correct it",
+        "Deal with consequences including wellbeing support",
+        "Evaluate need for action to eliminate causes",
+        "Review and analyze incident or nonconformity",
+        "Determine causes including systemic factors",
+        "Determine if similar incidents or nonconformities exist or could occur",
+        "Implement any action needed",
+        "Review effectiveness of corrective action",
+        "Update risks and opportunities if necessary",
+        "Make changes to OH&S management system if necessary",
+        "Retain documented information",
+        "Communicate relevant outputs to workers"
+      ]
+    },
+    {
+      "clause": "10.3",
+      "title": "Continual improvement",
+      "summary": "The organization shall continually improve the suitability, adequacy, and effectiveness of the OH&S management system to enhance OH&S performance and worker wellbeing, and promote a culture that supports OH&S and wellbeing.",
+      "requirements": [
+        "Continually improve suitability, adequacy, and effectiveness of OH&S management system",
+        "Enhance OH&S performance including wellbeing outcomes",
+        "Promote a culture that supports OH&S and wellbeing [citation:1]",
+        "Foster a preventive safety culture [citation:1]"
+      ]
+    }
+  ]
+}

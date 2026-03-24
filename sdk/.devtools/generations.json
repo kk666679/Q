@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "system": "ai-rag-compliance-platform",
+    "environment": "production",
+    "version": "0.1.0",
+    "framework": "ai-sdk",
+    "generated_at": "2026-03-12T15:30:00Z",
+    "providers": ["openai", "anthropic", "groq"]
+  },
+  "runs": [
+    {
+      "run_id": "run_20260312_0042",
+      "session_id": "session_audit_57",
+      "user": {
+        "id": "user_audit_09",
+        "role": "compliance_officer",
+        "org": "sirim_berhad"
+      },
+      "request": {
+        "query": "Evaluate compliance with ISO 45001 clause 6.1.2 (risk assessment) for a manufacturing site",
+        "domain": "ohs",
+        "standards": ["ISO 45001"],
+        "input_tokens_estimate": 180
+      },
+      "pipeline": {
+        "architecture": "multi-agent-rag",
+        "stages": [
+          "query_planner",
+          "knowledge_graph_retrieval",
+          "vector_search",
+          "tool_calls",
+          "agent_reasoning",
+          "hallucination_detection",
+          "evaluation_scoring",
+          "llm_synthesis"
+        ]
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "type": "query_planner",
+          "model": "planner-llm",
+          "status": "success",
+          "input": {
+            "query": "Evaluate compliance with ISO 45001 clause 6.1.2 (risk assessment) for a manufacturing site"
+          },
+          "output": {
+            "sub_queries": [
+              "ISO 45001 clause 6.1.2 text",
+              "risk assessment requirements manufacturing",
+              "typical controls for machinery hazards"
+            ],
+            "required_tools": ["vector_search", "kg_clause_lookup", "risk_scoring_engine"],
+            "filters": { "standard": "ISO 45001", "industry": "manufacturing" }
+          },
+          "metrics": { "duration_ms": 245, "tokens_input": 62, "tokens_output": 38 }
+        },
+        {
+          "step_id": 2,
+          "type": "knowledge_graph_retrieval",
+          "tool": "kg_clause_lookup",
+          "input": {
+            "clause": "6.1.2",
+            "standard": "ISO 45001",
+            "source_file": "knowledge-base/iso45001-clauses.json"
+          },
+          "output": {
+            "clause_text": "The organization shall establish, implement and maintain a process(es) for hazard identification and risk assessment...",
+            "related_clauses": ["6.1.1", "6.1.3", "8.1.2"],
+            "guidance_notes": "Consider operational risks, human factors, and legal requirements."
+          },
+          "metrics": { "duration_ms": 35 }
+        },
+        {
+          "step_id": 3,
+          "type": "vector_search",
+          "tool": "vector_search",
+          "input": {
+            "queries": ["risk assessment manufacturing", "machine guarding controls"],
+            "top_k": 5,
+            "index": "manufacturing_controls"
+          },
+          "output": {
+            "documents": [
+              {
+                "doc_id": "doc_ra_001",
+                "source": "sirim_guidelines/risk_assessment.pdf",
+                "content": "Manufacturing risk assessment must cover machinery, chemical exposure, and ergonomics.",
+                "score": 0.94
+              },
+              {
+                "doc_id": "doc_ra_002",
+                "source": "knowledge-base/ms-standards/ms1722-2021.json",
+                "content": "Malaysian Standard MS 1722:2021 specifies machine guarding requirements.",
+                "score": 0.89
+              }
+            ]
+          },
+          "metrics": { "duration_ms": 210 }
+        },
+        {
+          "step_id": 4,
+          "type": "tool_call",
+          "tool": "risk_scoring_engine",
+          "input": {
+            "scenario": "manufacturing site with unguarded press",
+            "clause": "6.1.2"
+          },
+          "output": {
+            "risk_score": 8.2,
+            "severity": "high",
+            "likelihood": "probable",
+            "control_effectiveness": "low"
+          },
+          "metrics": { "duration_ms": 88 }
+        },
+        {
+          "step_id": 5,
+          "type": "agent_reasoning",
+          "agent": "compliance_agent",
+          "model": "claude-3.5-sonnet",
+          "input": {
+            "context": {
+              "clause_text": "The organization shall establish... risk assessment...",
+              "retrieved_docs": ["doc_ra_001", "doc_ra_002"],
+              "risk_score": 8.2
+            }
+          },
+          "output": {
+            "reasoning_chain": [
+              "Clause 6.1.2 requires a documented risk assessment process.",
+              "The site lacks machine guarding (high risk).",
+              "MS 1722:2021 provides specific guarding requirements."
+            ],
+            "conclusion": "Non‑compliance due to missing machine guarding and incomplete risk documentation.",
+            "confidence": 0.92
+          },
+          "metrics": { "duration_ms": 1540, "tokens": { "input": 1240, "output": 320 } }
+        },
+        {
+          "step_id": 6,
+          "type": "hallucination_detection",
+          "model": "hallucination_detector",
+          "input": {
+            "claim": "The site lacks machine guarding and incomplete risk documentation.",
+            "evidence": [
+              "clause_text",
+              "doc_ra_001",
+              "doc_ra_002",
+              "risk_score 8.2"
+            ]
+          },
+          "output": {
+            "hallucination_score": 0.02,
+            "verdict": "supported",
+            "unsupported_segments": []
+          },
+          "metrics": { "duration_ms": 110 }
+        },
+        {
+          "step_id": 7,
+          "type": "evaluation_scoring",
+          "evaluator": "rubric_evaluator",
+          "input": {
+            "response": "Non‑compliance due to missing machine guarding...",
+            "rubric": "compliance_rubric_v2",
+            "ground_truth": "Expected: mention of hazard identification, risk controls, documentation"
+          },
+          "output": {
+            "scores": {
+              "accuracy": 0.95,
+              "completeness": 0.88,
+              "relevance": 1.0
+            },
+            "feedback": "Missing mention of hazard identification step."
+          },
+          "metrics": { "duration_ms": 65 }
+        },
+        {
+          "step_id": 8,
+          "type": "llm_synthesis",
+          "model": "gpt-4.5-preview",
+          "input": {
+            "system": "You are a compliance officer synthesizing a final report.",
+            "context": {
+              "clause_text": "...",
+              "retrieved_docs": ["doc_ra_001", "doc_ra_002"],
+              "reasoning": "...",
+              "scores": { "accuracy": 0.95, "completeness": 0.88 }
+            }
+          },
+          "output": {
+            "summary": "The manufacturing site is non‑compliant with ISO 45001 clause 6.1.2 due to unguarded machinery and incomplete risk assessment documentation.",
+            "findings": [
+              {
+                "id": "F001",
+                "title": "Missing machine guarding",
+                "severity": "high",
+                "clause": "6.1.2",
+                "evidence": "doc_ra_002, MS 1722:2021"
+              },
+              {
+                "id": "F002",
+                "title": "Incomplete risk documentation",
+                "severity": "medium",
+                "clause": "6.1.2",
+                "evidence": "doc_ra_001, clause text"
+              }
+            ],
+            "recommendations": [
+              "Install machine guards per MS 1722:2021",
+              "Update risk assessment to cover all machinery hazards",
+              "Document hazard identification process"
+            ],
+            "next_steps": "Schedule follow‑up audit in 30 days",
+            "ui_components": [
+              "aicompliance-card",
+              "risk-assessment-card",
+              "recommendation-panel"
+            ]
+          },
+          "metrics": { "duration_ms": 2100, "tokens": { "input": 1820, "output": 460 } }
+        }
+      ],
+      "cache": {
+        "enabled": true,
+        "hit": false,
+        "cache_key": "rag:iso45001:6.1.2:manufacturing"
+      },
+      "safety": {
+        "moderation_checked": true,
+        "status": "safe",
+        "flags": []
+      },
+      "cost_estimate": {
+        "total_usd": 0.047,
+        "breakdown": {
+          "planner": 0.002,
+          "claude_agent": 0.021,
+          "gpt4_synthesis": 0.024
+        }
+      },
+      "performance": {
+        "total_duration_ms": 4393,
+        "kg_lookup_ms": 35,
+        "vector_search_ms": 210,
+        "agent_reasoning_ms": 1540,
+        "llm_synthesis_ms": 2100,
+        "other_ms": 508
+      },
+      "ui_render": {
+        "components": [
+          "aicompliance-card",
+          "risk-assessment-card",
+          "recommendation-panel",
+          "process-timeline"
+        ],
+        "interactive": true
+      }
+    }
+  ]
+}

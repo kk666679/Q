@@ -1,0 +1,446 @@
+{
+  "iso14001_clauses": [
+    {
+      "clause": "1",
+      "title": "Scope",
+      "summary": "This International Standard specifies requirements for an environmental management system that an organization can use to enhance its environmental performance. It is intended for use by an organization seeking to manage its environmental responsibilities in a systematic manner that contributes to the environmental pillar of sustainability.",
+      "requirements": [
+        "Specifies requirements for an environmental management system",
+        "Applicable to any organization regardless of size, type, and nature",
+        "Can be used to enhance environmental performance",
+        "Helps fulfill compliance obligations",
+        "Addresses achievement of environmental objectives"
+      ]
+    },
+    {
+      "clause": "2",
+      "title": "Normative references",
+      "summary": "There are no normative references in this document.",
+      "requirements": []
+    },
+    {
+      "clause": "3",
+      "title": "Terms and definitions",
+      "summary": "For the purposes of this document, the terms and definitions given in ISO 14001:2015 apply. Key terms include: environmental policy, environmental aspect, environmental condition, environmental impact, environmental objective, compliance obligations, risk, etc.",
+      "requirements": [
+        "Refer to ISO 14001:2015 for complete list of terms and definitions"
+      ]
+    },
+    {
+      "clause": "4",
+      "title": "Context of the organization",
+      "summary": "The organization must determine external and internal issues that are relevant to its purpose and affect its ability to achieve the intended outcomes of the environmental management system (EMS). It must also identify interested parties and their requirements, define the scope of the EMS, and establish the EMS accordingly.",
+      "requirements": [
+        "Determine external and internal issues relevant to EMS",
+        "Include climate change as a relevant external issue (AMD.1:2024)",
+        "Identify interested parties and their needs and expectations",
+        "Consider whether climate change is a relevant interested party requirement (AMD.1:2024)",
+        "Define scope of EMS considering issues and interested parties",
+        "Establish, implement, maintain, and continually improve EMS"
+      ]
+    },
+    {
+      "clause": "4.1",
+      "title": "Understanding the organization and its context",
+      "summary": "The organization shall determine external and internal issues that are relevant to its purpose and that affect its ability to achieve the intended outcomes of its environmental management system. (AMD.1:2024 adds that the organization shall determine whether climate change is a relevant issue.)",
+      "requirements": [
+        "Determine external issues (environmental conditions, legal, technological, competitive, market, cultural, social, economic)",
+        "Determine internal issues (values, culture, knowledge, environmental performance)",
+        "Monitor and review information about these issues",
+        "Consider climate change as a relevant external issue (AMD.1:2024)"
+      ]
+    },
+    {
+      "clause": "4.2",
+      "title": "Understanding the needs and expectations of interested parties",
+      "summary": "The organization shall determine the interested parties that are relevant to the environmental management system, and the relevant needs and expectations (i.e., requirements) of these interested parties. (AMD.1:2024 adds a note that relevant interested parties can have requirements related to climate change.)",
+      "requirements": [
+        "Identify interested parties relevant to EMS",
+        "Determine their needs and expectations (compliance obligations)",
+        "Monitor and review information about interested parties and their requirements",
+        "Note: Climate change-related requirements may arise from interested parties (AMD.1:2024)"
+      ]
+    },
+    {
+      "clause": "4.3",
+      "title": "Determining the scope of the environmental management system",
+      "summary": "The organization shall determine the boundaries and applicability of the EMS to establish its scope. The scope shall be documented and consider external and internal issues, interested party requirements, and organizational units, functions, and physical boundaries.",
+      "requirements": [
+        "Consider issues from 4.1 and requirements from 4.2",
+        "Consider organizational units, functions, and physical boundaries",
+        "Define boundaries and applicability",
+        "Document the scope and make it available",
+        "Include activities, products, and services within scope"
+      ]
+    },
+    {
+      "clause": "4.4",
+      "title": "Environmental management system",
+      "summary": "The organization shall establish, implement, maintain, and continually improve an environmental management system, including the processes needed and their interactions, in accordance with the requirements of ISO 14001.",
+      "requirements": [
+        "Establish, implement, maintain, and continually improve EMS",
+        "Include processes needed and their interactions"
+      ]
+    },
+    {
+      "clause": "5",
+      "title": "Leadership",
+      "summary": "Top management must demonstrate leadership and commitment, establish an environmental policy, and ensure roles, responsibilities, and authorities are assigned and communicated.",
+      "requirements": [
+        "Demonstrate leadership and commitment",
+        "Establish, implement, and maintain environmental policy",
+        "Assign and communicate responsibilities and authorities"
+      ]
+    },
+    {
+      "clause": "5.1",
+      "title": "Leadership and commitment",
+      "summary": "Top management shall demonstrate leadership and commitment by taking accountability for EMS effectiveness, ensuring policy and objectives are established, integrating EMS into business processes, promoting continual improvement, providing resources, and communicating the importance of effective environmental management.",
+      "requirements": [
+        "Take accountability for EMS effectiveness",
+        "Ensure environmental policy and objectives are established",
+        "Integrate EMS requirements into business processes",
+        "Promote use of process approach and continual improvement",
+        "Ensure resources are available",
+        "Communicate importance of effective environmental management",
+        "Ensure EMS achieves intended outcomes",
+        "Engage, direct, and support persons",
+        "Support other relevant management roles"
+      ]
+    },
+    {
+      "clause": "5.2",
+      "title": "Environmental policy",
+      "summary": "Top management shall establish, implement, and maintain an environmental policy that is appropriate to the organization's purpose and context, including the nature, scale, and environmental impacts of its activities, products, and services. It shall provide a framework for setting environmental objectives, include commitments to protect the environment, fulfill compliance obligations, and continual improvement. The policy must be documented, communicated, and available to interested parties.",
+      "requirements": [
+        "Establish environmental policy appropriate to purpose, context, and environmental impacts",
+        "Provide framework for setting environmental objectives",
+        "Include commitment to protect the environment (including pollution prevention and other specific commitments)",
+        "Include commitment to fulfill compliance obligations",
+        "Include commitment to continual improvement",
+        "Be maintained as documented information",
+        "Be communicated within organization",
+        "Be available to interested parties"
+      ]
+    },
+    {
+      "clause": "5.3",
+      "title": "Organizational roles, responsibilities and authorities",
+      "summary": "Top management shall ensure that the responsibilities and authorities for relevant roles are assigned, communicated, and understood within the organization. It shall assign responsibility and authority for ensuring EMS conformity and reporting on EMS performance.",
+      "requirements": [
+        "Assign responsibilities and authorities for relevant roles",
+        "Communicate responsibilities and authorities",
+        "Ensure they are understood",
+        "Assign specific responsibility for EMS conformity to ISO 14001 requirements",
+        "Assign responsibility for reporting on EMS performance to top management"
+      ]
+    },
+    {
+      "clause": "6",
+      "title": "Planning",
+      "summary": "The organization shall take actions to address risks and opportunities, determine environmental aspects and compliance obligations, plan actions, and establish environmental objectives and plans to achieve them.",
+      "requirements": [
+        "Address risks and opportunities related to EMS",
+        "Determine environmental aspects and compliance obligations",
+        "Plan actions to address them",
+        "Establish environmental objectives and plans"
+      ]
+    },
+    {
+      "clause": "6.1",
+      "title": "Actions to address risks and opportunities",
+      "summary": "The organization shall establish processes to determine risks and opportunities related to its environmental aspects, compliance obligations, and other issues that need to be addressed to give assurance the EMS can achieve its intended outcomes, prevent or reduce undesired effects, and achieve continual improvement.",
+      "requirements": [
+        "Establish processes to determine risks and opportunities",
+        "Consider environmental aspects (6.1.2) and compliance obligations (6.1.3)",
+        "Determine risks and opportunities related to EMS",
+        "Plan actions to address them",
+        "Integrate and implement actions into EMS processes",
+        "Evaluate effectiveness of actions"
+      ]
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Environmental aspects",
+      "summary": "The organization shall determine the environmental aspects of its activities, products, and services that it can control and influence, and their associated environmental impacts, considering a life cycle perspective. It shall determine those aspects that have or can have a significant environmental impact (significant environmental aspects) and communicate them.",
+      "requirements": [
+        "Determine environmental aspects of activities, products, services",
+        "Consider control and influence",
+        "Consider a life cycle perspective",
+        "Determine associated environmental impacts",
+        "Determine significant environmental aspects",
+        "Communicate significant environmental aspects among relevant levels and functions",
+        "Maintain documented information of environmental aspects and impacts"
+      ]
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Compliance obligations",
+      "summary": "The organization shall determine and have access to the compliance obligations related to its environmental aspects. It shall then determine how these compliance obligations apply to the organization and take them into account when establishing, implementing, maintaining, and continually improving its EMS.",
+      "requirements": [
+        "Determine compliance obligations related to environmental aspects",
+        "Have access to compliance obligations",
+        "Determine how they apply",
+        "Take them into account in EMS"
+      ]
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Planning action",
+      "summary": "The organization shall plan actions to address its significant environmental aspects, compliance obligations, and risks and opportunities, and to integrate and implement these actions into its EMS processes. It shall also plan how to evaluate the effectiveness of these actions.",
+      "requirements": [
+        "Plan actions to address significant environmental aspects",
+        "Plan actions to address compliance obligations",
+        "Plan actions to address risks and opportunities",
+        "Integrate actions into EMS processes",
+        "Evaluate effectiveness of actions"
+      ]
+    },
+    {
+      "clause": "6.2",
+      "title": "Environmental objectives and planning to achieve them",
+      "summary": "The organization shall establish environmental objectives at relevant functions and levels, considering its significant environmental aspects, compliance obligations, and risks and opportunities. Objectives shall be consistent with environmental policy, measurable, monitored, communicated, and updated. Plans for achieving them shall determine what will be done, resources, responsibilities, timing, and how results will be evaluated.",
+      "requirements": [
+        "Establish environmental objectives for relevant functions and levels",
+        "Consider significant environmental aspects and compliance obligations",
+        "Consider risks and opportunities",
+        "Be consistent with environmental policy",
+        "Be measurable (if practicable)",
+        "Be monitored",
+        "Be communicated",
+        "Be updated as appropriate",
+        "Maintain documented information on objectives",
+        "Determine what will be done",
+        "Determine resources required",
+        "Assign responsibility",
+        "Set timing for completion",
+        "Define how results will be evaluated"
+      ]
+    },
+    {
+      "clause": "7",
+      "title": "Support",
+      "summary": "The organization must determine and provide resources needed for the EMS, ensure persons are competent, establish awareness, determine communication, and control documented information.",
+      "requirements": [
+        "Provide resources",
+        "Ensure competence of persons",
+        "Establish awareness",
+        "Determine internal and external communication",
+        "Control documented information"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "title": "Resources",
+      "summary": "The organization shall determine and provide the resources needed for the establishment, implementation, maintenance, and continual improvement of the EMS.",
+      "requirements": [
+        "Determine resources needed for EMS",
+        "Provide resources"
+      ]
+    },
+    {
+      "clause": "7.2",
+      "title": "Competence",
+      "summary": "The organization shall determine the necessary competence of persons doing work under its control that affects its environmental performance and ability to fulfill its compliance obligations. It shall ensure these persons are competent on the basis of education, training, or experience. Where applicable, take actions to acquire necessary competence and evaluate effectiveness. Retain documented information as evidence.",
+      "requirements": [
+        "Determine necessary competence of persons affecting environmental performance",
+        "Ensure persons are competent based on education, training, or experience",
+        "Take actions to acquire necessary competence",
+        "Evaluate effectiveness of actions",
+        "Retain documented information as evidence of competence"
+      ]
+    },
+    {
+      "clause": "7.3",
+      "title": "Awareness",
+      "summary": "The organization shall ensure that persons doing work under its control are aware of the environmental policy, relevant environmental aspects and actual or potential impacts, their contribution to EMS effectiveness, and implications of not conforming to EMS requirements.",
+      "requirements": [
+        "Ensure awareness of environmental policy",
+        "Ensure awareness of relevant environmental aspects and impacts",
+        "Ensure awareness of contribution to EMS effectiveness",
+        "Ensure awareness of implications of not conforming"
+      ]
+    },
+    {
+      "clause": "7.4",
+      "title": "Communication",
+      "summary": "The organization shall establish processes for internal and external communication relevant to the EMS, including what, when, with whom, how, and who communicates. It shall consider compliance obligations and ensure that communicated information is consistent and reliable.",
+      "requirements": [
+        "Establish processes for internal communication",
+        "Establish processes for external communication",
+        "Determine what to communicate",
+        "Determine when to communicate",
+        "Determine with whom to communicate",
+        "Determine how to communicate",
+        "Ensure information is consistent and reliable"
+      ]
+    },
+    {
+      "clause": "7.5",
+      "title": "Documented information",
+      "summary": "The EMS shall include documented information required by ISO 14001 and determined by the organization as necessary for effectiveness. Creation, update, and control of documented information must be managed to ensure availability and protection.",
+      "requirements": [
+        "Include documented information required by ISO 14001",
+        "Include documented information determined necessary for EMS effectiveness",
+        "Ensure appropriate identification and description",
+        "Ensure appropriate format and media",
+        "Ensure review and approval for suitability and adequacy",
+        "Control documented information (distribution, access, retrieval, use, storage, preservation, version control, retention, disposition)",
+        "Manage documented information of external origin",
+        "Prevent unintended use of obsolete documented information"
+      ]
+    },
+    {
+      "clause": "8",
+      "title": "Operation",
+      "summary": "The organization must plan, implement, and control processes needed to meet EMS requirements, including operational planning and control, and emergency preparedness and response.",
+      "requirements": [
+        "Plan, implement, and control operational processes",
+        "Establish operational criteria",
+        "Control processes per criteria",
+        "Manage planned changes",
+        "Control outsourced processes",
+        "Establish emergency preparedness and response"
+      ]
+    },
+    {
+      "clause": "8.1",
+      "title": "Operational planning and control",
+      "summary": "The organization shall establish, implement, control, and maintain processes needed to meet EMS requirements and implement actions determined in Clause 6, by establishing operating criteria and controlling processes in accordance with criteria. It shall control planned changes and review consequences of unintended changes. It shall ensure outsourced processes are controlled.",
+      "requirements": [
+        "Establish processes to meet EMS requirements and actions from Clause 6",
+        "Establish operating criteria",
+        "Control processes in accordance with criteria",
+        "Control planned changes and review unintended changes",
+        "Ensure outsourced processes are controlled or influenced"
+      ]
+    },
+    {
+      "clause": "8.2",
+      "title": "Emergency preparedness and response",
+      "summary": "The organization shall establish, implement, and maintain processes needed to prepare for and respond to potential emergency situations. It shall take action to prevent or mitigate environmental impacts from emergencies, periodically test response procedures, review and revise processes after incidents, and provide information and training.",
+      "requirements": [
+        "Establish, implement, and maintain processes for emergency preparedness and response",
+        "Plan actions to prevent or mitigate environmental impacts",
+        "Respond to actual emergency situations",
+        "Take action to mitigate consequences",
+        "Periodically test response procedures",
+        "Review and revise processes after incidents",
+        "Provide information and training"
+      ]
+    },
+    {
+      "clause": "9",
+      "title": "Performance evaluation",
+      "summary": "The organization must monitor, measure, analyze, and evaluate its environmental performance, evaluate compliance, conduct internal audits, and perform management reviews.",
+      "requirements": [
+        "Monitor, measure, analyze, and evaluate environmental performance",
+        "Evaluate compliance with obligations",
+        "Conduct internal audits",
+        "Perform management reviews"
+      ]
+    },
+    {
+      "clause": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation",
+      "summary": "The organization shall determine what needs to be monitored and measured, methods, criteria, and when to analyze and evaluate results. It shall ensure calibrated or verified monitoring and measurement equipment. It shall evaluate its environmental performance and effectiveness of EMS. It shall retain documented information as evidence.",
+      "requirements": [
+        "Determine what needs to be monitored and measured",
+        "Determine methods for monitoring, measurement, analysis, and evaluation",
+        "Determine criteria against which to evaluate environmental performance",
+        "Determine when monitoring and measuring shall be performed",
+        "Determine when results shall be analyzed and evaluated",
+        "Ensure monitoring and measurement equipment is calibrated/verified",
+        "Evaluate environmental performance and EMS effectiveness",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "9.1.2",
+      "title": "Evaluation of compliance",
+      "summary": "The organization shall establish, implement, and maintain processes for evaluating fulfillment of its compliance obligations. It shall determine frequency of compliance evaluation, take action if needed, maintain knowledge of compliance status, and retain documented information.",
+      "requirements": [
+        "Establish, implement, and maintain processes for compliance evaluation",
+        "Determine frequency of compliance evaluation",
+        "Take action if needed (corrective actions)",
+        "Maintain knowledge and understanding of compliance status",
+        "Retain documented information as evidence of compliance evaluation results"
+      ]
+    },
+    {
+      "clause": "9.2",
+      "title": "Internal audit",
+      "summary": "The organization shall conduct internal audits at planned intervals to provide information on whether the EMS conforms to the organization's own requirements and ISO 14001, and is effectively implemented and maintained. It shall establish an audit programme, define audit criteria and scope, select auditors, and report results.",
+      "requirements": [
+        "Conduct internal audits at planned intervals",
+        "Determine if EMS conforms to organization's requirements and ISO 14001",
+        "Determine if EMS is effectively implemented and maintained",
+        "Establish, implement, and maintain audit programme(s)",
+        "Define audit frequency, methods, responsibilities, planning requirements, and reporting",
+        "Define audit criteria and scope for each audit",
+        "Select auditors and conduct audits to ensure objectivity and impartiality",
+        "Report results to relevant management",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "9.3",
+      "title": "Management review",
+      "summary": "Top management shall review the EMS at planned intervals to ensure its continuing suitability, adequacy, and effectiveness. The review shall consider status of previous actions, changes in context and interested parties, environmental performance, compliance status, audit results, resources, and opportunities for improvement. (AMD.1:2024 adds that the organization shall consider climate change as part of changes in external and internal issues.)",
+      "requirements": [
+        "Review EMS at planned intervals",
+        "Ensure continuing suitability, adequacy, and effectiveness",
+        "Consider status of actions from previous reviews",
+        "Consider changes in external and internal issues, including climate change (AMD.1:2024)",
+        "Consider needs and expectations of interested parties",
+        "Consider environmental performance (trends, objectives, aspects, nonconformities)",
+        "Consider compliance status",
+        "Consider audit results",
+        "Consider adequacy of resources",
+        "Consider communications from interested parties",
+        "Consider opportunities for improvement",
+        "Outputs include decisions on improvement opportunities",
+        "Outputs include any need for changes to EMS",
+        "Outputs include resource needs",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "10",
+      "title": "Improvement",
+      "summary": "The organization must determine opportunities for improvement, react to nonconformities, take corrective action, and continually improve the suitability, adequacy, and effectiveness of the EMS.",
+      "requirements": [
+        "Determine opportunities for improvement",
+        "React to nonconformities and take corrective action",
+        "Continually improve EMS"
+      ]
+    },
+    {
+      "clause": "10.2",
+      "title": "Nonconformity and corrective action",
+      "summary": "When a nonconformity occurs, the organization shall react, take action to control and correct it, deal with consequences, evaluate need for action to eliminate causes, implement any action needed, review effectiveness of corrective action, make changes to EMS if necessary, and retain documented information.",
+      "requirements": [
+        "React to nonconformity, take action to control and correct it",
+        "Deal with consequences, including mitigating adverse environmental impacts",
+        "Evaluate need for action to eliminate causes",
+        "Review and analyze nonconformity",
+        "Determine causes of nonconformity",
+        "Determine if similar nonconformities exist or could occur",
+        "Implement any action needed",
+        "Review effectiveness of corrective action",
+        "Update risks and opportunities if necessary",
+        "Make changes to EMS if necessary",
+        "Retain documented information"
+      ]
+    },
+    {
+      "clause": "10.3",
+      "title": "Continual improvement",
+      "summary": "The organization shall continually improve the suitability, adequacy, and effectiveness of the EMS to enhance environmental performance.",
+      "requirements": [
+        "Continually improve suitability, adequacy, and effectiveness of EMS",
+        "Enhance environmental performance"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Agent {
+  id           String   @id @default(cuid())
+  name         String
+  type         String
+  description  String
+  capabilities String[]
+  tools        String[]
+  status       String   @default("active")
+  metadata     Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  messages     Message[]
+  toolExecutions ToolExecution[]
+
+  @@map("agents")
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  agentId   String
+  content   String
+  type      String
+  timestamp DateTime @default(now())
+  metadata  Json?
+
+  agent     Agent @relation(fields: [agentId], references: [id])
+  session   ChatSession? @relation(fields: [sessionId], references: [id])
+  sessionId String?
+
+  @@map("messages")
+}
+
+model Document {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  type      String
+  version   String
+  status    String   @default("draft")
+  tags      String[]
+  metadata  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("documents")
+}
+
+model Process {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  nodes       Json
+  edges       Json
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("processes")
+}
+
+model ComplianceCheck {
+  id              String   @id @default(cuid())
+  standard        String
+  requirement     String
+  status          String
+  evidence        String[]
+  gaps            String[]
+  recommendations String[]
+  score           Float
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("compliance_checks")
+}
+
+model Audit {
+  id        String   @id @default(cuid())
+  type      String
+  scope     String
+  auditor   String
+  auditee   String
+  date      DateTime
+  findings  Json
+  status    String   @default("planned")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("audits")
+}
+
+model ManufacturingMetrics {
+  id           String   @id @default(cuid())
+  availability Float
+  performance  Float
+  quality      Float
+  overall      Float
+  throughput   Float
+  defectRate   Float
+  cycleTime    Float
+  downtime     Float
+  timestamp    DateTime @default(now())
+
+  @@map("manufacturing_metrics")
+}
+
+model TestCase {
+  id             String   @id @default(cuid())
+  title          String
+  description    String
+  steps          String[]
+  expectedResult String
+  actualResult   String?
+  status         String   @default("not-run")
+  priority       String
+  tags           String[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("test_cases")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  status      String   @default("planning")
+  startDate   DateTime
+  endDate     DateTime
+  budget      Float
+  actualCost  Float?
+  progress    Float    @default(0)
+  risks       Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model Claim {
+  id           String   @id @default(cuid())
+  policyNumber String
+  claimant     String
+  incidentDate DateTime
+  reportedDate DateTime
+  description  String
+  amount       Float
+  status       String   @default("reported")
+  adjusterId   String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("claims")
+}
+
+model VectorDocument {
+  id        String   @id @default(cuid())
+  content   String
+  metadata  Json
+  embedding Unsupported("float8[]")?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("vector_documents")
+}
+
+model ToolExecution {
+  id         String   @id @default(cuid())
+  toolId     String
+  agentId    String
+  parameters Json
+  result     Json?
+  status     String   @default("pending")
+  timestamp  DateTime @default(now())
+
+  agent Agent @relation(fields: [agentId], references: [id])
+
+  @@map("tool_executions")
+}
+
+model ChatSession {
+  id           String   @id @default(cuid())
+  participants String[]
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  messages Message[]
+
+  @@map("chat_sessions")
+}

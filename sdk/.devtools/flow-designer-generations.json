@@ -1,0 +1,521 @@
+{
+  "metadata": {
+    "system": "expert-flow-designer-assistant",
+    "environment": "production",
+    "version": "3.0.0",
+    "framework": "ai-sdk",
+    "generated_at": "2026-03-13T09:30:00Z",
+    "providers": ["openai", "anthropic", "groq", "mistral", "deepseek"],
+    "expertise_domains": ["ISO 9001:2015", "ISO 13485", "Malaysian Standards (MS)", "BPMN 2.0", "Lean Six Sigma", "Risk-Based Thinking"]
+  },
+  "runs": [
+    {
+      "run_id": "run_expert_flow_20260313_001",
+      "session_id": "session_expert_design_42",
+      "user": {
+        "id": "user_quality_director_07",
+        "role": "quality_director",
+        "org": "precision_medical_devices",
+        "certifications": ["ISO 13485 Lead Auditor", "Six Sigma Black Belt"]
+      },
+      "request": {
+        "query": "Design a comprehensive quality management system process flow for medical device manufacturing compliant with ISO 13485:2016 and Malaysian Medical Device Act (MDA). Include design controls, risk management (ISO 14971), production controls, corrective actions, and management review. The flow should support audit trails and integrate with document control.",
+        "domain": "medical_device_qms",
+        "standards": ["ISO 13485:2016", "ISO 14971", "MS ISO 13485", "Medical Device Act 2012"],
+        "input_tokens_estimate": 350
+      },
+      "pipeline": {
+        "architecture": "expert-multi-agent-rag",
+        "stages": [
+          "query_decomposition",
+          "knowledge_graph_retrieval (ISO, MS, MDA)",
+          "vector_search (process templates, best practices)",
+          "expert_reasoning (multiple perspectives: regulatory, quality, risk)",
+          "tool_calls (flow_generator, risk_analyzer, document_linker)",
+          "consensus_building",
+          "hallucination_detection (cross-reference with standards)",
+          "expert_review_simulation",
+          "llm_synthesis (final expert-level output)"
+        ]
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "type": "query_decomposition",
+          "model": "expert-planner-llm",
+          "status": "success",
+          "input": {
+            "query": "Design a comprehensive quality management system process flow for medical device manufacturing compliant with ISO 13485:2016 and Malaysian Medical Device Act (MDA). Include design controls, risk management (ISO 14971), production controls, corrective actions, and management review. The flow should support audit trails and integrate with document control."
+          },
+          "output": {
+            "sub_queries": [
+              "ISO 13485:2016 clause 7.3 Design and development",
+              "ISO 14971 risk management process for medical devices",
+              "ISO 13485 clause 7.5 Production and service provision",
+              "ISO 13485 clause 8.2.2 Internal audit",
+              "ISO 13485 clause 8.5 Improvement (corrective action)",
+              "ISO 13485 clause 5.6 Management review",
+              "Malaysian Medical Device Act 2012 requirements",
+              "Document control per ISO 13485 clause 4.2.4",
+              "Audit trail requirements for medical devices"
+            ],
+            "required_tools": ["vector_search", "kg_clause_lookup", "flow_generator", "risk_analyzer", "document_linker", "regulatory_checker"],
+            "filters": { "standard": "ISO 13485", "region": "Malaysia" }
+          },
+          "metrics": { "duration_ms": 420, "tokens_input": 120, "tokens_output": 85 }
+        },
+        {
+          "step_id": 2,
+          "type": "knowledge_graph_retrieval",
+          "tool": "kg_clause_lookup",
+          "input": {
+            "clauses": ["7.3", "7.5", "8.2.2", "8.5", "5.6", "4.2.4"],
+            "standard": "ISO 13485:2016",
+            "source_file": "knowledge-base/iso13485-clauses.json"
+          },
+          "output": {
+            "clauses": [
+              {
+                "clause": "7.3",
+                "title": "Design and development",
+                "text": "The organization shall establish documented procedures for design and development...",
+                "requirements": ["design planning", "design inputs", "design outputs", "design review", "design verification", "design validation", "design transfer", "design changes"],
+                "related": ["7.3.1", "7.3.2", "7.3.3", "7.3.4", "7.3.5", "7.3.6", "7.3.7", "7.3.8"]
+              },
+              {
+                "clause": "7.5",
+                "title": "Production and service provision",
+                "text": "The organization shall plan and carry out production under controlled conditions...",
+                "requirements": ["cleanliness", "installation activities", "servicing activities", "sterilization processes", "validation of processes"]
+              },
+              {
+                "clause": "8.5",
+                "title": "Improvement",
+                "text": "The organization shall take corrective action to eliminate the cause of nonconformities...",
+                "requirements": ["nonconformity review", "root cause analysis", "corrective action implementation", "verification", "preventive action"]
+              },
+              {
+                "clause": "5.6",
+                "title": "Management review",
+                "text": "Top management shall review the quality management system at planned intervals...",
+                "inputs": ["audit results", "customer feedback", "process performance", "product conformity", "corrective actions", "follow-up actions", "changes", "recommendations"]
+              },
+              {
+                "clause": "4.2.4",
+                "title": "Control of records",
+                "text": "Records shall be established and maintained to provide evidence of conformity...",
+                "requirements": ["identification", "storage", "protection", "retrieval", "retention", "disposition"]
+              }
+            ],
+            "ms_requirements": [
+              "Malaysian Medical Device Act 2012 requires registration with MDA, conformity assessment by CAB, and post-market surveillance."
+            ]
+          },
+          "metrics": { "duration_ms": 85 }
+        },
+        {
+          "step_id": 3,
+          "type": "vector_search",
+          "tool": "vector_search",
+          "input": {
+            "queries": [
+              "medical device QMS process flow diagram",
+              "ISO 13485 design control flowchart",
+              "ISO 14971 risk management process map",
+              "corrective action process flow medical device",
+              "management review inputs and outputs diagram"
+            ],
+            "top_k": 8,
+            "index": "medical_device_templates"
+          },
+          "output": {
+            "documents": [
+              {
+                "doc_id": "md_flow_001",
+                "source": "templates/iso13485_qms_overview.bpmn",
+                "content": "High-level QMS flow: Management responsibility → Resource management → Product realization → Measurement analysis improvement.",
+                "score": 0.92
+              },
+              {
+                "doc_id": "md_flow_002",
+                "source": "templates/design_control_flow.bpmn",
+                "content": "Design control stages: Planning → Inputs → Design → Outputs → Review → Verification → Validation → Transfer → Changes loop.",
+                "score": 0.95
+              },
+              {
+                "doc_id": "md_flow_003",
+                "source": "templates/risk_management_iso14971.bpmn",
+                "content": "Risk management process: Risk analysis → Risk evaluation → Risk control → Residual risk evaluation → Risk/benefit analysis → Production & post-production information.",
+                "score": 0.97
+              },
+              {
+                "doc_id": "md_flow_004",
+                "source": "templates/capa_flow.bpmn",
+                "content": "CAPA process: Identify nonconformity → Containment → Root cause analysis → Action plan → Implementation → Verification → Effectiveness check → Closure.",
+                "score": 0.94
+              },
+              {
+                "doc_id": "md_flow_005",
+                "source": "templates/management_review_flow.bpmn",
+                "content": "Management review: Schedule → Collect inputs → Review meeting → Outputs decisions → Action items → Follow-up.",
+                "score": 0.91
+              },
+              {
+                "doc_id": "md_reg_001",
+                "source": "knowledge-base/malaysia-mda-guidelines.json",
+                "content": "MDA requires: Device registration, establishment registration, conformity assessment, post-market surveillance, adverse event reporting.",
+                "score": 0.88
+              }
+            ]
+          },
+          "metrics": { "duration_ms": 340 }
+        },
+        {
+          "step_id": 4,
+          "type": "expert_reasoning",
+          "agents": [
+            {
+              "agent_name": "regulatory_expert",
+              "model": "claude-3.5-sonnet",
+              "input": {
+                "context": "Malaysian Medical Device Act, MDA guidelines"
+              },
+              "output": {
+                "perspective": "Flow must include: registration steps with MDA, conformity assessment by CAB, post-market surveillance loop, adverse event reporting. Audit trails must be documented for 10 years per MDA."
+              }
+            },
+            {
+              "agent_name": "quality_expert",
+              "model": "gpt-4-turbo",
+              "input": {
+                "context": "ISO 13485, design controls, risk management"
+              },
+              "output": {
+                "perspective": "Design controls must integrate risk management throughout. Production controls should include validation of sterile processes. CAPA must link to risk management file updates."
+              }
+            },
+            {
+              "agent_name": "process_expert",
+              "model": "mistral-large",
+              "input": {
+                "context": "BPMN best practices, lean principles"
+              },
+              "output": {
+                "perspective": "Flow should minimize handoffs, include KPIs at each stage, use swimlanes for departments, and support digital audit trails via document control integration."
+              }
+            }
+          ],
+          "consensus": {
+            "key_requirements": [
+              "Integrate design controls with risk management per ISO 14971",
+              "Include MDA-specific steps (registration, post-market surveillance)",
+              "Ensure audit trails via document control at every step",
+              "CAPA must trigger updates to risk files",
+              "Management review must review QMS performance and regulatory changes"
+            ]
+          },
+          "metrics": { "duration_ms": 2850, "tokens": { "input": 4200, "output": 980 } }
+        },
+        {
+          "step_id": 5,
+          "type": "tool_call",
+          "tool": "flow_generator",
+          "input": {
+            "requirements": "medical device QMS, ISO 13485, MDA, risk management, design controls, CAPA, management review, document control, audit trails",
+            "templates": ["md_flow_001", "md_flow_002", "md_flow_003", "md_flow_004", "md_flow_005"],
+            "expert_consensus": "key_requirements",
+            "node_types_available": ["start", "process", "subprocess", "decision", "data", "event", "pool", "lane"],
+            "style": "bpmn",
+            "include_swimlanes": true
+          },
+          "output": {
+            "flow_data": {
+              "pools": [
+                {
+                  "id": "pool_management",
+                  "label": "Management",
+                  "lanes": ["lane_top_mgmt", "lane_quality_mgmt"]
+                },
+                {
+                  "id": "pool_rd",
+                  "label": "R&D / Design",
+                  "lanes": ["lane_design"]
+                },
+                {
+                  "id": "pool_production",
+                  "label": "Production",
+                  "lanes": ["lane_manufacturing", "lane_quality_control"]
+                },
+                {
+                  "id": "pool_regulatory",
+                  "label": "Regulatory Affairs",
+                  "lanes": ["lane_regulatory"]
+                }
+              ],
+              "nodes": [
+                { "id": "start_1", "type": "start", "pool": "pool_management", "lane": "lane_top_mgmt", "position": { "x": 50, "y": 100 }, "data": { "label": "Start QMS" } },
+                { "id": "proc_mr_plan", "type": "process", "pool": "pool_management", "lane": "lane_top_mgmt", "position": { "x": 200, "y": 100 }, "data": { "label": "Plan Management Review" } },
+                { "id": "proc_design_plan", "type": "subprocess", "pool": "pool_rd", "lane": "lane_design", "position": { "x": 350, "y": 200 }, "data": { "label": "Design Control", "expanded": true, "nodes": [
+                  { "id": "sub_design_start", "type": "start", "data": { "label": "Design Initiation" } },
+                  { "id": "sub_design_input", "type": "process", "data": { "label": "Define Design Inputs" } },
+                  { "id": "sub_design_output", "type": "process", "data": { "label": "Design Outputs" } },
+                  { "id": "sub_design_review", "type": "process", "data": { "label": "Design Review" } },
+                  { "id": "sub_design_verify", "type": "process", "data": { "label": "Verification" } },
+                  { "id": "sub_design_valid", "type": "process", "data": { "label": "Validation" } },
+                  { "id": "sub_design_transfer", "type": "process", "data": { "label": "Design Transfer" } },
+                  { "id": "sub_design_change", "type": "decision", "data": { "label": "Design Change?" } },
+                  { "id": "sub_design_end", "type": "end", "data": { "label": "Design Complete" } }
+                ] } },
+                { "id": "proc_risk", "type": "subprocess", "pool": "pool_rd", "lane": "lane_design", "position": { "x": 350, "y": 400 }, "data": { "label": "Risk Management (ISO 14971)", "expanded": false } },
+                { "id": "proc_prod_plan", "type": "process", "pool": "pool_production", "lane": "lane_manufacturing", "position": { "x": 500, "y": 300 }, "data": { "label": "Production Planning" } },
+                { "id": "proc_prod_control", "type": "subprocess", "pool": "pool_production", "lane": "lane_manufacturing", "position": { "x": 650, "y": 300 }, "data": { "label": "Production & Process Controls" } },
+                { "id": "proc_qc", "type": "process", "pool": "pool_production", "lane": "lane_quality_control", "position": { "x": 650, "y": 400 }, "data": { "label": "Inspection & Testing" } },
+                { "id": "decision_pass", "type": "decision", "pool": "pool_production", "lane": "lane_quality_control", "position": { "x": 800, "y": 400 }, "data": { "label": "Pass?" } },
+                { "id": "proc_release", "type": "process", "pool": "pool_production", "lane": "lane_manufacturing", "position": { "x": 950, "y": 300 }, "data": { "label": "Release Product" } },
+                { "id": "proc_nc", "type": "process", "pool": "pool_production", "lane": "lane_quality_control", "position": { "x": 950, "y": 500 }, "data": { "label": "Nonconformance Handling" } },
+                { "id": "proc_capa", "type": "subprocess", "pool": "pool_management", "lane": "lane_quality_mgmt", "position": { "x": 1100, "y": 500 }, "data": { "label": "Corrective Action (CAPA)" } },
+                { "id": "proc_pms", "type": "process", "pool": "pool_regulatory", "lane": "lane_regulatory", "position": { "x": 950, "y": 200 }, "data": { "label": "Post-Market Surveillance" } },
+                { "id": "proc_reg_update", "type": "process", "pool": "pool_regulatory", "lane": "lane_regulatory", "position": { "x": 1100, "y": 200 }, "data": { "label": "Regulatory Reporting (MDA)" } },
+                { "id": "proc_mr_review", "type": "process", "pool": "pool_management", "lane": "lane_top_mgmt", "position": { "x": 1250, "y": 100 }, "data": { "label": "Conduct Management Review" } },
+                { "id": "proc_mr_output", "type": "process", "pool": "pool_management", "lane": "lane_top_mgmt", "position": { "x": 1400, "y": 100 }, "data": { "label": "Review Outputs & Actions" } },
+                { "id": "end_1", "type": "end", "pool": "pool_management", "lane": "lane_top_mgmt", "position": { "x": 1550, "y": 100 }, "data": { "label": "End" } },
+                { "id": "data_audit", "type": "data", "pool": "pool_management", "lane": "lane_quality_mgmt", "position": { "x": 1200, "y": 400 }, "data": { "label": "Audit Trail Records" } }
+              ],
+              "edges": [
+                { "id": "e1", "source": "start_1", "target": "proc_mr_plan" },
+                { "id": "e2", "source": "proc_mr_plan", "target": "proc_design_plan" },
+                { "id": "e3", "source": "proc_design_plan", "target": "proc_risk" },
+                { "id": "e4", "source": "proc_risk", "target": "proc_prod_plan" },
+                { "id": "e5", "source": "proc_prod_plan", "target": "proc_prod_control" },
+                { "id": "e6", "source": "proc_prod_control", "target": "proc_qc" },
+                { "id": "e7", "source": "proc_qc", "target": "decision_pass" },
+                { "id": "e8", "source": "decision_pass", "target": "proc_release", "label": "Pass" },
+                { "id": "e9", "source": "decision_pass", "target": "proc_nc", "label": "Fail" },
+                { "id": "e10", "source": "proc_nc", "target": "proc_capa" },
+                { "id": "e11", "source": "proc_capa", "target": "proc_qc", "label": "rework" },
+                { "id": "e12", "source": "proc_release", "target": "proc_pms" },
+                { "id": "e13", "source": "proc_pms", "target": "proc_reg_update" },
+                { "id": "e14", "source": "proc_reg_update", "target": "proc_mr_review" },
+                { "id": "e15", "source": "proc_mr_review", "target": "proc_mr_output" },
+                { "id": "e16", "source": "proc_mr_output", "target": "end_1" },
+                { "id": "e17", "source": "proc_design_plan", "target": "data_audit", "label": "audit trail" },
+                { "id": "e18", "source": "proc_prod_control", "target": "data_audit" },
+                { "id": "e19", "source": "proc_capa", "target": "data_audit" }
+              ]
+            },
+            "explanation": "Comprehensive QMS flow covering design controls, risk management, production controls, CAPA, post-market surveillance, regulatory reporting, management review, and audit trails. Swimlanes separate responsibilities. Audit trail data object collects records from key processes."
+          },
+          "metrics": { "duration_ms": 1850 }
+        },
+        {
+          "step_id": 6,
+          "type": "risk_analyzer",
+          "tool": "risk_analyzer",
+          "input": {
+            "flow": "flow_data",
+            "standard": "ISO 14971"
+          },
+          "output": {
+            "risk_analysis": {
+              "potential_failure_modes": [
+                { "step": "Design Inputs", "risk": "Incomplete inputs", "mitigation": "Design review" },
+                { "step": "Production Controls", "risk": "Process deviation", "mitigation": "Validation, monitoring" },
+                { "step": "Post-Market Surveillance", "risk": "Failure to detect adverse events", "mitigation": "Active surveillance system" }
+              ],
+              "risk_controls_incorporated": true,
+              "residual_risk": "Acceptable with controls"
+            }
+          },
+          "metrics": { "duration_ms": 230 }
+        },
+        {
+          "step_id": 7,
+          "type": "document_linker",
+          "tool": "document_linker",
+          "input": {
+            "flow_nodes": ["proc_design_plan", "proc_prod_control", "proc_capa", "proc_mr_review"],
+            "document_types": ["SOP", "Work Instruction", "Form", "Record"]
+          },
+          "output": {
+            "document_mappings": [
+              { "node": "proc_design_plan", "documents": ["SOP-DESIGN-001", "WI-DESIGN-INPUT", "F-DESIGN-REVIEW"] },
+              { "node": "proc_prod_control", "documents": ["SOP-PROD-001", "WI-CALIBRATION", "F-PRODUCTION-LOG"] },
+              { "node": "proc_capa", "documents": ["SOP-CAPA-001", "F-CAPA-FORM", "F-RCA"] },
+              { "node": "proc_mr_review", "documents": ["SOP-MR-001", "F-MR-INPUTS", "F-MR-MINUTES"] }
+            ]
+          },
+          "metrics": { "duration_ms": 120 }
+        },
+        {
+          "step_id": 8,
+          "type": "hallucination_detection",
+          "model": "hallucination_detector",
+          "input": {
+            "claims": [
+              "Flow includes design controls per ISO 13485 clause 7.3",
+              "Risk management integrated per ISO 14971",
+              "Production controls include inspection and testing",
+              "CAPA process exists",
+              "Management review includes inputs and outputs",
+              "Post-market surveillance and MDA reporting included",
+              "Audit trails documented"
+            ],
+            "evidence": [
+              "clause 7.3 details",
+              "risk management subprocess",
+              "proc_qc and decision_pass nodes",
+              "proc_capa subprocess",
+              "proc_mr_review and proc_mr_output nodes",
+              "proc_pms and proc_reg_update nodes",
+              "data_audit node and edges to processes"
+            ]
+          },
+          "output": {
+            "hallucination_score": 0.0,
+            "verdict": "fully supported",
+            "unsupported_segments": []
+          },
+          "metrics": { "duration_ms": 150 }
+        },
+        {
+          "step_id": 9,
+          "type": "expert_review_simulation",
+          "model": "ensemble",
+          "input": {
+            "flow": "flow_data",
+            "standards": ["ISO 13485", "ISO 14971", "MDA"]
+          },
+          "output": {
+            "reviewer_1": {
+              "name": "Dr. Raj, Lead Auditor",
+              "comments": "Excellent integration of risk management. Ensure design change loop links back to risk assessment.",
+              "score": 4.8
+            },
+            "reviewer_2": {
+              "name": "Ms. Tan, Regulatory Affairs Manager",
+              "comments": "MDA reporting step is correct. Consider adding a step for adverse event reporting to NPRA.",
+              "score": 4.7
+            },
+            "reviewer_3": {
+              "name": "Mr. Lim, Six Sigma Master Black Belt",
+              "comments": "Flow is lean. Could add KPIs at each decision point for continuous improvement.",
+              "score": 4.9
+            },
+            "consensus_score": 4.8,
+            "recommendations_for_improvement": [
+              "Add adverse event reporting to NPRA subprocess",
+              "Include KPIs on decision edges"
+            ]
+          },
+          "metrics": { "duration_ms": 650, "tokens": { "input": 3800, "output": 520 } }
+        },
+        {
+          "step_id": 10,
+          "type": "llm_synthesis",
+          "model": "gpt-4.5-preview",
+          "input": {
+            "system": "You are an expert in medical device QMS and process design. Synthesize all outputs into a final expert-level flow description and UI configuration.",
+            "context": {
+              "query": "...",
+              "flow_data": "...",
+              "risk_analysis": "...",
+              "document_mappings": "...",
+              "expert_review": "..."
+            }
+          },
+          "output": {
+            "summary": "An expert-designed, fully compliant medical device QMS process flow for ISO 13485, ISO 14971, and Malaysian MDA requirements. The flow integrates all key clauses, incorporates risk-based thinking, and ensures audit trails. It has been reviewed by domain experts and scored 4.8/5.",
+            "enhanced_flow": {
+              "nodes": "as above with minor refinements",
+              "edges": "as above"
+            },
+            "ui_config": {
+              "initial_viewport": { "zoom": 0.6, "center": [800, 300] },
+              "show_minimap": true,
+              "show_controls": true,
+              "show_swimlanes": true,
+              "node_palette": ["start", "process", "subprocess", "decision", "data", "event", "pool", "lane"],
+              "selected_node_types": ["subprocess", "process"],
+              "properties_panel_tabs": ["general", "documents", "risks", "audit"]
+            },
+            "ui_components": [
+              "FlowDesigner",
+              "AIPanel",
+              "NodeLibrary",
+              "PropertiesPanel",
+              "CollapsibleSidebar",
+              "DesignerPanel",
+              "RiskAssessmentCard",
+              "DocumentBuilder"
+            ],
+            "additional_resources": [
+              {
+                "type": "document_template",
+                "name": "Design Control SOP",
+                "link": "/documents/templates/design-control-sop.docx"
+              },
+              {
+                "type": "risk_template",
+                "name": "Risk Management File",
+                "link": "/documents/templates/rmf-template.xlsx"
+              }
+            ]
+          },
+          "metrics": { "duration_ms": 4120, "tokens": { "input": 5120, "output": 980 } }
+        }
+      ],
+      "cache": {
+        "enabled": true,
+        "hit": false,
+        "cache_key": "expert_flow:medical_device:iso13485:msia"
+      },
+      "safety": {
+        "moderation_checked": true,
+        "status": "safe",
+        "flags": []
+      },
+      "cost_estimate": {
+        "total_usd": 0.142,
+        "breakdown": {
+          "planner": 0.005,
+          "knowledge_retrieval": 0.001,
+          "vector_search": 0.002,
+          "expert_reasoning_agents": 0.043,
+          "tool_calls": 0.024,
+          "hallucination_detection": 0.003,
+          "expert_review": 0.015,
+          "llm_synthesis": 0.049
+        }
+      },
+      "performance": {
+        "total_duration_ms": 11085,
+        "kg_lookup_ms": 85,
+        "vector_search_ms": 340,
+        "expert_reasoning_ms": 2850,
+        "flow_generator_ms": 1850,
+        "risk_analyzer_ms": 230,
+        "document_linker_ms": 120,
+        "hallucination_detection_ms": 150,
+        "expert_review_ms": 650,
+        "llm_synthesis_ms": 4120,
+        "other_ms": 690
+      },
+      "ui_render": {
+        "components": [
+          "FlowDesigner",
+          "AIPanel",
+          "NodeLibrary",
+          "PropertiesPanel",
+          "CollapsibleSidebar",
+          "DesignerPanel",
+          "RiskAssessmentCard",
+          "DocumentBuilder"
+        ],
+        "interactive": true,
+        "flow_data_used": true,
+        "swimlanes_rendered": true,
+        "document_links_available": true
+      }
+    }
+  ]
+}
