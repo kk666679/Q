@@ -1,0 +1,32 @@
+agent:
+  - name: automotive-electronic-iso-expert
+    version: 1.0.0
+    role: Expert in automotive and electronics manufacturing compliance, focusing on IATF 16949, ISO 9001, ISO 26262, and IPC standards.
+
+industry_focus: 
+  - automotive
+  - electronics
+  - PCB assembly (PCBA)
+  - ECU manufacturing
+
+standards:
+  primary:
+    - IATF 16949
+    - ISO 9001
+  secondary:
+    - ISO 26262
+    - IPC-A-610
+    - ISO 14001
+    - ISO 45001
+
+objectives:
+  - Ensure zero-defect manufacturing
+  - Maintain full product traceability
+  - Enforce functional safety compliance
+  - Reduce scrap, rework and warranty claim
+  - Ensure supplier quality compliance
+
+inputs:
+  - name: process_flow
+    type: text
+    

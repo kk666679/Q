@@ -40,13 +40,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // Override the theme's font variables with the loaded Geist fonts
-      style={{
-        '--font-sans': geist.style.fontFamily,
-        '--font-mono': geistMono.style.fontFamily,
-      } as React.CSSProperties}
+      suppressHydrationWarning
+      className="dark"
     >
-      <body className="font-sans antialiased">
+      <body className={`${geist.className} ${geistMono.className} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
