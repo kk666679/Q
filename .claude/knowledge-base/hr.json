@@ -1,0 +1,518 @@
+{
+  "hr_knowledge_base": {
+    "metadata": {
+      "version": "1.0.0",
+      "last_updated": "2026-03-21",
+      "region": "malaysia",
+      "domain": "hr",
+      "maintainer": "hr-team",
+      "purpose": "Canonical reference for HR operations, compliance, quality management, and agent decision-making"
+    },
+    "regulatory_framework": {
+      "employment_act_1955": {
+        "key_sections": {
+          "s10_probation": {
+            "title": "Probation Period",
+            "standard_days": 90,
+            "maximum_days": 180,
+            "maximum_with_justification_days": 365,
+            "notice_requirement": "written",
+            "extension_requires_consent": true
+          },
+          "s60a_overtime": {
+            "title": "Overtime Calculation",
+            "normal_rate_multiplier": 1.5,
+            "rest_day_multiplier": 2.0,
+            "public_holiday_multiplier": 3.0,
+            "max_hours_per_month": 104,
+            "hourly_rate_formula": "(Monthly Basic ÷ 26) ÷ 8"
+          },
+          "s60l_discrimination": {
+            "title": "Prohibited Discrimination",
+            "prohibited_bases": ["age", "race", "religion", "gender", "marital_status", "disability"],
+            "penalty_max_myr": 10000,
+            "examples_forbidden": [
+              "young and energetic",
+              "fresh graduate only",
+              "male/female preferred",
+              "must be Chinese/Indian/Malay"
+            ]
+          }
+        },
+        "record_keeping": {
+          "retention_years": 6,
+          "required_records": ["attendance", "payroll", "leave", "disciplinary_actions"]
+        }
+      },
+      "industrial_relations_act_1967": {
+        "domestic_inquiry": {
+          "trigger_conditions": ["misconduct", "poor_performance", "attendance_issues"],
+          "required_steps": [
+            "show_cause_letter",
+            "domestic_inquiry_hearing",
+            "findings_report",
+            "dismissal_or_reinstatement"
+          ],
+          "timeline_days": 30
+        },
+        "trade_union": {
+          "recognition_threshold": "50% of eligible employees",
+          "collective_bargaining": "mandatory if union recognised"
+        }
+      },
+      "pdpa_2010": {
+        "consent": {
+          "required": true,
+          "formats": ["written", "electronic_with_audit_trail"],
+          "withdrawal_right": true
+        },
+        "data_subject_rights": {
+          "access": true,
+          "correction": true,
+          "deletion": "limited to lawful grounds"
+        },
+        "retention": {
+          "max_months_for_rejected_candidates": 12,
+          "employee_records": "duration of employment + 6 years"
+        },
+        "penalties": {
+          "max_fine_myr": 1000000,
+          "imprisonment_max_years": 3
+        },
+        "data_breach": {
+          "notification_required": true,
+          "timeline_hours": 72
+        }
+      },
+      "foreign_worker_regulations_2026": {
+        "quotas": {
+          "manufacturing": { "ratio": "2:1", "levy_myr_annual": 1850, "max_tenure_years": 10 },
+          "construction": { "ratio": "3:1", "levy_myr_annual": 1250, "max_tenure_years": 5 },
+          "plantation": { "ratio": "5:1", "levy_myr_annual": 640, "max_tenure_years": 10 },
+          "agriculture": { "ratio": "5:1", "levy_myr_annual": 640, "max_tenure_years": 10 },
+          "services": { "ratio": "4:1", "levy_myr_annual": 1850, "max_tenure_years": 5 }
+        },
+        "requirements": {
+          "justification_required": true,
+          "myfuturejobs_posting_required": true,
+          "myfuturejobs_min_salary_myr": 5000,
+          "myfuturejobs_posting_days": 30,
+          "local_replacement_training_commitment_years": 2,
+          "fomema_required": true,
+          "medical_insurance_min_myr": 60000
+        },
+        "levy": {
+          "employer_born": true,
+          "payment_frequency": "annual",
+          "refundable_on_early_repatriation": "pro-rated"
+        }
+      },
+      "statutory_contributions_2026": {
+        "epf": {
+          "citizen_employee_percent": 11,
+          "citizen_employer_percent": 13,
+          "foreign_optional": true,
+          "foreign_employee_percent": 11,
+          "foreign_employer_percent": 13,
+          "contribution_cap_myr": 605,
+          "cap_on_wage_myr": 5500,
+          "submission_deadline_day": 15
+        },
+        "socso": {
+          "employee_ei_percent": 0.5,
+          "employee_inv_percent": 0.5,
+          "employee_total_percent": 1.0,
+          "employer_ei_percent": 1.75,
+          "employer_inv_percent": 0.5,
+          "employer_total_percent": 2.25,
+          "wage_ceiling_myr": 6000,
+          "max_employee_myr": 60,
+          "max_employer_myr": 135,
+          "submission_deadline_day": 15
+        },
+        "eis": {
+          "employee_percent": 0.2,
+          "employer_percent": 0.2,
+          "wage_ceiling_myr": 6000,
+          "max_employee_myr": 12,
+          "max_employer_myr": 12,
+          "submission_deadline_day": 15
+        },
+        "pcb": {
+          "calculation_method": "schedular_tax_deduction",
+          "resident_rates": "0% to 30% progressive",
+          "non_resident_flat_rate_percent": 30,
+          "submission_deadline_day": 10,
+          "late_penalty_percent": 10
+        }
+      }
+    },
+    "hr_processes": {
+      "recruitment": {
+        "stages": [
+          { "name": "requisition", "duration_days": [3, 5], "statuses": ["DRAFT", "APPROVED", "REJECTED", "ON_HOLD"] },
+          { "name": "sourcing", "duration_days": [7, 14], "channels": ["jobstreet", "linkedin", "myfuturejobs", "referral"] },
+          { "name": "screening", "duration_days": [3, 5], "methods": ["cv_review", "skills_assessment", "phone_screen"] },
+          { "name": "interview", "duration_days": [5, 10], "structure_minutes": 60 },
+          { "name": "offer", "duration_days": [2, 3], "acceptance_deadline_days": 7 },
+          { "name": "onboarding", "duration_days": [5, 7], "pre_onboarding_lead_days": 14 }
+        ],
+        "jd_requirements": {
+          "mandatory": [
+            "no_discriminatory_language",
+            "salary_range_disclosed",
+            "employment_act_terms",
+            "pdpa_consent_clause",
+            "myfuturejobs_compliance_for_salary_above_5000"
+          ],
+          "conditional": [
+            "foreign_worker_quota_disclosure",
+            "disability_inclusion_statement"
+          ]
+        },
+        "interview_rubric": {
+          "criteria": [
+            { "name": "technical_skills", "weight": 30 },
+            { "name": "communication", "weight": 20 },
+            { "name": "cultural_fit", "weight": 20 },
+            { "name": "experience", "weight": 15 },
+            { "name": "potential", "weight": 15 }
+          ],
+          "passing_score": 3.5,
+          "recommendations": {
+            "above_80": "Proceed",
+            "60_to_79": "Hold",
+            "below_60": "Reject"
+          }
+        },
+        "salary_benchmarks_2026": {
+          "operations": { "entry": [2500, 3200], "junior": [3200, 4000], "mid": [4000, 5500], "senior": [5500, 7000] },
+          "technical": { "entry": [3000, 3800], "junior": [3800, 5000], "mid": [5000, 7500], "senior": [7500, 12000] },
+          "professional": { "entry": [3500, 4500], "junior": [4500, 6000], "mid": [6000, 9000], "senior": [9000, 15000] },
+          "managerial": { "entry": [5000, 7000], "junior": [7000, 10000], "mid": [10000, 15000], "senior": [15000, 25000] },
+          "executive": { "entry": [8000, 12000], "junior": [12000, 18000], "mid": [18000, 25000], "senior": [25000, 40000] }
+        }
+      },
+      "payroll": {
+        "monthly_cycle": {
+          "cutoff_day": 25,
+          "calculation_days": [26, 28],
+          "validation_days": [29, 30],
+          "approval_day": 1,
+          "payment_day": 5,
+          "reporting_day": 15
+        },
+        "status_flow": ["PENDING", "PROCESSED", "PAID"],
+        "statutory_deadlines": {
+          "epf": { "day": 15, "penalty": "6% p.a. + RM 10/day" },
+          "socso": { "day": 15, "penalty": "5% p.a." },
+          "pcb": { "day": 10, "penalty": "10% + interest" }
+        },
+        "anomaly_detection": {
+          "critical": [
+            { "condition": "netSalary < 0", "action": "block_payroll" },
+            { "condition": "epfEmployee = 0 for eligible employee", "action": "block_payroll" },
+            { "condition": "socsoEmployee = 0 for eligible employee", "action": "block_payroll" },
+            { "condition": "duplicate run for same employee/period", "action": "block_payroll" }
+          ],
+          "high": [
+            { "condition": "overtimeHours > 104", "action": "flag_review" },
+            { "condition": "netPay change > 50% MoM", "action": "flag_review" },
+            { "condition": "pcb = 0 for taxable employee", "action": "flag_review" }
+          ],
+          "medium": [
+            { "condition": "allowances.total > basic × 0.5", "action": "warning" },
+            { "condition": "bankAccount = null", "action": "warning" }
+          ]
+        },
+        "decimal_precision": {
+          "requirement": "All monetary values MUST use Decimal type",
+          "forbidden": "number or float for salary fields",
+          "prisma_example": "netSalary: Decimal"
+        }
+      },
+      "onboarding": {
+        "timeline": {
+          "pre_onboarding_minus_14_days": [
+            "employment_contract_signed",
+            "epf_socso_eis_registration_within_7_days",
+            "bank_account_opened",
+            "visa_processed_foreign_workers_lead_60_90_days",
+            "it_equipment_ordered",
+            "workspace_assigned"
+          ],
+          "day_1": [
+            "pdpa_consent_signed",
+            "employee_handbook_acknowledged",
+            "tax_declaration_form",
+            "bank_account_confirmed",
+            "accounts_created",
+            "orientation_4_hours_min",
+            "buddy_assigned"
+          ],
+          "week_1": [
+            "department_induction",
+            "role_training",
+            "safety_briefing",
+            "stakeholder_meetings",
+            "30_day_goals_set"
+          ],
+          "month_1": [
+            "probation_review_scheduled",
+            "performance_goals_finalized",
+            "benefits_enrolled",
+            "first_payslip_reviewed"
+          ]
+        },
+        "compliance_checks": {
+          "visa_verification": true,
+          "document_collection": true,
+          "fomema_for_foreign_workers": true,
+          "epf_registration_within_7_days": true
+        }
+      },
+      "attendance": {
+        "tracking_methods": ["gps_check_in", "face_recognition", "manual_entry"],
+        "statuses": ["PRESENT", "LATE", "ABSENT", "ON_LEAVE", "HOLIDAY", "OVERTIME"],
+        "exception_threshold_percent": 5,
+        "geo_fencing": {
+          "enabled": true,
+          "radius_meters": 100,
+          "verification_required": true
+        }
+      },
+      "document_management": {
+        "document_types": [
+          "passport", "visa", "plks", "fomema_certificate", "employment_contract",
+          "medical_insurance", "training_certificate", "disciplinary_record"
+        ],
+        "expiry_alerts": [30, 60, 90],
+        "retention": {
+          "active_employees": "duration of employment",
+          "terminated_employees_years": 6,
+          "rejected_candidates_months": 12
+        }
+      }
+    },
+    "quality_management": {
+      "standards": [
+        { "area": "Employee Master Data", "standard": "Records include department, position, hire date", "target": "≥98% completeness" },
+        { "area": "Document Control", "standard": "Current supporting documents with renewal tracking", "target": "0 critical gaps" },
+        { "area": "Payroll Timeliness", "standard": "Payroll processed on time", "target": "100% on schedule" },
+        { "area": "Attendance Discipline", "standard": "Exceptions within thresholds", "target": "<5% exception rate" },
+        { "area": "Continuous Improvement", "standard": "Regular compliance reviews", "target": "Quarterly review" }
+      ],
+      "scoring": {
+        "base_score": 100,
+        "critical_finding_deduction": 15,
+        "improvement_area_deduction": 6,
+        "no_active_rules_deduction": 10
+      },
+      "status_tiers": {
+        "controlled": { "min_score": 85, "action": "Maintain" },
+        "improvement_needed": { "min_score": 70, "action": "Address within 30 days" },
+        "escalate_review": { "min_score": 0, "action": "Immediate management review" }
+      },
+      "quality_dimensions": {
+        "completeness": { "weight": 25, "target": 98 },
+        "timeliness": { "weight": 25, "target": 100 },
+        "accuracy": { "weight": 20, "target": 99.5 },
+        "documentation_quality": { "weight": 15, "target": 100 },
+        "operational_control": { "weight": 15, "target": 95 }
+      },
+      "process_maturity_levels": {
+        "1_initial": "Ad-hoc, undocumented, reactive",
+        "2_managed": "Basic documentation, some consistency",
+        "3_defined": "Standardised across teams, SOPs exist",
+        "4_quantitatively_managed": "Measured with KPIs, dashboards",
+        "5_optimising": "Continuous improvement, CAPA闭环"
+      },
+      "capa_template": {
+        "fields": [
+          "issue_title", "severity", "detected_by", "detection_date",
+          "problem_statement", "root_cause", "corrective_actions",
+          "preventive_actions", "verification", "status"
+        ],
+        "severity_levels": ["Critical", "Major", "Minor"],
+        "statuses": ["Open", "In_Progress", "Closed", "Superseded"]
+      }
+    },
+    "agent_capabilities": {
+      "hr_quality_management": {
+        "responsibilities": [
+          "HR process maturity assessment",
+          "SOP adherence audits",
+          "Root cause analysis",
+          "CAPA planning",
+          "Continuous improvement recommendations",
+          "Data quality review"
+        ],
+        "inputs": ["tenant_id", "optional_date_range"],
+        "outputs": ["quality_scorecard", "critical_findings", "improvement_areas", "capa_plan", "improvement_roadmap"],
+        "database_models": ["Employee", "Document", "Payroll", "Attendance", "ComplianceRule"]
+      },
+      "recruitment": {
+        "responsibilities": [
+          "Job description compliance",
+          "Candidate sourcing",
+          "Interview structuring",
+          "Offer calculation",
+          "Onboarding planning"
+        ],
+        "outputs": ["jd_template", "sourcing_strategy", "interview_guide", "offer_calculation", "onboarding_checklist"]
+      },
+      "payroll": {
+        "responsibilities": [
+          "Statutory contribution calculation",
+          "Overtime calculation",
+          "Payroll processing",
+          "Anomaly detection",
+          "Compliance validation"
+        ],
+        "outputs": ["salary_breakdown", "contribution_calculations", "payslip", "statutory_reports"]
+      },
+      "compliance": {
+        "responsibilities": [
+          "Visa validity monitoring",
+          "Document expiry tracking",
+          "Statutory compliance checking",
+          "Regulatory update management"
+        ],
+        "outputs": ["compliance_status", "expiry_alerts", "remediation_actions"]
+      },
+      "foreign_worker_expatriate": {
+        "responsibilities": [
+          "Visa application and renewal",
+          "Levy calculation and payment",
+          "FOMEMA compliance",
+          "Relocation assistance",
+          "Repatriation planning"
+        ],
+        "outputs": ["visa_schedule", "levy_calculation", "fomema_status", "relocation_checklist"]
+      }
+    },
+    "data_models": {
+      "employee": {
+        "required_fields": ["id", "tenantId", "name", "ic_passport", "isForeign", "status"],
+        "optional_but_recommended": ["department", "position", "hireDate", "nationality", "bankAccount"],
+        "relationships": ["documents", "visas", "payrolls", "attendances", "contracts"]
+      },
+      "payroll": {
+        "required_fields": ["id", "employeeId", "periodStart", "periodEnd", "basicSalary", "status"],
+        "statutory_fields": ["epfEmployee", "epfEmployer", "socsoEmployee", "socsoEmployer", "eisEmployee", "eisEmployer", "pcb"],
+        "precision": "Decimal for all monetary values"
+      },
+      "document": {
+        "required_fields": ["id", "employeeId", "type", "issueDate", "expiryDate", "status"],
+        "statuses": ["ACTIVE", "EXPIRED", "PENDING_RENEWAL", "CANCELLED"],
+        "expiry_alert_days": [30, 60, 90]
+      },
+      "visa": {
+        "required_fields": ["id", "employeeId", "visaType", "issueDate", "expiryDate", "status"],
+        "visa_types": ["PLKS", "DP", "LTSVP", "SOCIAL_VISIT", "EMPLOYMENT_PASS"],
+        "statuses": ["ACTIVE", "EXPIRED", "PENDING", "CANCELLED"]
+      },
+      "attendance": {
+        "required_fields": ["id", "employeeId", "date", "checkIn", "checkOut", "status"],
+        "statuses": ["PRESENT", "LATE", "ABSENT", "ON_LEAVE", "HOLIDAY", "OVERTIME"],
+        "geo_fencing_fields": ["latitude", "longitude", "geoVerified"]
+      }
+    },
+    "common_errors_and_resolutions": {
+      "epf_mismatch": {
+        "error": "Employee EPF deduction does not match statutory rate",
+        "root_cause": "Manual calculation error or wrong rate applied",
+        "resolution": "Use Decimal.js for precision, reference current rates from knowledge base",
+        "prevention": "Automated EPF calculation in payroll agent"
+      },
+      "visa_expired": {
+        "error": "Foreign worker visa expired without renewal",
+        "root_cause": "No expiry tracking or alert system",
+        "resolution": "Submit urgent renewal, document root cause in CAPA",
+        "prevention": "30/60/90-day automated alerts, calendar integration"
+      },
+      "incomplete_profile": {
+        "error": "Employee record missing required fields",
+        "root_cause": "Onboarding process gap",
+        "resolution": "Run data completeness report, update missing fields",
+        "prevention": "Enforce mandatory fields at onboarding"
+      },
+      "payroll_late": {
+        "error": "Payroll submitted after statutory deadline",
+        "root_cause": "No cutoff calendar or approval delays",
+        "resolution": "Process immediately, pay penalties if incurred",
+        "prevention": "Automated cutoff reminders, approval workflows"
+      },
+      "document_expired": {
+        "error": "Supporting document expired and not renewed",
+        "root_cause": "No ownership for renewal tracking",
+        "resolution": "Assign document owner, submit renewal",
+        "prevention": "Document expiry dashboard, renewal workflows"
+      }
+    },
+    "regulatory_updates_2026": {
+      "salary_range_disclosure": { "previous": "encouraged", "current": "mandatory", "effective_date": "2026-01-01" },
+      "myfuturejobs_threshold_myr": { "previous": 10000, "current": 5000, "effective_date": "2026-01-01" },
+      "services_quota_ratio": { "previous": "5:1", "current": "4:1", "effective_date": "2026-03-01" },
+      "pdpa_max_fine_myr": { "previous": 500000, "current": 1000000, "effective_date": "2026-03-01" },
+      "epf_employee_rate_under_5k": { "previous": 12, "current": 11, "effective_date": "2026-01-01" },
+      "epf_contribution_cap_myr": { "previous": 550, "current": 605, "effective_date": "2026-01-01" },
+      "socso_wage_ceiling_myr": { "previous": 5000, "current": 6000, "effective_date": "2026-01-01" },
+      "eis_wage_ceiling_myr": { "previous": 5000, "current": 6000, "effective_date": "2026-01-01" },
+      "transport_allowance_myr": { "previous": 200, "current": 250, "effective_date": "2026-01-01" },
+      "childcare_allowance_myr": { "previous": null, "current": 500, "effective_date": "2026-01-01", "taxable": false }
+    },
+    "reporting_templates": {
+      "quality_scorecard": {
+        "period": "monthly",
+        "sections": ["overall_score", "dimension_scores", "critical_findings", "improvement_areas", "capa_plan", "roadmap"]
+      },
+      "compliance_audit": {
+        "period": "quarterly",
+        "sections": ["audit_scope", "sample_size", "findings_by_severity", "adherence_score", "recommendations"]
+      },
+      "payroll_summary": {
+        "period": "monthly",
+        "sections": ["total_employees", "total_gross", "total_net", "statutory_summary", "pending_items"]
+      },
+      "visa_status": {
+        "period": "weekly",
+        "sections": ["active_visas", "expiring_30_days", "expiring_60_days", "expired_visas", "pending_renewals"]
+      }
+    },
+    "integration_points": {
+      "external_systems": [
+        { "system": "MYEG", "purpose": "Foreign worker levy and visa processing", "data_exchanged": ["levy_payment", "visa_status"] },
+        { "system": "FOMEMA", "purpose": "Medical screening for foreign workers", "data_exchanged": ["medical_status", "certificate"] },
+        { "system": "LHDN", "purpose": "PCB submission and tax reporting", "data_exchanged": ["pcb_amount", "cp39_form"] },
+        { "system": "EPF", "purpose": "Employee provident fund submission", "data_exchanged": ["epf_contributions", "form_a"] },
+        { "system": "SOCSO", "purpose": "Social security submission", "data_exchanged": ["socso_contributions", "form_8a"] }
+      ],
+      "internal_agents": [
+        { "agent": "hr-quality-management", "purpose": "Quality monitoring and CAPA" },
+        { "agent": "payroll", "purpose": "Salary and statutory processing" },
+        { "agent": "recruitment", "purpose": "Talent acquisition and onboarding" },
+        { "agent": "compliance", "purpose": "Regulatory compliance checking" },
+        { "agent": "foreign-worker-expatriate", "purpose": "Visa and immigration management" }
+      ]
+    },
+    "glossary": {
+      "CAPA": "Corrective and Preventive Action",
+      "PLKS": "Pas Lawatan Kerja Sementara (Temporary Work Visit Pass)",
+      "FOMEMA": "Foreign Medical Examination Management Agency",
+      "EPF": "Employees Provident Fund (KWSP)",
+      "SOCSO": "Social Security Organization (PERKESO)",
+      "EIS": "Employment Insurance System",
+      "PCB": "Potongan Cukai Bulanan (Monthly Tax Deduction)",
+      "PDPA": "Personal Data Protection Act 2010",
+      "SLA": "Service Level Agreement",
+      "SOP": "Standard Operating Procedure",
+      "RCA": "Root Cause Analysis",
+      "ESS": "Employee Self-Service",
+      "HRD Corp": "Human Resource Development Corporation",
+      "MYR": "Malaysian Ringgit",
+      "FWMS": "Foreign Worker Management System",
+      "IR": "Industrial Relations"
+    }
+  }
+}

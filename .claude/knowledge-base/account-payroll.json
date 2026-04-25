@@ -1,0 +1,805 @@
+{
+  "account_payroll_knowledge_base": {
+    "metadata": {
+      "version": "1.0.0",
+      "last_updated": "2026-07-21",
+      "region": "malaysia",
+      "domain": "accounting_payroll",
+      "maintainer": "finance-team",
+      "purpose": "Canonical reference for payroll accounting, ledger mappings, statutory liability tracking, and financial reconciliation"
+    },
+    "chart_of_accounts_mapping": {
+      "expense_accounts": {
+        "salary_expense": {
+          "code": "6100",
+          "name": "Salaries and Wages",
+          "type": "Expense",
+          "description": "Gross basic salary before deductions",
+          "debit_normal": true,
+          "example_entry": "Dr Salary Expense RM 10,000"
+        },
+        "allowance_expense": {
+          "code": "6110",
+          "name": "Employee Allowances",
+          "type": "Expense",
+          "sub_accounts": {
+            "housing": "6111",
+            "transport": "6112",
+            "meal": "6113",
+            "childcare": "6114"
+          },
+          "description": "All allowances paid to employees",
+          "debit_normal": true
+        },
+        "overtime_expense": {
+          "code": "6120",
+          "name": "Overtime Pay",
+          "type": "Expense",
+          "description": "Overtime payments at 1.5x, 2x, 3x rates",
+          "debit_normal": true
+        },
+        "bonus_expense": {
+          "code": "6130",
+          "name": "Bonus and Incentives",
+          "type": "Expense",
+          "description": "Contractual and performance bonuses",
+          "debit_normal": true
+        },
+        "epf_employer_expense": {
+          "code": "6140",
+          "name": "EPF Employer Contribution",
+          "type": "Expense",
+          "description": "13% or 12% employer EPF contribution",
+          "debit_normal": true,
+          "statutory_rate": 0.13
+        },
+        "socso_employer_expense": {
+          "code": "6150",
+          "name": "SOCSO Employer Contribution",
+          "type": "Expense",
+          "description": "2.25% employer SOCSO contribution",
+          "debit_normal": true,
+          "statutory_rate": 0.0225
+        },
+        "eis_employer_expense": {
+          "code": "6160",
+          "name": "EIS Employer Contribution",
+          "type": "Expense",
+          "description": "0.2% employer EIS contribution",
+          "debit_normal": true,
+          "statutory_rate": 0.002
+        },
+        "levy_expense": {
+          "code": "6170",
+          "name": "Foreign Worker Levy",
+          "type": "Expense",
+          "sub_accounts": {
+            "manufacturing": "6171",
+            "construction": "6172",
+            "plantation": "6173",
+            "agriculture": "6174",
+            "services": "6175"
+          },
+          "description": "Annual foreign worker levy by sector",
+          "debit_normal": true,
+          "employer_born": true
+        },
+        "medical_insurance_expense": {
+          "code": "6180",
+          "name": "Medical Insurance",
+          "type": "Expense",
+          "description": "Employee medical insurance premiums",
+          "debit_normal": true
+        },
+        "training_expense": {
+          "code": "6190",
+          "name": "Training and Development",
+          "type": "Expense",
+          "description": "HRD Corp levy, training costs",
+          "debit_normal": true
+        }
+      },
+      "liability_accounts": {
+        "salary_payable": {
+          "code": "2100",
+          "name": "Salaries Payable",
+          "type": "Liability",
+          "description": "Net salary due to employees",
+          "credit_normal": true,
+          "settlement_account": "Bank Account"
+        },
+        "epf_payable": {
+          "code": "2110",
+          "name": "EPF Payable",
+          "type": "Liability",
+          "description": "Employee + Employer EPF contributions due to EPF",
+          "credit_normal": true,
+          "submission_deadline_day": 15,
+          "penalty_rate": 0.06
+        },
+        "socso_payable": {
+          "code": "2120",
+          "name": "SOCSO Payable",
+          "type": "Liability",
+          "description": "Employee + Employer SOCSO contributions due to PERKESO",
+          "credit_normal": true,
+          "submission_deadline_day": 15,
+          "penalty_rate": 0.05
+        },
+        "eis_payable": {
+          "code": "2130",
+          "name": "EIS Payable",
+          "type": "Liability",
+          "description": "Employee + Employer EIS contributions due to SOCSO",
+          "credit_normal": true,
+          "submission_deadline_day": 15
+        },
+        "pcb_payable": {
+          "code": "2140",
+          "name": "PCB Payable",
+          "type": "Liability",
+          "description": "Monthly tax deduction due to LHDN",
+          "credit_normal": true,
+          "submission_deadline_day": 10,
+          "penalty_rate": 0.10
+        },
+        "levy_payable": {
+          "code": "2150",
+          "name": "Foreign Worker Levy Payable",
+          "type": "Liability",
+          "description": "Annual levy due to Immigration",
+          "credit_normal": true,
+          "payment_frequency": "annual"
+        },
+        "hrdf_payable": {
+          "code": "2160",
+          "name": "HRD Corp Levy Payable",
+          "type": "Liability",
+          "description": "Training levy due to HRD Corp",
+          "credit_normal": true
+        }
+      },
+      "control_accounts": {
+        "payroll_clearing": {
+          "code": "1200",
+          "name": "Payroll Clearing Account",
+          "type": "Asset",
+          "description": "Temporary account for payroll reconciliation",
+          "debit_normal": true,
+          "use": "Intermediate before bank settlement"
+        },
+        "staff_advances": {
+          "code": "1210",
+          "name": "Staff Advances",
+          "type": "Asset",
+          "description": "Salary advances or loans to employees",
+          "debit_normal": true
+        }
+      }
+    },
+    "journal_entry_templates": {
+      "monthly_payroll_accrual": {
+        "name": "Monthly Payroll Accrual",
+        "timing": "Last day of month",
+        "entries": [
+          {
+            "account": "6100",
+            "account_name": "Salary Expense",
+            "debit": "Gross Basic Salary",
+            "credit": null,
+            "calculation": "SUM(basicSalary)"
+          },
+          {
+            "account": "6110",
+            "account_name": "Allowance Expense",
+            "debit": "Total Allowances",
+            "credit": null,
+            "calculation": "SUM(housing + transport + meal + childcare)"
+          },
+          {
+            "account": "6120",
+            "account_name": "Overtime Expense",
+            "debit": "Overtime Pay",
+            "credit": null,
+            "calculation": "SUM(overtimeAmount)"
+          },
+          {
+            "account": "6140",
+            "account_name": "EPF Employer Expense",
+            "debit": "Employer EPF",
+            "credit": null,
+            "calculation": "SUM(basicSalary × 0.13) [capped at RM 5,500 wage]"
+          },
+          {
+            "account": "6150",
+            "account_name": "SOCSO Employer Expense",
+            "debit": "Employer SOCSO",
+            "credit": null,
+            "calculation": "SUM(wage × 0.0225) [capped at RM 6,000]"
+          },
+          {
+            "account": "6160",
+            "account_name": "EIS Employer Expense",
+            "debit": "Employer EIS",
+            "credit": null,
+            "calculation": "SUM(wage × 0.002) [capped at RM 6,000]"
+          },
+          {
+            "account": "2100",
+            "account_name": "Salaries Payable",
+            "debit": null,
+            "credit": "Net Salary Payable",
+            "calculation": "Gross - Employee Deductions"
+          },
+          {
+            "account": "2110",
+            "account_name": "EPF Payable",
+            "debit": null,
+            "credit": "Total EPF (Employee + Employer)",
+            "calculation": "SUM(epfEmployee + epfEmployer)"
+          },
+          {
+            "account": "2120",
+            "account_name": "SOCSO Payable",
+            "debit": null,
+            "credit": "Total SOCSO (Employee + Employer)",
+            "calculation": "SUM(socsoEmployee + socsoEmployer)"
+          },
+          {
+            "account": "2130",
+            "account_name": "EIS Payable",
+            "debit": null,
+            "credit": "Total EIS (Employee + Employer)",
+            "calculation": "SUM(eisEmployee + eisEmployer)"
+          },
+          {
+            "account": "2140",
+            "account_name": "PCB Payable",
+            "debit": null,
+            "credit": "Total PCB",
+            "calculation": "SUM(pcb)"
+          }
+        ],
+        "example": {
+          "gross_salary": 50000,
+          "net_salary": 42000,
+          "epf_total": 6500,
+          "socso_total": 1125,
+          "eis_total": 100,
+          "pcb_total": 275,
+          "journal": "Dr Salary & Benefits Expense RM 57,725, Cr Liabilities RM 57,725"
+        }
+      },
+      "payroll_payment": {
+        "name": "Payroll Settlement",
+        "timing": "5th of month (or earlier)",
+        "entries": [
+          {
+            "account": "2100",
+            "account_name": "Salaries Payable",
+            "debit": "Net Salary Payable",
+            "credit": null,
+            "description": "Clear salary liability"
+          },
+          {
+            "account": "Bank Account",
+            "account_name": "Cash at Bank",
+            "debit": null,
+            "credit": "Net Salary Payable",
+            "description": "Bank transfer to employees"
+          }
+        ],
+        "example": "Dr Salaries Payable RM 42,000, Cr Bank RM 42,000"
+      },
+      "statutory_submission": {
+        "name": "Statutory Payment to Authorities",
+        "timing": "By 10th (PCB) or 15th (EPF/SOCSO/EIS)",
+        "entries": [
+          {
+            "account": "2110",
+            "account_name": "EPF Payable",
+            "debit": "Total EPF Due",
+            "credit": null,
+            "description": "Clear EPF liability"
+          },
+          {
+            "account": "2120",
+            "account_name": "SOCSO Payable",
+            "debit": "Total SOCSO Due",
+            "credit": null,
+            "description": "Clear SOCSO liability"
+          },
+          {
+            "account": "2130",
+            "account_name": "EIS Payable",
+            "debit": "Total EIS Due",
+            "credit": null,
+            "description": "Clear EIS liability"
+          },
+          {
+            "account": "2140",
+            "account_name": "PCB Payable",
+            "debit": "Total PCB Due",
+            "credit": null,
+            "description": "Clear PCB liability"
+          },
+          {
+            "account": "Bank Account",
+            "account_name": "Cash at Bank",
+            "debit": null,
+            "credit": "Total Statutory Payment",
+            "description": "Payment to authorities"
+          }
+        ],
+        "example": "Dr EPF Payable RM 6,500, Dr SOCSO Payable RM 1,125, Cr Bank RM 7,625"
+      },
+      "foreign_worker_levy": {
+        "name": "Foreign Worker Levy Accrual and Payment",
+        "timing": "Upon visa renewal (annual)",
+        "entries": [
+          {
+            "account": "6170",
+            "account_name": "Foreign Worker Levy Expense",
+            "debit": "Levy Amount by Sector",
+            "credit": null,
+            "calculation": "Sector rate × number of workers"
+          },
+          {
+            "account": "2150",
+            "account_name": "Levy Payable",
+            "debit": null,
+            "credit": "Levy Amount",
+            "description": "Accrue levy liability"
+          },
+          {
+            "account": "2150",
+            "account_name": "Levy Payable",
+            "debit": "Levy Amount",
+            "credit": null,
+            "description": "Clear liability upon payment"
+          },
+          {
+            "account": "Bank Account",
+            "account_name": "Cash at Bank",
+            "debit": null,
+            "credit": "Levy Amount",
+            "description": "Payment to Immigration/MYEG"
+          }
+        ],
+        "example_by_sector": {
+          "manufacturing": "Dr Levy Expense RM 1,850, Cr Levy Payable RM 1,850 per worker",
+          "services": "Dr Levy Expense RM 1,850, Cr Levy Payable RM 1,850 per worker",
+          "construction": "Dr Levy Expense RM 1,250, Cr Levy Payable RM 1,250 per worker"
+        }
+      },
+      "salary_advance": {
+        "name": "Salary Advance to Employee",
+        "timing": "Upon request and approval",
+        "entries": [
+          {
+            "account": "1210",
+            "account_name": "Staff Advances",
+            "debit": "Advance Amount",
+            "credit": null,
+            "description": "Record advance given"
+          },
+          {
+            "account": "Bank Account",
+            "account_name": "Cash at Bank",
+            "debit": null,
+            "credit": "Advance Amount",
+            "description": "Disbursement to employee"
+          },
+          {
+            "account": "2100",
+            "account_name": "Salaries Payable",
+            "debit": null,
+            "credit": "Advance Amount",
+            "description": "Deduct from next payroll"
+          },
+          {
+            "account": "1210",
+            "account_name": "Staff Advances",
+            "debit": null,
+            "credit": "Advance Amount",
+            "description": "Clear advance upon deduction"
+          }
+        ]
+      }
+    },
+    "statutory_rates_2026": {
+      "epf": {
+        "employee_rate": 0.11,
+        "employer_rate": 0.13,
+        "employer_rate_above_20k": 0.12,
+        "wage_cap_for_employee_myr": 5500,
+        "max_employee_contribution_myr": 605,
+        "submission_deadline_day": 15,
+        "penalty_interest_rate": 0.06,
+        "penalty_daily_myr": 10
+      },
+      "socso": {
+        "employee_ei_rate": 0.005,
+        "employee_inv_rate": 0.005,
+        "employee_total_rate": 0.01,
+        "employer_ei_rate": 0.0175,
+        "employer_inv_rate": 0.005,
+        "employer_total_rate": 0.0225,
+        "wage_ceiling_myr": 6000,
+        "max_employee_myr": 60,
+        "max_employer_myr": 135,
+        "submission_deadline_day": 15,
+        "penalty_interest_rate": 0.05
+      },
+      "eis": {
+        "employee_rate": 0.002,
+        "employer_rate": 0.002,
+        "wage_ceiling_myr": 6000,
+        "max_employee_myr": 12,
+        "max_employer_myr": 12,
+        "submission_deadline_day": 15
+      },
+      "pcb": {
+        "resident_tax_brackets_2026": [
+          { "min_myr": 0, "max_myr": 5000, "rate": 0.00, "cumulative_tax": 0 },
+          { "min_myr": 5001, "max_myr": 20000, "rate": 0.01, "cumulative_tax": 0 },
+          { "min_myr": 20001, "max_myr": 35000, "rate": 0.03, "cumulative_tax": 150 },
+          { "min_myr": 35001, "max_myr": 50000, "rate": 0.08, "cumulative_tax": 600 },
+          { "min_myr": 50001, "max_myr": 70000, "rate": 0.13, "cumulative_tax": 1800 },
+          { "min_myr": 70001, "max_myr": 100000, "rate": 0.21, "cumulative_tax": 4400 },
+          { "min_myr": 100001, "max_myr": 250000, "rate": 0.24, "cumulative_tax": 10700 },
+          { "min_myr": 250001, "max_myr": 400000, "rate": 0.24, "cumulative_tax": 46700 },
+          { "min_myr": 400001, "max_myr": 600000, "rate": 0.25, "cumulative_tax": 82700 },
+          { "min_myr": 600001, "max_myr": 1000000, "rate": 0.26, "cumulative_tax": 132700 },
+          { "min_myr": 1000001, "max_myr": 2000000, "rate": 0.28, "cumulative_tax": 236700 },
+          { "min_myr": 2000001, "max_myr": null, "rate": 0.30, "cumulative_tax": 516700 }
+        ],
+        "non_resident_flat_rate": 0.30,
+        "submission_deadline_day": 10,
+        "late_penalty_percent": 0.10
+      },
+      "foreign_worker_levy_2026": {
+        "manufacturing": 1850,
+        "construction": 1250,
+        "plantation": 640,
+        "agriculture": 640,
+        "services": 1850
+      },
+      "hrdf": {
+        "rate_for_salary_above_myr": 5000,
+        "rate_for_salary_above_percent": 0.005,
+        "rate_for_salary_below_percent": 0.001,
+        "wage_ceiling_myr": 5000,
+        "exempt_sectors": ["agriculture", "plantation"]
+      }
+    },
+    "reconciliation_procedures": {
+      "monthly_payroll_reconciliation": {
+        "steps": [
+          {
+            "step": 1,
+            "action": "Verify gross payroll total matches sum of individual employee gross",
+            "formula": "SUM(basicSalary + allowances + overtime + bonus) = PayrollRegister.total",
+            "frequency": "Monthly"
+          },
+          {
+            "step": 2,
+            "action": "Validate EPF contributions against statutory rates",
+            "formula": "SUM(employeeEPF) = SUM(basicSalary capped at 5500 × 0.11)",
+            "frequency": "Monthly"
+          },
+          {
+            "step": 3,
+            "action": "Validate SOCSO contributions against wage ceiling",
+            "formula": "SUM(employeeSOCSO) = SUM(wage capped at 6000 × 0.01)",
+            "frequency": "Monthly"
+          },
+          {
+            "step": 4,
+            "action": "Reconcile net payroll with bank transfer total",
+            "formula": "SUM(netSalary) = Bank Transfer Amount",
+            "frequency": "Monthly"
+          },
+          {
+            "step": 5,
+            "action": "Reconcile statutory payable accounts with submissions",
+            "formula": "Payable Balance = Sum of submitted payments this month",
+            "frequency": "Monthly"
+          },
+          {
+            "step": 6,
+            "action": "Verify employee count matches active headcount",
+            "formula": "Payroll Employee Count = Active Employee Count (excluding unpaid leave)",
+            "frequency": "Monthly"
+          }
+        ],
+        "variance_threshold_percent": 0.01,
+        "investigation_required_above_percent": 0.5
+      },
+      "statutory_reconciliation": {
+        "epf": {
+          "reconciliation_frequency": "Monthly",
+          "source_documents": ["Form A (e-Caruman)", "Payroll Register", "Bank Statement"],
+          "key_checks": [
+            "Total contribution matches payroll calculation",
+            "Submission date ≤ 15th of following month",
+            "Payment amount matches Form A total"
+          ],
+          "common_discrepancies": [
+            { "issue": "Employee EPF calculated on uncapped wage", "resolution": "Apply RM 5,500 cap before calculation" },
+            { "issue": "Foreign worker EPF incorrectly deducted", "resolution": "Verify EPF election status" },
+            { "issue": "Late submission penalty incurred", "resolution": "Implement automated deadline reminders" }
+          ]
+        },
+        "socso": {
+          "reconciliation_frequency": "Monthly",
+          "source_documents": ["Form 8A/9A", "Payroll Register", "Bank Statement"],
+          "key_checks": [
+            "Total contribution matches payroll calculation",
+            "Submission date ≤ 15th of following month",
+            "Wage ceiling RM 6,000 applied correctly"
+          ],
+          "common_discrepancies": [
+            { "issue": "Wage ceiling not applied", "resolution": "Cap wage at RM 6,000 before SOCSO calculation" },
+            { "issue": "Foreign worker SOCSO omitted", "resolution": "SOCSO mandatory for all foreign workers" }
+          ]
+        },
+        "pcb": {
+          "reconciliation_frequency": "Monthly",
+          "source_documents": ["CP39 Form", "Payroll Register", "Tax Calculation Sheet"],
+          "key_checks": [
+            "PCB calculation matches tax brackets",
+            "Submission date ≤ 10th of following month",
+            "Non-resident rate 30% applied correctly"
+          ],
+          "common_discrepancies": [
+            { "issue": "Resident status incorrectly classified", "resolution": "Verify days in Malaysia (>182 days for resident)" },
+            { "issue": "Bonus PCB not calculated separately", "resolution": "Use average method for bonus PCB" }
+          ]
+        }
+      },
+      "year_end_reconciliation": {
+        "activities": [
+          {
+            "activity": "EA Form Preparation",
+            "deadline": "March 31",
+            "checks": [
+              "Employee annual income matches payroll register",
+              "EPF/SOCSO/EIS contributions reported correctly",
+              "Tax relief claims verified"
+            ]
+          },
+          {
+            "activity": "Form E Submission",
+            "deadline": "March 31",
+            "checks": [
+              "Total employees count matches active employees",
+              "Total annual remuneration matches payroll summary"
+            ]
+          },
+          {
+            "activity": "Audit Schedule Preparation",
+            "deadline": "April 30",
+            "checks": [
+              "Payroll liability accounts zeroed or carried forward correctly",
+              "Statutory payable accounts reconciled",
+              "All journal entries supported by documentation"
+            ]
+          }
+        ]
+      }
+    },
+    "reporting_templates": {
+      "payroll_journal": {
+        "name": "Payroll Journal Report",
+        "frequency": "Monthly",
+        "columns": [
+          "Date", "Account Code", "Account Name", "Debit (MYR)", "Credit (MYR)", "Description", "Reference"
+        ],
+        "example": [
+          ["31/07/2026", "6100", "Salary Expense", "50,000.00", "", "July 2026 payroll", "PY-0726-001"],
+          ["31/07/2026", "6140", "EPF Employer Expense", "6,500.00", "", "July 2026 EPF employer", "PY-0726-002"],
+          ["31/07/2026", "2100", "Salaries Payable", "", "42,000.00", "Net salary payable", "PY-0726-003"],
+          ["31/07/2026", "2110", "EPF Payable", "", "6,500.00", "Total EPF due", "PY-0726-004"]
+        ]
+      },
+      "statutory_payable_summary": {
+        "name": "Statutory Payables Report",
+        "frequency": "Monthly",
+        "columns": [
+          "Authority", "Liability Account", "Opening Balance", "Current Month Accrual", "Payment Made", "Closing Balance", "Due Date", "Status"
+        ],
+        "example": [
+          ["EPF", "2110", "0.00", "6,500.00", "6,500.00", "0.00", "15/08/2026", "Paid"],
+          ["SOCSO", "2120", "0.00", "1,125.00", "0.00", "1,125.00", "15/08/2026", "Pending"],
+          ["LHDN", "2140", "0.00", "275.00", "275.00", "0.00", "10/08/2026", "Paid"]
+        ]
+      },
+      "employee_payroll_statement": {
+        "name": "Employee Payroll Statement",
+        "frequency": "Monthly (per employee)",
+        "sections": [
+          "Employee Details (Name, ID, Department)",
+          "Earnings (Basic, Allowances, Overtime, Bonus)",
+          "Deductions (EPF, SOCSO, EIS, PCB, Loan)",
+          "Net Pay",
+          "Employer Contributions (EPF, SOCSO, EIS, Levy)"
+        ],
+        "precision": "All monetary values in MYR with 2 decimal places"
+      },
+      "payroll_cost_center_report": {
+        "name": "Payroll Cost Center Report",
+        "frequency": "Monthly",
+        "columns": [
+          "Cost Center", "Department", "Gross Payroll", "Employer Statutory", "Total Cost", "% of Total"
+        ],
+        "allocation_method": "Direct allocation based on employee department"
+      }
+    },
+    "internal_controls": {
+      "segregation_of_duties": {
+        "payroll_preparation": {
+          "role": "Payroll Officer",
+          "responsibilities": ["Data entry", "Calculation", "Generate payslips"],
+          "cannot": ["Approve payroll", "Release payments", "Update bank account details"]
+        },
+        "payroll_approval": {
+          "role": "Payroll Manager / HR Manager",
+          "responsibilities": ["Verify calculations", "Review anomalies", "Authorize payment"],
+          "cannot": ["Enter payroll data", "Modify bank account details"]
+        },
+        "payment_release": {
+          "role": "Finance Manager",
+          "responsibilities": ["Release bank transfers", "Sign statutory forms"],
+          "cannot": ["Modify payroll calculations", "Approve payroll without review"]
+        },
+        "statutory_submission": {
+          "role": "Compliance Officer / Finance",
+          "responsibilities": ["Submit EPF/SOCSO/PCB", "Track deadlines", "Keep submission proofs"],
+          "cannot": ["Modify payroll calculations", "Approve payroll without reconciliation"]
+        }
+      },
+      "approval_matrices": {
+        "payroll_run_approval": {
+          "thresholds": [
+            { "total_payroll_myr": "0 - 50,000", "approvers_required": 1, "min_level": "Payroll Manager" },
+            { "total_payroll_myr": "50,001 - 250,000", "approvers_required": 2, "min_level": "HR Manager + Finance Manager" },
+            { "total_payroll_myr": "250,001+", "approvers_required": 2, "min_level": "HR Director + Finance Director" }
+          ]
+        },
+        "salary_change_approval": {
+          "thresholds": [
+            { "change_percent": "0 - 5", "approvers_required": 1, "min_level": "Department Head" },
+            { "change_percent": "5 - 15", "approvers_required": 2, "min_level": "Department Head + HR Manager" },
+            { "change_percent": "15+", "approvers_required": 2, "min_level": "HR Director + GM" }
+          ]
+        },
+        "bonus_approval": {
+          "thresholds": [
+            { "bonus_months": "0 - 1", "approvers_required": 1, "min_level": "HR Manager" },
+            { "bonus_months": "1 - 3", "approvers_required": 2, "min_level": "HR Director + Finance Director" },
+            { "bonus_months": "3+", "approvers_required": 3, "min_level": "CEO + HR Director + Finance Director" }
+          ]
+        }
+      },
+      "audit_trail_requirements": {
+        "payroll_changes": {
+          "tracked_fields": ["basicSalary", "allowances", "bankAccount", "department", "position"],
+          "retention_months": 84,
+          "required_metadata": ["userId", "timestamp", "oldValue", "newValue", "reason"]
+        },
+        "payroll_approvals": {
+          "tracked_actions": ["submitted", "approved", "rejected", "paid"],
+          "retention_months": 84,
+          "required_metadata": ["approverId", "timestamp", "status", "comments"]
+        },
+        "statutory_submissions": {
+          "tracked_actions": ["generated", "submitted", "paid", "confirmed"],
+          "retention_years": 7,
+          "required_metadata": ["submittedBy", "timestamp", "submissionId", "authorityReference"]
+        }
+      }
+    },
+    "common_accounting_errors": {
+      "error_001": {
+        "name": "EPF Calculated on Gross Without Cap",
+        "description": "Employee EPF deducted on full gross salary exceeding RM 5,500",
+        "impact": "Overstated EPF expense and liability",
+        "detection": "Compare EPF deduction with (basicSalary capped at 5500 × 0.11)",
+        "correction": "Reverse incorrect entry, post correct EPF amounts",
+        "prevention": "Apply MIN(basicSalary, 5500) in EPF calculation logic"
+      },
+      "error_002": {
+        "name": "SOCSO Wage Ceiling Not Applied",
+        "description": "SOCSO calculated on full wage above RM 6,000",
+        "impact": "Overstated SOCSO expense and liability",
+        "detection": "Check if any employee wage > 6000 and SOCSO = wage × 0.01",
+        "correction": "Reverse entry, recalculate with ceiling RM 6,000",
+        "prevention": "Apply MIN(wage, 6000) in SOCSO calculation logic"
+      },
+      "error_003": {
+        "name": "Foreign Worker Levy Expensed Incorrectly",
+        "description": "Levy charged to employee instead of employer",
+        "impact": "Understated employer expense, incorrect employee deduction",
+        "detection": "Verify levy deduction in employee payslip",
+        "correction": "Remove levy from employee deduction, record as employer expense",
+        "prevention": "Configure levy as employer-borne in payroll system"
+      },
+      "error_004": {
+        "name": "PCB Rate Applied to Wrong Resident Status",
+        "description": "Resident tax brackets used for non-resident employee",
+        "impact": "Understated PCB, penalty risk from LHDN",
+        "detection": "Check days in Malaysia for foreign workers (>182 days = resident)",
+        "correction": "Adjust PCB calculation, submit additional payment if needed",
+        "prevention": "Track employee entry/exit dates, apply correct resident status"
+      },
+      "error_005": {
+        "name": "Decimal Precision Loss in Monetary Values",
+        "description": "Using JavaScript number/float instead of Decimal for MYR",
+        "impact": "Rounding errors, balance sheet discrepancies",
+        "detection": "Sum of employee net pay ≠ total bank transfer",
+        "correction": "Convert all monetary fields to Decimal type",
+        "prevention": "Enforce Decimal type in Prisma schema for all monetary fields"
+      },
+      "error_006": {
+        "name": "Duplicate Payroll Run",
+        "description": "Same employee and period processed twice",
+        "impact": "Overstated expenses, duplicate payments",
+        "detection": "Check for duplicate employeeId + periodEnd in payroll table",
+        "correction": "Reverse second run, recover overpayment if paid",
+        "prevention": "Implement uniqueness constraint on (employeeId, periodEnd)"
+      }
+    },
+    "integration_with_financial_systems": {
+      "erp_integration": {
+        "supported_erps": ["SAP", "Oracle", "AutoCount", "SQL Accounting", "Xero", "QuickBooks"],
+        "export_formats": ["CSV", "Excel", "GL Journal JSON", "API Webhook"],
+        "mapping_rules": {
+          "cost_center": "Map employee department to GL cost center",
+          "project_code": "Map to project if employee assigned",
+          "account_codes": "Use chart of accounts mapping table"
+        }
+      },
+      "bank_integration": {
+        "formats": ["IBG", "MEPS", "FPX", "RENTAS"],
+        "file_generation": "Bank file format compatible with major Malaysian banks (Maybank, CIMB, Public Bank, RHB)",
+        "fields": ["Beneficiary Name", "Bank Account Number", "Bank Code", "Amount", "Reference"]
+      },
+      "statutory_api_integration": {
+        "epf": "e-Caruman API for contribution submission",
+        "socso": "PERKESO iPERKESO portal",
+        "lhdn": "e-PCB and e-CP39 submission via LHDN API"
+      }
+    },
+    "year_end_closing_procedures": {
+      "december": {
+        "activities": [
+          { "week": 1, "task": "Verify all payroll liabilities cleared or correct" },
+          { "week": 2, "task": "Run annual employee earnings report" },
+          { "week": 3, "task": "Prepare EA Forms for all employees" },
+          { "week": 4, "task": "Review bonus accruals and provisions" }
+        ]
+      },
+      "january": {
+        "activities": [
+          { "deadline": "January 15", "task": "Submit December 2026 EPF/SOCSO/EIS" },
+          { "deadline": "January 10", "task": "Submit December 2026 PCB" },
+          { "deadline": "January 31", "task": "Distribute EA Forms to employees" },
+          { "deadline": "March 31", "task": "Submit Form E to LHDN" }
+        ]
+      },
+      "closing_entries": [
+        {
+          "entry": "Clear payroll expense accounts to P&L",
+          "accounts": ["6100", "6110", "6120", "6130", "6140", "6150", "6160", "6170"],
+          "action": "Zero out to retained earnings"
+        },
+        {
+          "entry": "Verify payable accounts",
+          "accounts": ["2100", "2110", "2120", "2130", "2140"],
+          "action": "Should be zero or represent December accruals"
+        }
+      ]
+    }
+  }
+}

@@ -15,7 +15,7 @@ export { anthropicProvider, anthropicModels, default as anthropic } from './anth
 export { googleProvider, googleModels, default as google } from './google';
 export { deepseekProvider, deepseekModels, default as deepseek } from './deepseek';
 export { groqProvider, groqModels, default as groq } from './groq';
-export { ollamaProvider, ollamaModels, default as ollama } from './ollama';
+export { ollamaProvider, ollamaModels, ollamaCloudProvider, ollamaCloudModels, default as ollama } from './ollama';
 export { xaiProvider, xaiModels, default as xai } from './xai';
 export { mistralProvider, mistralModels, default as mistral } from './mistral';
 export { cerebrasProvider, cerebrasModels, default as cerebras } from './cerebras';
@@ -26,7 +26,7 @@ import { anthropicProvider, anthropicModels } from './anthropic';
 import { googleProvider, googleModels } from './google';
 import { deepseekProvider, deepseekModels } from './deepseek';
 import { groqProvider, groqModels } from './groq';
-import { ollamaProvider, ollamaModels } from './ollama';
+import { ollamaProvider, ollamaModels, ollamaCloudProvider, ollamaCloudModels } from './ollama';
 import { xaiProvider, xaiModels } from './xai';
 import { mistralProvider, mistralModels } from './mistral';
 import { cerebrasProvider, cerebrasModels } from './cerebras';
@@ -45,6 +45,7 @@ export const providers: Record<string, ProviderModule> = {
   deepseek: { provider: deepseekProvider, models: deepseekModels },
   groq: { provider: groqProvider, models: groqModels },
   ollama: { provider: ollamaProvider, models: ollamaModels },
+  'ollama-cloud': { provider: ollamaCloudProvider, models: ollamaCloudModels },
   xai: { provider: xaiProvider, models: xaiModels },
   mistral: { provider: mistralProvider, models: mistralModels },
   cerebras: { provider: cerebrasProvider, models: cerebrasModels },

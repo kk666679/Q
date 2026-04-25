@@ -8,7 +8,3 @@ export * from './iso9001-agent';
 export * from './iso14001-agent';
 export * from './iso45001-agent';
 export * from './ims-integrator-agent';
-export * from './iso9001-agent';
-export * from './iso14001-agent';
-export * from './iso45001-agent';
-export * from './ims-integrator-agent';

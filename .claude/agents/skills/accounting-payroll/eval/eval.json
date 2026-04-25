@@ -1,0 +1,165 @@
+{
+  "skill": "payroll",
+  "version": "1.0.0",
+  "domain": "hr",
+  "subdomain": "payroll",
+  "evals": [
+    {
+      "id": "pay-01",
+      "description": "Correct statutory rates (March 2026 update)",
+      "input": "What are the EPF, SOCSO, and EIS rates for a Malaysian employee earning RM 5,000 per month?",
+      "expect": [
+        "EPF employee 11%, employer 13%",
+        "SOCSO employee 1.0% (0.5% EI + 0.5% INV), employer 2.25% (1.75% EI + 0.5% INV), capped at RM 6,000 gross wage",
+        "EIS employee 0.2%, employer 0.2%, capped at RM 6,000 gross wage",
+        "Monthly contribution calculation example uses March 2026 ceilings"
+      ],
+      "must_not": [
+        "Use 12% for employee EPF (old 2025 rate)",
+        "Use RM 5,000 SOCSO ceiling (old 2025 ceiling)",
+        "Use Float for monetary values",
+        "Omit SOCSO/EIS caps"
+      ],
+      "severity": "critical",
+      "updated_at": "2026-03-01"
+    },
+    {
+      "id": "pay-02",
+      "description": "Payroll cycle steps and deadlines",
+      "input": "Walk me through the FWMS payroll processing cycle for March 2026 payroll",
+      "expect": [
+        "Mentions cutoff (25th), calculate (26-28th), validate (29-30th), approve (1st next month), pay (5th next month), report (15th next month)",
+        "References PayrollStatus: PENDING → PROCESSED → PAID",
+        "Mentions EPF e-submission deadline 15th of next month",
+        "Mentions LHDN CP39 deadline 10th of next month",
+        "Mentions SOCSO Form 8A/9A deadline 15th of next month"
+      ],
+      "must_not": [
+        "Use incorrect deadline dates",
+        "Omit any major step in the cycle"
+      ],
+      "severity": "high",
+      "updated_at": "2026-03-01"
+    },
+    {
+      "id": "pay-03",
+      "description": "Overtime calculation under Malaysian law (March 2026)",
+      "input": "An employee with monthly basic salary of RM 3,000 works 10 hours of normal overtime and 4 hours on a rest day. How is overtime calculated under Malaysian law?",
+      "expect": [
+        "EA S.60A reference",
+        "Hourly rate = (Monthly Basic ÷ 26) ÷ 8 = RM 14.42",
+        "1.5x for normal overtime (>8h/day or >48h/week)",
+        "2x for rest days",
+        "3x for public holidays (if applicable)",
+        "Max 104 overtime hours per month limit",
+        "Example calculation: Normal OT: 10 × 14.42 × 1.5 = RM 216.30, Rest day OT: 4 × 14.42 × 2.0 = RM 115.36, Total: RM 331.66"
+      ],
+      "must_not": [
+        "Use 8-hour divisor without 26-day factor",
+        "Use incorrect multiplier (e.g., 1.0x for rest day)"
+      ],
+      "severity": "high",
+      "updated_at": "2026-03-01"
+    },
+    {
+      "id": "pay-04",
+      "description": "Payroll anomaly detection with severity levels",
+      "input": "What payroll anomalies should be flagged and at what severity levels?",
+      "expect": [
+        "Critical (block payroll): Negative net pay, Missing EPF deductions for eligible employees, Missing SOCSO contributions, Duplicate payroll runs",
+        "High (flag for review): Overtime > 104 hours, Net pay change > 50% month-over-month, Missing PCB for taxable employee, EPF mismatch",
+        "Medium (warning only): Unusual allowance > 50% of basic, Missing bank account, Late submission flag",
+        "Detection rules for each anomaly type"
+      ],
+      "must_not": [
+        "Classify critical anomalies as low severity",
+        "Omit any of the critical anomalies"
+      ],
+      "severity": "medium",
+      "updated_at": "2026-03-01"
+    },
+    {
+      "id": "pay-05",
+      "description": "Decimal precision for monetary values in Prisma queries",
+      "input": "Write a Prisma query to get the latest payroll for an employee for reporting purposes",
+      "expect": [
+        "Uses Decimal type for netSalary, basicSalary, allowances, deductions",
+        "Scoped by tenantId (multi-tenancy compliance)",
+        "orderBy periodEnd desc to get latest payroll",
+        "Uses findFirst or findMany with proper where clause",
+        "Does not parse Decimal to number/float before returning"
+      ],
+      "must_not": [
+        "Use number or float for salary fields",
+        "Use parseInt or parseFloat on Decimal values",
+        "Omit tenantId filter (security risk)"
+      ],
+      "severity": "critical",
+      "updated_at": "2026-03-01"
+    },
+    {
+      "id": "pay-06",
+      "description": "Foreign worker statutory treatment (March 2026)",
+      "input": "How are EPF, SOCSO, and EIS handled for foreign workers in Malaysia?",
+      "expect": [
+        "EPF optional for foreign workers (employer/employee can opt-in with 11%/13% rates)",
+        "EPF default 0%/0% if not opted in",
+        "SOCSO compulsory for all foreign workers (same rates as citizens: 1.0% employee, 2.25% employer, capped at RM 6,000)",
+        "EIS compulsory for all foreign workers (0.2% each side, capped at RM 6,000)",
+        "PCB: Non-resident foreign workers pay flat 30% on all Malaysian-sourced income",
+        "Resident foreign workers (staying >182 days) use progressive PCB rates"
+      ],
+      "must_not": [
+        "Assume EPF is mandatory for foreign workers",
+        "Apply EIS exemption incorrectly"
+      ],
+      "severity": "high",
+      "updated_at": "2026-03-01"
+    },
+    {
+      "id": "pay-07",
+      "description": "Statutory ceiling and cap values (March 2026)",
+      "input": "What are the current statutory ceilings and caps for payroll deductions in Malaysia?",
+      "expect": [
+        "EPF employee contribution cap: RM 605/month (first RM 5,500 of wage)",
+        "SOCSO wage ceiling: RM 6,000/month gross wage",
+        "EIS wage ceiling: RM 6,000/month gross wage",
+        "Maximum SOCSO contribution: Employee RM 60, Employer RM 135, Total RM 195",
+        "Maximum EIS contribution: RM 12 each side",
+        "No statutory ceiling for PCB (progressive up to 30%)"
+      ],
+      "must_not": [
+        "Use RM 5,000 for SOCSO/EIS ceiling (old 2025 value)",
+        "Use RM 550 for EPF cap (old 2025 value)"
+      ],
+      "severity": "critical",
+      "updated_at": "2026-03-01"
+    },
+    {
+      "id": "pay-08",
+      "description": "Payroll validation before approval",
+      "input": "What validation checks should be performed before marking payroll as PROCESSED?",
+      "expect": [
+        "All eligible employees have EPF deduction (11% of basic ≤ RM 605)",
+        "All eligible employees have SOCSO deduction (1.0% of wage ≤ RM 6,000)",
+        "All eligible employees have EIS deduction (0.2% of wage ≤ RM 6,000)",
+        "PCB calculated using tax-calculator-enhanced.ts",
+        "No negative net pay values",
+        "No duplicate runs for same employee/period",
+        "Overtime ≤ 104 hours per employee",
+        "Employer contributions calculated separately",
+        "All monetary values stored as Decimal",
+        "tenantId scoped correctly"
+      ],
+      "must_not": [
+        "Skip EPF validation for eligible employees",
+        "Allow negative net pay through validation"
+      ],
+      "severity": "high",
+      "updated_at": "2026-03-01"
+    }
+  ],
+  "pass_threshold": 0.85,
+  "last_evaluated": "2026-03-01",
+  "notes": "Updated for March 2026 statutory rates (EPF 11%/13%, SOCSO/EIS ceiling RM 6,000, EPF cap RM 605). Added foreign worker handling, statutory ceilings, and validation checklist evals."
+}

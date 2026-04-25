@@ -1,16 +1,20 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import './globals.css'
 
-import { QMSProvider } from '@/sdk/client/provider'
+// Providers - centralized SDK provider
+import { SDKProvider } from '@/lib/sdk/provider'
 import { ThemeProvider } from '@/components/theme-provider'
 
-
-// Load Geist fonts and capture their font-family strings
-const geist = Geist({ subsets: ['latin'] })
-const geistMono = Geist_Mono({ subsets: ['latin'] })
+// Load Geist fonts
+const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
 export const metadata: Metadata = {
-  title: 'QMS Generator - ISO 9001 Quality Management System',
+  title: {
+    default: 'QMS Generator - ISO 9001 Quality Management System',
+    template: '%s | QMS Generator',
+  },
   description: 'AI-powered Quality Management System generator for ISO 9001 compliance',
   generator: 'v0.app',
   icons: {
@@ -32,6 +36,15 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,18 +54,22 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="dark"
+      className={`${geist.variable} ${geistMono.variable}`}
+      style={{
+        '--font-sans': geist.style.fontFamily,
+        '--font-mono': geistMono.style.fontFamily,
+      } as React.CSSProperties}
     >
-      <body className={`${geist.className} ${geistMono.className} font-sans antialiased`}>
+      <body className="bg-background font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <QMSProvider>
+          <SDKProvider>
             {children}
-          </QMSProvider>
+          </SDKProvider>
         </ThemeProvider>
       </body>
     </html>

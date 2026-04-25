@@ -1,0 +1,417 @@
+{
+  "iso27001_clauses": [
+    {
+      "clause": "0",
+      "title": "Introduction",
+      "summary": "Provides an overview of the standard, explains the Plan-Do-Check-Act (PDCA) cycle, and describes the integration of the Information Security Management System (ISMS) with business processes.",
+      "requirements": [
+        "Understand the need for an ISMS",
+        "Familiarize with the PDCA model applied to ISMS processes",
+        "Consider the importance of aligning ISMS with organizational objectives"
+      ]
+    },
+    {
+      "clause": "1",
+      "title": "Scope",
+      "summary": "Specifies requirements for establishing, implementing, maintaining, and continually improving an ISMS. It includes requirements for assessing and treating information security risks tailored to the needs of the organization.",
+      "requirements": [
+        "Apply requirements to all types of organizations (e.g., commercial, government, non-profit)",
+        "Meet all requirements if claiming conformity to the standard"
+      ]
+    },
+    {
+      "clause": "2",
+      "title": "Normative references",
+      "summary": "Lists referenced documents. ISO/IEC 27000 provides the overview and vocabulary.",
+      "requirements": [
+        "Refer to ISO/IEC 27000 for terms and definitions"
+      ]
+    },
+    {
+      "clause": "3",
+      "title": "Terms and definitions",
+      "summary": "Provides definitions of key terms used throughout the standard.",
+      "requirements": [
+        "Refer to ISO/IEC 27000 for the complete list of terms and definitions"
+      ]
+    },
+    {
+      "clause": "4",
+      "title": "Context of the organization",
+      "summary": "The organization must determine external and internal issues relevant to its purpose and strategic direction that affect the ISMS. It must identify interested parties, their requirements, define the scope, and establish the ISMS.",
+      "requirements": [
+        "Determine external and internal issues relevant to information security",
+        "Determine whether climate change is a relevant external issue (Amd 1:2024)",
+        "Identify interested parties and their information security requirements",
+        "Note: Interested parties may have requirements related to climate change (Amd 1:2024)",
+        "Define the scope of the ISMS considering issues, interested parties, and interfaces",
+        "Establish, implement, maintain, and continually improve the ISMS"
+      ]
+    },
+    {
+      "clause": "4.1",
+      "title": "Understanding the organization and its context",
+      "summary": "The organization shall determine external and internal issues that are relevant to its purpose and that affect its ability to achieve the intended outcomes of its ISMS.",
+      "requirements": [
+        "Determine external issues (legal, technological, competitive, market, cultural, social, economic, environmental)",
+        "Determine internal issues (values, culture, knowledge, performance)",
+        "Determine whether climate change is a relevant issue (Amd 1:2024)",
+        "Monitor and review information about these issues"
+      ]
+    },
+    {
+      "clause": "4.2",
+      "title": "Understanding the needs and expectations of interested parties",
+      "summary": "The organization shall determine interested parties relevant to the ISMS and the requirements of these interested parties.",
+      "requirements": [
+        "Identify interested parties relevant to the ISMS",
+        "Determine their information security requirements",
+        "Consider which requirements will be addressed through the ISMS",
+        "Note: Interested parties may have climate change-related requirements (Amd 1:2024)"
+      ]
+    },
+    {
+      "clause": "4.3",
+      "title": "Determining the scope of the information security management system",
+      "summary": "The organization shall determine the boundaries and applicability of the ISMS to establish its scope.",
+      "requirements": [
+        "Consider external and internal issues from 4.1",
+        "Consider requirements from 4.2",
+        "Consider interfaces and dependencies between activities",
+        "Document the scope and make it available"
+      ]
+    },
+    {
+      "clause": "4.4",
+      "title": "Information security management system",
+      "summary": "The organization shall establish, implement, maintain, and continually improve an ISMS, including the processes needed and their interactions.",
+      "requirements": [
+        "Establish processes needed for the ISMS",
+        "Determine interactions between processes",
+        "Implement and maintain processes"
+      ]
+    },
+    {
+      "clause": "5",
+      "title": "Leadership",
+      "summary": "Top management must demonstrate leadership and commitment, establish an information security policy, and assign roles, responsibilities, and authorities.",
+      "requirements": [
+        "Demonstrate leadership and commitment",
+        "Establish, implement, and maintain information security policy",
+        "Assign and communicate responsibilities and authorities"
+      ]
+    },
+    {
+      "clause": "5.1",
+      "title": "Leadership and commitment",
+      "summary": "Top management shall demonstrate leadership and commitment by taking accountability for ISMS effectiveness, ensuring policy and objectives are established, integrating ISMS into business processes, promoting continual improvement, and providing resources.",
+      "requirements": [
+        "Take accountability for ISMS effectiveness",
+        "Ensure policy and objectives are established and compatible with strategic direction",
+        "Integrate ISMS requirements into business processes",
+        "Ensure resources are available",
+        "Communicate importance of effective information security management",
+        "Ensure ISMS achieves intended outcomes",
+        "Direct and support persons to contribute to ISMS effectiveness",
+        "Promote continual improvement"
+      ]
+    },
+    {
+      "clause": "5.2",
+      "title": "Policy",
+      "summary": "Top management shall establish an information security policy appropriate to the organization's purpose and context, providing a framework for setting objectives, including commitments to satisfy requirements and continual improvement.",
+      "requirements": [
+        "Establish policy appropriate to purpose and context",
+        "Include commitment to satisfy applicable requirements",
+        "Include commitment to continual improvement",
+        "Provide framework for setting objectives",
+        "Be available as documented information",
+        "Be communicated within organization",
+        "Be available to interested parties as appropriate"
+      ]
+    },
+    {
+      "clause": "5.3",
+      "title": "Organizational roles, responsibilities and authorities",
+      "summary": "Top management shall ensure responsibilities and authorities for relevant roles are assigned, communicated, and understood.",
+      "requirements": [
+        "Assign responsibilities and authorities for information security",
+        "Communicate responsibilities and authorities",
+        "Assign specific responsibility for ISMS conformity to ISO/IEC 27001 requirements",
+        "Assign responsibility for reporting on ISMS performance"
+      ]
+    },
+    {
+      "clause": "6",
+      "title": "Planning",
+      "summary": "The organization shall take actions to address risks and opportunities, plan actions, and establish information security objectives and plans to achieve them.",
+      "requirements": [
+        "Address risks and opportunities related to ISMS",
+        "Plan actions to address them",
+        "Establish information security objectives",
+        "Plan how to achieve objectives"
+      ]
+    },
+    {
+      "clause": "6.1",
+      "title": "Actions to address risks and opportunities",
+      "summary": "The organization shall establish processes to determine risks and opportunities related to the ISMS that need to be addressed to give assurance the ISMS can achieve its intended outcomes, prevent or reduce undesired effects, and achieve continual improvement.",
+      "requirements": [
+        "Establish information security risk assessment processes",
+        "Establish information security risk treatment processes",
+        "Consider issues from 4.1 and requirements from 4.2",
+        "Identify risks and opportunities",
+        "Assess risks using defined criteria",
+        "Compare with risk acceptance criteria",
+        "Select appropriate risk treatment options",
+        "Determine controls necessary to implement risk treatment options",
+        "Produce Statement of Applicability (SoA) listing necessary controls and justification for exclusions",
+        "Formulate risk treatment plan",
+        "Retain documented information"
+      ]
+    },
+    {
+      "clause": "6.2",
+      "title": "Information security objectives and planning to achieve them",
+      "summary": "The organization shall establish information security objectives at relevant functions and levels. Objectives shall be consistent with policy, measurable, monitored, communicated, and updated.",
+      "requirements": [
+        "Establish information security objectives for relevant functions and levels",
+        "Ensure objectives are consistent with information security policy",
+        "Make objectives measurable (if practicable)",
+        "Monitor objectives",
+        "Communicate objectives",
+        "Update objectives as appropriate",
+        "Maintain documented information on objectives",
+        "Determine what will be done",
+        "Determine resources required",
+        "Assign responsibility",
+        "Set timing for completion",
+        "Define how results will be evaluated"
+      ]
+    },
+    {
+      "clause": "6.3",
+      "title": "Planning of changes",
+      "summary": "When the organization determines the need for changes to the ISMS, the changes shall be carried out in a planned manner.",
+      "requirements": [
+        "Consider purpose of changes and potential consequences",
+        "Maintain integrity of ISMS",
+        "Ensure resources are available",
+        "Allocate or reallocate responsibilities and authorities"
+      ]
+    },
+    {
+      "clause": "7",
+      "title": "Support",
+      "summary": "The organization must determine and provide resources needed for the ISMS, ensure persons are competent, establish awareness, determine communication, and control documented information.",
+      "requirements": [
+        "Provide resources",
+        "Ensure competence of persons",
+        "Establish awareness",
+        "Determine communication",
+        "Control documented information"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "title": "Resources",
+      "summary": "The organization shall determine and provide the resources needed for the establishment, implementation, maintenance, and continual improvement of the ISMS.",
+      "requirements": [
+        "Determine resources needed for ISMS",
+        "Provide resources"
+      ]
+    },
+    {
+      "clause": "7.2",
+      "title": "Competence",
+      "summary": "The organization shall determine the necessary competence of persons doing work under its control that affects its information security performance, ensure these persons are competent, take actions to acquire necessary competence, and retain documented information as evidence.",
+      "requirements": [
+        "Determine necessary competence of persons affecting information security performance",
+        "Ensure persons are competent based on education, training, or experience",
+        "Take actions to acquire necessary competence",
+        "Evaluate effectiveness of actions taken",
+        "Retain documented information as evidence of competence"
+      ]
+    },
+    {
+      "clause": "7.3",
+      "title": "Awareness",
+      "summary": "The organization shall ensure that persons doing work under its control are aware of the information security policy, their contribution to ISMS effectiveness, and implications of not conforming to ISMS requirements.",
+      "requirements": [
+        "Ensure awareness of information security policy",
+        "Ensure awareness of contribution to ISMS effectiveness",
+        "Ensure awareness of implications of not conforming"
+      ]
+    },
+    {
+      "clause": "7.4",
+      "title": "Communication",
+      "summary": "The organization shall determine the need for internal and external communications relevant to the ISMS, including what, when, with whom, how, and who communicates.",
+      "requirements": [
+        "Determine what to communicate",
+        "Determine when to communicate",
+        "Determine with whom to communicate",
+        "Determine how to communicate",
+        "Determine who communicates"
+      ]
+    },
+    {
+      "clause": "7.5",
+      "title": "Documented information",
+      "summary": "The ISMS shall include documented information required by ISO/IEC 27001 and determined by the organization as necessary for effectiveness. Creation, update, and control of documented information must be managed.",
+      "requirements": [
+        "Include documented information required by ISO/IEC 27001",
+        "Include documented information determined necessary for ISMS effectiveness",
+        "Ensure appropriate identification and description (title, date, author, reference number)",
+        "Ensure appropriate format and media",
+        "Ensure review and approval for suitability and adequacy",
+        "Control documented information (distribution, access, retrieval, use, storage, preservation, version control, retention, disposition)",
+        "Manage documented information of external origin",
+        "Prevent unintended use of obsolete documented information"
+      ]
+    },
+    {
+      "clause": "8",
+      "title": "Operation",
+      "summary": "The organization must plan, implement, and control processes needed to meet ISMS requirements, and assess and treat information security risks.",
+      "requirements": [
+        "Plan, implement, and control operational processes",
+        "Perform information security risk assessments",
+        "Implement information security risk treatment plan",
+        "Manage changes"
+      ]
+    },
+    {
+      "clause": "8.1",
+      "title": "Operational planning and control",
+      "summary": "The organization shall plan, implement, and control processes to meet ISMS requirements, establish criteria, control processes per criteria, maintain documented information, and control planned changes.",
+      "requirements": [
+        "Plan, implement, and control processes to meet ISMS requirements",
+        "Establish criteria for processes",
+        "Control processes in accordance with criteria",
+        "Maintain documented information to have confidence processes were carried out as planned",
+        "Control planned changes and review consequences of unintended changes",
+        "Ensure outsourced processes are controlled"
+      ]
+    },
+    {
+      "clause": "8.2",
+      "title": "Information security risk assessment",
+      "summary": "The organization shall perform information security risk assessments at planned intervals or when significant changes occur.",
+      "requirements": [
+        "Apply defined risk assessment process",
+        "Identify risks associated with loss of confidentiality, integrity, and availability",
+        "Analyze risks using defined criteria",
+        "Evaluate risks against risk acceptance criteria",
+        "Retain documented information of risk assessment results"
+      ]
+    },
+    {
+      "clause": "8.3",
+      "title": "Information security risk treatment",
+      "summary": "The organization shall implement the information security risk treatment plan, retain documented information, and update the Statement of Applicability.",
+      "requirements": [
+        "Implement risk treatment plan",
+        "Apply appropriate risk treatment options",
+        "Determine controls necessary to implement options",
+        "Update Statement of Applicability",
+        "Retain documented information of risk treatment results"
+      ]
+    },
+    {
+      "clause": "9",
+      "title": "Performance evaluation",
+      "summary": "The organization must monitor, measure, analyze, and evaluate its information security performance, conduct internal audits, and perform management reviews.",
+      "requirements": [
+        "Monitor, measure, analyze, and evaluate information security performance",
+        "Conduct internal audits",
+        "Perform management reviews"
+      ]
+    },
+    {
+      "clause": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation",
+      "summary": "The organization shall determine what needs to be monitored and measured, methods, when results shall be analyzed and evaluated, and retain documented information.",
+      "requirements": [
+        "Determine what needs to be monitored and measured",
+        "Determine methods for monitoring, measurement, analysis, and evaluation",
+        "Determine when monitoring and measuring shall be performed",
+        "Determine when results shall be analyzed and evaluated",
+        "Evaluate information security performance and ISMS effectiveness",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "9.2",
+      "title": "Internal audit",
+      "summary": "The organization shall conduct internal audits at planned intervals to provide information on whether the ISMS conforms to its own requirements and ISO/IEC 27001, and is effectively implemented and maintained.",
+      "requirements": [
+        "Conduct internal audits at planned intervals",
+        "Determine if ISMS conforms to organization's own requirements and ISO/IEC 27001",
+        "Determine if ISMS is effectively implemented and maintained",
+        "Establish audit programme",
+        "Define audit criteria and scope for each audit",
+        "Select auditors and conduct audits to ensure objectivity and impartiality",
+        "Report results to relevant management",
+        "Retain documented information"
+      ]
+    },
+    {
+      "clause": "9.3",
+      "title": "Management review",
+      "summary": "Top management shall review the ISMS at planned intervals to ensure its continuing suitability, adequacy, and effectiveness.",
+      "requirements": [
+        "Review ISMS at planned intervals",
+        "Consider status of actions from previous reviews",
+        "Consider changes in external and internal issues (including climate change, Amd 1:2024)",
+        "Consider information security performance",
+        "Consider feedback from interested parties",
+        "Consider audit results",
+        "Consider risk assessment results and risk treatment plan status",
+        "Consider opportunities for improvement",
+        "Outputs include decisions related to improvement opportunities",
+        "Outputs include any need for changes to ISMS",
+        "Outputs include resource needs",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "10",
+      "title": "Improvement",
+      "summary": "The organization must determine opportunities for improvement, react to nonconformities, take corrective action, and continually improve the suitability, adequacy, and effectiveness of the ISMS.",
+      "requirements": [
+        "Determine opportunities for improvement",
+        "React to nonconformities and take corrective action",
+        "Continually improve ISMS"
+      ]
+    },
+    {
+      "clause": "10.1",
+      "title": "Continual improvement",
+      "summary": "The organization shall continually improve the suitability, adequacy, and effectiveness of the ISMS.",
+      "requirements": [
+        "Continually improve ISMS",
+        "Consider results of analysis and evaluation",
+        "Consider outputs from management review"
+      ]
+    },
+    {
+      "clause": "10.2",
+      "title": "Nonconformity and corrective action",
+      "summary": "When a nonconformity occurs, the organization shall react, take action to control and correct it, deal with consequences, evaluate need for action to eliminate causes, implement any action needed, review effectiveness of corrective action, and make changes to ISMS if necessary.",
+      "requirements": [
+        "React to nonconformity, take action to control and correct it",
+        "Deal with consequences",
+        "Evaluate need for action to eliminate causes",
+        "Review and analyze nonconformity",
+        "Determine causes",
+        "Determine if similar nonconformities exist or could occur",
+        "Implement any action needed",
+        "Review effectiveness of corrective action",
+        "Update risks and opportunities if necessary",
+        "Make changes to ISMS if necessary",
+        "Retain documented information"
+      ]
+    }
+  ]
+}

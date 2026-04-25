@@ -1,0 +1,611 @@
+{
+  "employee_relations_knowledge_base": {
+    "metadata": {
+      "version": "2.0.0",
+      "last_updated": "2026-07-21",
+      "region": "malaysia",
+      "domain": "employee_relations",
+      "maintainer": "er-team",
+      "purpose": "Canonical reference for employee engagement, performance management, feedback systems, workplace culture, well-being programs, and positive employer-employee relationships"
+    },
+    "employee_engagement_framework": {
+      "engagement_drivers": {
+        "career_development": {
+          "weight": 25,
+          "metrics": ["promotion_rate", "training_hours_per_employee", "career_path_clarity"],
+          "initiatives": ["mentorship_program", "skills_training", "succession_planning"]
+        },
+        "recognition_and_rewards": {
+          "weight": 20,
+          "metrics": ["recognition_frequency", "award_satisfaction", "peer_recognition_rate"],
+          "initiatives": ["employee_of_month", "spot_bonus", "service_awards"]
+        },
+        "work_life_balance": {
+          "weight": 20,
+          "metrics": ["overtime_hours", "leave_utilization", "flexible_work_adoption"],
+          "initiatives": ["flexible_hours", "remote_work_option", "wellness_program"]
+        },
+        "leadership_and_management": {
+          "weight": 15,
+          "metrics": ["manager_effectiveness_score", "trust_in_leadership", "communication_frequency"],
+          "initiatives": ["leadership_training", "skip_level_meetings", "town_halls"]
+        },
+        "workplace_culture": {
+          "weight": 10,
+          "metrics": ["diversity_score", "inclusion_index", "psychological_safety_score"],
+          "initiatives": ["cultural_events", "diversity_training", "employee_resource_groups"]
+        },
+        "compensation_and_benefits": {
+          "weight": 10,
+          "metrics": ["salary_satisfaction", "benefits_utilization", "market_benchmark_ratio"],
+          "initiatives": ["salary_review", "benefits_upgrade", "bonus_program"]
+        }
+      },
+      "engagement_survey": {
+        "frequency": "semi_annual",
+        "sample_questions": [
+          "I am proud to work for this company",
+          "I would recommend this company as a great place to work",
+          "My manager cares about my professional development",
+          "I have the resources I need to do my job effectively",
+          "My contributions are recognized and valued",
+          "I have a good work-life balance",
+          "I understand how my work contributes to company goals",
+          "I feel safe speaking up with concerns"
+        ],
+        "scoring": {
+          "1": "Strongly Disagree",
+          "2": "Disagree",
+          "3": "Neutral",
+          "4": "Agree",
+          "5": "Strongly Agree"
+        },
+        "engagement_index_formula": "(Percentage of employees scoring 4 or 5) / Total respondents × 100",
+        "benchmarks": {
+          "excellent": 85,
+          "good": 75,
+          "average": 65,
+          "poor": 55,
+          "critical": 45
+        },
+        "action_planning": {
+          "response_time_days": 14,
+          "department_level_actions": true,
+          "follow_up_survey_months": 6
+        }
+      },
+      "pulse_surveys": {
+        "frequency": "monthly_or_quarterly",
+        "duration_questions": 5,
+        "sample_topics": [
+          "current_workload",
+          "team_collaboration",
+          "manager_support",
+          "recent_changes_impact"
+        ],
+        "anonymous": true,
+        "response_target_percent": 70
+      }
+    },
+    "performance_management": {
+      "performance_cycle": {
+        "quarterly_check_in": {
+          "timing": "first_week_of_quarter",
+          "purpose": "goal_setting_and_alignment",
+          "participants": "employee_and_manager",
+          "documentation": "performance_notes"
+        },
+        "mid_year_review": {
+          "timing": "june_july",
+          "purpose": "progress_review_and_feedback",
+          "participants": "employee_and_manager",
+          "documentation": "performance_assessment"
+        },
+        "annual_review": {
+          "timing": "december_january",
+          "purpose": "final_evaluation_and_rating",
+          "participants": "employee_manager_and_hr",
+          "documentation": "performance_appraisal_form"
+        },
+        "calibration": {
+          "timing": "after_annual_review",
+          "purpose": "rating_consistency_across_departments",
+          "participants": "managers_and_hr",
+          "documentation": "calibration_notes"
+        }
+      },
+      "performance_ratings": {
+        "5_outstanding": {
+          "description": "Consistently exceeds expectations, exceptional contributions",
+          "distribution_target_percent": 10,
+          "recommended_action": "fast_track_promotion, top_bonus"
+        },
+        "4_exceeds": {
+          "description": "Frequently exceeds expectations, strong performance",
+          "distribution_target_percent": 25,
+          "recommended_action": "development_opportunities, above_target_bonus"
+        },
+        "3_meets": {
+          "description": "Consistently meets expectations, solid performer",
+          "distribution_target_percent": 50,
+          "recommended_action": "continued_development, target_bonus"
+        },
+        "2_partially_meets": {
+          "description": "Sometimes meets expectations, improvement needed",
+          "distribution_target_percent": 10,
+          "recommended_action": "performance_improvement_plan, reduced_bonus"
+        },
+        "1_does_not_meet": {
+          "description": "Fails to meet expectations, significant gaps",
+          "distribution_target_percent": 5,
+          "recommended_action": "performance_improvement_plan_or_exit"
+        }
+      },
+      "performance_improvement_plan": {
+        "trigger_conditions": [
+          "rating_1_or_2",
+          "repeated_verbal_warnings",
+          "client_complaints",
+          "missed_deadlines"
+        ],
+        "duration_days": 60,
+        "components": [
+          "specific_improvement_goals",
+          "measurable_success_criteria",
+          "timeline_with_milestones",
+          "manager_support_resources",
+          "weekly_check_ins",
+          "consequences_of_failure"
+        ],
+        "success_outcomes": ["return_to_meets_expectations", "extension_of_pip", "termination"],
+        "documentation_required": [
+          "pip_agreement_signed",
+          "weekly_progress_notes",
+          "final_assessment_report"
+        ]
+      },
+      "360_feedback": {
+        "participants": ["self", "manager", "peers", "direct_reports", "cross_functional"],
+        "frequency": "annual",
+        "competencies_assessed": [
+          "leadership",
+          "communication",
+          "teamwork",
+          "problem_solving",
+          "accountability",
+          "innovation"
+        ],
+        "confidentiality": "aggregated_responses_only",
+        "reporting": "individual_development_report"
+      }
+    },
+    "feedback_culture": {
+      "feedback_types": {
+        "real_time_feedback": {
+          "method": "instant_recognition_or_constructive",
+          "channels": ["slack", "teams", "email", "in_person"],
+          "frequency": "daily_weekly",
+          "documentation": "optional"
+        },
+        "structured_check_in": {
+          "method": "one_on_one_meeting",
+          "frequency": "weekly_or_biweekly",
+          "duration_minutes": 30,
+          "agenda": ["progress_update", "blockers", "feedback", "development"],
+          "documentation": "shared_notes"
+        },
+        "skip_level_meeting": {
+          "method": "employee_with_manager_manager",
+          "frequency": "quarterly",
+          "duration_minutes": 45,
+          "purpose": "career_discussion, organizational_feedback",
+          "documentation": "hr_summary"
+        },
+        "stay_interview": {
+          "method": "proactive_retention_conversation",
+          "frequency": "annual",
+          "questions": [
+            "What keeps you here?",
+            "What would tempt you to leave?",
+            "What would make your job better?",
+            "Do you feel valued and recognized?"
+          ],
+          "documentation": "action_plan"
+        },
+        "exit_interview": {
+          "method": "departing_employee_conversation",
+          "timing": "last_week_of_employment",
+          "questions": [
+            "Why are you leaving?",
+            "What could we have done better?",
+            "Would you recommend us?",
+            "Any legal or compliance concerns?"
+          ],
+          "documentation": "exit_report",
+          "trend_analysis": "quarterly"
+        }
+      },
+      "feedback_training": {
+        "managers": [
+          "how_to_give_constructive_feedback",
+          "active_listening_skills",
+          "difficult_conversations",
+          "bias_awareness"
+        ],
+        "employees": [
+          "how_to_receive_feedback_gracefully",
+          "how_to_request_feedback",
+          "peer_to_peer_feedback"
+        ],
+        "frequency": "annual_refresher"
+      }
+    },
+    "employee_wellbeing": {
+      "wellbeing_dimensions": {
+        "physical_health": {
+          "initiatives": [
+            "medical_checkup_annual",
+            "gym_membership_subsidy",
+            "standing_desk_option",
+            "health_webinars"
+          ],
+          "metrics": ["medical_claim_utilization", "sick_leave_days", "wellbeing_program_participation"]
+        },
+        "mental_health": {
+          "initiatives": [
+            "employee_assistance_program",
+            "counseling_sessions",
+            "mental_health_days",
+            "mindfulness_workshops"
+          ],
+          "metrics": ["eap_utilization_rate", "mental_health_day_usage", "stress_survey_score"]
+        },
+        "financial_wellness": {
+          "initiatives": [
+            "financial_literacy_workshops",
+            "salary_advance_program",
+            "retirement_planning",
+            "loan_subsidies"
+          ],
+          "metrics": ["advance_utilization", "financial_stress_index", "savings_program_enrollment"]
+        },
+        "social_connection": {
+          "initiatives": [
+            "team_building_events",
+            "employee_resource_groups",
+            "volunteer_activities",
+            "family_day"
+          ],
+          "metrics": ["event_participation_rate", "social_connectedness_score"]
+        },
+        "career_wellbeing": {
+          "initiatives": [
+            "career_counseling",
+            "skills_assessment",
+            "job_crafting_workshops",
+            "internal_mobility_program"
+          ],
+          "metrics": ["internal_promotion_rate", "career_satisfaction_score"]
+        }
+      },
+      "employee_assistance_program": {
+        "provider": "external_eap_vendor",
+        "services": [
+          "confidential_counseling",
+          "legal_advice",
+          "financial_consulting",
+          "work_life_referrals"
+        ],
+        "sessions_per_issue": 6,
+        "confidentiality": "full",
+        "utilization_target_percent": 10,
+        "crisis_support": "24_7_hotline"
+      },
+      "flexible_work_arrangements": {
+        "types": [
+          { "type": "flexible_hours", "core_hours": "10am_4pm", "eligibility": "all_employees" },
+          { "type": "remote_work", "max_days_per_week": 3, "eligibility": "non_operational_roles" },
+          { "type": "compressed_work_week", "example": "4_days_10_hours", "eligibility": "manager_approval" },
+          { "type": "part_time", "min_hours_per_week": 20, "eligibility": "by_request" },
+          { "type": "job_sharing", "eligibility": "senior_roles", "approval": "hr_director" }
+        ],
+        "policy_requirements": [
+          "written_agreement",
+          "productivity_metrics",
+          "availability_during_core_hours",
+          "annual_review"
+        ]
+      }
+    },
+    "workplace_culture": {
+      "culture_dimensions": {
+        "psychological_safety": {
+          "definition": "Belief that one can speak up without fear of punishment",
+          "survey_questions": [
+            "I can raise concerns without fear of retaliation",
+            "Mistakes are treated as learning opportunities",
+            "Diverse viewpoints are welcomed"
+          ],
+          "target_score": 80
+        },
+        "diversity_equity_inclusion": {
+          "definition": "Fair treatment and full participation of all people",
+          "initiatives": [
+            "unconscious_bias_training",
+            "inclusive_recruitment",
+            "employee_resource_groups",
+            "diversity_metrics_dashboard"
+          ],
+          "target_representation": "population_parity",
+          "dei_score_target": 75
+        },
+        "collaboration": {
+          "definition": "Effective cross-functional teamwork",
+          "initiatives": [
+            "cross_functional_projects",
+            "collaboration_tools",
+            "team_offsites"
+          ],
+          "target_score": 80
+        },
+        "innovation": {
+          "definition": "Encouragement of new ideas and calculated risk-taking",
+          "initiatives": [
+            "innovation_challenge",
+            "idea_incubator",
+            "hackathons",
+            "failure_reviews"
+          ],
+          "target_score": 70
+        },
+        "accountability": {
+          "definition": "Taking ownership of outcomes",
+          "initiatives": [
+            "clear_roles_and_responsibilities",
+            "okr_framework",
+            "post_project_reviews"
+          ],
+          "target_score": 85
+        }
+      },
+      "culture_metrics": {
+        "employee_net_promoter_score": {
+          "question": "How likely are you to recommend this company as a great place to work?",
+          "scoring": "0_10_scale",
+          "formula": "(% promoters - % detractors)",
+          "benchmark_excellent": 50
+        },
+        "retention_rate": {
+          "formula": "(employees_at_end - new_hires) / employees_at_start × 100",
+          "target_percent": 85
+        },
+        "voluntary_turnover_rate": {
+          "formula": "voluntary_exits / average_headcount × 100",
+          "target_percent": 10
+        },
+        "internal_mobility_rate": {
+          "formula": "internal_hires / total_hires × 100",
+          "target_percent": 40
+        },
+        "absenteeism_rate": {
+          "formula": "total_days_absent / total_working_days × 100",
+          "target_percent": 3
+        }
+      },
+      "employee_recognition_programs": {
+        "peer_to_peer_recognition": {
+          "platform": "slack_teams_or_dedicated_tool",
+          "frequency": "real_time",
+          "rewards": "points_for_catalog_items",
+          "budget_myr_per_employee_annual": 100
+        },
+        "employee_of_the_month": {
+          "nomination": "peers_and_managers",
+          "selection": "committee",
+          "reward_myr": 500,
+          "recognition": "certificate_and_parking_spot"
+        },
+        "service_awards": {
+          "milestones_years": [1, 3, 5, 10, 15, 20, 25],
+          "rewards": {
+            "1_year": "certificate",
+            "3_years": "gift_voucher_myr_200",
+            "5_years": "watch_myr_500",
+            "10_years": "cash_myr_1000",
+            "15_years": "overseas_trip_myr_3000",
+            "20_years": "gold_pin_and_cash_myr_5000"
+          }
+        },
+        "spot_bonus": {
+          "trigger": "exceptional_contribution_or_customer_praise",
+          "amount_myr": "100_to_1000",
+          "approver": "department_head",
+          "frequency": "monthly"
+        },
+        "team_awards": {
+          "trigger": "project_success_or_target_exceeded",
+          "reward": "team_lunch_or_offsite",
+          "budget_myr_per_team": 1000,
+          "frequency": "quarterly"
+        }
+      }
+    },
+    "employee_communication": {
+      "communication_channels": {
+        "town_halls": {
+          "frequency": "quarterly",
+          "audience": "all_employees",
+          "content": ["strategy_update", "financial_results", "q_and_a"],
+          "recording": "available_for_absentees"
+        },
+        "department_meetings": {
+          "frequency": "monthly",
+          "audience": "department_team",
+          "content": ["progress_update", "challenges", "team_recognition"],
+          "minutes": "shared"
+        },
+        "newsletter": {
+          "frequency": "monthly",
+          "format": "email_or_intranet",
+          "content": ["company_news", "employee_spotlight", "upcoming_events"]
+        },
+        "intranet": {
+          "purpose": "central_information_hub",
+          "content": ["policies", "forms", "announcements", "directory"],
+          "update_frequency": "weekly"
+        },
+        "slack_teams": {
+          "purpose": "day_to_day_collaboration",
+          "channels": ["general", "random", "announcements", "social"],
+          "guidelines": "respectful_professional"
+        },
+        "skip_level_meetings": {
+          "frequency": "quarterly",
+          "participants": "employees_and_manager_manager",
+          "purpose": "career_discussion_and_organizational_feedback"
+        }
+      },
+      "crisis_communication": {
+        "triggers": ["natural_disaster", "data_breach", "workplace_violence", "regulatory_action"],
+        "response_timeline": {
+          "first_hour": "acknowledge_and_assure",
+          "four_hours": "initial_update",
+          "twenty_four_hours": "detailed_briefing",
+          "ongoing": "regular_updates"
+        },
+        "channels": ["email", "sms", "hotline", "town_hall"],
+        "spokesperson": "hr_director_or_ceo"
+      }
+    },
+    "employee_relations_case_management": {
+      "case_types": {
+        "grievance": {
+          "priority": "medium",
+          "timeline_days": 14,
+          "escalation": "hr_manager"
+        },
+        "harassment_complaint": {
+          "priority": "critical",
+          "timeline_hours": 24,
+          "escalation": "hr_director_legal"
+        },
+        "workplace_conflict": {
+          "priority": "high",
+          "timeline_days": 7,
+          "escalation": "hr_business_partner"
+        },
+        "attendance_issue": {
+          "priority": "low",
+          "timeline_days": 30,
+          "escalation": "department_head"
+        },
+        "performance_issue": {
+          "priority": "medium",
+          "timeline_days": 60,
+          "escalation": "hr_manager"
+        },
+        "policy_violation": {
+          "priority": "high",
+          "timeline_days": 7,
+          "escalation": "compliance_hr"
+        }
+      },
+      "case_management_process": {
+        "steps": [
+          { "step": 1, "action": "intake_and_triage", "timeline_hours": 24, "owner": "hr_assistant" },
+          { "step": 2, "action": "assign_investigator", "timeline_hours": 48, "owner": "hr_manager" },
+          { "step": 3, "action": "gather_information", "timeline_days": 7, "owner": "investigator" },
+          { "step": 4, "action": "interview_parties", "timeline_days": 14, "owner": "investigator" },
+          { "step": 5, "action": "determine_findings", "timeline_days": 21, "owner": "hr_manager" },
+          { "step": 6, "action": "recommend_actions", "timeline_days": 28, "owner": "hr_director" },
+          { "step": 7, "action": "implement_resolution", "timeline_days": 35, "owner": "line_manager" },
+          { "step": 8, "action": "close_and_document", "timeline_days": 42, "owner": "hr_assistant" }
+        ],
+        "confidentiality": "need_to_know_basis",
+        "documentation_retention_years": 6
+      }
+    },
+    "compliance_in_employee_relations": {
+      "key_regulations": [
+        {
+          "regulation": "Employment Act 1955",
+          "relevant_sections": ["s12_termination", "s14_dismissal", "s60k_harassment"]
+        },
+        {
+          "regulation": "PDPA 2010",
+          "relevant_sections": ["employee_data_privacy", "consent_for_investigation"]
+        },
+        {
+          "regulation": "Industrial Relations Act 1967",
+          "relevant_sections": ["unfair_dismissal", "trade_union_rights"]
+        },
+        {
+          "regulation": "Sexual Harassment Act 2022",
+          "relevant_sections": ["tribunal_establishment", "employer_duty"]
+        }
+      ],
+      "documentation_requirements": [
+        "written_employee_handbook_acknowledgment",
+        "disciplinary_action_forms",
+        "investigation_reports",
+        "performance_review_documents",
+        "grievance_records"
+      ],
+      "training_requirements": [
+        { "topic": "sexual_harassment_prevention", "frequency": "annual", "audience": "all_employees" },
+        { "topic": "unconscious_bias", "frequency": "biennial", "audience": "managers" },
+        { "topic": "difficult_conversations", "frequency": "annual", "audience": "managers" },
+        { "topic": "workplace_investigations", "frequency": "biennial", "audience": "hr_team" }
+      ]
+    },
+    "metrics_and_reporting": {
+      "employee_relations_dashboard": {
+        "kpis": [
+          { "metric": "employee_engagement_score", "target": 75, "frequency": "quarterly" },
+          { "metric": "voluntary_turnover_rate_percent", "target": 10, "frequency": "monthly" },
+          { "metric": "grievance_resolution_time_days", "target": 14, "frequency": "monthly" },
+          { "metric": "employee_nps", "target": 50, "frequency": "quarterly" },
+          { "metric": "internal_mobility_rate_percent", "target": 40, "frequency": "annual" },
+          { "metric": "absenteeism_rate_percent", "target": 3, "frequency": "monthly" },
+          { "metric": "training_hours_per_employee", "target": 40, "frequency": "annual" }
+        ]
+      },
+      "reporting_templates": {
+        "quarterly_employee_relations_report": {
+          "sections": [
+            "engagement_survey_results",
+            "turnover_analysis",
+            "grievance_case_summary",
+            "recognition_program_impact",
+            "training_completion_rates",
+            "action_plan"
+          ]
+        },
+        "annual_people_report": {
+          "sections": [
+            "workforce_demographics",
+            "talent_retention_metrics",
+            "culture_survey_trends",
+            "dei_metrics",
+            "wellbeing_program_impact",
+            "strategic_initiatives"
+          ]
+        }
+      }
+    },
+    "glossary": {
+      "EAP": "Employee Assistance Program",
+      "ENPS": "Employee Net Promoter Score",
+      "ER": "Employee Relations",
+      "PIP": "Performance Improvement Plan",
+      "DEI": "Diversity, Equity, Inclusion",
+      "ERG": "Employee Resource Group",
+      "OKR": "Objectives and Key Results",
+      "360_Feedback": "Multi-rater feedback assessment",
+      "Stay_Interview": "Proactive retention conversation",
+      "Skip_Level": "Meeting with manager's manager",
+      "Psychological_Safety": "Belief that one can speak up without retaliation",
+      "EVP": "Employee Value Proposition"
+    }
+  }
+}

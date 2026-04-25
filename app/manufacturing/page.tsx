@@ -7,9 +7,11 @@ import { AppHeader } from '@/components/sidebar/app-header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { downloadCSV } from '@/lib/exportUtils';\n\nimport { 
-  AIChartContainer, 
-  AIInsightCard, 
+import { downloadCSV } from '@/lib/exportUtils';
+
+import {
+  AIChartContainer,
+  AIInsightCard,
   AIMetricCard,
   AIProgressCard,
   AIRiskAssessmentCard,

@@ -1,0 +1,47 @@
+{
+  "standard_id": "MS ISO 9001:2015/Amd 1:2024",
+  "title": "Quality management systems — Requirements AMENDMENT 1: Climate action changes",
+  "description": "An amendment to the Malaysian Standard MS ISO 9001:2015, which is identical to ISO 9001:2015. This amendment introduces new requirements for organizations to determine if climate change is a relevant issue to their Quality Management System (QMS) and to consider climate-related needs and expectations of interested parties.",
+  "adoption_date": "2024-05-30",
+  "status": "Published",
+  "base_standard": "MS ISO 9001:2015 (identical to ISO 9001:2015)",
+  "amendment": {
+    "number": 1,
+    "title": "Climate action changes",
+    "international_publication_date": "2024-02-23",
+    "national_adoption_date": "2024-05-30",
+    "key_changes": [
+      {
+        "clause": "4.1 (Understanding the organization and its context)",
+        "change": "Add the following sentence at the end of the subclause: 'The organization shall determine whether climate change is a relevant issue.'",
+        "reference": "Clause 4.1 Add the following sentence at the end of the subclause: The organization shall determine whether climate change is a relevant issue.[reference:0]"
+      },
+      {
+        "clause": "4.2 (Understanding the needs and expectations of interested parties)",
+        "change": "Add the following note at the end of the subclause: 'NOTE: Relevant interested parties can have requirements related to climate change.'",
+        "reference": "4.2 Add the following note at the end of the subclause: NOTE Relevant interested parties can have requirements related to climate change.[reference:1]"
+      }
+    ]
+  },
+  "technical_committee": "Technical Committee on Quality Management and Quality Assurance - TC 2 on Quality Systems",
+  "industry_standards_committee": "Industry Standards Committee on Quality Management and Quality Assurance",
+  "ics_code": "03.120.10",
+  "nsc": "NSC 25 - Quality & Organisational Management",
+  "identical_to": "ISO 9001:2015, Quality management systems - Requirements",
+  "url": "https://mysol.jsm.gov.my/customer/view-standard/eyJpdiI6ImNhNzErN1Q2QU9GQ1JaT2cwMEtTV0E9PSIsInZhbHVlIjoiM0ZJaVVVR0ZBUFlvUWhXTTJUd2J5QT09IiwibWFjIjoiZmUxNGFhZDAxYmU5YTRjNTUwZmIwN2YwMzE5YTE1MzJhZWQ4MTkzZmZkYTk2ZjFkODVkOTQyZWVlNzUwNjA2ZiJ9",
+  "preview_url": "https://mysol.jsm.gov.my/preview-file/eyJpdiI6ImxpMFc2TzE3VzcyMkhWaHVjUm5Xa2c9PSIsInZhbHVlIjoiUE1lc2dTMVBIYy82OXc0cWpoNFRQZz09IiwibWFjIjoiMDA0M2NlYmUyNzBmMTMzODgyM2Y5MWI1ZjNlMDU3NWIyNzUxMDcxMTU1MGFkMDY1NzliOTZmZmY3YjEwZjA3YiJ9",
+  "implementation_requirements": {
+    "immediate_effect": true,
+    "transition_period": "No transition period provided; changes must be implemented immediately and considered in all relevant audits.",
+    "impact_assessment": "Organizations must assess whether climate change is relevant to their QMS and, if so, document how it is addressed."
+  },
+  "background_and_justification": {
+    "reason": "To ensure climate change is considered in all management systems, following the ISO London Declaration.",
+    "reference": "This update of ISO9001 is the result of the #ParisAgreement and a #IAF/#ISO Joint Communiqué on the addition of #Climate Change considerations to #Management #System #Standards.[reference:2]"
+  },
+  "access": {
+    "portal": "MySOL (Malaysian Standards Online System)",
+    "price": "Not specified in preview",
+    "availability": "Available for purchase as PDF or hardcopy via MySOL"
+  }
+}

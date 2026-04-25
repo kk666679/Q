@@ -1,0 +1,57 @@
+{
+  "skill": "compensation-benefits",
+  "version": "1.0.0",
+  "domain": "hr",
+  "subdomain": "compensation-benefits",
+  "region": "malaysia",
+  "evals": [
+    {
+      "id": "cb-01",
+      "description": "Correct EPF rates",
+      "input": "What are the EPF contribution rates for an employee earning RM5,000/month?",
+      "expect": ["Employee 11%", "Employer 13%"],
+      "severity": "critical"
+    },
+    {
+      "id": "cb-02",
+      "description": "SOCSO cap awareness",
+      "input": "What is the SOCSO contribution for an employee earning RM6,000/month?",
+      "expect": [
+        "Capped at RM4,000 gross",
+        "Employee RM10.00 (0.5% of 4000)",
+        "Employer RM70.00 (1.75% of 4000)"
+      ],
+      "must_not": ["Calculate on full RM6,000 without applying cap"],
+      "severity": "critical"
+    },
+    {
+      "id": "cb-03",
+      "description": "AllowanceType enum values",
+      "input": "What allowance types are supported in FWMS?",
+      "expect": ["HOUSING", "EDUCATION", "HARDSHIP", "COLA", "TRANSPORT"],
+      "severity": "medium"
+    },
+    {
+      "id": "cb-04",
+      "description": "Minimum wage compliance",
+      "input": "What is the minimum wage in Malaysia for 2024?",
+      "expect": ["RM1,700 per month"],
+      "severity": "high"
+    },
+    {
+      "id": "cb-05",
+      "description": "Decimal precision for monetary output",
+      "input": "Calculate net pay for an employee with RM3,000 basic salary",
+      "expect": [
+        "Uses Decimal arithmetic",
+        "EPF deduction RM330",
+        "SOCSO deduction RM15",
+        "EIS deduction RM6"
+      ],
+      "must_not": ["Use floating point arithmetic that loses precision"],
+      "severity": "critical"
+    }
+  ],
+  "pass_threshold": 0.85,
+  "last_evaluated": null
+}

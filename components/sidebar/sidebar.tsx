@@ -23,6 +23,7 @@ import {
   BarChart3,
   ChevronDown,
   ChevronRight,
+  BookOpen,
 } from 'lucide-react'
 
 import {
@@ -43,6 +44,12 @@ const mainNavSections = [
     title: 'Dashboard',
     items: [
       { title: 'Dashboard', url: '/', icon: LayoutDashboard },
+    ],
+  },
+  {
+    title: 'Standards',
+    items: [
+      { title: 'Malaysian Standards', url: '/standards', icon: BookOpen },
     ],
   },
   {

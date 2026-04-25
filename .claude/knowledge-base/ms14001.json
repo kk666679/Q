@@ -1,0 +1,47 @@
+{
+  "standard_id": "MS ISO 14001:2015/Amd 1:2024",
+  "title": "Environmental management systems – Requirements with guidance for use AMENDMENT 1: Climate action changes",
+  "description": "This Malaysian Standard specifies the requirements for an environmental management system that an organization can use to enhance its environmental performance. Amendment 1 introduces mandatory considerations for climate change within the environmental management system.",
+  "adoption_date": "2024-05-30",
+  "status": "Published",
+  "base_standard": "MS ISO 14001:2015 (identical to ISO 14001:2015)",
+  "amendment": {
+    "number": 1,
+    "title": "Climate action changes",
+    "international_publication_date": "2024-02-23",
+    "national_adoption_date": "2024-05-30",
+    "key_changes": [
+      {
+        "clause": "4.1 (Understanding the organization and its context)",
+        "change": "Add the following sentence at the end of the subclause: 'The organization shall determine whether climate change is a relevant issue.'",
+        "reference": "Clause 4.1 Add the following sentence at the end of the subclause: The organization shall determine whether climate change is a relevant issue."
+      },
+      {
+        "clause": "4.2 (Understanding the needs and expectations of interested parties)",
+        "change": "Add the following note at the end of the subclause: 'NOTE: Relevant interested parties can have requirements related to climate change.'",
+        "reference": "4.2 Add the following note at the end of the subclause: NOTE Relevant interested parties can have requirements related to climate change."
+      }
+    ]
+  },
+  "technical_committee": "Malaysian National Mirror Committee for ISO/TC 207/SC 1 (Environmental Management Systems)",
+  "industry_standards_committee": "Industry Standards Committee on Environmental Management",
+  "ics_code": "13.020.10",
+  "nsc": "NSC 26 - Environmental Management",
+  "identical_to": "ISO 14001:2015, Environmental management systems – Requirements with guidance for use",
+  "url": "https://mysol.jsm.gov.my/customer/view-standard/eyJpdiI6ImZ2V2lYbWtGR0czMnNiZnpBQXhFMHc9PSIsInZhbHVlIjoiQXNTay92eW0yYzhueFBMa0IvNXNQUT09IiwibWFjIjoiMGUxODUwZDU5ZWQ0ZDliNDZmMTM4MDdkZjMwMzY4NTE5NzgyMDJmOGFlMzY4NjA0MzE0OGU1NzQ2NDRlOTIxOSJ9",
+  "preview_url": "https://mysol.jsm.gov.my/preview-file/eyJpdiI6IlhhaXdpUHZjMmFXcVE5bkh5UnR4VUE9PSIsInZhbHVlIjoiTFZjMkRpR2JHT01rUVRPbDV0dXpkZz09IiwibWFjIjoiNTU4NTUxMTNhZTdlODU3YzBmOTVjZTY3ZTAyYzVjNGVmYjI0ZGFmNjQ2MzM0ODc3ZTI4ZGM5MzgzNmM1MjEyZSJ9",
+  "implementation_requirements": {
+    "immediate_effect": true,
+    "transition_period": "Typically a maximum of three years, but may be shorter for limited changes. Full compliance expected by February 2027.",
+    "impact_assessment": "Organizations must assess whether climate change is relevant to their EMS and, if so, document how it is addressed as part of their context and interested parties analysis."
+  },
+  "background_and_justification": {
+    "reason": "To ensure climate change is considered in all management systems, following the ISO London Declaration (2021) and the IAF/ISO Joint Communiqué on adding climate change considerations to management system standards.",
+    "reference": "This update of ISO 14001 is the result of the Paris Agreement and a formal decision by the ISO Technical Committee to clarify existing requirements related to climate change. The amendment is effective immediately and affects all organizations certified to ISO 14001:2015."
+  },
+  "access": {
+    "portal": "MySOL (Malaysian Standards Online System)",
+    "price": "Not specified in preview",
+    "availability": "Available for purchase as PDF or hardcopy via MySOL"
+  }
+}

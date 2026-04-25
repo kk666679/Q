@@ -1,0 +1,80 @@
+{
+  "as_of": "March 2026",
+  "source": "Department of Standards Malaysia (JSM) via MySOL Portal",
+  "standards": [
+    {
+      "standard_id": "MS ISO/IEC 27001:2022",
+      "title": "Information security, cybersecurity and privacy protection — Information security management systems — Requirements",
+      "description": "Specifies the requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS) within the context of the organization. This standard is identical to ISO/IEC 27001:2022.",
+      "adoption_date": "2023-04-21",
+      "status": "Published",
+      "base_standard": "ISO/IEC 27001:2022",
+      "ics_code": "35.030; 03.100.70",
+      "nsc": "Not specified",
+      "technical_committee": "Not specified",
+      "industry_standards_committee": "Not specified",
+      "identical_to": "ISO/IEC 27001:2022, IDT",
+      "url": "https://mysol.jsm.gov.my/customer/view-standard/eyJpdiI6ImdUTGpBcGRXRS9XUlBJYmVIY2pzY2c9PSIsInZhbHVlIjoib25ybkgwVWVmR3hMYms5OExzSmVnUT09IiwibWFjIjoiZDY2YjI3MTBiNzQyZTRiZDYxYjJiZTQzYzNmODQxM2EyM2Y3NWNiMjRiNDEyOWZlNDUzMGYzMzNmNzM1NGUyZiJ9",
+      "preview_url": "Not available",
+      "implementation_requirements": {
+        "immediate_effect": true,
+        "transition_period": "Three years from October 2022; all certifications to ISO/IEC 27001:2013 must transition by 31 October 2025.",
+        "impact_assessment": "Organizations must update their ISMS to align with the new requirements and controls of the 2022 revision."
+      },
+      "background_and_justification": {
+        "reason": "To align with the latest international revision of the information security management system standard, reflecting current best practices in cybersecurity and privacy protection.",
+        "reference": "Published in October 2022, superseding ISO/IEC 27001:2013."
+      },
+      "access": {
+        "portal": "MySOL (Malaysian Standards Online System)",
+        "price": "Not specified",
+        "availability": "Available for purchase as PDF or hardcopy via MySOL"
+      }
+    },
+    {
+      "standard_id": "MS ISO/IEC 27001:2022/Amd 1:2024",
+      "title": "Information security, cybersecurity and privacy protection — Information security management systems — Requirements AMENDMENT 1: Climate action changes",
+      "description": "An amendment to MS ISO/IEC 27001:2022, introducing requirements for organizations to consider climate change as a relevant factor when determining the context of the organization and the needs and expectations of interested parties.",
+      "adoption_date": "2024-05-30",
+      "status": "Published",
+      "base_standard": "MS ISO/IEC 27001:2022",
+      "amendment": {
+        "number": 1,
+        "title": "Climate action changes",
+        "international_publication_date": "2024-02-23",
+        "national_adoption_date": "2024-05-30",
+        "key_changes": [
+          {
+            "clause": "4.1 (Understanding the organization and its context)",
+            "change": "Add the following sentence at the end of the subclause: 'The organization shall determine whether climate change is a relevant issue.'"
+          },
+          {
+            "clause": "4.2 (Understanding the needs and expectations of interested parties)",
+            "change": "Add the following note at the end of the subclause: 'NOTE: Relevant interested parties can have requirements related to climate change.'"
+          }
+        ]
+      },
+      "ics_code": "35.030; 03.100.70",
+      "nsc": "Not specified",
+      "technical_committee": "Not specified",
+      "industry_standards_committee": "Not specified",
+      "identical_to": "ISO/IEC 27001:2022/Amd 1:2024, IDT",
+      "url": "https://mysol.jsm.gov.my/customer/view-standard/eyJpdiI6ImdUTGpBcGRXRS9XUlBJYmVIY2pzY2c9PSIsInZhbHVlIjoib25ybkgwVWVmR3hMYms5OExzSmVnUT09IiwibWFjIjoiZDY2YjI3MTBiNzQyZTRiZDYxYjJiZTQzYzNmODQxM2EyM2Y3NWNiMjRiNDEyOWZlNDUzMGYzMzNmNzM1NGUyZiJ9",
+      "preview_url": "Not available",
+      "implementation_requirements": {
+        "immediate_effect": true,
+        "transition_period": "No transition period provided; changes must be implemented immediately.",
+        "impact_assessment": "Organizations must assess whether climate change is relevant to their ISMS and, if so, document how it is addressed."
+      },
+      "background_and_justification": {
+        "reason": "To ensure climate change is considered in all management systems, following the ISO London Declaration (2021) and the IAF/ISO Joint Communiqué on adding climate change considerations to management system standards.",
+        "reference": "This amendment is effective immediately and affects all organizations certified to ISO/IEC 27001:2022."
+      },
+      "access": {
+        "portal": "MySOL (Malaysian Standards Online System)",
+        "price": "Not specified",
+        "availability": "Available for purchase as PDF or hardcopy via MySOL"
+      }
+    }
+  ]
+}

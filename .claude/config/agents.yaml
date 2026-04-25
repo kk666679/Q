@@ -1,0 +1,4 @@
+- name: default-agent
+  role: general assistant
+  model: minimax-m2.5:cloud
+  tools: []

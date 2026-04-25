@@ -1,0 +1,583 @@
+{
+  "iso9001_clauses": [
+    {
+      "clause": "1",
+      "title": "Scope",
+      "summary": "This International Standard specifies requirements for a quality management system when an organization needs to demonstrate its ability to consistently provide products and services that meet customer and applicable statutory and regulatory requirements, and aims to enhance customer satisfaction through the effective application of the system, including processes for improvement and the assurance of conformity to customer and applicable statutory and regulatory requirements.",
+      "requirements": [
+        "Specifies requirements for a quality management system",
+        "Applicable to any organization regardless of size, type, and products/services",
+        "Demonstrate ability to consistently provide conforming products/services",
+        "Aim to enhance customer satisfaction",
+        "Address risks and opportunities associated with organizational context"
+      ]
+    },
+    {
+      "clause": "2",
+      "title": "Normative references",
+      "summary": "There are no normative references in this document.",
+      "requirements": []
+    },
+    {
+      "clause": "3",
+      "title": "Terms and definitions",
+      "summary": "For the purposes of this document, the terms and definitions given in ISO 9000:2015 apply. Key terms include: quality, quality management system, top management, effectiveness, policy, objective, risk, competence, documented information, process, performance, outsourcing, monitoring, measurement, audit, conformity, nonconformity, corrective action, continual improvement.",
+      "requirements": [
+        "Refer to ISO 9000 for complete list of terms and definitions"
+      ]
+    },
+    {
+      "clause": "4",
+      "title": "Context of the organization",
+      "summary": "The organization must determine external and internal issues that are relevant to its purpose and strategic direction and affect its ability to achieve the intended results of the QMS. It must identify interested parties, their needs and expectations, define the scope of the QMS, and establish, implement, maintain, and continually improve the QMS including its processes.",
+      "requirements": [
+        "Determine external and internal issues relevant to QMS",
+        "Explicitly consider climate change as a relevant external issue (integrated from 2024 amendment)",
+        "Identify interested parties and their requirements",
+        "Define the scope of the QMS considering issues and interested parties",
+        "Establish, implement, maintain, and continually improve QMS",
+        "Determine processes needed for the QMS and their interactions",
+        "Define criteria and methods for process operation and control",
+        "Ensure availability of resources and information",
+        "Monitor, measure, and analyze processes",
+        "Implement actions to achieve planned results and continual improvement"
+      ]
+    },
+    {
+      "clause": "4.1",
+      "title": "Understanding the organization and its context",
+      "summary": "The organization shall determine external and internal issues that are relevant to its purpose and its strategic direction and that affect its ability to achieve the intended result(s) of its quality management system. Organizations must explicitly consider whether climate change is a relevant issue.",
+      "requirements": [
+        "Determine external issues (legal, technological, competitive, market, cultural, social, economic, environmental)",
+        "Determine internal issues (values, culture, knowledge, performance)",
+        "Explicitly determine whether climate change is a relevant issue",
+        "Monitor and review information about these issues",
+        "Consider strategic direction when analyzing context"
+      ]
+    },
+    {
+      "clause": "4.2",
+      "title": "Understanding the needs and expectations of interested parties",
+      "summary": "The organization shall determine the interested parties that are relevant to the quality management system, and the requirements of these interested parties. Climate change considerations from interested parties must be considered.",
+      "requirements": [
+        "Identify interested parties relevant to QMS",
+        "Determine their needs and expectations",
+        "Consider whether interested parties have climate change-related requirements",
+        "Monitor and review information about interested parties and their requirements"
+      ]
+    },
+    {
+      "clause": "4.3",
+      "title": "Determining the scope of the quality management system",
+      "summary": "The organization shall determine the boundaries and applicability of the quality management system to establish its scope. The scope shall be documented and consider external/internal issues, interested party requirements, and products/services.",
+      "requirements": [
+        "Consider issues from 4.1 and requirements from 4.2",
+        "Consider products and services",
+        "Define boundaries and applicability",
+        "Document the scope and make it available",
+        "Include the types of products and services covered",
+        "Provide justification for any requirement not applicable"
+      ]
+    },
+    {
+      "clause": "4.4",
+      "title": "Quality management system and its processes",
+      "summary": "The organization shall establish, implement, maintain, and continually improve a quality management system, including the processes needed and their interactions, in accordance with the requirements of this document.",
+      "requirements": [
+        "Determine processes needed and their inputs/outputs",
+        "Determine sequence and interaction of processes",
+        "Determine criteria and methods for effective operation and control",
+        "Determine resources needed",
+        "Assign responsibilities and authorities",
+        "Address risks and opportunities",
+        "Evaluate processes and implement changes",
+        "Improve processes and the QMS",
+        "Maintain documented information to support process operation"
+      ]
+    },
+    {
+      "clause": "5",
+      "title": "Leadership",
+      "summary": "Top management must demonstrate leadership and commitment, establish a quality policy, ensure roles, responsibilities, and authorities are assigned and communicated, and promote a quality culture and ethical behaviour throughout the organization.",
+      "requirements": [
+        "Demonstrate leadership and commitment",
+        "Establish, implement, and maintain quality policy",
+        "Promote quality culture and ethical behaviour",
+        "Assign and communicate responsibilities and authorities"
+      ]
+    },
+    {
+      "clause": "5.1",
+      "title": "Leadership and commitment",
+      "summary": "Top management shall demonstrate leadership and commitment by taking accountability for QMS effectiveness, ensuring policy and objectives are established, integrating QMS into business processes, promoting process approach and risk-based thinking, ensuring resources are available, communicating importance, and promoting quality culture and ethical behaviour.",
+      "requirements": [
+        "Take accountability for QMS effectiveness",
+        "Ensure quality policy and objectives are established and compatible with strategic direction",
+        "Integrate QMS requirements into business processes",
+        "Promote use of process approach and risk-based thinking",
+        "Ensure resources are available",
+        "Communicate importance of effective quality management",
+        "Ensure QMS achieves intended results",
+        "Engage, direct, and support persons",
+        "Promote improvement",
+        "Support other management roles",
+        "Promote quality culture and ethical behaviour throughout organization"
+      ]
+    },
+    {
+      "clause": "5.2",
+      "title": "Quality policy",
+      "summary": "Top management shall establish, implement, and maintain a quality policy that is appropriate to the purpose and context of the organization, supports its strategic direction, provides a framework for setting quality objectives, includes commitment to satisfy applicable requirements, and includes commitment to continual improvement. The policy must be documented, communicated, and available to interested parties.",
+      "requirements": [
+        "Establish quality policy appropriate to purpose and context",
+        "Support strategic direction",
+        "Provide framework for setting quality objectives",
+        "Include commitment to satisfy applicable requirements",
+        "Include commitment to continual improvement",
+        "Reflect context of the organization",
+        "Be maintained as documented information",
+        "Be communicated, understood, and applied",
+        "Be available to relevant interested parties"
+      ]
+    },
+    {
+      "clause": "5.3",
+      "title": "Organizational roles, responsibilities and authorities",
+      "summary": "Top management shall ensure that the responsibilities and authorities for relevant roles are assigned, communicated, and understood within the organization. They shall assign responsibility and authority for ensuring QMS conformity and reporting on QMS performance.",
+      "requirements": [
+        "Assign responsibilities and authorities for relevant roles",
+        "Communicate responsibilities and authorities",
+        "Ensure they are understood",
+        "Assign specific responsibility for QMS conformity to requirements",
+        "Assign specific responsibility for reporting on QMS performance",
+        "Ensure integration with quality culture expectations"
+      ]
+    },
+    {
+      "clause": "6",
+      "title": "Planning",
+      "summary": "The organization shall take actions to address risks and opportunities, with clearer separation between risk management and opportunity pursuit. It must establish quality objectives and plan changes to the QMS with expanded requirements for monitoring and evaluating change effectiveness.",
+      "requirements": [
+        "Address risks and opportunities with separate consideration",
+        "Establish quality objectives",
+        "Plan changes with enhanced monitoring requirements"
+      ]
+    },
+    {
+      "clause": "6.1",
+      "title": "Actions to address risks and opportunities",
+      "summary": "When planning, the organization shall consider issues from 4.1 and requirements from 4.2, and determine risks and opportunities that need to be addressed. The requirements for risks and opportunities are now clearly separated into subclauses.",
+      "requirements": [
+        "Establish processes to determine risks and opportunities",
+        "Consider organizational context and interested party requirements",
+        "Separately identify risks that could affect QMS outcomes",
+        "Separately identify opportunities for enhancement and improvement"
+      ]
+    },
+    {
+      "clause": "6.1.1",
+      "title": "Determination of risks and opportunities",
+      "summary": "The organization shall determine the risks and opportunities that need to be addressed to give assurance that the QMS can achieve its intended result(s), enhance desirable effects, prevent or reduce undesired effects, and achieve improvement.",
+      "requirements": [
+        "Determine risks affecting QMS ability to achieve intended results",
+        "Determine opportunities to enhance desirable effects",
+        "Consider risks that could prevent or reduce undesired effects",
+        "Identify opportunities for improvement",
+        "Document risks and opportunities as appropriate"
+      ]
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Planning actions to address risks",
+      "summary": "The organization shall plan actions to address risks. These actions shall be proportionate to the potential impact on conformity of products and services and customer satisfaction.",
+      "requirements": [
+        "Plan actions to address identified risks",
+        "Ensure actions are proportionate to potential impact",
+        "Integrate actions into QMS processes",
+        "Evaluate effectiveness of actions"
+      ]
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Planning actions to address opportunities",
+      "summary": "The organization shall plan actions to address opportunities. Opportunities can lead to the adoption of new practices, launching new products, opening new markets, addressing new customers, building partnerships, using new technology, and other desirable possibilities to address organizational needs.",
+      "requirements": [
+        "Plan actions to address identified opportunities",
+        "Consider adoption of new practices and technologies",
+        "Explore new markets and customer segments",
+        "Build partnerships and collaborations",
+        "Integrate opportunity actions into QMS processes",
+        "Evaluate effectiveness of actions"
+      ]
+    },
+    {
+      "clause": "6.2",
+      "title": "Quality objectives and planning to achieve them",
+      "summary": "The organization shall establish quality objectives at relevant functions, levels, and processes. Objectives must be consistent with quality policy, measurable, monitored, communicated, and updated. Plans for achieving them shall determine what, resources, responsible, when, and how results will be evaluated.",
+      "requirements": [
+        "Establish quality objectives for relevant functions, levels, and processes",
+        "Ensure objectives are consistent with quality policy",
+        "Make objectives measurable",
+        "Take into account applicable requirements",
+        "Be relevant to conformity and customer satisfaction",
+        "Monitor objectives",
+        "Communicate objectives",
+        "Update objectives as appropriate",
+        "Maintain documented information on objectives",
+        "Determine what will be done",
+        "Determine resources required",
+        "Assign responsibility",
+        "Set completion time",
+        "Define how results will be evaluated"
+      ]
+    },
+    {
+      "clause": "6.3",
+      "title": "Planning of changes",
+      "summary": "When changes to the QMS are needed, they shall be carried out in a planned manner. The organization shall consider the purpose of changes and potential consequences, integrity of QMS, availability of resources, allocation of responsibilities, and monitor and evaluate the effectiveness of changes.",
+      "requirements": [
+        "Carry out changes in a planned manner",
+        "Consider purpose of changes and potential consequences",
+        "Maintain integrity of QMS",
+        "Ensure resources are available",
+        "Allocate or reallocate responsibilities and authorities",
+        "Monitor and evaluate effectiveness of changes",
+        "Communicate changes to relevant parties",
+        "Review results of changes"
+      ]
+    },
+    {
+      "clause": "7",
+      "title": "Support",
+      "summary": "The organization must determine and provide resources needed for the QMS, ensure people are competent, establish awareness including quality culture, determine communication including digital channels, and control documented information.",
+      "requirements": [
+        "Provide resources",
+        "Ensure competence",
+        "Establish awareness including quality culture",
+        "Determine communication including digital channels",
+        "Control documented information"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "title": "Resources",
+      "summary": "The organization shall determine and provide the resources needed for the QMS, including people, infrastructure, environment for operation, monitoring and measuring resources, and organizational knowledge. The standard recognizes digital forms of work and information communication technology as part of infrastructure.",
+      "requirements": [
+        "Determine and provide resources for QMS",
+        "Consider capabilities and constraints of existing internal resources",
+        "Consider what to obtain from external providers",
+        "Provide infrastructure (buildings, equipment, utilities, IT, digital systems)",
+        "Recognize digital forms of work (on-site, remote, hybrid)",
+        "Provide environment for operation (social, psychological, physical)",
+        "Ensure monitoring and measuring resources are suitable and calibrated/verified",
+        "Maintain organizational knowledge and make it available as necessary",
+        "Ensure knowledge is accessible in digital formats where applicable"
+      ]
+    },
+    {
+      "clause": "7.1.5",
+      "title": "Monitoring and measuring resources",
+      "summary": "The organization shall ensure monitoring and measurement results are valid by providing resources suitable for the specific type of monitoring and measurement activities, and maintaining them to ensure continued fitness for purpose.",
+      "requirements": [
+        "Determine resources needed for valid monitoring and measurement",
+        "Ensure resources are suitable for specific activities",
+        "Maintain resources to ensure continued fitness",
+        "Retain documented information as evidence of fitness for purpose",
+        "Calibrate/verify measuring instruments at specified intervals or before use",
+        "Identify calibration status",
+        "Safeguard from adjustments, damage, or deterioration",
+        "Protect digital monitoring and measurement data integrity"
+      ]
+    },
+    {
+      "clause": "7.2",
+      "title": "Competence",
+      "summary": "The organization shall determine the necessary competence of persons doing work under its control that affects the performance and effectiveness of the QMS, ensure these persons are competent on the basis of appropriate education, training, or experience, take actions to acquire necessary competence, evaluate effectiveness of actions, and retain documented information.",
+      "requirements": [
+        "Determine necessary competence of persons affecting QMS performance",
+        "Ensure persons are competent based on education, training, or experience",
+        "Take actions to acquire necessary competence",
+        "Evaluate effectiveness of actions taken",
+        "Retain documented information as evidence of competence"
+      ]
+    },
+    {
+      "clause": "7.3",
+      "title": "Awareness",
+      "summary": "The organization shall ensure that persons doing work under its control are aware of the quality policy, relevant quality objectives, their contribution to QMS effectiveness, implications of not conforming, and the importance of quality culture and ethical behaviour.",
+      "requirements": [
+        "Ensure awareness of quality policy",
+        "Ensure awareness of relevant quality objectives",
+        "Ensure awareness of their contribution to QMS effectiveness",
+        "Ensure awareness of implications of not conforming",
+        "Ensure awareness of quality culture and ethical behaviour expectations"
+      ]
+    },
+    {
+      "clause": "7.4",
+      "title": "Communication",
+      "summary": "The organization shall determine the internal and external communications relevant to the QMS, including what, when, with whom, how, and who communicates. Communication channels include digital platforms and social media.",
+      "requirements": [
+        "Determine what to communicate",
+        "Determine when to communicate",
+        "Determine with whom to communicate",
+        "Determine how to communicate including digital channels and social media",
+        "Determine who communicates"
+      ]
+    },
+    {
+      "clause": "7.5",
+      "title": "Documented information",
+      "summary": "The QMS shall include documented information required by ISO 9001 and determined by the organization as necessary for effectiveness. Creation, update, and control of documented information must be managed to ensure availability, suitability, and protection, including digital documentation.",
+      "requirements": [
+        "Include documented information required by ISO 9001",
+        "Include documented information determined necessary for QMS effectiveness",
+        "Ensure appropriate identification and description (title, date, author, reference)",
+        "Ensure appropriate format and media including digital formats",
+        "Ensure review and approval for suitability and adequacy",
+        "Control documented information to ensure availability where and when needed",
+        "Ensure adequate protection (confidentiality, improper use, integrity, loss)",
+        "Control distribution, access, retrieval, use",
+        "Control storage and preservation including digital systems",
+        "Control changes and version control",
+        "Control retention and disposition",
+        "Manage documented information of external origin",
+        "Prevent unintended use of obsolete documented information"
+      ]
+    },
+    {
+      "clause": "8",
+      "title": "Operation",
+      "summary": "The organization must plan, implement, and control processes needed to meet product and service requirements, including operational planning and control, requirements determination, design and development, control of externally provided processes, production and service provision, release, and control of nonconforming outputs.",
+      "requirements": [
+        "Plan, implement, and control operational processes",
+        "Determine requirements for products and services",
+        "Establish design and development processes",
+        "Control externally provided processes",
+        "Control production and service provision",
+        "Control release of products and services",
+        "Control nonconforming outputs"
+      ]
+    },
+    {
+      "clause": "8.1",
+      "title": "Operational planning and control",
+      "summary": "The organization shall plan, implement, and control processes to meet requirements, establish criteria, control processes per criteria, maintain documented information, control planned changes, review consequences of unintended changes, and ensure outsourced processes are controlled.",
+      "requirements": [
+        "Plan, implement, and control processes to meet product/service requirements",
+        "Establish criteria for processes",
+        "Control processes in accordance with criteria",
+        "Maintain documented information to have confidence processes were carried out as planned",
+        "Control planned changes and review consequences of unintended changes",
+        "Ensure outsourced processes are controlled"
+      ]
+    },
+    {
+      "clause": "8.2",
+      "title": "Requirements for products and services",
+      "summary": "The organization shall establish processes for communication with customers including digital channels, determine requirements for products and services, review them before commitment, and manage changes to requirements.",
+      "requirements": [
+        "Establish process for customer communication (information, enquiries, contracts, feedback, property, contingency)",
+        "Include digital communication channels (web, social media, FAQs)",
+        "Determine requirements for products/services including statutory/regulatory",
+        "Review requirements before commitment to supply",
+        "Resolve contract/order differences",
+        "Confirm customer requirements before acceptance",
+        "Maintain documented information on review results",
+        "Amend relevant documents when requirements change",
+        "Ensure relevant persons are aware of changed requirements"
+      ]
+    },
+    {
+      "clause": "8.3",
+      "title": "Design and development of products and services",
+      "summary": "The organization shall establish, implement, and maintain a design and development process appropriate to ensure subsequent provision of products and services, including stages, controls, inputs, outputs, and change management.",
+      "requirements": [
+        "Establish, implement, and maintain design and development process",
+        "Determine stages and controls (review, verification, validation)",
+        "Determine responsibilities and authorities",
+        "Determine resource needs",
+        "Manage interfaces between persons involved",
+        "Ensure customer/user involvement as necessary",
+        "Determine design and development inputs",
+        "Resolve conflicting inputs",
+        "Apply controls to ensure outputs meet input requirements",
+        "Perform reviews to evaluate ability to meet requirements",
+        "Perform verification to ensure outputs meet inputs",
+        "Perform validation to ensure products/services meet requirements",
+        "Retain documented information",
+        "Identify and control changes",
+        "Review, control, and document changes"
+      ]
+    },
+    {
+      "clause": "8.4",
+      "title": "Control of externally provided processes, products and services",
+      "summary": "The organization shall ensure externally provided processes, products, and services conform to requirements, determine controls to apply, evaluate and select external providers, define requirements, and monitor performance.",
+      "requirements": [
+        "Ensure externally provided processes, products, services conform to requirements",
+        "Determine controls applicable when products/services are intended for incorporation",
+        "Determine controls when provided directly to customer by external providers",
+        "Determine controls when processes are outsourced",
+        "Define criteria for evaluation, selection, monitoring, and re-evaluation",
+        "Retain documented information",
+        "Communicate requirements to external providers",
+        "Monitor performance of external providers"
+      ]
+    },
+    {
+      "clause": "8.5",
+      "title": "Production and service provision",
+      "summary": "The organization shall implement production and service provision under controlled conditions, including documented information, monitoring and measuring, infrastructure, competent persons, validation, prevention of human error, and control of changes. Enhanced requirements for change management and business continuity.",
+      "requirements": [
+        "Implement production and service provision under controlled conditions",
+        "Make available documented information defining characteristics and results",
+        "Make available documented information for monitoring and measurement",
+        "Use suitable monitoring and measuring resources",
+        "Implement monitoring and measurement activities",
+        "Use suitable infrastructure and environment including digital systems",
+        "Ensure competent persons",
+        "Validate and revalidate ability to achieve planned results",
+        "Implement actions to prevent human error",
+        "Control release, delivery, and post-delivery activities",
+        "Control and review changes with enhanced monitoring",
+        "Preserve outputs during production and service provision",
+        "Meet post-delivery activities as determined",
+        "Identify and control changes essential for conformity",
+        "Manage risks related to business continuity during disruptions"
+      ]
+    },
+    {
+      "clause": "8.6",
+      "title": "Release of products and services",
+      "summary": "The organization shall implement planned arrangements at appropriate stages to verify product and service requirements have been met. Release shall not proceed until arrangements are completed, unless approved by relevant authority and, if applicable, customer.",
+      "requirements": [
+        "Implement planned arrangements to verify requirements met",
+        "Do not release until arrangements satisfactorily completed",
+        "Unless approved by relevant authority or customer",
+        "Retain documented information on release"
+      ]
+    },
+    {
+      "clause": "8.7",
+      "title": "Control of nonconforming outputs",
+      "summary": "The organization shall ensure outputs that do not conform to requirements are identified and controlled to prevent unintended use or delivery. Take appropriate action based on nature of nonconformity. Retain documented information.",
+      "requirements": [
+        "Identify and control nonconforming outputs",
+        "Prevent unintended use or delivery",
+        "Take action to correct, segregate, contain, return, or suspend provision",
+        "Inform customer if nonconformity detected after delivery",
+        "Obtain authorization for acceptance under concession",
+        "Retain documented information describing nonconformity, actions taken, concessions, and authority deciding action"
+      ]
+    },
+    {
+      "clause": "9",
+      "title": "Performance evaluation",
+      "summary": "The organization must monitor, measure, analyze, and evaluate QMS performance, evaluate compliance, conduct internal audits, and perform management reviews with consideration of climate change and other contextual factors.",
+      "requirements": [
+        "Monitor, measure, analyze, and evaluate QMS performance",
+        "Evaluate compliance with obligations",
+        "Conduct internal audits",
+        "Perform management reviews including climate change considerations"
+      ]
+    },
+    {
+      "clause": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation",
+      "summary": "The organization shall determine what needs to be monitored and measured, methods, criteria, and when to analyze and evaluate results. It shall evaluate QMS performance and effectiveness, monitor customer satisfaction, and retain documented information.",
+      "requirements": [
+        "Determine what needs to be monitored and measured",
+        "Determine methods for monitoring, measurement, analysis, and evaluation",
+        "Determine criteria against which to evaluate performance",
+        "Determine when monitoring and measuring shall be performed",
+        "Determine when results shall be analyzed and evaluated",
+        "Evaluate QMS performance and effectiveness",
+        "Monitor customer satisfaction (formerly 'customer perception')",
+        "Retain documented information as evidence"
+      ]
+    },
+    {
+      "clause": "9.2",
+      "title": "Internal audit",
+      "summary": "The organization shall conduct internal audits at planned intervals to provide information on whether the QMS conforms to own requirements and ISO 9001, and is effectively implemented and maintained. It shall establish audit programme, define audit criteria and scope, select auditors, and report results.",
+      "requirements": [
+        "Conduct internal audits at planned intervals",
+        "Determine if QMS conforms to organization's own requirements and ISO 9001",
+        "Determine if QMS is effectively implemented and maintained",
+        "Establish, implement, and maintain audit programme",
+        "Define audit frequency, methods, responsibilities, planning requirements, reporting",
+        "Define audit criteria and scope for each audit",
+        "Select auditors and conduct audits to ensure objectivity and impartiality",
+        "Ensure auditors do not audit their own work",
+        "Report results to relevant management",
+        "Take appropriate correction and corrective actions without undue delay",
+        "Retain documented information"
+      ]
+    },
+    {
+      "clause": "9.3",
+      "title": "Management review",
+      "summary": "Top management shall review the QMS at planned intervals to ensure continuing suitability, adequacy, effectiveness, and alignment with strategic direction. Review shall consider status of previous actions, changes in context including climate change, performance information, resource adequacy, risk and opportunity actions, and opportunities for improvement. Outputs shall include decisions on improvement opportunities, QMS changes, and resource needs.",
+      "requirements": [
+        "Review QMS at planned intervals",
+        "Ensure continuing suitability, adequacy, effectiveness",
+        "Ensure alignment with strategic direction",
+        "Consider status of actions from previous reviews",
+        "Consider changes in external and internal issues including climate change",
+        "Consider interested party requirements",
+        "Consider QMS performance (satisfaction, objectives, process performance, nonconformities, audit results, supplier performance)",
+        "Consider adequacy of resources",
+        "Consider effectiveness of actions to address risks and opportunities",
+        "Consider opportunities for improvement",
+        "Retain documented information",
+        "Outputs include decisions on improvement opportunities",
+        "Outputs include any need for changes to QMS",
+        "Outputs include resource needs"
+      ]
+    },
+    {
+      "clause": "10",
+      "title": "Improvement",
+      "summary": "The organization must determine and select opportunities for improvement, react to nonconformities, take corrective action, and continually improve the suitability, adequacy, and effectiveness of the QMS.",
+      "requirements": [
+        "Determine and select opportunities for improvement",
+        "React to nonconformities and take corrective action",
+        "Continually improve QMS suitability, adequacy, and effectiveness"
+      ]
+    },
+    {
+      "clause": "10.1",
+      "title": "Continual improvement",
+      "summary": "The organization shall continually improve the suitability, adequacy, and effectiveness of the QMS. The organization shall consider results of analysis and evaluation, outputs from management review, and leverage emerging technologies, digitalization, and reliable data as enablers for effective improvement of processes and activities.",
+      "requirements": [
+        "Continually improve suitability, adequacy, and effectiveness of QMS",
+        "Consider results of analysis and evaluation",
+        "Consider outputs from management review",
+        "Leverage emerging technologies and digitalization for improvement",
+        "Use reliable data for evidence-based improvement",
+        "Improve processes, products, and services",
+        "Address future needs and expectations",
+        "Enhance customer satisfaction"
+      ]
+    },
+    {
+      "clause": "10.2",
+      "title": "Nonconformity and corrective action",
+      "summary": "When a nonconformity occurs, the organization shall react, take action to control and correct it, deal with consequences, evaluate need for action to eliminate causes, implement any action needed, review effectiveness of corrective action, update risks and opportunities, and make changes to QMS if necessary. Retain documented information.",
+      "requirements": [
+        "React to nonconformity, take action to control and correct it",
+        "Deal with consequences",
+        "Evaluate need for action to eliminate causes",
+        "Review and analyze nonconformity",
+        "Determine causes of nonconformity",
+        "Determine if similar nonconformities exist or could occur",
+        "Implement any action needed",
+        "Review effectiveness of corrective action",
+        "Update risks and opportunities during planning if necessary",
+        "Make changes to QMS if necessary",
+        "Retain documented information"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "claude-hrms-agents",
+  "version": "4.0.1",
+  "description": "Claude AI agents for PapanPemuka HRMS",
+  "scripts": {
+    "agents": "tsx agents/scripts/index.ts",
+    "dev": "tsx watch agents/scripts/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "@tanstack/react-query": "^5.100.3",
+    "csstype": "^3.2.3",
+    "prisma": "^7.8.0",
+    "undici-types": "^8.1.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

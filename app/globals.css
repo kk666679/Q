@@ -37,9 +37,11 @@
   /* Border radius */
   --radius: 0.5rem;
 
-  /* Typography – overridden by next/font classes */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 }
 
 /* Dark mode overrides */
@@ -89,7 +91,6 @@
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
     height: 100%;                       /* full viewport height */
-    font-family: var(--font-sans);
   }
 
   body {
@@ -97,6 +98,7 @@
     margin: 0;
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
     line-height: 1.5;
     -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;                  /* prevent horizontal scroll */

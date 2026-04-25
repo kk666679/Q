@@ -4,12 +4,8 @@ __v0_devtools.tsx
 __v0_jsx-dev-runtime.ts
 
 # Common ignores
-node_modules/
+node_modules
 .next/
 .env*.local
-.DDStore
-*/sdk/node_modules
+.DS_Store
 .vercel
-.env
-build.log
-tsconfig.tsbuildinfo

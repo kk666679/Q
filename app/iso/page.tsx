@@ -3,11 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Shield, FileCheck, AlertTriangle, TrendingUp, ArrowRight, CheckCircle, ClipboardList, Target, Activity, GitBranch, Lightbulb } from 'lucide-react';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/sidebar/app-sidebar';
+import { AppHeader } from '@/components/sidebar/app-header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChartContainer } from '@/components/ui/chart';
+import { ComplianceDashboard } from '@/components/iso/compliance-dashboard';
+import { AuditChecklist } from '@/components/iso/audit-checklist';
+import { RiskMatrix } from '@/components/audit-forms/risk-matrix';
 import {
   LineChart,
   Line,
@@ -119,17 +125,21 @@ export default function ISOPage() {
   ];
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">ISO Compliance Copilot</h1>
-          <p className="text-muted-foreground mt-2">AI-powered compliance management for ISO standards</p>
-        </div>
-        <Button>
-          <FileCheck className="mr-2 size-4" />
-          New Assessment
-        </Button>
-      </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <AppHeader 
+          title="ISO Compliance Copilot" 
+          description="AI-powered compliance management for ISO standards" 
+        />
+        <main className="flex-1 overflow-auto p-6">
+          <div className="mx-auto max-w-7xl space-y-6">
+            <div className="flex items-center justify-end">
+              <Button>
+                <FileCheck className="mr-2 size-4" />
+                New Assessment
+              </Button>
+            </div>
 
       {/* Quick Access Tools */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -398,7 +408,10 @@ export default function ISOPage() {
           <RiskMatrix />
         </TabsContent>
       </Tabs>
-    </div>
+          </div>
+        </main>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
 

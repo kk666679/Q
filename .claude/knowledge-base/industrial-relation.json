@@ -1,0 +1,646 @@
+{
+  "industrial_relations_knowledge_base": {
+    "metadata": {
+      "version": "2.0.0",
+      "last_updated": "2026-07-21",
+      "region": "malaysia",
+      "domain": "industrial_relations",
+      "maintainer": "ir-team",
+      "purpose": "Canonical reference for Malaysian industrial relations, employment law compliance, disciplinary procedures, domestic inquiries, trade union management, and dispute resolution"
+    },
+    "legal_framework": {
+      "employment_act_1955": {
+        "scope": {
+          "applicable_to": [
+            "employees earning ≤ RM 2,000 monthly",
+            "manual laborers regardless of salary",
+            "operators of machinery",
+            "supervisors of manual workers",
+            "domestic servants"
+          ],
+          "excluded": [
+            "managerial executives earning > RM 5,000",
+            "seafarers",
+            "domestic servants (partial exclusion)"
+          ]
+        },
+        "key_provisions": {
+          "s12_termination_benefits": {
+            "title": "Termination and Lay-off Benefits",
+            "entitlement": "10-20 days per year of service based on length",
+            "calculation": "Last drawn wage × years of service × daily rate factor",
+            "daily_rate_formula": "Monthly wage ÷ 26"
+          },
+          "s14_dismissal": {
+            "title": "Dismissal Without Notice",
+            "grounds": [
+              "misconduct",
+              "insubordination",
+              "negligence",
+              "breach of trust",
+              "absenteeism",
+              "criminal offense"
+            ],
+            "procedure": "domestic_inquiry_required",
+            "notice": "immediate_termination_possible"
+          },
+          "s15_constructive_dismissal": {
+            "title": "Constructive Dismissal",
+            "definition": "Employee resigns due to employer's breach of contract",
+            "examples": [
+              "unilateral salary reduction",
+              "demotion without cause",
+              "hostile work environment",
+              "fundamental change of duties"
+            ],
+            "employee_burden": "must prove fundamental breach"
+          },
+          "s60k_sexual_harassment": {
+            "title": "Sexual Harassment",
+            "employer_duty": "investigate and take disciplinary action",
+            "penalty": "fine up to RM 10,000 or imprisonment"
+          }
+        }
+      },
+      "industrial_relations_act_1967": {
+        "part_ix_unfair_dismissal": {
+          "section_20": {
+            "title": "Representation Against Dismissal",
+            "time_limit_days": 60,
+            "process": "DGIR → Conciliation → Industrial Court",
+            "remedies": ["reinstatement", "compensation_back_wages", "compensation_in_lieu"],
+            "back_wages_calculation": "from dismissal date to reinstatement date",
+            "compensation_in_lieu_max_months": 24
+          }
+        },
+        "trade_union_provisions": {
+          "section_27_recognition": {
+            "threshold_percent": 50,
+            "application_process": "Form A to DGIR",
+            "timeline_days": 30,
+            "recognition_benefits": ["collective_bargaining", "represent_members", "access_to_workplace"]
+          },
+          "section_30_collective_bargaining": {
+            "scope": ["wages", "allowances", "hours_of_work", "leave", "benefits"],
+            "excluded": ["promotion", "transfer", "recruitment"],
+            "collective_agreement_duration_years": 3,
+            "negotiation_timeline_days": 60
+          },
+          "protected_activities": [
+            "lawful picketing",
+            "peaceful assembly",
+            "strike (with notice)",
+            "union membership solicitation"
+          ],
+          "prohibited_activities": [
+            "secondary strike",
+            "general strike",
+            "strike during collective agreement term",
+            "intimidation or violence"
+          ]
+        }
+      },
+      "child_act_2001": {
+        "employment_restrictions": {
+          "minimum_age": 15,
+          "light_work_age_13_14": "parental_permission_required",
+          "hazardous_work": "prohibited_under_18",
+          "max_hours_per_week_under_16": 40
+        }
+      }
+    },
+    "disciplinary_procedures": {
+      "progressive_discipline": {
+        "stage_1_verbal_warning": {
+          "trigger": "minor_infringement_first_offense",
+          "process": "private_conversation",
+          "documentation": "recorded_in_file",
+          "validity_months": 6
+        },
+        "stage_2_written_warning": {
+          "trigger": "repeated_minor_offenses",
+          "process": "formal_letter",
+          "documentation": "employee_acknowledgment_required",
+          "validity_months": 12,
+          "escalation": "next_violation_leads_to_show_cause"
+        },
+        "stage_3_show_cause_letter": {
+          "trigger": "serious_misconduct_or_repeated_warnings",
+          "process": "letter_with_allegations",
+          "response_days": 7,
+          "documentation": "employee_explanation_required"
+        },
+        "stage_4_domestic_inquiry": {
+          "trigger": "unsatisfactory_explanation_or_serious_offense",
+          "process": "formal_inquiry_with_charges",
+          "documentation": "complete_transcript"
+        },
+        "stage_5_termination": {
+          "trigger": "guilty_finding_at_inquiry",
+          "process": "dismissal_letter",
+          "documentation": "inquiry_report_attached"
+        }
+      },
+      "domestic_inquiry": {
+        "required_elements": [
+          {
+            "element": "show_cause_letter",
+            "description": "Written notice of allegations",
+            "deadline_days_before_inquiry": 14,
+            "template_required_fields": ["allegations", "date_time_venue", "employee_rights", "consequences"]
+          },
+          {
+            "element": "inquiry_panel",
+            "description": "Neutral independent panel (min 3 members)",
+            "composition": "management_representative + hr_representative + independent_rep",
+            "qualifications": ["no_involvement_in_case", "trained_in_inquiry_process"]
+          },
+          {
+            "element": "chargesheet",
+            "description": "Specific, dated, particularized charges",
+            "required": true,
+            "format": "numbered_paragraphs_with_evidence_references"
+          },
+          {
+            "element": "evidence",
+            "description": "Witnesses, documents, exhibits",
+            "standard": "balance_of_probabilities",
+            "types": ["documentary", "physical", "testimonial", "expert"]
+          },
+          {
+            "element": "employee_rights",
+            "description": "Right to be heard, legal representation, cross-examine",
+            "union_rep_allowed": true,
+            "legal_counsel_allowed": true
+          },
+          {
+            "element": "transcript",
+            "description": "Complete verbatim record",
+            "retention_years": 6,
+            "format": "written_or_audio_recorded"
+          },
+          {
+            "element": "findings_report",
+            "description": "Written determination with reasoning",
+            "submission_days_after_inquiry": 14,
+            "required_sections": ["introduction", "charges", "evidence_summary", "findings", "recommendation"]
+          }
+        ],
+        "inquiry_process_timeline": {
+          "show_cause_issued": "day_0",
+          "employee_response_due": "day_7",
+          "inquiry_notice_issued": "day_10",
+          "inquiry_hearing_days": "day_21_35",
+          "findings_submitted": "day_49",
+          "management_decision": "day_56",
+          "appeal_deadline": "day_70"
+        },
+        "common_charges": {
+          "misconduct": {
+            "examples": [
+              "theft_of_company_property",
+              "insubordination",
+              "falsification_of_records",
+              "conflict_of_interest",
+              "unauthorized_absence"
+            ],
+            "recommended_penalty": "dismissal_for_serious_cases",
+            "evidence_needed": "clear_and_convincing"
+          },
+          "poor_performance": {
+            "examples": [
+              "consistent_missed_targets",
+              "quality_deficiencies",
+              "safety_violations"
+            ],
+            "recommended_penalty": "pip_before_dismissal",
+            "evidence_needed": "performance_records_and_warnings"
+          },
+          "attendance": {
+            "examples": [
+              "chronic_lateness",
+              "frequent_absenteeism",
+              "no_show_no_call"
+            ],
+            "recommended_penalty": "warning_then_dismissal",
+            "evidence_needed": "attendance_records_and_mc_certificates"
+          }
+        },
+        "inquiry_checklist": {
+          "pre_inquiry": [
+            "show_cause_letter_issued_and_received",
+            "employee_response_received",
+            "panel_appointed_and_briefed",
+            "venue_and_schedule_confirmed",
+            "evidence_gathered_and_organized",
+            "witnesses_confirmed"
+          ],
+          "during_inquiry": [
+            "oath_taken_by_witnesses",
+            "prosecutor_presents_case",
+            "witnesses_examined_and_cross_examined",
+            "employee_presents_defence",
+            "all_parties_sign_transcript_daily"
+          ],
+          "post_inquiry": [
+            "findings_report_drafted",
+            "panel_deliberation_conducted",
+            "management_review_completed",
+            "decision_communicated_to_employee"
+          ]
+        }
+      },
+      "investigation_best_practices": {
+        "steps": [
+          { "step": 1, "action": "Receive complaint or identify issue", "timeline_hours": 24, "owner": "hr_receiving" },
+          { "step": 2, "action": "Secure evidence (documents, CCTV, emails)", "timeline_hours": 48, "owner": "investigator" },
+          { "step": 3, "action": "Interview complainant and witnesses", "timeline_hours": 72, "owner": "investigator" },
+          { "step": 4, "action": "Interview accused employee", "timeline_hours": 96, "owner": "investigator" },
+          { "step": 5, "action": "Prepare investigation report", "timeline_days": 7, "owner": "investigator" },
+          { "step": 6, "action": "Recommend action to management", "timeline_days": 10, "owner": "hr_manager" }
+        ],
+        "documentation_requirements": [
+          "witness_statements_signed",
+          "evidence_log_with_chain_of_custody",
+          "investigation_notes_dated",
+          "final_report_with_findings_and_recommendations"
+        ],
+        "investigator_qualifications": [
+          "trained_in_investigation_techniques",
+          "impartial_and_uninvolved",
+          "knowledgeable_about_relevant_policies",
+          "good_interviewing_and_writing_skills"
+        ]
+      }
+    },
+    "termination_management": {
+      "types_of_termination": {
+        "resignation": {
+          "notice_period": "per_contract (30 days typical)",
+          "payment_in_lieu": "allowed",
+          "exit_interview": "recommended",
+          "clearance": "required",
+          "garden_leave": "allowed_at_employer_discretion"
+        },
+        "mutual_separation": {
+          "agreement": "written_mutual_separation_agreement",
+          "compensation": "negotiable",
+          "release_clause": "recommended",
+          "legal_review": "advisable",
+          "key_clauses": ["waiver_of_claims", "confidentiality", "non_disparagement"]
+        },
+        "retrenchment": {
+          "definition": "redundancy_restructuring_closure",
+          "selection_criteria": ["LIFO", "performance", "skills", "attendance"],
+          "benefits": {
+            "less_than_2_years": "10_days_per_year",
+            "2_to_5_years": "15_days_per_year",
+            "5_years_and_above": "20_days_per_year"
+          },
+          "notice_period": "per_contract_or_employment_act",
+          "notification_to_labour_dept": "mandatory_if_5_plus_employees",
+          "timeline_days_before": 30,
+          "alternative_employment_offer": "must_be_considered"
+        },
+        "dismissal_for_misconduct": {
+          "domestic_inquiry_required": true,
+          "burden_of_proof": "balance_of_probabilities",
+          "appeal_process": "internal_then_industrial_court",
+          "right_to_representation": true,
+          "summary_dismissal_allowed": true
+        },
+        "constructive_dismissal": {
+          "employee_initiated": true,
+          "burden_of_proof": "employee_must_prove_breach",
+          "time_limit_days": 60,
+          "common_triggers": ["salary_cut", "demotion", "hostile_environment", "unsafe_conditions"],
+          "employer_defence": "no_breach_or_breach_remedied"
+        },
+        "medical_incapacity": {
+          "definition": "unable_to_perform_duties_due_to_illness",
+          "medical_board_opinion": "recommended",
+          "reasonable_accommodation": "must_be_considered",
+          "termination_process": "last_resort",
+          "consultation_required": true
+        },
+        "end_of_contract": {
+          "fixed_term_completion": true,
+          "notice": "not_required_unless_specified",
+          "completion_benefit": "if_contractually_agreed",
+          "automatic_renewal": "check_contract_terms"
+        }
+      },
+      "termination_process_checklist": {
+        "pre_termination": [
+          "verify_contract_terms",
+          "review_disciplinary_record",
+          "consult_hr_and_legal",
+          "prepare_documentation",
+          "check_statutory_requirements"
+        ],
+        "termination_meeting": [
+          "conduct_in_private",
+          "have_witness_present",
+          "explain_reason_clearly",
+          "provide_show_cause_or_termination_letter",
+          "collect_company_property",
+          "allow_employee_to_respond"
+        ],
+        "post_termination": [
+          "calculate_final_pay",
+          "process_epf_socso_eis",
+          "issue_ir8a_form",
+          "exit_interview",
+          "update_systems",
+          "arrange_security_access_revocation"
+        ]
+      },
+      "final_pay_calculation": {
+        "components": [
+          { "component": "salary_up_to_last_day", "mandatory": true },
+          { "component": "unpaid_leave_balance", "mandatory": true },
+          { "component": "notice_pay_in_lieu", "mandatory": false, "trigger": "employer_termination_without_notice" },
+          { "component": "accrued_annual_leave", "mandatory": true },
+          { "component": "termination_benefits", "mandatory": false, "trigger": "retrenchment_or_years_of_service" },
+          { "component": "other_contractual_benefits", "mandatory": false }
+        ],
+        "deadline_days": 3,
+        "payment_method": "bank_transfer_preferred",
+        "tax_implications": "pcb_on_final_pay",
+        "calculation_example": {
+          "monthly_salary_myr": 5000,
+          "last_day": "15th_of_month",
+          "salary_for_15_days_myr": 2500,
+          "accrued_leave_days": 10,
+          "leave_payment_myr": 1923.08,
+          "termination_benefit_myr": 0,
+          "total_final_pay_myr": 4423.08
+        }
+      }
+    },
+    "grievance_handling": {
+      "grievance_procedure": {
+        "stage_1_informal": {
+          "process": "employee_discusses_with_immediate_supervisor",
+          "timeline_days": 3,
+          "resolution_target_percent": 70,
+          "documentation": "minimal",
+          "escalation_if_unresolved": "stage_2"
+        },
+        "stage_2_formal": {
+          "process": "written_grievance_to_hr",
+          "timeline_days": 14,
+          "resolution_target_percent": 20,
+          "documentation": "full_record",
+          "grievance_form_required": true
+        },
+        "stage_3_appeal": {
+          "process": "appeal_to_senior_management",
+          "timeline_days": 21,
+          "resolution_target_percent": 5,
+          "documentation": "complete_file"
+        },
+        "stage_4_external": {
+          "process": "reference_to_labour_dept_or_industrial_court",
+          "timeline_months": 3,
+          "resolution_target_percent": 5,
+          "documentation": "legal_brief"
+        }
+      },
+      "grievance_types": {
+        "payroll_and_benefits": {
+          "examples": ["salary_discrepancy", "missing_allowance", "epf_not_credited", "late_payment"],
+          "response_time_hours": 48,
+          "escalation": "finance_manager",
+          "documentation_required": ["payslips", "contract", "bank_statements"]
+        },
+        "working_conditions": {
+          "examples": ["unsafe_environment", "excessive_overtime", "lack_of_equipment", "poor_hygiene"],
+          "response_time_hours": 72,
+          "escalation": "hse_manager",
+          "documentation_required": ["photos", "witness_statements", "safety_reports"]
+        },
+        "harassment_discrimination": {
+          "examples": ["sexual_harassment", "racial_discrimination", "bullying", "victimization"],
+          "response_time_hours": 24,
+          "escalation": "hr_director + legal",
+          "confidential": true,
+          "protected_identity": true
+        },
+        "career_development": {
+          "examples": ["promotion_denied", "training_not_provided", "unfair_assessment", "no_career_path"],
+          "response_time_days": 7,
+          "escalation": "department_head",
+          "documentation_required": ["performance_reviews", "training_records"]
+        },
+        "interpersonal_conflict": {
+          "examples": ["disagreement_with_colleague", "supervisor_communication", "personality_clash"],
+          "response_time_hours": 48,
+          "escalation": "hr_manager",
+          "preferred_resolution": "mediation"
+        }
+      },
+      "mediation_process": {
+        "prerequisites": [
+          "both_parties_agree_to_mediate",
+          "no_pending_court_action",
+          "grievance_filed_formally",
+          "power_imbalance_assessed"
+        ],
+        "steps": [
+          { "step": 1, "action": "select_neutral_mediator", "timeline_hours": 24, "owner": "hr_manager" },
+          { "step": 2, "action": "pre_mediation_caucus", "timeline_hours": 48, "owner": "mediator" },
+          { "step": 3, "action": "joint_mediation_session", "timeline_hours": 72, "owner": "mediator" },
+          { "step": 4, "action": "caucus_negotiations", "timeline_hours": 96, "owner": "mediator" },
+          { "step": 5, "action": "agreement_drafting", "timeline_hours": 120, "owner": "mediator" },
+          { "step": 6, "action": "agreement_signing", "timeline_days": 7, "owner": "hr_manager" }
+        ],
+        "confidentiality": "all_parties_bound",
+        "success_rate_target_percent": 80
+      }
+    },
+    "trade_union_management": {
+      "union_recognition_process": {
+        "steps": [
+          { "step": 1, "action": "union_submits_Form_A_to_DGIR", "timeline_days": 0 },
+          { "step": 2, "action": "DGIR_checks_membership_threshold", "timeline_days": 14 },
+          { "step": 3, "action": "ballot_conducted_if_threshold_uncertain", "timeline_days": 30 },
+          { "step": 4, "action": "employer_notified_of_application", "timeline_days": 7 },
+          { "step": 5, "action": "recognition_granted_by_DGIR", "timeline_days": 45 },
+          { "step": 6, "action": "collective_bargaining_commences", "timeline_days": 60 }
+        ],
+        "employer_obligations": [
+          "allow_union_access_to_workplace",
+          "provide_union_membership_list",
+          "deduct_union_dues_from_payroll",
+          "bargain_in_good_faith"
+        ],
+        "prohibited_employer_actions": [
+          "interfere_with_union_formation",
+          "discriminate_against_union_members",
+          "refuse_to_bargain_collectively",
+          "unilateral_change_during_bargaining"
+        ]
+      },
+      "collective_bargaining": {
+        "bargaining_scope": {
+          "mandatory_subjects": ["wages", "hours", "leave", "benefits", "working_conditions"],
+          "permissive_subjects": ["promotion_criteria", "training", "technology_change"],
+          "prohibited_subjects": ["management_rights", "recruitment", "discipline"]
+        },
+        "bargaining_process": {
+          "notice_to_bargain_days": 14,
+          "negotiation_timeline_days": 60,
+          "extension_days": 30,
+          "conciliation_if_deadlock": "refer_to_DGIR",
+          "collective_agreement_duration_years": 3
+        },
+        "collective_agreement_contents": [
+          "recognition_clause",
+          "scope_of_agreement",
+          "wage_scales_and_increments",
+          "allowances",
+          "working_hours",
+          "overtime_rates",
+          "leave_entitlements",
+          "medical_benefits",
+          "disciplinary_procedure",
+          "grievance_procedure",
+          "union_activities",
+          "duration_and_renewal"
+        ]
+      },
+      "industrial_action": {
+        "strike_requirements": [
+          "collective_agreement_expired",
+          "secret_ballot_held",
+          "7_days_notice_given",
+          "essential_services_exempted"
+        ],
+        "lockout_requirements": [
+          "bargaining_deadlock_declared",
+          "7_days_notice_given",
+          "labour_department_notified"
+        ],
+        "essential_services": [
+          "water_supply",
+          "electricity",
+          "healthcare",
+          "fire_and_rescue",
+          "airport_services"
+        ],
+        "unfair_practices": {
+          "employer": ["lockout_without_notice", "hire_replacement_workers", "intimidate_union_leaders"],
+          "union": ["secondary_strike", "picketing_at_private_residences", "violence_or_destruction"]
+        }
+      }
+    },
+    "compliance_and_documentation": {
+      "required_records": {
+        "employee_files": {
+          "retention_years": 6,
+          "documents": [
+            "employment_contract",
+            "personal_details_form",
+            "epf_socso_eis_forms",
+            "disciplinary_records",
+            "performance_reviews",
+            "training_records",
+            "medical_certificates",
+            "resignation_or_termination_letter"
+          ]
+        },
+        "payroll_records": {
+          "retention_years": 7,
+          "documents": [
+            "monthly_payroll_registers",
+            "payslips",
+            "epf_submission_forms",
+            "socso_submission_forms",
+            "pcb_submission_forms",
+            "ea_forms"
+          ]
+        },
+        "attendance_records": {
+          "retention_years": 3,
+          "documents": [
+            "daily_attendance_logs",
+            "leave_application_forms",
+            "overtime_authorization_forms"
+          ]
+        },
+        "domestic_inquiry_records": {
+          "retention_years": 6,
+          "documents": [
+            "show_cause_letter",
+            "inquiry_notice",
+            "charge_sheet",
+            "transcript",
+            "findings_report",
+            "management_decision"
+          ]
+        }
+      },
+      "labour_department_notifications": {
+        "retrenchment": "if_5_or_more_employees, 30_days_notice",
+        "change_of_business_ownership": "within_7_days",
+        "mass_termination": "immediate_notification",
+        "workplace_accident_fatality": "within_24_hours"
+      },
+      "penalties_for_non_compliance": {
+        "epf_late_submission": "6%_p.a._interest + RM_10_per_day",
+        "socso_late_submission": "5%_p.a._interest",
+        "pcb_late_submission": "10%_penalty + interest",
+        "failure_to_hold_domestic_inquiry": "dismissal_deemed_unfair",
+        "failure_to_notify_labour_dept": "fine_up_to_RM_10,000"
+      }
+    },
+    "industrial_court_process": {
+      "filing_a_claim": {
+        "time_limit_days": 60,
+        "parties_involved": ["claimant_employee", "respondent_employer", "director_general_ir", "industrial_court"],
+        "documents_required": [
+          "representation_letter",
+          "statement_of_case",
+          "supporting_documents",
+          "witness_list"
+        ]
+      },
+      "hearing_process": {
+        "conciliation": "attempt_at_settlement",
+        "pre_hearing_conference": "identify_issues_and_witnesses",
+        "full_hearing": "witness_examination",
+        "award": "written_decision_with_reasons"
+      },
+      "possible_remedies": {
+        "reinstatement": "employee_returns_to_original_position",
+        "back_wages": "from_dismissal_to_reinstatement",
+        "compensation_in_lieu": "up_to_24_months_salary",
+        "costs": "awarded_against_unreasonable_party"
+      },
+      "appeal_process": {
+        "to_high_court": "on_question_of_law_only",
+        "time_limit_days": 40,
+        "appeal_bond": "may_be_required"
+      }
+    },
+    "glossary": {
+      "DGIR": "Director General of Industrial Relations",
+      "DI": "Domestic Inquiry",
+      "DOE": "Department of Employment",
+      "EA": "Employment Act 1955",
+      "IR": "Industrial Relations",
+      "IRA": "Industrial Relations Act 1967",
+      "LIFO": "Last In First Out",
+      "NUP": "Non-Unionized Employee",
+      "PIP": "Performance Improvement Plan",
+      "SCL": "Show Cause Letter",
+      "TU": "Trade Union",
+      "UDP": "Unfair Dismissal",
+      "VSS": "Voluntary Separation Scheme",
+      "MSS": "Mutual Separation Scheme",
+      "COLA": "Cost of Living Allowance",
+      "CBA": "Collective Bargaining Agreement"
+    }
+  }
+}

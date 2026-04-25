@@ -1,0 +1,341 @@
+{
+  "skill": "recruitment",
+  "version": "2.0.0",
+  "domain": "hr",
+  "subdomain": "recruitment",
+  "region": "malaysia",
+  "last_updated": "2026-07-21",
+  "knowledge_base": {
+    "regulations": {
+      "employment_act_1955": {
+        "sections": {
+          "s10_probation": {
+            "standard_period_days": 90,
+            "maximum_period_days": 180,
+            "maximum_with_justification_days": 365,
+            "notice_requirement": "written",
+            "extension_requires_consent": true
+          },
+          "s60l_discrimination": {
+            "prohibited_bases": ["age", "race", "religion", "gender", "marital_status", "disability"],
+            "penalty_max_myr": 10000,
+            "examples_forbidden": [
+              "young and energetic",
+              "fresh graduate only",
+              "male/female preferred",
+              "must be Chinese/Indian/Malay"
+            ]
+          }
+        }
+      },
+      "pdpa_2010": {
+        "consent_required": true,
+        "retention_limit_months": 12,
+        "data_minimization": true,
+        "access_right": true,
+        "correction_right": true,
+        "maximum_fine_myr": 1000000,
+        "cross_border_restrictions": true
+      },
+      "myfuturejobs_act_2021": {
+        "mandatory_for_salary_above_myr": 5000,
+        "posting_days_required": 30,
+        "applicable_before_foreign_hire": true,
+        "retention_period_years": 2,
+        "exemptions": ["government_contracts_under_6_months", "internal_transfers"]
+      },
+      "foreign_worker_quotas_2026": {
+        "manufacturing": { "local_foreign_ratio": "2:1", "levy_myr_annual": 1850, "max_tenure_years": 10 },
+        "construction": { "local_foreign_ratio": "3:1", "levy_myr_annual": 1250, "max_tenure_years": 5 },
+        "plantation": { "local_foreign_ratio": "5:1", "levy_myr_annual": 640, "max_tenure_years": 10 },
+        "agriculture": { "local_foreign_ratio": "5:1", "levy_myr_annual": 640, "max_tenure_years": 10 },
+        "services": { "local_foreign_ratio": "4:1", "levy_myr_annual": 1850, "max_tenure_years": 5 },
+        "requirements": {
+          "justification_required": true,
+          "myfuturejobs_proof_required": true,
+          "local_replacement_training_commitment_years": 2
+        }
+      }
+    },
+    "recruitment_stages": {
+      "requisition": {
+        "duration_days_min": 3,
+        "duration_days_max": 5,
+        "key_tasks": ["headcount_approval", "quota_check", "budget_signoff"],
+        "statuses": ["DRAFT", "APPROVED", "REJECTED", "ON_HOLD"]
+      },
+      "sourcing": {
+        "duration_days_min": 7,
+        "duration_days_max": 14,
+        "channels": {
+          "jobstreet": { "best_for": "mass_hiring_operational", "cost": "medium", "reach": "high", "compliance_ready": true },
+          "linkedin": { "best_for": "professional_managerial", "cost": "high", "reach": "high", "compliance_ready": true },
+          "myfuturejobs": { "best_for": "mandatory_compliance", "cost": "free", "reach": "medium", "compliance_ready": true, "mandatory_for_salary_above": 5000 },
+          "referral": { "best_for": "quality_hires_cultural_fit", "cost": "low", "reach": "medium", "compliance_ready": true },
+          "whatsapp": { "best_for": "gig_shift_workers", "cost": "very_low", "reach": "very_high", "compliance_ready": false, "pdpa_risk": true }
+        }
+      },
+      "screening": {
+        "duration_days_min": 3,
+        "duration_days_max": 5,
+        "criteria": ["cv_keyword_match", "skills_assessment", "pdpa_compliance"],
+        "rejection_reasons": ["missing_requirements", "visa_ineligible", "salary_mismatch", "pdpa_consent_missing"]
+      },
+      "interview": {
+        "duration_days_min": 5,
+        "duration_days_max": 10,
+        "structure_minutes": 60,
+        "sections": [
+          { "name": "opening", "duration_minutes": 10, "activities": ["role_overview", "company_intro", "interviewer_introductions"] },
+          { "name": "technical_assessment", "duration_minutes": 20, "activities": ["skills_demo", "case_study", "portfolio_review"] },
+          { "name": "behavioural_star", "duration_minutes": 20, "activities": ["situation", "task", "action", "result"] },
+          { "name": "cultural_fit", "duration_minutes": 5, "activities": ["values_alignment", "team_dynamics"] },
+          { "name": "candidate_qa", "duration_minutes": 5, "activities": ["answer_candidate_questions"] }
+        ]
+      },
+      "offer": {
+        "duration_days_min": 2,
+        "duration_days_max": 3,
+        "acceptance_deadline_days": 7,
+        "negotiation_rounds_max": 2
+      },
+      "onboarding": {
+        "duration_days_min": 5,
+        "duration_days_max": 7,
+        "pre_onboarding_days_before_start": 14
+      }
+    },
+    "jd_compliance_checklist": {
+      "mandatory": [
+        "no_discriminatory_language",
+        "salary_range_disclosed_min_max",
+        "employment_act_terms_probation_notice",
+        "pdpa_consent_clause",
+        "myfuturejobs_compliance_statement_if_salary_above_5000"
+      ],
+      "conditional": [
+        "foreign_worker_quota_disclosure_if_applicable",
+        "disability_inclusion_statement_for_government_contracts"
+      ],
+      "prohibited_phrases": [
+        { "old": "young and energetic", "alternative": "self-motivated team player" },
+        { "old": "fresh graduate only", "alternative": "entry-level, training provided" },
+        { "old": "male/female preferred", "alternative": "remove gender reference" },
+        { "old": "must be Chinese/Indian/Malay", "alternative": "remove ethnicity reference" }
+      ]
+    },
+    "interview_assessment_rubric": {
+      "criteria": [
+        { "name": "technical_skills", "weight": 30, "poor_description": "missing key requirements", "good_description": "meets most requirements", "excellent_description": "exceeds requirements" },
+        { "name": "communication", "weight": 20, "poor_description": "unclear, poor English", "good_description": "clear, good English", "excellent_description": "exceptional clarity" },
+        { "name": "cultural_fit", "weight": 20, "poor_description": "misaligned with values", "good_description": "generally aligned", "excellent_description": "strong alignment" },
+        { "name": "experience", "weight": 15, "poor_description": "less than required", "good_description": "meets requirement", "excellent_description": "exceeds requirement" },
+        { "name": "potential", "weight": 15, "poor_description": "limited growth", "good_description": "good growth trajectory", "excellent_description": "high potential" }
+      ],
+      "scoring": {
+        "1_poor": 1.0,
+        "2_below_average": 2.0,
+        "3_good": 3.0,
+        "4_very_good": 4.0,
+        "5_excellent": 5.0
+      },
+      "passing_score": 3.5,
+      "recommendations": {
+        "above_80": "Proceed",
+        "60_to_79": "Hold — further review needed",
+        "below_60": "Reject"
+      }
+    },
+    "star_method_question_bank": {
+      "problem_solving": "Tell me about a time you solved a difficult problem with limited resources.",
+      "teamwork": "Describe a situation where you had to collaborate with difficult team members.",
+      "leadership": "Give an example of how you motivated a team during a challenging project.",
+      "adaptability": "Tell me about a time you had to learn a new skill quickly to meet deadlines.",
+      "integrity": "Describe a situation where you had to make an ethical decision at work.",
+      "conflict_resolution": "Tell me about a time you resolved a conflict between team members.",
+      "customer_focus": "Describe a situation where you went above and beyond for a customer.",
+      "initiative": "Give an example of a process you improved without being asked."
+    },
+    "salary_benchmarking_2026": {
+      "operations": {
+        "entry": { "min_myr": 2500, "max_myr": 3200, "median_myr": 2850 },
+        "junior": { "min_myr": 3200, "max_myr": 4000, "median_myr": 3600 },
+        "mid": { "min_myr": 4000, "max_myr": 5500, "median_myr": 4750 },
+        "senior": { "min_myr": 5500, "max_myr": 7000, "median_myr": 6250 }
+      },
+      "technical": {
+        "entry": { "min_myr": 3000, "max_myr": 3800, "median_myr": 3400 },
+        "junior": { "min_myr": 3800, "max_myr": 5000, "median_myr": 4400 },
+        "mid": { "min_myr": 5000, "max_myr": 7500, "median_myr": 6250 },
+        "senior": { "min_myr": 7500, "max_myr": 12000, "median_myr": 9750 }
+      },
+      "professional": {
+        "entry": { "min_myr": 3500, "max_myr": 4500, "median_myr": 4000 },
+        "junior": { "min_myr": 4500, "max_myr": 6000, "median_myr": 5250 },
+        "mid": { "min_myr": 6000, "max_myr": 9000, "median_myr": 7500 },
+        "senior": { "min_myr": 9000, "max_myr": 15000, "median_myr": 12000 }
+      },
+      "managerial": {
+        "entry": { "min_myr": 5000, "max_myr": 7000, "median_myr": 6000 },
+        "junior": { "min_myr": 7000, "max_myr": 10000, "median_myr": 8500 },
+        "mid": { "min_myr": 10000, "max_myr": 15000, "median_myr": 12500 },
+        "senior": { "min_myr": 15000, "max_myr": 25000, "median_myr": 20000 }
+      },
+      "executive": {
+        "entry": { "min_myr": 8000, "max_myr": 12000, "median_myr": 10000 },
+        "junior": { "min_myr": 12000, "max_myr": 18000, "median_myr": 15000 },
+        "mid": { "min_myr": 18000, "max_myr": 25000, "median_myr": 21500 },
+        "senior": { "min_myr": 25000, "max_myr": 40000, "median_myr": 32500 }
+      },
+      "adjustment_note": "Based on Jobstreet Salary Guide 2026, adjusted for 2.5% YoY inflation"
+    },
+    "offer_components": {
+      "required": [
+        { "component": "basic_salary", "type": "decimal", "myr": true, "mandatory": true },
+        { "component": "probation_period_days", "type": "integer", "default": 90, "max": 180, "mandatory": true },
+        { "component": "notice_period_days", "type": "integer", "default": 30, "min": 1, "mandatory": true }
+      ],
+      "allowances": [
+        { "name": "housing", "max_percent_of_basic": 30, "taxable": true, "myr_monthly_typical": null },
+        { "name": "transport", "typical_myr": 250, "taxable": true, "myr_monthly_min": 200, "myr_monthly_max": 500 },
+        { "name": "meal", "typical_myr": 10, "taxable": false, "applicable_to": "shift_workers", "per_day": true },
+        { "name": "childcare", "typical_myr": 500, "taxable": false, "effective_from": "2026-01-01" }
+      ],
+      "benefits": [
+        { "name": "medical_insurance", "minimum_coverage_myr": 60000, "mandatory_for_foreign_workers": true },
+        { "name": "epf", "citizen_mandatory": true, "foreign_optional": true, "employee_percent": 11, "employer_percent": 13 },
+        { "name": "socso", "mandatory_for_all": true, "employee_percent": 1.0, "employer_percent": 2.25, "ceiling_myr": 6000 },
+        { "name": "eis", "mandatory_for_all": true, "employee_percent": 0.2, "employer_percent": 0.2, "ceiling_myr": 6000 }
+      ],
+      "bonus": {
+        "contractual_months_typical": 1,
+        "performance_percent_of_basic_typical": 10,
+        "discretionary_possible": true
+      },
+      "foreign_worker_specific": {
+        "visa_sponsorship_required": true,
+        "levy_myr_annual_employer_born": true,
+        "repatriation_allowance_myr": { "min": 500, "max": 1500, "one_way": true },
+        "fomema_required": true,
+        "medical_insurance_minimum_myr": 60000
+      }
+    },
+    "onboarding_checklist": {
+      "pre_onboarding_days_minus_14": [
+        "employment_contract_signed",
+        "epf_socso_eis_registration_within_7_days",
+        "bank_account_opened",
+        "visa_dp_plks_processed_foreign_workers_lead_time_days_60_90",
+        "it_equipment_ordered",
+        "workspace_assigned",
+        "welcome_email_sent"
+      ],
+      "day_1": [
+        "pdpa_consent_form_signed",
+        "employee_handbook_acknowledged",
+        "tax_declaration_form_tp3_pcb",
+        "bank_account_confirmation",
+        "email_chat_accounts_created",
+        "orientation_session_minimum_hours_4",
+        "buddy_mentor_assigned"
+      ],
+      "week_1": [
+        "department_induction",
+        "role_specific_training",
+        "safety_briefing_for_operational_roles",
+        "meeting_key_stakeholders",
+        "first_30_day_goals_set"
+      ],
+      "month_1": [
+        "probationary_review_scheduled",
+        "performance_goals_finalized",
+        "benefits_enrollment_completed",
+        "first_payslip_reviewed_accuracy_check"
+      ]
+    },
+    "pipeline_metrics": {
+      "kpis": {
+        "time_to_hire_days_target": 30,
+        "time_to_hire_days_acceptable": 45,
+        "offer_acceptance_rate_target_percent": 70,
+        "source_effectiveness_measurement": "cost_per_hire",
+        "pipeline_conversion_rates_tracked": ["applied_to_screened", "screened_to_interviewed", "interviewed_to_offered", "offered_to_accepted", "accepted_to_onboarded"]
+      },
+      "typical_conversion_rates_percent": {
+        "applied_to_screened": 40,
+        "screened_to_interviewed": 60,
+        "interviewed_to_offered": 30,
+        "offered_to_accepted": 85,
+        "accepted_to_onboarded": 95
+      },
+      "cost_components": {
+        "agency_fee_percent_of_salary": 15,
+        "job_board_posting_myr": { "jobstreet": 500, "linkedin": 800, "myfuturejobs": 0 },
+        "assessment_tools_myr_per_candidate": 50,
+        "background_check_myr": 100,
+        "medical_checkup_myr": 150
+      }
+    },
+    "regulatory_updates_2026": {
+      "salary_range_disclosure": { "2025_requirement": "encouraged", "2026_requirement": "mandatory" },
+      "myfuturejobs_threshold_myr": { "2025_requirement": 10000, "2026_requirement": 5000 },
+      "foreign_worker_levy_manufacturing_myr": { "2025_requirement": 1850, "2026_requirement": 1850 },
+      "services_quota_ratio": { "2025_requirement": "5:1", "2026_requirement": "4:1" },
+      "disability_inclusion": { "2025_requirement": "encouraged", "2026_requirement": "mandatory_for_govt_contracts" },
+      "pdpa_maximum_fine_myr": { "2025_requirement": 500000, "2026_requirement": 1000000 }
+    }
+  },
+  "agent_data_shape": {
+    "type": "RECRUITMENT",
+    "data": {
+      "requisition": {
+        "id": "string",
+        "role": "string",
+        "department": "string",
+        "headcount": "number",
+        "quotaForeign": "number",
+        "quotaLocal": "number",
+        "budgetApproved": "Decimal",
+        "status": "enum DRAFT,APPROVED,OPEN,FILLED,CANCELLED"
+      },
+      "pipeline": {
+        "applied": "number",
+        "screened": "number",
+        "interviewed": "number",
+        "offered": "number",
+        "accepted": "number",
+        "onboarded": "number"
+      },
+      "topCandidates": [
+        {
+          "name": "string",
+          "score": "number",
+          "status": "string"
+        }
+      ],
+      "offerDetails": {
+        "basicSalary": "Decimal",
+        "totalPackage": "Decimal",
+        "acceptanceDeadline": "YYYY-MM-DD"
+      },
+      "onboardingChecklist": ["string"],
+      "complianceFlags": {
+        "myFutureJobsPosted": "boolean",
+        "quotaAvailable": "boolean",
+        "levyCalculated": "Decimal"
+      }
+    }
+  },
+  "quality_checklist": [
+    "Compliant with PDPA 2010 (consent, data minimization, retention limits)",
+    "Compliant with Employment Act 1955 (probation, notice, termination)",
+    "Compliant with March 2026 foreign worker quota regulations",
+    "Quota-aware for foreign worker sectors (manufacturing, construction, services)",
+    "MyFutureJobs posting requirement verified for roles > RM 5,000",
+    "Salary range disclosed (mandatory under 2025 amendments)",
+    "Links to talent-acquisition and employer-branding skills",
+    "Offer calculations reference compensation-benefits schema",
+    "All monetary values in MYR with Decimal precision",
+    "Onboarding includes EPF/SOCSO/EIS registration (7-day deadline)"
+  ]
+}

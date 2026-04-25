@@ -1,0 +1,5 @@
+runtime:
+  provider: ollama
+  default_model: minimax-m2.5:cloud
+logging:
+  level: info

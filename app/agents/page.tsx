@@ -11,8 +11,7 @@ import {
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
 import { AppSidebar } from '@/components/sidebar/app-sidebar'
 import { AppHeader } from '@/components/sidebar/app-header'
-import { Agent, Message, Suggestion, Tool, CodeBlock, ChainOfThought, Queue } from '@/components/ai-elements'
-import { AILiveBadge, AIStatusIndicator } from '@/sdk/components/ai'
+import { Agent, Message, Suggestion } from '@/components/ai-elements'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -510,9 +509,8 @@ export default function AgentsPage() {
   const [isToolExpanded, setIsToolExpanded] = useState(true)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-const currentAgent = agents.find(a => a.id === selectedAgent) || agents[0]
-const currentTools = agentTools[selectedAgent] || []
-const [reasoningOpen, setReasoningOpen] = useState(false)
+  const currentAgent = agents.find(a => a.id === selectedAgent) || agents[0]
+  const currentTools = agentTools[selectedAgent] || []
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })

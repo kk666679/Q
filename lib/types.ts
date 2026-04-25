@@ -10,12 +10,6 @@ export type DocumentType =
   | 'form'
   | 'record'
   | 'compliance-report'
-  // Respiratory Protection Documents
-  | 'respirator-program'
-  | 'fit-test-record'
-  | 'breathing-air-quality'
-  | 'respiratory-medical-procedure'
-  | 'iso45001-respiratory'
 
 export type DocumentStatus = 'draft' | 'review' | 'approved' | 'obsolete'
 

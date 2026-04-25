@@ -25,6 +25,7 @@ export const ModelProviderSchema = z.enum([
   'groq',
   'cerebras',
   'ollama',
+  'ollama-cloud',
   'cohere',
   'fireworks',
   'deepinfra',
