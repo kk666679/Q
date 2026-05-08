@@ -277,7 +277,3 @@ export const schemas = {
 
 // Export ISO types
 export * from './iso';
-
-// Re-export RAG types for convenience
-export type { StructuredRAGOutput, StructuredRAGOutputSchema } from './types';
-export type { VectorDocument } from './types';

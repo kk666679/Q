@@ -18,6 +18,8 @@ import {
   AIActionCard
 } from '@/sdk/components/ai';
 
+import { HACCPPlanForm } from '@/components/haccp';
+
 import {
   LineChart,
   Line,
@@ -295,6 +297,7 @@ export default function ManufacturingPage() {
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="lines">Production Lines</TabsTrigger>
                 <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                <TabsTrigger value="haccp">HACCP</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview">
@@ -351,6 +354,10 @@ export default function ManufacturingPage() {
                     <p className="text-muted-foreground">Historical trends and predictive analytics</p>
                   </CardContent>
                 </Card>
+              </TabsContent>
+
+              <TabsContent value="haccp">
+                <HACCPPlanForm />
               </TabsContent>
             </Tabs>
           </div>

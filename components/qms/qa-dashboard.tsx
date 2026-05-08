@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { AIAnalysisCard } from '@/sdk/components/ai/analysis-card';
-import { trpc } from '@/sdk/client/trpc';
+import { trpc } from '@/lib/sdk';
 import { TestTube, BarChart3, Target, TrendingUp, AlertTriangle } from 'lucide-react';
 
 export function QADashboard() {
@@ -154,7 +154,7 @@ export function QADashboard() {
                   { label: 'Line', value: coverageQuery.data.metrics.line },
                 ],
               }}
-              insights={coverageQuery.data.gaps.map((gap, idx) => ({
+              insights={coverageQuery.data.gaps.map((gap: any, idx: number) => ({
                 id: `gap-${idx}`,
                 title: 'Coverage Gap',
                 description: gap,
@@ -178,12 +178,12 @@ export function QADashboard() {
                   { label: 'Medium', value: defectsQuery.data.distribution.medium },
                   { label: 'Low', value: defectsQuery.data.distribution.low },
                 ],
-                bar: defectsQuery.data.topComponents.map(c => ({
+                bar: defectsQuery.data.topComponents.map((c: any) => ({
                   label: c,
                   value: Math.floor(Math.random() * 20) + 5,
                 })),
               }}
-              insights={defectsQuery.data.recommendations.map((rec, idx) => ({
+              insights={defectsQuery.data.recommendations.map((rec: any, idx: number) => ({
                 id: `rec-${idx}`,
                 title: 'Improvement Opportunity',
                 description: rec,

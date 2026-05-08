@@ -234,6 +234,12 @@ Reusable components built with Radix UI and Tailwind CSS:
    OPENAI_API_KEY=sk-...
    PINECONE_API_KEY=your-key
    PINECONE_INDEX_NAME=qms-compliance
+   
+   # Ollama Cloud (Optional - for running models without GPU)
+   OLLAMA_API_KEY=your-ollama-cloud-api-key
+   OLLAMA_HOST=http://localhost:11434
+   OLLAMA_CLOUD_HOST=https://ollama.com/api
+   
    DATABASE_URL=postgresql://...
    ```
 
@@ -248,6 +254,80 @@ Reusable components built with Radix UI and Tailwind CSS:
    npm run dev
    ```
    Visit `http://localhost:3000`
+
+---
+
+## ☁️ Ollama Cloud Setup
+
+Ollama Cloud allows you to run large language models without a local GPU. The QMS platform includes built-in support for Ollama Cloud models.
+
+### 1. Get Ollama Cloud API Key
+
+1. Visit [ollama.com](https://ollama.com)
+2. Sign up or log in
+3. Go to [Settings → Keys](https://ollama.com/settings/keys)
+4. Create a new API key
+5. Copy the key to your `.env.local`:
+   ```env
+   OLLAMA_API_KEY=your-api-key-here
+   ```
+
+### 2. Available Ollama Cloud Models
+
+The QMS platform supports these Ollama Cloud models:
+
+| Model | Size | Context | Best For |
+|-------|------|---------|----------|
+| **GPT-OSS 120B** | 120B parameters | 128K tokens | Complex reasoning, long documents |
+| **GPT-OSS 20B** | 20B parameters | 128K tokens | Balanced performance, ISO compliance |
+| **MiniMax M2.5 Cloud** | - | 100K tokens | General QMS assistance, chat |
+
+### 3. Use Ollama Cloud in QMS
+
+The models are automatically available in:
+- **AI Panel** (Flow Process editor)
+- **Chat Interface** (Agent selection)
+- **AI-Powered Features** (Compliance checks, document generation)
+
+Select "GPT-OSS 120B (Ollama Cloud)" from the model dropdown to use Ollama Cloud.
+
+### 4. Model Selection Examples
+
+In code:
+```typescript
+// Chat with Ollama Cloud
+const messages = [{ role: 'user', content: 'What is ISO 9001?' }];
+const result = await aiService.generateTextRouted(
+  'What is ISO 9001?',
+  { model: 'ollama/gpt-oss:120b' }
+);
+
+// Or use the hook
+const { messages, input, handleSubmit } = useAI({
+  model: 'ollama/gpt-oss:20b',
+});
+```
+
+### 5. Pricing & Limits
+
+- Ollama Cloud runs models on their infrastructure
+- Pricing varies by model size and token usage
+- See [ollama.com/pricing](https://ollama.com/pricing)
+- Get free credits with new accounts
+
+### 6. Troubleshooting
+
+**Error: "Ollama Cloud API key not configured"**
+- Ensure `OLLAMA_API_KEY` is set in `.env.local`
+- Restart the development server: `npm run dev`
+
+**Error: "API error 401"**
+- API key is invalid or expired
+- Generate a new key at [ollama.com/settings/keys](https://ollama.com/settings/keys)
+
+**Model not responding**
+- Check Ollama Cloud status at [status.ollama.com](https://status.ollama.com)
+- Verify your account has available quota
 
 ---
 

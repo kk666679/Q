@@ -4,6 +4,7 @@ export * from './qa-expert';
 export * from './manufacturing-expert';
 export * from './construction-expert';
 export * from './insurance-expert';
+export * from './malaysian-standards-agent';
 export * from './iso9001-agent';
 export * from './iso14001-agent';
 export * from './iso45001-agent';

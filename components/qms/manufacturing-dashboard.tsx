@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { AIAnalysisCard } from '@/sdk/components/ai/analysis-card';
-import { trpc } from '@/sdk/client/trpc';
+import { trpc } from '@/lib/sdk';
 import { Factory, Gauge, Wrench, Activity, TrendingUp, AlertTriangle } from 'lucide-react';
 
 export function ManufacturingDashboard() {
@@ -161,7 +161,7 @@ export function ManufacturingDashboard() {
                   { label: 'Quality', value: oeeQuery.data.quality },
                 ],
               }}
-              insights={oeeQuery.data.recommendations.map((rec, idx) => ({
+              insights={oeeQuery.data.recommendations.map((rec: any, idx: number) => ({
                 id: `oee-${idx}`,
                 title: 'OEE Improvement',
                 description: rec,
@@ -223,7 +223,7 @@ export function ManufacturingDashboard() {
                   { label: 'Week 4', value: parseFloat(metricsQuery.data.yieldRate) },
                 ],
               }}
-              insights={metricsQuery.data.recommendations.map((rec, idx) => ({
+              insights={metricsQuery.data.recommendations.map((rec: any, idx: number) => ({
                 id: `q-${idx}`,
                 title: 'Quality Improvement',
                 description: rec,

@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "JKKP/DOSH Knowledge Base",
+    "description": "Comprehensive information on Malaysia's Department of Occupational Safety and Health (JKKP/DOSH) as of 2026.",
+    "version": "1.0",
+    "last_updated": "2026-04-30",
+    "source": "Compiled from official DOSH reports, public announcements, and regulatory documents."
+  },
+  "agency": {
+    "full_name_ms": "Jabatan Keselamatan dan Kesihatan Pekerjaan (JKKP)",
+    "full_name_en": "Department of Occupational Safety and Health (DOSH)",
+    "abbreviation": "JKKP",
+    "parent_ministry": "Ministry of Human Resources (KESUMA)",
+    "mission": "Ensuring employee safety and health",
+    "core_functions": [
+      "Administer and enforce OSH legislation",
+      "Conduct technical analysis and research",
+      "Provide advisory services to government and private agencies",
+      "Run awareness and incentive programmes",
+      "Serve as secretariat for the National Council for Occupational Safety and Health"
+    ],
+    "exceptions_to_coverage": [
+      "Domestic servants",
+      "Armed forces personnel",
+      "Employment on board ships"
+    ]
+  },
+  "legislation": {
+    "primary_laws": [
+      {
+        "name": "Occupational Safety and Health Act 1994",
+        "citation": "Act 514",
+        "description": "Primary OSH law for all industries except those exempted.",
+        "penalties": "Fine up to RM500,000, imprisonment up to 2 years, or both for employers found guilty."
+      },
+      {
+        "name": "Factories and Machinery Act 1967",
+        "citation": "Act 139",
+        "description": "Regulates safety in factories, boilers, pressure vessels, and machinery."
+      },
+      {
+        "name": "Petroleum (Safety Measures) Act 1984",
+        "description": "Regulates safety measures related to petroleum activities."
+      }
+    ],
+    "key_regulatory_requirements": {
+      "jkkp8_annual_return": {
+        "description": "Statutory annual report of accidents, dangerous occurrences, occupational poisonings and diseases.",
+        "who_must_submit": "All employers covered under Act 514",
+        "deadline": "31 January each year (for previous year's data)",
+        "method": "Online via MyKKP portal",
+        "nil_return_required": true,
+        "consequences_of_non_compliance": [
+          "Legal non-compliance risks",
+          "Fines/enforcement actions",
+          "Impact on SOCSO, insurance, audits, and company records"
+        ]
+      },
+      "certificate_of_fitness_cf": {
+        "description": "Mandatory certificate for pressure vessels and lifting equipment.",
+        "validity": "15 months from date of inspection for tanks",
+        "renewal_requirements": "Annual visual inspection + hydrostatic test every 5 years"
+      }
+    }
+  },
+  "statistics_q1_2026": {
+    "period": "January – March 2026",
+    "national_totals": {
+      "fatalities": "At least 7 (minimum from Selangor data; national complete not reported)",
+      "permanent_disabilities": 16,
+      "non_permanent_disabilities": 524,
+      "dangerous_occurrences": 36,
+      "occupational_diseases": 576
+    },
+    "selangor_breakdown": {
+      "fatalities": 7,
+      "by_sector": {
+        "construction": 5,
+        "quarry": 1,
+        "storage": 1
+      },
+      "permanent_disabilities": 16,
+      "non_permanent_disabilities": 524,
+      "trend": "Up 5.5% from Q1 2025"
+    }
+  },
+  "enforcement_actions_q1_2026": [
+    {
+      "state": "Johor",
+      "incident": "Fatal tower crane incident at construction site in Seri Austin",
+      "status": "Internal investigation ordered; potential legal action under Act 514"
+    },
+    {
+      "state": "Penang",
+      "incident": "Fatal ready-mix concrete accident",
+      "action_taken": "Two prohibition notices issued; access routes to batching plant barred"
+    },
+    {
+      "state": "Negeri Sembilan",
+      "incident": "Ammonia cylinder explosion at Seremban Toll Plaza",
+      "status": "Investigation underway"
+    }
+  ],
+  "oshmp30": {
+    "full_name": "Occupational Safety and Health Master Plan 2026–2030",
+    "successor_to": "OSHMP25",
+    "theme": "Building a resilient and inclusive occupational safety and health environment for the future workforce",
+    "budget_allocation": "RM2 million (initial allocation for key projects)",
+    "strategic_focus_areas": [
+      "Digitalization of OSH systems",
+      "Strengthening national OSH system resilience",
+      "Promoting technology-based safety innovation",
+      "Enhancing worker well-being",
+      "Addressing technological risks and psychosocial factors"
+    ],
+    "status": "Implementation phase began in 2026"
+  },
+  "licensing_and_approvals": {
+    "online_portal": "MyKKP (https://mykkp.dosh.gov.my)",
+    "design_submission_system": "MySKUD",
+    "certificate_of_fitness_process": {
+      "steps": [
+        "1. Design submission via MySKUD (must be certified by JKKP-registered Professional Engineer)",
+        "2. Technical assessment by JKKP engineers (multiple review rounds possible)",
+        "3. Design approval letter issued",
+        "4. Manufacturing and inspection by Authorized Inspection Body (AIB) or JKKP inspector",
+        "5. Final review and issuance of Certificate of Fitness (COF)"
+      ],
+      "note": "Imported equipment must also complete this full approval process before use."
+    }
+  },
+  "online_services": {
+    "mykkp_portal": "https://mykkp.dosh.gov.my",
+    "functions": [
+      "New factory notification",
+      "Machinery registration",
+      "Periodic plant examination",
+      "Permit renewals",
+      "JKKP 8 annual return submission"
+    ]
+  },
+  "contact_information": {
+    "official_website": "https://www.dosh.gov.my",
+    "email": "jkkp@dosh.gov.my",
+    "phone": "03-8886 5342",
+    "main_office_address": {
+      "building": "Level 5 (Main Counter), Setia Perkasa 4",
+      "complex": "Setia Perkasa Complex",
+      "city": "Pusat Pentadbiran Kerajaan Persekutuan",
+      "postcode": "62530",
+      "state": "Putrajaya",
+      "country": "Malaysia"
+    }
+  },
+  "disclaimer": "This knowledge base is compiled from publicly available sources and official reports as of 30 April 2026. For authoritative or legally binding information, please refer directly to the Department of Occupational Safety and Health (JKKP/DOSH) or consult the original legislation."
+}

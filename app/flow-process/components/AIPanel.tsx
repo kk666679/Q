@@ -122,9 +122,11 @@ export interface AIPanelProps {
 }
 
 const defaultModels = [
-  { id: "gpt-4o", name: "GPT-4o", provider: "openai" },
-  { id: "claude-3-5-sonnet", name: "Claude 3.5 Sonnet", provider: "anthropic" },
-  { id: "gemini-1.5-pro", name: "Gemini 1.5 Pro", provider: "google" },
+  { id: "openai/gpt-4o", name: "GPT-4o", provider: "openai" },
+  { id: "anthropic/claude-opus-4.6", name: "Claude Opus 4.6", provider: "anthropic" },
+  { id: "google/gemini-3-flash", name: "Gemini 3 Flash", provider: "google" },
+  { id: "ollama/gpt-oss:120b", name: "GPT-OSS 120B (Ollama Cloud)", provider: "ollama" },
+  { id: "ollama/gpt-oss:20b", name: "GPT-OSS 20B (Ollama Cloud)", provider: "ollama" },
 ];
 
 const defaultGreeting: WorkflowMessage = {
@@ -142,7 +144,7 @@ export function AIPanel({
   onClearChat,
   isProcessing = false,
   enabled = true,
-  selectedModel = "gpt-4o",
+  selectedModel = "openai/gpt-4o",
   availableModels = defaultModels,
   onModelChange,
   className,

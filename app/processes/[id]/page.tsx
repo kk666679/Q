@@ -51,7 +51,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { trpc } from '@/sdk/client/trpc'
+import { trpc } from '@/lib/sdk'
 import type { FlowNode } from '@/lib/types'
 
 // Import automation components for the canvas

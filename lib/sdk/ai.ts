@@ -74,8 +74,8 @@ export async function streamGenerate(options: AIStreamOptions) {
 }
 
 /**
- * Available AI models through Vercel AI Gateway
- * These models work with zero configuration in v0
+ * Available AI models through Vercel AI Gateway and custom providers
+ * These models work with zero configuration in v0, plus Ollama Cloud models
  */
 export const availableModels = {
   // OpenAI
@@ -90,6 +90,11 @@ export const availableModels = {
   // Google
   'google/gemini-3-flash': { name: 'Gemini 3 Flash', provider: 'google', context: 1000000 },
   'google/gemini-3.1-flash-image-preview': { name: 'Nano Banana 2', provider: 'google', context: 1000000 },
+
+  // Ollama Cloud
+  'ollama/gpt-oss:120b': { name: 'GPT-OSS 120B (Ollama Cloud)', provider: 'ollama', context: 128000 },
+  'ollama/gpt-oss:20b': { name: 'GPT-OSS 20B (Ollama Cloud)', provider: 'ollama', context: 128000 },
+  'ollama/minimax-m2.5:cloud': { name: 'MiniMax M2.5 Cloud (Ollama Cloud)', provider: 'ollama', context: 100000 },
 } as const;
 
 export type ModelId = keyof typeof availableModels;
@@ -107,4 +112,22 @@ export function getModelInfo(modelId: ModelId) {
 export function modelSupports(modelId: ModelId, capability: 'vision' | 'tools' | 'streaming') {
   // All models through AI Gateway support these capabilities
   return true;
+}
+
+/**
+ * Check if a model is an Ollama model
+ */
+export function isOllamaModel(modelId: string): boolean {
+  return modelId.startsWith('ollama/');
+}
+
+/**
+ * Get Ollama model ID from model key
+ * Converts 'ollama/gpt-oss:120b' to 'gpt-oss:120b'
+ */
+export function getOllamaModelId(modelId: string): string {
+  if (modelId.startsWith('ollama/')) {
+    return modelId.substring('ollama/'.length);
+  }
+  return modelId;
 }

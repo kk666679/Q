@@ -5,6 +5,7 @@
  * 
  * Custom hook for AI interactions using the centralized SDK.
  * Provides a simplified interface for chat completions with streaming.
+ * Supports both Vercel AI Gateway models and Ollama Cloud models.
  * 
  * @example
  * function ChatComponent() {
@@ -122,6 +123,57 @@ export function useStructuredGeneration<T = unknown>() {
   }, []);
 
   return { data, isLoading, error, generate };
+}
+
+// ============================================
+// OLLAMA HELPERS
+// ============================================
+
+/**
+ * Check if a model is an Ollama model
+ */
+export function useIsOllamaModel(modelId: string): boolean {
+  return modelId.startsWith('ollama/');
+}
+
+/**
+ * Get Ollama cloud models
+ */
+export function useOllamaCloudModels() {
+  return [
+    { id: 'ollama/gpt-oss:120b', name: 'GPT-OSS 120B (Ollama Cloud)' },
+    { id: 'ollama/gpt-oss:20b', name: 'GPT-OSS 20B (Ollama Cloud)' },
+    { id: 'ollama/minimax-m2.5:cloud', name: 'MiniMax M2.5 Cloud' },
+  ];
+}
+
+/**
+ * Hook for checking Ollama Cloud availability
+ */
+export function useOllamaCloudAvailable() {
+  const [available, setAvailable] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useCallback(() => {
+    // Check if Ollama Cloud is configured via environment
+    // In production, this would be determined server-side
+    const checkAvailable = async () => {
+      try {
+        const response = await fetch('/api/ollama-cloud-available', {
+          method: 'GET',
+        });
+        setAvailable(response.ok);
+      } catch {
+        setAvailable(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAvailable();
+  }, []);
+
+  return { available, loading };
 }
 
 export default useAI;

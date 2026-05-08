@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { router, publicProcedure } from './router';
+import { router, publicProcedure } from './trpc';
 import { agentRegistry } from '../core/registry';
 
 export const insuranceRouter = router({
@@ -24,8 +24,8 @@ export const insuranceRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('insurance-expert');
-      const tool = agent?.tools.find(t => t.name === 'generate_insurance_quote');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('generate_insurance_quote');
+      return null;
     }),
 
   processClaim: publicProcedure
@@ -38,8 +38,8 @@ export const insuranceRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('insurance-expert');
-      const tool = agent?.tools.find(t => t.name === 'process_claim');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('process_claim');
+      return null;
     }),
 
   calculateLossRatio: publicProcedure
@@ -50,8 +50,8 @@ export const insuranceRouter = router({
     }))
     .query(async ({ input }) => {
       const agent = agentRegistry.get('insurance-expert');
-      const tool = agent?.tools.find(t => t.name === 'calculate_loss_ratio');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('calculate_loss_ratio');
+      return null;
     }),
 
   assessRisk: publicProcedure
@@ -67,8 +67,8 @@ export const insuranceRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('insurance-expert');
-      const tool = agent?.tools.find(t => t.name === 'assess_underwriting_risk');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('assess_underwriting_risk');
+      return null;
     }),
 
   detectFraud: publicProcedure
@@ -83,7 +83,7 @@ export const insuranceRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('insurance-expert');
-      const tool = agent?.tools.find(t => t.name === 'detect_fraud_patterns');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('detect_fraud_patterns');
+      return null;
     }),
 });

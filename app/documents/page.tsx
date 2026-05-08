@@ -57,7 +57,7 @@ import {
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { trpc } from '@/sdk/client/trpc'
+import { trpc } from '@/lib/sdk'
 import { ChartContainer } from '@/components/ui/chart'
 import {
   BarChart,
@@ -151,9 +151,23 @@ export default function DocumentsPage() {
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false)
   const [isGenerateDialogOpen, setIsGenerateDialogOpen] = useState(false)
+  const [newDocTitle, setNewDocTitle] = useState('')
+  const [newDocType, setNewDocType] = useState<'procedure' | 'policy' | 'form' | 'template' | 'report'>('procedure')
+  const [newDocContent, setNewDocContent] = useState('')
+  const [newDocProject, setNewDocProject] = useState('')
 
+  const utils = trpc.useUtils()
   const { data: documents, isLoading: docsLoading } = trpc.document.list.useQuery()
-  const { data: projects } = trpc.project.list.useQuery({})
+  const { data: projects } = trpc.project.list.useQuery()
+  const createDocument = trpc.document.create.useMutation({
+    onSuccess: () => {
+      utils.document.list.invalidate()
+      utils.dashboard.getStats.invalidate()
+      setIsCreateDialogOpen(false)
+      setNewDocTitle('')
+      setNewDocContent('')
+    },
+  })
 
   const filteredDocuments = (documents || []).filter((doc) => {
     const matchesSearch = doc.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -438,7 +452,7 @@ export default function DocumentsPage() {
                     <div className="grid gap-4 py-4">
                       <div className="grid gap-2">
                         <Label htmlFor="doc-project">Project</Label>
-                        <Select>
+                        <Select value={newDocProject} onValueChange={setNewDocProject}>
                           <SelectTrigger>
                             <SelectValue placeholder="Select project" />
                           </SelectTrigger>
@@ -453,20 +467,20 @@ export default function DocumentsPage() {
                       </div>
                       <div className="grid gap-2">
                         <Label htmlFor="doc-title">Title</Label>
-                        <Input id="doc-title" placeholder="Document title" />
+                        <Input id="doc-title" placeholder="Document title" value={newDocTitle} onChange={(e) => setNewDocTitle(e.target.value)} />
                       </div>
                       <div className="grid gap-2">
                         <Label htmlFor="doc-type">Type</Label>
-                        <Select>
+                        <Select value={newDocType} onValueChange={(v) => setNewDocType(v as 'procedure' | 'policy' | 'form' | 'template' | 'report')}>
                           <SelectTrigger>
                             <SelectValue placeholder="Select type" />
                           </SelectTrigger>
                           <SelectContent>
-                            {documentTypes.map((type) => (
-                              <SelectItem key={type.value} value={type.value}>
-                                {type.label}
-                              </SelectItem>
-                            ))}
+                            <SelectItem value="procedure">Procedure</SelectItem>
+                            <SelectItem value="policy">Policy</SelectItem>
+                            <SelectItem value="form">Form</SelectItem>
+                            <SelectItem value="template">Template</SelectItem>
+                            <SelectItem value="report">Report</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -476,6 +490,8 @@ export default function DocumentsPage() {
                           id="doc-content"
                           placeholder="Document content..."
                           rows={6}
+                          value={newDocContent}
+                          onChange={(e) => setNewDocContent(e.target.value)}
                         />
                       </div>
                     </div>
@@ -483,8 +499,18 @@ export default function DocumentsPage() {
                       <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
                         Cancel
                       </Button>
-                      <Button onClick={() => setIsCreateDialogOpen(false)}>
-                        Create Document
+                      <Button
+                        onClick={() => createDocument.mutate({
+                          title: newDocTitle,
+                          content: newDocContent,
+                          type: newDocType,
+                          version: '1.0',
+                          status: 'draft',
+                          tags: [],
+                        })}
+                        disabled={!newDocTitle.trim() || createDocument.isPending}
+                      >
+                        {createDocument.isPending ? 'Creating...' : 'Create Document'}
                       </Button>
                     </DialogFooter>
                   </DialogContent>

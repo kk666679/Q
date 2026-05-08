@@ -1,5 +1,5 @@
 ---
-name: hrms-skill-profile
+name: skill
 title:HRMS Skill Profile — Normalized Engineering, HR & AI Capability Taxonomy
 description: "Use when reviewing the repository's normalized engineering, HR, and AI capability taxonomy in a human- and machine-readable format. Provides canonical skill definitions with versioning, relationships, and gap analysis."
 user-invocable: false

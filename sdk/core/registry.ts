@@ -1,4 +1,5 @@
-import type { Agent } from '../types';
+import type { Agent } from '../types/index';
+import { SDKError, SDKErrorCode } from '../errors';
 
 export class AgentRegistry {
   private agents: Map<string, Agent> = new Map();
@@ -15,16 +16,44 @@ export class AgentRegistry {
     return this.agents.get(agentId);
   }
 
+  getOrThrow(agentId: string): Agent {
+    const agent = this.agents.get(agentId);
+    if (!agent) throw new SDKError(SDKErrorCode.AGENT_NOT_FOUND, `No agent with id "${agentId}"`);
+    return agent;
+  }
+
   getAll(): Agent[] {
     return Array.from(this.agents.values());
   }
 
-  getByType(type: string): Agent[] {
-    return this.getAll().filter(agent => agent.type === type);
+  getByType(type: Agent['type']): Agent[] {
+    return this.getAll().filter(a => a.type === type);
   }
 
   getActive(): Agent[] {
-    return this.getAll().filter(agent => agent.status === 'active');
+    return this.getAll().filter(a => a.status === 'active');
+  }
+
+  /** Find agents that have ALL of the requested capabilities */
+  getByCapabilities(capabilities: string[]): Agent[] {
+    return this.getActive().filter(a =>
+      capabilities.every(cap => a.capabilities.includes(cap)),
+    );
+  }
+
+  /** Find agents that have ANY of the requested tools */
+  getByTools(toolNames: string[]): Agent[] {
+    return this.getActive().filter(a =>
+      toolNames.some(t => a.tools.includes(t)),
+    );
+  }
+
+  has(agentId: string): boolean {
+    return this.agents.has(agentId);
+  }
+
+  get size(): number {
+    return this.agents.size;
   }
 }
 

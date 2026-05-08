@@ -51,7 +51,7 @@ import {
 } from '@/components/ui/accordion'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { trpc } from '@/sdk/client/trpc'
+import { trpc } from '@/lib/sdk'
 import { ISO_CLAUSES } from '@/lib/types'
 import { ChartContainer } from '@/components/ui/chart'
 import {
@@ -179,9 +179,8 @@ export default function CompliancePage() {
 
   const { data: projects } = trpc.project.list.useQuery()
   const { data: documents } = trpc.document.list.useQuery()
-  const { data: report } = trpc.compliance.getReport.useQuery()
+  const { data: report } = trpc.compliance.getReport.useQuery({})
 
-  // Convert single report to array for consistent handling
   const reports = report ? [report] : []
 
   const latestReport = reports[0]

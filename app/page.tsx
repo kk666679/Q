@@ -7,7 +7,7 @@ import { StatsCards } from '@/components/dashboard/stats-cards'
 import { ProjectsList } from '@/components/dashboard/projects-list'
 import { ActivityFeed } from '@/components/dashboard/activity-feed'
 import { ComplianceOverview } from '@/components/dashboard/compliance-overview'
-import { trpc } from '@/sdk/client/trpc'
+import { trpc } from '@/lib/sdk'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   ChartContainer,
@@ -84,8 +84,19 @@ const chartConfig = {
 }
 
 export default function DashboardPage() {
-  const { data: stats } = trpc.dashboard.getStats.useQuery()
+  const { data: rawStats } = trpc.dashboard.getStats.useQuery()
   const { data: projects } = trpc.project.list.useQuery()
+
+  // Normalise router shape → component shape
+  const stats = rawStats ? {
+    totalProjects:      rawStats.totalProjects,
+    activeProjects:     rawStats.activeProjects,
+    totalDocuments:     rawStats.totalDocuments,
+    averageCompliance:  rawStats.complianceScore,
+    documentsThisMonth: rawStats.approvedDocuments,
+    scansThisWeek:      0,
+    recentActivity:     rawStats.recentActivity,
+  } : undefined
 
   return (
     <SidebarProvider>
@@ -94,7 +105,7 @@ export default function DashboardPage() {
         <AppHeader title="Dashboard" description="Overview of your QMS implementation" />
         <main className="flex-1 overflow-auto p-6">
           <div className="mx-auto max-w-7xl space-y-6">
-            <StatsCards stats={stats || { totalProjects: 0, activeProjects: 0, totalDocuments: 0, averageCompliance: 0, documentsThisMonth: 0, scansThisWeek: 0, recentActivity: [] }} />
+            <StatsCards stats={stats ?? { totalProjects: 0, activeProjects: 0, totalDocuments: 0, averageCompliance: 0, documentsThisMonth: 0, scansThisWeek: 0, recentActivity: [] }} />
 
             {/* AI-Enhanced Charts Row */}
             <div className="grid gap-6 lg:grid-cols-2">

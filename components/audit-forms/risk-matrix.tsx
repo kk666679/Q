@@ -73,5 +73,3 @@ export function RiskMatrix() {
     </Card>
   );
 }
-
-import React from 'react';

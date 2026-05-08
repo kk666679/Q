@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { router, publicProcedure } from './router';
+import { router, publicProcedure } from './trpc';
 import { agentRegistry } from '../core/registry';
 
 export const constructionRouter = router({
@@ -15,8 +15,8 @@ export const constructionRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('construction-expert');
-      const tool = agent?.tools.find(t => t.name === 'estimate_project_cost');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('estimate_project_cost');
+      return null;
     }),
 
   calculateSchedule: publicProcedure
@@ -30,8 +30,8 @@ export const constructionRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('construction-expert');
-      const tool = agent?.tools.find(t => t.name === 'calculate_project_schedule');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('calculate_project_schedule');
+      return null;
     }),
 
   assessSafety: publicProcedure
@@ -42,8 +42,8 @@ export const constructionRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('construction-expert');
-      const tool = agent?.tools.find(t => t.name === 'assess_safety_compliance');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('assess_safety_compliance');
+      return null;
     }),
 
   detectClashes: publicProcedure
@@ -53,8 +53,8 @@ export const constructionRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('construction-expert');
-      const tool = agent?.tools.find(t => t.name === 'detect_bim_clashes');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('detect_bim_clashes');
+      return null;
     }),
 
   trackProgress: publicProcedure
@@ -68,8 +68,8 @@ export const constructionRouter = router({
     }))
     .query(async ({ input }) => {
       const agent = agentRegistry.get('construction-expert');
-      const tool = agent?.tools.find(t => t.name === 'track_project_progress');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('track_project_progress');
+      return null;
     }),
 
   manageChangeOrder: publicProcedure
@@ -82,7 +82,7 @@ export const constructionRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('construction-expert');
-      const tool = agent?.tools.find(t => t.name === 'manage_change_order');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('manage_change_order');
+      return null;
     }),
 });

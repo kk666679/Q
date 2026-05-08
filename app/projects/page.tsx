@@ -42,7 +42,7 @@ import {
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { trpc } from '@/sdk/client/trpc'
+import { trpc } from '@/lib/sdk'
 import { 
   AIChartContainer, 
   AIInsightCard,
@@ -131,8 +131,26 @@ export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false)
+  const [newProjectName, setNewProjectName] = useState('')
+  const [newProjectDesc, setNewProjectDesc] = useState('')
+  const [newProjectOrgType, setNewProjectOrgType] = useState('')
+  const [newProjectIndustry, setNewProjectIndustry] = useState('')
+  const [newProjectScope, setNewProjectScope] = useState('')
 
+  const utils = trpc.useUtils()
   const { data: projects, isLoading } = trpc.project.list.useQuery()
+  const createProject = trpc.project.create.useMutation({
+    onSuccess: () => {
+      utils.project.list.invalidate()
+      utils.dashboard.getStats.invalidate()
+      setIsCreateDialogOpen(false)
+      setNewProjectName('')
+      setNewProjectDesc('')
+      setNewProjectOrgType('')
+      setNewProjectIndustry('')
+      setNewProjectScope('')
+    },
+  })
 
   const filteredProjects = (projects || []).filter((project) => {
     const matchesSearch = project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -291,19 +309,21 @@ export default function ProjectsPage() {
                   <div className="grid gap-4 py-4">
                     <div className="grid gap-2">
                       <Label htmlFor="name">Project Name</Label>
-                      <Input id="name" placeholder="e.g., Acme Manufacturing QMS" />
+                      <Input id="name" placeholder="e.g., Acme Manufacturing QMS" value={newProjectName} onChange={(e) => setNewProjectName(e.target.value)} />
                     </div>
                     <div className="grid gap-2">
                       <Label htmlFor="description">Description</Label>
                       <Textarea
                         id="description"
                         placeholder="Brief description of the project scope..."
+                        value={newProjectDesc}
+                        onChange={(e) => setNewProjectDesc(e.target.value)}
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="grid gap-2">
                         <Label htmlFor="orgType">Organization Type</Label>
-                        <Select>
+                        <Select value={newProjectOrgType} onValueChange={setNewProjectOrgType}>
                           <SelectTrigger>
                             <SelectValue placeholder="Select type" />
                           </SelectTrigger>
@@ -318,7 +338,7 @@ export default function ProjectsPage() {
                       </div>
                       <div className="grid gap-2">
                         <Label htmlFor="industry">Industry</Label>
-                        <Input id="industry" placeholder="e.g., Automotive" />
+                        <Input id="industry" placeholder="e.g., Automotive" value={newProjectIndustry} onChange={(e) => setNewProjectIndustry(e.target.value)} />
                       </div>
                     </div>
                     <div className="grid gap-2">
@@ -326,6 +346,8 @@ export default function ProjectsPage() {
                       <Textarea
                         id="scope"
                         placeholder="Define the scope of your QMS implementation..."
+                        value={newProjectScope}
+                        onChange={(e) => setNewProjectScope(e.target.value)}
                       />
                     </div>
                   </div>
@@ -333,8 +355,17 @@ export default function ProjectsPage() {
                     <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
                       Cancel
                     </Button>
-                    <Button onClick={() => setIsCreateDialogOpen(false)}>
-                      Create Project
+                    <Button
+                      onClick={() => createProject.mutate({
+                        name: newProjectName,
+                        description: newProjectDesc || undefined,
+                        organizationType: newProjectOrgType || 'other',
+                        industry: newProjectIndustry || 'General',
+                        scope: newProjectScope || 'QMS Implementation',
+                      })}
+                      disabled={!newProjectName.trim() || createProject.isPending}
+                    >
+                      {createProject.isPending ? 'Creating...' : 'Create Project'}
                     </Button>
                   </DialogFooter>
                 </DialogContent>

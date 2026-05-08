@@ -32,7 +32,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { trpc } from '@/sdk/client/trpc'
+import { trpc } from '@/lib/sdk'
 
 function getStatusBadgeVariant(status: string) {
   switch (status) {
@@ -66,12 +66,12 @@ export default function ProjectDetailPage({
   
   const { data: project } = trpc.project.get.useQuery({ id })
   const { data: documents } = trpc.document.list.useQuery({})
-  const { data: processes } = trpc.process.list.useQuery({})
-  const { data: reports } = trpc.compliance.getReport.useQuery({})
+  const { data: processes } = trpc.process.list.useQuery()
+  const { data: report } = trpc.compliance.getReport.useQuery({})
 
   const projectDocuments = (documents || []).filter((d) => d.projectId === id)
   const projectProcesses = (processes || []).filter((p) => p.projectId === id)
-  const projectReports = (reports || []).filter((r) => r.projectId === id)
+  const projectReports = report ? [report].filter((r) => r.projectId === id) : []
 
   if (!project) {
     return (

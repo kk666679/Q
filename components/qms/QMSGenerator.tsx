@@ -58,7 +58,7 @@ import {
 } from "@/components/GlassmorphicCard";
 
 import { EnhancedMermaid } from "./enhanced_mermaid";
-import { ISOComplianceChecker } from "./ISOComplianceChecker";
+import { ISOComplianceChecker } from "@/components/audit-forms/ISOComplianceChecker";
 import { ProcessFlowDesigner } from "./processflow_designer";
 import { RiskAssessmentTool } from "./RiskAssessmentTool";
 

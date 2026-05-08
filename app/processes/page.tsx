@@ -52,7 +52,7 @@ import {
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { trpc } from '@/sdk/client/trpc'
+import { trpc } from '@/lib/sdk'
 import { ChartContainer } from '@/components/ui/chart'
 import {
   BarChart,
@@ -160,9 +160,22 @@ export default function ProcessesPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [typeFilter, setTypeFilter] = useState<string>('all')
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false)
+  const [newProcName, setNewProcName] = useState('')
+  const [newProcDesc, setNewProcDesc] = useState('')
+  const [newProcType, setNewProcType] = useState('core')
+  const [newProcProject, setNewProcProject] = useState('')
 
+  const utils = trpc.useUtils()
   const { data: processes, isLoading } = trpc.process.list.useQuery()
   const { data: projects } = trpc.project.list.useQuery()
+  const createProcess = trpc.process.create.useMutation({
+    onSuccess: () => {
+      utils.process.list.invalidate()
+      setIsCreateDialogOpen(false)
+      setNewProcName('')
+      setNewProcDesc('')
+    },
+  })
 
   const filteredProcesses = (processes || []).filter((process) => {
     const matchesSearch =
@@ -303,7 +316,7 @@ export default function ProcessesPage() {
                   <div className="grid gap-4 py-4">
                     <div className="grid gap-2">
                       <Label htmlFor="proc-project">Project</Label>
-                      <Select>
+                      <Select value={newProcProject} onValueChange={setNewProcProject}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select project" />
                         </SelectTrigger>
@@ -318,11 +331,11 @@ export default function ProcessesPage() {
                     </div>
                     <div className="grid gap-2">
                       <Label htmlFor="proc-name">Process Name</Label>
-                      <Input id="proc-name" placeholder="e.g., Order to Delivery" />
+                      <Input id="proc-name" placeholder="e.g., Order to Delivery" value={newProcName} onChange={(e) => setNewProcName(e.target.value)} />
                     </div>
                     <div className="grid gap-2">
                       <Label htmlFor="proc-type">Process Type</Label>
-                      <Select>
+                      <Select value={newProcType} onValueChange={setNewProcType}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select type" />
                         </SelectTrigger>
@@ -338,25 +351,25 @@ export default function ProcessesPage() {
                       <Textarea
                         id="proc-desc"
                         placeholder="Describe the process purpose and scope..."
+                        value={newProcDesc}
+                        onChange={(e) => setNewProcDesc(e.target.value)}
                       />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="grid gap-2">
-                        <Label htmlFor="proc-owner">Process Owner</Label>
-                        <Input id="proc-owner" placeholder="e.g., Operations Manager" />
-                      </div>
-                      <div className="grid gap-2">
-                        <Label htmlFor="proc-inputs">Inputs (comma-separated)</Label>
-                        <Input id="proc-inputs" placeholder="e.g., Order, Specs" />
-                      </div>
                     </div>
                   </div>
                   <DialogFooter>
                     <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
                       Cancel
                     </Button>
-                    <Button onClick={() => setIsCreateDialogOpen(false)}>
-                      Create Process
+                    <Button
+                      onClick={() => createProcess.mutate({
+                        name: newProcName,
+                        description: newProcDesc || 'Process description',
+                        type: newProcType,
+                        projectId: newProcProject || 'default',
+                      })}
+                      disabled={!newProcName.trim() || createProcess.isPending}
+                    >
+                      {createProcess.isPending ? 'Creating...' : 'Create Process'}
                     </Button>
                   </DialogFooter>
                 </DialogContent>

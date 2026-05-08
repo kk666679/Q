@@ -9,7 +9,8 @@ import { createTRPCReact } from '@trpc/react-query';
 import { createTRPCProxyClient, httpBatchLink, loggerLink } from '@trpc/client';
 import { QueryClient } from '@tanstack/react-query';
 import type { AppRouter } from '@/sdk/server/router';
-import { sdkConfig } from './config';
+
+const trpcEndpoint = '/api/trpc';
 
 /**
  * tRPC React client for use in components
@@ -33,13 +34,13 @@ export const trpcClient = createTRPCProxyClient<AppRouter>({
   links: [
     loggerLink({
       enabled: (opts) =>
-        sdkConfig.features.enableDevtools &&
+        process.env.NODE_ENV === 'development' &&
         typeof window !== 'undefined' &&
         opts.direction === 'down' &&
         opts.result instanceof Error,
     }),
     httpBatchLink({
-      url: `${sdkConfig.api.baseUrl}${sdkConfig.api.trpcEndpoint}`,
+      url: trpcEndpoint,
       headers() {
         return {
           'x-trpc-source': 'client',
@@ -76,11 +77,11 @@ export function createTRPCClientOptions() {
     links: [
       loggerLink({
         enabled: (opts) =>
-          sdkConfig.features.enableDevtools &&
+          process.env.NODE_ENV === 'development' &&
           typeof window !== 'undefined',
       }),
       httpBatchLink({
-        url: sdkConfig.api.trpcEndpoint,
+        url: trpcEndpoint,
         headers() {
           return {
             'x-trpc-source': 'react',

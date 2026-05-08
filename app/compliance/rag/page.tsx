@@ -1,6 +1,6 @@
 'use client'
 
-import { trpc } from '@/sdk/client/trpc';
+import { trpc } from '@/lib/sdk';
 import { GlassmorphicCard } from '@/components/GlassmorphicCard';
 
 export default function RAGDemoPage() {

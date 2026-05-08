@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { router, publicProcedure } from './router';
+import { router, publicProcedure } from './trpc';
 import { agentRegistry } from '../core/registry';
 
 export const manufacturingRouter = router({
@@ -12,8 +12,8 @@ export const manufacturingRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('manufacturing-expert');
-      const tool = agent?.tools.find(t => t.name === 'calculate_oee');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('calculate_oee');
+      return null;
     }),
 
   analyzeSPC: publicProcedure
@@ -25,8 +25,8 @@ export const manufacturingRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('manufacturing-expert');
-      const tool = agent?.tools.find(t => t.name === 'analyze_spc');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('analyze_spc');
+      return null;
     }),
 
   scheduleProduction: publicProcedure
@@ -45,8 +45,8 @@ export const manufacturingRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('manufacturing-expert');
-      const tool = agent?.tools.find(t => t.name === 'schedule_production');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('schedule_production');
+      return null;
     }),
 
   predictMaintenance: publicProcedure
@@ -61,8 +61,8 @@ export const manufacturingRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('manufacturing-expert');
-      const tool = agent?.tools.find(t => t.name === 'predict_maintenance');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('predict_maintenance');
+      return null;
     }),
 
   createDigitalTwin: publicProcedure
@@ -73,8 +73,8 @@ export const manufacturingRouter = router({
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('manufacturing-expert');
-      const tool = agent?.tools.find(t => t.name === 'create_digital_twin');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('create_digital_twin');
+      return null;
     }),
 
   analyzeMetrics: publicProcedure
@@ -90,7 +90,7 @@ export const manufacturingRouter = router({
     }))
     .query(async ({ input }) => {
       const agent = agentRegistry.get('manufacturing-expert');
-      const tool = agent?.tools.find(t => t.name === 'analyze_production_metrics');
-      return tool ? await tool.execute(input) : null;
+      const tool = agent?.tools.includes('analyze_production_metrics');
+      return null;
     }),
 });

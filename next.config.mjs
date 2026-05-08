@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Next.js 16 - React Compiler support (stable)
-  reactCompiler: true,
-  
   // Strict mode for better React practices
   reactStrictMode: true,
 
@@ -32,6 +29,8 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    // React Compiler
+    reactCompiler: true,
     // Optimize package imports
     optimizePackageImports: [
       'lucide-react',

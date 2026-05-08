@@ -6,6 +6,7 @@
  */
 
 import type { Node, Edge } from "@xyflow/react";
+import { logger } from '../../sdk/utils/logger';
 
 export interface WorkflowExecutionContext {
   nodes: Node[];
@@ -56,7 +57,7 @@ async function executeTrigger(
   _context: WorkflowExecutionContext
 ): Promise<NodeExecutionResult> {
   const startTime = new Date();
-  console.log(`[Trigger] Starting workflow: ${node.data?.event}`);
+  logger.info('Trigger: starting workflow', { event: String(node.data?.event ?? '') });
 
   await new Promise((resolve) => setTimeout(resolve, 100));
 
@@ -77,7 +78,7 @@ async function executeTask(
   _context: WorkflowExecutionContext
 ): Promise<NodeExecutionResult> {
   const startTime = new Date();
-  console.log(`[Task] Executing task: ${node.data?.title}`);
+  logger.info('Task: executing', { title: String(node.data?.title ?? '') });
 
   await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -98,7 +99,7 @@ async function executeCondition(
   _context: WorkflowExecutionContext
 ): Promise<NodeExecutionResult> {
   const startTime = new Date();
-  console.log(`[Condition] Evaluating: ${node.data?.condition}`);
+  logger.info('Condition: evaluating', { condition: String(node.data?.condition ?? '') });
 
   await new Promise((resolve) => setTimeout(resolve, 100));
 
@@ -121,7 +122,7 @@ async function executeAction(
   _context: WorkflowExecutionContext
 ): Promise<NodeExecutionResult> {
   const startTime = new Date();
-  console.log(`[Action] Executing action: ${node.data?.action}`);
+  logger.info('Action: executing', { action: String(node.data?.action ?? '') });
 
   await new Promise((resolve) => setTimeout(resolve, 300));
 
@@ -142,7 +143,7 @@ async function executeWait(
   _context: WorkflowExecutionContext
 ): Promise<NodeExecutionResult> {
   const startTime = new Date();
-  console.log(`[Wait] Waiting for ${node.data?.duration} ${node.data?.unit}`);
+  logger.info('Wait: pausing', { duration: String(node.data?.duration ?? ''), unit: String(node.data?.unit ?? '') });
 
   // For demo, don't actually wait
   await new Promise((resolve) => setTimeout(resolve, 100));
@@ -164,7 +165,7 @@ async function executeEnd(
   _context: WorkflowExecutionContext
 ): Promise<NodeExecutionResult> {
   const startTime = new Date();
-  console.log(`[End] Workflow completed: ${node.data?.result}`);
+  logger.info('End: workflow completed', { result: String(node.data?.result ?? '') });
 
   return {
     nodeId: node.id,
@@ -251,8 +252,7 @@ export class FlowExecutionController {
     const startTime = Date.now();
     this.executionOrder = this.buildExecutionOrder();
 
-    console.log("Starting workflow execution...");
-    console.log("Execution order:", this.executionOrder);
+    logger.info('Workflow execution started', { nodeCount: String(this.executionOrder.length) });
 
     const results: NodeExecutionResult[] = [];
 
@@ -262,7 +262,7 @@ export class FlowExecutionController {
 
       const executor = nodeExecutors[node.type || ""];
       if (!executor) {
-        console.warn(`No executor found for node type: ${node.type}`);
+        logger.warn('No executor for node type', { nodeType: String(node.type ?? '') });
         continue;
       }
 
@@ -286,7 +286,7 @@ export class FlowExecutionController {
         this.context.results.set(nodeId, errorResult);
         results.push(errorResult);
 
-        console.error(`Error executing node ${nodeId}:`, error);
+        logger.error('Node execution failed', { nodeId, error: error instanceof Error ? error.message : 'unknown' });
         break;
       }
     }
@@ -294,7 +294,7 @@ export class FlowExecutionController {
     const totalDuration = Date.now() - startTime;
     const success = results.every((r) => r.status === "success");
 
-    console.log(`Workflow execution ${success ? "completed" : "failed"} in ${totalDuration}ms`);
+    logger.info('Workflow execution finished', { success: String(success), durationMs: String(totalDuration) });
 
     return {
       success,

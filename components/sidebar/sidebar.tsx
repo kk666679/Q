@@ -24,6 +24,7 @@ import {
   ChevronDown,
   ChevronRight,
   BookOpen,
+  Home,
 } from 'lucide-react'
 
 import {
@@ -41,8 +42,9 @@ import { useState } from 'react'
 // Define navigation structure with domain grouping
 const mainNavSections = [
   {
-    title: 'Dashboard',
+    title: 'Home',
     items: [
+      { title: 'Landing', url: '/landing', icon: Home },
       { title: 'Dashboard', url: '/', icon: LayoutDashboard },
     ],
   },

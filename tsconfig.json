@@ -32,8 +32,7 @@
       "@/components/*": ["./components/*"],
       "@/hooks/*": ["./hooks/*"],
       "@/app/*": ["./app/*"]
-    },
-    "baseUrl": "."
+    }
   },
   "include": [
     "next-env.d.ts",
