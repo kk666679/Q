@@ -35,8 +35,8 @@ export interface Project {
   scope: string
   status: ProjectStatus
   metadata: Record<string, unknown>
-  createdAt: Date
-  updatedAt: Date
+  createdAt: Date | string
+  updatedAt: Date | string
   documentsCount?: number
   processesCount?: number
   complianceScore?: number
@@ -87,8 +87,8 @@ export interface Process {
   outputs: string[]
   owner?: string
   metrics?: ProcessMetric[]
-  createdAt: Date
-  updatedAt: Date
+  createdAt: Date | string
+  updatedAt: Date | string
 }
 
 export interface DocumentMetadata {
@@ -109,9 +109,9 @@ export interface Document {
   status: DocumentStatus
   createdBy: string
   metadata: DocumentMetadata
-  createdAt: Date
-  updatedAt: Date
-  approvedAt?: Date
+  createdAt: Date | string
+  updatedAt: Date | string
+  approvedAt?: Date | string | string
 }
 
 export interface ComplianceFinding {
@@ -135,7 +135,7 @@ export interface ComplianceReport {
   passed: boolean
   summary: string
   recommendations?: string[]
-  scannedAt: Date
+  scannedAt: Date | string
   metadata?: {
     documentsScanned?: number
     clausesChecked?: string[]
@@ -148,7 +148,7 @@ export interface AgentMessage {
   id: string
   role: AgentRole | 'user' | 'assistant'
   content: string
-  timestamp: Date
+  timestamp: Date | string
   metadata?: Record<string, unknown>
 }
 
@@ -160,8 +160,8 @@ export interface AgentTask {
   status: 'pending' | 'processing' | 'completed' | 'failed'
   assignedTo?: AgentRole
   projectId: string
-  createdAt: Date
-  completedAt?: Date
+  createdAt: Date | string
+  completedAt?: Date | string | string
 }
 
 // ISO 9001 Clauses

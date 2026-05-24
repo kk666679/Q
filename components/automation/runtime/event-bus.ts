@@ -1,0 +1,1 @@
+export class EventBus<T extends {type:string}>{ private listeners=new Map<string,((payload:T)=>void)[]>(); on(type:string,cb:(payload:T)=>void){this.listeners.set(type,[...(this.listeners.get(type)??[]),cb]);} emit(event:T){(this.listeners.get(event.type)??[]).forEach(cb=>cb(event));}}

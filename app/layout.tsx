@@ -1,14 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
 // Providers - centralized SDK provider
 import { SDKProvider } from '@/lib/sdk/provider'
 import { ThemeProvider } from '@/components/theme-provider'
-
-// Load Geist fonts
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
-const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
 export const metadata: Metadata = {
   title: {
@@ -54,10 +49,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geist.variable} ${geistMono.variable}`}
       style={{
-        '--font-sans': geist.style.fontFamily,
-        '--font-mono': geistMono.style.fontFamily,
+        '--font-sans': 'Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif',
+        '--font-mono': 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
       } as React.CSSProperties}
     >
       <body className="bg-background font-sans antialiased">

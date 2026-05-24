@@ -89,7 +89,7 @@ function getNodeIcon(type: FlowNode['type']) {
 }
 
 // Custom Node Component for ReactFlow
-function CustomProcessNode({ data, selected }: { data: { label: string; description?: string; responsible?: string }; selected?: boolean }) {
+function CustomProcessNode({ data, selected }: { data: { label: string; description?: string; responsible?: string; type?: FlowNode["type"] }; selected?: boolean }) {
   return (
     <div className={`
       px-4 py-3 rounded-lg border-2 bg-card shadow-sm min-w-[180px]
@@ -97,7 +97,7 @@ function CustomProcessNode({ data, selected }: { data: { label: string; descript
       hover:border-primary/50 transition-colors
     `}>
       <div className="flex items-center gap-2">
-        {getNodeIcon(data.type as FlowNode['type'])}
+        {getNodeIcon(data.type ?? "process")}
         <span className="font-medium text-sm">{data.label}</span>
       </div>
       {data.responsible && (
@@ -263,11 +263,11 @@ export default function ProcessDetailPage({
                     </div>
                     <div>
                       <dt className="text-muted-foreground">Created</dt>
-                      <dd className="font-medium">{process.createdAt.toLocaleDateString()}</dd>
+                      <dd className="font-medium">{new Date(process.createdAt).toLocaleDateString()}</dd>
                     </div>
                     <div>
                       <dt className="text-muted-foreground">Updated</dt>
-                      <dd className="font-medium">{process.updatedAt.toLocaleDateString()}</dd>
+                      <dd className="font-medium">{new Date(process.updatedAt).toLocaleDateString()}</dd>
                     </div>
                   </dl>
                 </CardContent>

@@ -287,7 +287,7 @@ const agentTools: Record<string, Array<{
       description: 'Statistical Process Control analysis',
       params: z.object({ measurements: z.array(z.number()), sigmaLevel: z.number().default(3) }),
       execute: async (p) => {
-        const mean = p.measurements.reduce((a, b) => a + b, 0) / p.measurements.length
+        const mean = p.measurements.reduce((a: number, b: number) => a + b, 0) / p.measurements.length
         return { mean: mean.toFixed(2), status: 'in-control', cpk: 1.45 }
       }
     },
@@ -309,7 +309,7 @@ const agentTools: Record<string, Array<{
       description: 'Estimate construction costs',
       params: z.object({ projectType: z.enum(['commercial', 'residential', 'industrial']), squareFootage: z.number() }),
       execute: async (p) => ({
-        totalEstimate: (p.squareFootage * p.projectType === 'commercial' ? 200 : p.projectType === 'residential' ? 150 : 75).toFixed(2),
+        totalEstimate: (p.squareFootage * (p.projectType === 'commercial' ? 200 : p.projectType === 'residential' ? 150 : 75)).toFixed(2),
         breakdown: { site: 8, foundation: 12, structure: 25, interior: 20 }
       })
     },
@@ -782,21 +782,23 @@ export default function AgentsPage() {
                       </p>
                       <div className="grid grid-cols-2 gap-2">
                         {suggestedPrompts[selectedAgent]?.map((prompt, i) => (
-                          <Suggestion key={i} text={prompt} onClick={() => setInput(prompt)} />
+                          <Suggestion key={i} suggestion={prompt} onClick={(selected) => setInput(selected)} />
                         ))}
                       </div>
                     </div>
                   ) : (
                     messages.filter(m => !m.isToolCall).map((msg) => (
-                      <Message
-                        key={msg.id}
-                        role={msg.role}
-                        content={msg.content}
-                        agentName={msg.agentId ? agents.find(a => a.id === msg.agentId)?.name : undefined}
-                      />
+                      <Message key={msg.id} from={msg.role}>
+                        <div className="space-y-1">
+                          {msg.agentId && (
+                            <p className="text-xs text-muted-foreground">{agents.find(a => a.id === msg.agentId)?.name}</p>
+                          )}
+                          <p>{msg.content}</p>
+                        </div>
+                      </Message>
                     ))
                   )}
-                  {isLoading && <Message role="assistant" content="" isStreaming />}
+                  {isLoading && <Message from="assistant">Thinking…</Message>}
                   <div ref={scrollRef} />
                 </div>
               </ScrollArea>

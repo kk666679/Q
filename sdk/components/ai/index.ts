@@ -190,3 +190,5 @@ export { ButtonGroup } from "@/components/ui/button-group";
 export { useIsMobile } from "@/components/ui/use-mobile";
 export { useToast } from "@/components/ui/use-toast";
 
+
+export { AIExecutiveCockpitFullset, AIWorkflowOpsFullset } from "@/sdk/components/ai/fullsets";

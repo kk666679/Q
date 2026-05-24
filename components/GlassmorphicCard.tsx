@@ -4,7 +4,7 @@ import * as React from "react";
 import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
-import { Button, ButtonProps } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -139,7 +139,7 @@ export function SlideIn({
 }
 
 // Glass Button
-interface GlassButtonProps extends Omit<ButtonProps, "variant"> {
+interface GlassButtonProps extends Omit<React.ComponentProps<typeof Button>, "variant"> {
   variant?: "primary" | "secondary" | "ghost";
   glow?: boolean;
 }

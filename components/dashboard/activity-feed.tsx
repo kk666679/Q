@@ -11,7 +11,7 @@ interface ActivityItem {
 }
 
 interface ActivityFeedProps {
-  activities: ActivityItem[]
+  activities: unknown[]
 }
 
 function getActivityIcon(type: ActivityItem['type']) {
@@ -43,6 +43,12 @@ function getActionVerb(action: string) {
 }
 
 export function ActivityFeed({ activities }: ActivityFeedProps) {
+  const normalized = (activities as Partial<ActivityItem>[]).map((a)=>({
+    type: (a.type === "document" || a.type === "compliance" || a.type === "process") ? a.type : "document",
+    action: a.action || "updated",
+    item: a.item || "QMS item",
+    time: a.time || "recently",
+  }))
   return (
     <Card>
       <CardHeader>
@@ -51,7 +57,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {activities.map((activity, index) => {
+          {normalized.map((activity, index) => {
             const Icon = getActivityIcon(activity.type)
             return (
               <div key={index} className="flex items-start gap-3">
