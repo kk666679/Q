@@ -29,6 +29,14 @@ import {
 } from 'lucide-react';
 
 // Start Node
+// Use loose typing for XYFlow node data because it often arrives as unknown.
+const toRenderable = (v: unknown): React.ReactNode => {
+  if (v === null || v === undefined) return '';
+  if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') return String(v);
+  return '';
+};
+
+
 export const StartNode = memo(({ data, selected }: NodeProps) => {
   return (
     <>
@@ -58,7 +66,7 @@ export const StartNode = memo(({ data, selected }: NodeProps) => {
         
         <div className="relative text-center text-white p-4">
           <Play className="w-10 h-10 mx-auto mb-2" />
-          <p className="text-sm font-semibold">{data.label || 'Start'}</p>
+<p className="text-sm font-semibold">{toRenderable((data as any).label) || 'Start'}</p>
         </div>
 
         <Handle
@@ -105,7 +113,7 @@ export const EndNode = memo(({ data, selected }: NodeProps) => {
         
         <div className="relative text-center text-white p-4">
           <Icon className="w-10 h-10 mx-auto mb-2" />
-          <p className="text-sm font-semibold">{data.label || 'End'}</p>
+<p className="text-sm font-semibold">{toRenderable((data as any).label) || 'End'}</p>
         </div>
 
         <Handle
@@ -134,7 +142,7 @@ export const ActionNode = memo(({ data, selected }: NodeProps) => {
     default: Zap,
   };
 
-  const Icon = iconMap[data.actionType || 'default'];
+  const Icon = iconMap[(data as any).actionType || 'default'];
 
   return (
     <>
@@ -175,19 +183,19 @@ export const ActionNode = memo(({ data, selected }: NodeProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-white/80">Action</p>
-              <h4 className="text-sm font-semibold truncate">{data.label}</h4>
+              <h4 className="text-sm font-semibold truncate">{data.label as React.ReactNode}</h4>
             </div>
           </div>
         </div>
 
         <div className="p-3">
           {data.description && (
-            <p className="text-xs text-gray-600 mb-2">{data.description}</p>
+            <p className="text-xs text-gray-600 mb-2">{data.description as React.ReactNode}</p>
           )}
           {data.duration && (
             <div className="flex items-center gap-1 text-xs text-gray-500">
               <Clock className="w-3 h-3" />
-              <span>{data.duration}</span>
+              <span>{data.duration as React.ReactNode}</span>
             </div>
           )}
         </div>
@@ -241,8 +249,8 @@ export const DecisionNode = memo(({ data, selected }: NodeProps) => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white max-w-[140px]">
             <GitBranch className="w-8 h-8 mx-auto mb-2" />
-            <p className="text-xs text-white/80 mb-1">Decision</p>
-            <h4 className="text-sm font-semibold">{data.label}</h4>
+              <p className="text-xs text-white/80 mb-1">Decision</p>
+            <h4 className="text-sm font-semibold">{toRenderable((data as any).label)}</h4>
           </div>
         </div>
 
@@ -308,7 +316,7 @@ export const ApprovalNode = memo(({ data, selected }: NodeProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-white/80">Requires Approval</p>
-              <h4 className="text-sm font-semibold truncate">{data.label}</h4>
+              <h4 className="text-sm font-semibold truncate">{data.label as React.ReactNode}</h4>
             </div>
           </div>
         </div>
@@ -317,19 +325,19 @@ export const ApprovalNode = memo(({ data, selected }: NodeProps) => {
           {data.approver && (
             <div className="flex items-center gap-2 text-sm">
               <Shield className="w-4 h-4 text-purple-400" />
-              <span className="text-gray-700">{data.approver}</span>
+              <span className="text-gray-700">{data.approver as React.ReactNode}</span>
             </div>
           )}
           {data.sla && (
             <div className="flex items-center gap-2 text-sm">
               <Clock className="w-4 h-4 text-pink-400" />
-              <span className="text-gray-700">SLA: {data.sla}</span>
+              <span className="text-gray-700">SLA: {data.sla as React.ReactNode}</span>
             </div>
           )}
           {data.priority && (
             <div className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
               <Award className="w-3 h-3" />
-              {data.priority}
+              {data.priority as React.ReactNode}
             </div>
           )}
         </div>
@@ -388,9 +396,9 @@ export const WaitNode = memo(({ data, selected }: NodeProps) => {
             <Clock className="w-6 h-6 text-white" />
           </div>
           <p className="text-xs text-gray-500 mb-1">Wait</p>
-          <p className="text-sm font-semibold text-gray-900">{data.duration || '1 hour'}</p>
+          <p className="text-sm font-semibold text-gray-900">{data.duration as React.ReactNode || '1 hour'}</p>
           {data.description && (
-            <p className="text-xs text-gray-600 mt-2">{data.description}</p>
+            <p className="text-xs text-gray-600 mt-2">{data.description as React.ReactNode}</p>
           )}
         </div>
 
@@ -444,17 +452,17 @@ export const NotificationNode = memo(({ data, selected }: NodeProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-gray-500 mb-1">Send Notification</p>
-              <h4 className="text-sm font-semibold text-gray-900 mb-2">{data.label}</h4>
+              <h4 className="text-sm font-semibold text-gray-900 mb-2">{data.label as React.ReactNode}</h4>
               {data.recipients && (
                 <div className="flex items-center gap-1 text-xs text-gray-600">
                   <Users className="w-3 h-3" />
-                  <span>{data.recipients}</span>
+                  <span>{data.recipients as React.ReactNode}</span>
                 </div>
               )}
               {data.channel && (
                 <div className="inline-flex items-center gap-1 px-2 py-1 bg-indigo-50 text-indigo-700 rounded text-xs mt-2">
                   {data.channel === 'email' ? <Mail className="w-3 h-3" /> : <Bell className="w-3 h-3" />}
-                  {data.channel}
+                  {data.channel as React.ReactNode}
                 </div>
               )}
             </div>
@@ -551,7 +559,7 @@ export const ErrorNode = memo(({ data, selected }: NodeProps) => {
           <AlertCircle className="w-5 h-5 text-red-600" />
         </div>
         <p className="text-xs text-gray-500">Error Handler</p>
-        <p className="text-sm font-semibold text-gray-900">{data.label || 'Handle Error'}</p>
+        <p className="text-sm font-semibold text-gray-900">{data.label as React.ReactNode || 'Handle Error'}</p>
       </div>
 
       <Handle

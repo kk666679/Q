@@ -29,6 +29,7 @@ export function ColorToolbar({
   currentColor, 
   onColorChange, 
   onDelete,
+  onLabelChange,
   currentLabel = ''
 }: ColorToolbarProps) {
   if (!selectedNodeId) {
@@ -52,7 +53,7 @@ export function ColorToolbar({
           <input
             id="node-label"
             type="text"
-            value={currentLabel}
+value={currentLabel}
             onChange={(e) => onLabelChange?.(e.target.value)}
             placeholder="Enter label..."
             className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"

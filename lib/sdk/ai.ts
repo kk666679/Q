@@ -13,8 +13,8 @@ import { generateText, streamText, generateObject, streamObject } from 'ai';
 import { sdkConfig } from './config';
 import type { AIConfig, AIMessage, AIGenerateOptions, AIStreamOptions } from './types';
 
-// Re-export AI SDK hooks for client-side usage
-export { useChat, useCompletion, useObject, useAssistant } from '@ai-sdk/react';
+// Re-export AI SDK hooks for client-side usage (only what's publicly exported)
+export { useChat, useCompletion } from '@ai-sdk/react';
 
 // Re-export core AI SDK functions
 export { generateText, streamText, generateObject, streamObject } from 'ai';
@@ -69,7 +69,6 @@ export async function streamGenerate(options: AIStreamOptions) {
     temperature: config.temperature,
     maxTokens: config.maxTokens,
     system: config.system,
-    onFinish: options.onFinish,
   });
 }
 

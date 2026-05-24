@@ -9,7 +9,7 @@ export const AgentSchema = z.object({
   capabilities: z.array(z.string()),
   tools: z.array(z.string()),
   status: z.enum(['active', 'inactive', 'busy']),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export type Agent = z.infer<typeof AgentSchema>;
@@ -48,7 +48,7 @@ export const MessageSchema = z.object({
   content: z.string(),
   type: z.enum(['user', 'agent', 'system']),
   timestamp: z.date(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export type Message = z.infer<typeof MessageSchema>;
@@ -75,7 +75,7 @@ export const ProcessNodeSchema = z.object({
   type: z.enum(['start', 'end', 'task', 'decision', 'subprocess']),
   label: z.string(),
   position: z.object({ x: z.number(), y: z.number() }),
-  data: z.record(z.any()).optional(),
+  data: z.record(z.string(), z.any()).optional(),
 });
 
 export const ProcessEdgeSchema = z.object({
@@ -92,7 +92,7 @@ export const ProcessSchema = z.object({
   description: z.string(),
   nodes: z.array(ProcessNodeSchema),
   edges: z.array(ProcessEdgeSchema),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export type ProcessNode = z.infer<typeof ProcessNodeSchema>;
@@ -209,7 +209,7 @@ export type Claim = z.infer<typeof ClaimSchema>;
 export const VectorDocumentSchema = z.object({
   id: z.string(),
   content: z.string(),
-  metadata: z.record(z.any()),
+  metadata: z.record(z.string(), z.any()),
   embedding: z.array(z.number()).optional(),
 });
 
@@ -220,7 +220,7 @@ export const ApiResponseSchema = z.object({
   success: z.boolean(),
   data: z.any().optional(),
   error: z.string().optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export type ApiResponse<T = any> = {
@@ -234,7 +234,7 @@ export type ApiResponse<T = any> = {
 export const ToolExecutionSchema = z.object({
   toolId: z.string(),
   agentId: z.string(),
-  parameters: z.record(z.any()),
+  parameters: z.record(z.string(), z.any()),
   result: z.any().optional(),
   status: z.enum(['pending', 'running', 'completed', 'failed']),
   timestamp: z.date(),

@@ -78,7 +78,7 @@ export type {
 } from './types';
 
 // Re-export configuration
-export { sdkConfig, env } from './config';
+export { sdkConfig } from './config';
 
 // Re-export AppRouter type for type inference
 export type { AppRouter } from './trpc';

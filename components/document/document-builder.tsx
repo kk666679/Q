@@ -9,8 +9,8 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useCreateDocument, useUpdateDocument } from '@/hooks';
-import type { Document } from '@/lib/types';
+import { useDocuments } from '@/hooks';
+import type { Document } from '@/lib/sdk/types';
 
 interface DocumentSection {
   id: string;
@@ -126,15 +126,15 @@ interface DocumentBuilderProps {
 }
 
 export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
+  const { createDocument, updateDocument } = useDocuments();
   const [sections, setSections] = useState<DocumentSection[]>(
-    document?.metadata?.sections || []
+    (document?.metadata as any)?.sections || []
   );
   const [activeId, setActiveId] = useState<string | null>(null);
   const [documentTitle, setDocumentTitle] = useState(document?.title || '');
-  const [documentType, setDocumentType] = useState(document?.type || 'procedure');
-
-  const createDocumentMutation = useCreateDocument();
-  const updateDocumentMutation = useUpdateDocument();
+  const [documentType, setDocumentType] = useState<'procedure' | 'form' | 'policy' | 'template' | 'report'>(
+    (document?.type as any) || 'procedure'
+  );
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.id as string);
@@ -176,24 +176,21 @@ export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
   const saveDocument = useCallback(async () => {
     const documentData = {
       title: documentTitle,
-      type: documentType as any,
+      type: documentType,
       content: sections.map(s => s.content).join('\n\n'),
       version: '1.0',
-      status: 'draft' as any,
+      status: 'draft' as const,
       tags: [],
       metadata: { sections },
     };
 
     try {
       if (document?.id) {
-        await updateDocumentMutation.mutateAsync({
-          id: document.id,
-          data: documentData,
-        });
+        await updateDocument(document.id, documentData);
       } else {
-        await createDocumentMutation.mutateAsync(documentData);
+        await createDocument(documentData);
       }
-      onSave?.(documentData as Document);
+      onSave?.(documentData as any);
     } catch (error) {
       console.error('Failed to save document:', error);
     }

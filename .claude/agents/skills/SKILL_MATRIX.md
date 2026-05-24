@@ -1,7 +1,7 @@
 ---
-name: HRMS-skills-matrix
-title: HRMS Skills Matrix & Technical Architecture
-description: "Use when understanding the complete FWMS technology stack, AI orchestration, HR domain coverage, skill module relationships, or core engineering principles for Malaysian workforce management."
+name: skills-matrix
+title: Skills Matrix & Technical Architecture
+description: "Use when understanding the complete technology stack, AI orchestration, HR domain coverage, skill module relationships, or core engineering principles for Malaysian workforce management."
 user-invocable: false
 metadata:
   domain: technical

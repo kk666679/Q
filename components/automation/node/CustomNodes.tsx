@@ -314,17 +314,17 @@ export const DepartmentGroupNode = memo(({ data, selected }: NodeProps) => {
             <Building2 className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-gray-900">{data.name}</h3>
-            <p className="text-sm text-gray-600">{data.employeeCount} employees</p>
+            <h3 className="text-xl font-semibold text-gray-900">{(data as any)?.name}</h3>
+            <p className="text-sm text-gray-600">{(data as any)?.employeeCount} employees</p>
           </div>
         </div>
         <div className="px-3 py-1 bg-white rounded-lg border border-pink-200">
-          <span className="text-sm text-pink-600 font-medium">{data.department}</span>
+          <span className="text-sm text-pink-600 font-medium">{(data as any)?.department}</span>
         </div>
       </div>
 
-      {data.description && (
-        <p className="text-sm text-gray-600 mb-4">{data.description}</p>
+      {(data as any)?.description && (
+        <p className="text-sm text-gray-600 mb-4">{(data as any)?.description}</p>
       )}
 
       {/* Stats Grid */}
@@ -381,11 +381,11 @@ export const CompactCardNode = memo(({ data, selected }: NodeProps) => {
             <User className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 truncate">{data.name}</h4>
-            <p className="text-xs text-gray-600 truncate">{data.position}</p>
+            <h4 className="text-sm font-semibold text-gray-900 truncate">{(data as any)?.name}</h4>
+            <p className="text-xs text-gray-600 truncate">{(data as any)?.position}</p>
           </div>
           <div className="flex items-center justify-between pt-2 border-t border-pink-100">
-            <span className="text-xs text-gray-500">{data.department}</span>
+            <span className="text-xs text-gray-500">{(data as any)?.department}</span>
             {data.performance && (
               <span className="text-xs text-pink-600 font-medium">{data.performance}%</span>
             )}
@@ -533,10 +533,10 @@ export const HexagonNode = memo(({ data, selected }: NodeProps) => {
           <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2">
             <User className="w-6 h-6 text-white" />
           </div>
-          <h4 className="font-semibold text-sm mb-1">{data.name}</h4>
-          <p className="text-xs text-white/80">{data.position}</p>
-          {data.department && (
-            <p className="text-xs text-white/60 mt-1">{data.department}</p>
+          <h4 className="font-semibold text-sm mb-1">{(data as any)?.name}</h4>
+          <p className="text-xs text-white/80">{(data as any)?.position}</p>
+          {(data as any)?.department && (
+            <p className="text-xs text-white/60 mt-1">{(data as any)?.department}</p>
           )}
         </div>
       </div>
@@ -578,8 +578,8 @@ export const StadiumNode = memo(({ data, selected }: NodeProps) => {
             <User className="w-5 h-5 text-white" />
           </div>
           <div className="flex-1 min-w-0">
-            <h4 className="font-semibold text-sm truncate">{data.name}</h4>
-            <p className="text-xs text-white/80 truncate">{data.position}</p>
+            <h4 className="font-semibold text-sm truncate">{(data as any)?.name}</h4>
+            <p className="text-xs text-white/80 truncate">{(data as any)?.position}</p>
           </div>
           {data.performance && (
             <div className="flex items-center gap-1 bg-white/20 px-2 py-1 rounded-full">
@@ -621,7 +621,7 @@ export const AnnotationNode = memo(({ data, selected }: NodeProps) => {
           <Sparkles className="w-4 h-4 text-yellow-600" />
           <span className="text-xs font-semibold text-yellow-800">Note</span>
         </div>
-        <p className="text-sm text-gray-700">{data.content}</p>
+        <p className="text-sm text-gray-700">{(data as any)?.content}</p>
         {data.author && (
           <p className="text-xs text-gray-500">- {data.author}</p>
         )}
@@ -662,7 +662,7 @@ export const MetricCardNode = memo(({ data, selected }: NodeProps) => {
         </div>
         
         <div>
-          <p className="text-sm text-gray-600">{data.label}</p>
+          <p className="text-sm text-gray-600">{(data as any)?.label}</p>
           <p className="text-2xl font-bold text-gray-900">{data.value}</p>
         </div>
 

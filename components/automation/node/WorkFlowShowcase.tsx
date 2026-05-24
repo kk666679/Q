@@ -14,9 +14,9 @@ import ReactFlow, {
   ReactFlowProvider,
   useReactFlow,
   Panel,
-} from '@xyflow-react';
-import '@xyflow-react/dist/style.css';
+} from '@xyflow/react';
 import {
+
   StartNode,
   EndNode,
   ActionNode,
@@ -462,7 +462,7 @@ const showcaseData = {
 
 function WorkFlowShowcaseInner() {
   const [nodes, setNodes, onNodesChange] = useNodesState(showcaseData.nodes as Node[]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(showcaseData.edges);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(showcaseData.edges as any);
   const [backgroundVariant, setBackgroundVariant] = useState<BackgroundVariant>(BackgroundVariant.Dots);
   const [showMiniMap, setShowMiniMap] = useState(true);
   const [showControls, setShowControls] = useState(true);

@@ -2,7 +2,11 @@
 
 **AI‑powered Integrated Management System with Multi-Agent Intelligence**
 
-A comprehensive Quality Management System platform featuring specialized AI agents for ISO 9001, ISO 14001, ISO 45001, ISO 17025, ISO 27001, and industry-specific expertise (Manufacturing, Construction, Insurance). Built with Next.js 16, tRPC, React 19, and AI SDK.
+Built with Next.js 16.2, tRPC 11, React 19, TypeScript 6, and the AI SDK.
+
+> Repository status: **Active**
+> Multi-agent orchestration, ISO compliance checking, audit automation, process flow designer, and document management.
+> Mermaid diagrams are included below for quick architecture scanning.
 
 ---
 
@@ -57,6 +61,40 @@ flowchart TB
 
     D --> H
     B --> F
+```
+
+### Claude-style Multi-Agent Orchestration (Updated)
+
+```mermaid
+flowchart LR
+    U[User / Operator] --> UI[Multi-Agent Chat UI]
+
+    UI --> ORCH[Multi-Agent Coordinator / Orchestrator]
+
+    ORCH -->|route| ISO9001[ISO 9001 Agent]
+    ORCH -->|route| ISO14001[ISO 14001 Agent]
+    ORCH -->|route| AUDIT[Audit & Checklist Agent]
+    ORCH -->|route| CLIMATE[Climate Risk Engine]
+    ORCH -->|route| DOCS[Document Builder & Control]
+
+    ISO9001 --> KB[(ISO Clause Knowledge Base)]
+    ISO14001 --> KB
+    AUDIT --> KB
+
+    CLIMATE --> RISK[(Risk Assessment Data / Outputs)]
+
+    DOCS --> STORE[(Document Store / Versions)]
+
+    ISO9001 --> OUT1[Recommendations + Gap Analysis]
+    ISO14001 --> OUT2[Climate/Environmental Risk Outputs]
+    AUDIT --> OUT3[Audit Checklist + Findings]
+    DOCS --> OUT4[Draft Procedures / Controlled Docs]
+
+    ORCH --> UI
+    OUT1 --> ORCH
+    OUT2 --> ORCH
+    OUT3 --> ORCH
+    OUT4 --> ORCH
 ```
 
 ---
@@ -435,21 +473,31 @@ All endpoints are fully type-safe:
 
 ## 🤖 Available AI Agents
 
-### ISO Standards Agents
-- **ISO 9001 Agent** - Quality Management Systems
-- **ISO 14001 Agent** - Environmental Management + Climate Risk (AMD.1:2024)
-- **ISO 45001 Agent** - Occupational Health & Safety
-- **IMS Integrator** - Integrated Management Systems
+### ISO & IMS Standards Agents
+- **ISO 9001 Agent** — QMS implementation, risk-based thinking, internal audit support
+- **ISO 14001 Agent** — Environmental Management + **Climate Risk Engine** (AMD.1:2024)
+- **ISO 45001 Agent** — Occupational Health & Safety
+- **IMS Integrator** — Integrated Management Systems across multiple standards
 
-### Industry Experts
-- **Quality Manager** - ISO 13485, QMS implementation
-- **QA Expert** - Test strategy, quality processes
-- **Manufacturing Expert** - MES, Industry 4.0, OEE
-- **Construction Expert** - Project management, BIM, safety
-- **Insurance Expert** - Underwriting, claims, actuarial
-- **Documentation Manager** - Document control, regulatory
+### Operational & Domain Experts
+- **Quality Manager** — ISO 13485, QMS implementation, quality policy & objectives
+- **QA Expert** — Test strategy, quality processes, defect prevention
+- **Manufacturing Expert** — MES, Industry 4.0, OEE and operational performance
+- **Construction Expert** — Project management, BIM, safety integration
+- **Insurance Expert** — Underwriting, claims support, actuarial-style risk reasoning
+- **Documentation Manager** — Document control, versioning, controlled templates
+
+### Claude Ecosystem Alignment (Repository Update)
+This repository also maintains a **Claude System Index** and an April 2026 **Skills Matrix** under `claude/` to keep agent capability coverage, skills, and knowledge bases consistent across:
+- Malaysian compliance / standards references
+- Orchestrator routing and tool-calling
+- AI UI component compatibility
+- Agent capability mapping and updates
+
+(Reference: `claude/README.md` and `claude/agents/skills/SKILL_MATRIX.md`)
 
 Each agent has specialized tools and knowledge for their domain.
+
 
 ---
 

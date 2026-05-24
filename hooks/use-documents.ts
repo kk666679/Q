@@ -31,8 +31,17 @@ interface UseDocumentsOptions {
 interface CreateDocumentInput {
   title: string;
   content: string;
-  type: string;
+  type: 'procedure' | 'form' | 'policy' | 'template' | 'report';
   version?: string;
+  tags?: string[];
+}
+
+interface UpdateDocumentInput {
+  title?: string;
+  content?: string;
+  type?: 'procedure' | 'form' | 'policy' | 'template' | 'report';
+  version?: string;
+  status?: 'draft' | 'review' | 'approved' | 'archived';
   tags?: string[];
 }
 
@@ -81,7 +90,7 @@ export function useDocuments(options: UseDocumentsOptions = {}) {
 
   // Update document helper
   const updateDocument = useCallback(
-    async (id: string, data: Partial<Document>) => {
+    async (id: string, data: UpdateDocumentInput) => {
       return updateMutation.mutateAsync({ id, data });
     },
     [updateMutation]

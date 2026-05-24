@@ -25,8 +25,6 @@ import { useState, useCallback } from 'react';
 import type { AIConfig, ChatMessage } from '@/lib/sdk/types';
 
 interface UseAIOptions extends Partial<AIConfig> {
-  /** API endpoint for chat */
-  api?: string;
   /** Initial messages */
   initialMessages?: ChatMessage[];
   /** Callback when message is finished */
@@ -40,34 +38,18 @@ interface UseAIOptions extends Partial<AIConfig> {
  */
 export function useAI(options: UseAIOptions = {}) {
   const {
-    api = '/api/chat',
     model = 'openai/gpt-4o-mini',
     system,
     initialMessages = [],
-    onFinish,
     onError,
   } = options;
 
   const chatResult = useAIChat({
-    api,
-    initialMessages: initialMessages.map((m) => ({
-      id: m.id,
-      role: m.role,
-      content: m.content,
-    })),
+    initialMessages: initialMessages as any,
     body: {
       model,
       system,
     },
-    onFinish: onFinish
-      ? (message) =>
-          onFinish({
-            id: message.id,
-            role: message.role as 'user' | 'assistant' | 'system',
-            content: message.content,
-            timestamp: new Date(),
-          })
-      : undefined,
     onError,
   });
 
@@ -78,10 +60,9 @@ export function useAI(options: UseAIOptions = {}) {
  * Hook for single AI completions (non-chat)
  */
 export function useCompletion(options: UseAIOptions = {}) {
-  const { api = '/api/completion', model = 'openai/gpt-4o-mini', onError } = options;
+  const { model = 'openai/gpt-4o-mini', onError } = options;
 
   return useAICompletion({
-    api,
     body: { model },
     onError,
   });

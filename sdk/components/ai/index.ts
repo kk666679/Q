@@ -13,7 +13,7 @@ export { AIMetricCard } from "./aimetric-card";
 export { AIInsightCard } from "./aiinsight-card";
 export { AIActionCard } from "./aiaction-card";
 export { AIStatistic } from "./aistatistic";
-export { AITrendBadge } from "./aistatistic";
+
 export { AILiveBadge } from "./ailive-badge";
 export { AIComplianceCard } from "./aicompliance-card";
 export { AIProgressCard } from "./aiprogress-card";
@@ -37,7 +37,7 @@ export { AIProcessTimeline, AIAuditTimeline } from "./process-timeline";
 export { AIRiskAssessmentCard, AIRiskSummary } from "./risk-assessment-card";
 export { AIDocumentAnnotation } from "./document-annotation";
 export { AIVersionCompare } from "./version-compare";
-export { AIWorkflowPreview } from "./workflow-preview";
+
 
 // Form & Data Components
 export { AIFormGenerator } from "./aiform-generator";
@@ -46,6 +46,11 @@ export { AIChatAssistant } from "./aichat-assistant";
 export { AIFeaturesCard } from "./aifeatures-card";
 export { AINotification } from "./ainotification";
 export { AIDataPoint } from "./aidata-point";
+
+// Additional Components
+export { DocumentBuilder } from "../document-builder";
+export { ComplianceChecker } from "../compliance-checker";
+export { MSStandardsViewer } from "../ms-standards-viewer";
 
 // ============================================
 // Re-export from components/ai-elements/
@@ -178,7 +183,8 @@ export { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartLe
 export { Slider } from "@/components/ui/slider";
 
 // Button Group
-export { ButtonGroup, ButtonGroupItem } from "@/components/ui/button-group";
+export { ButtonGroup } from "@/components/ui/button-group";
+
 
 // Utilities
 export { useIsMobile } from "@/components/ui/use-mobile";

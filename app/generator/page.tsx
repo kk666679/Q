@@ -18,7 +18,7 @@ import {
   DocumentBuilder,
   ComplianceChecker,
   MSStandardsViewer
-} from '@/sdk';
+} from '@/sdk/components/ai/index';
 
 const QMSGenerator = dynamic(() => import('@/components/qms/QMSGenerator').then(mod => ({ default: mod.QMSGenerator })), { ssr: false });
 

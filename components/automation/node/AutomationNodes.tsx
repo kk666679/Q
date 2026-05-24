@@ -19,8 +19,11 @@ import {
 } from "@/components/ai-elements/node";
 import { Handle, Position } from "@xyflow/react";
 import { cn } from "@/lib/utils";
-import type { ComponentProps, ReactNode } from "react";
+import type { memo as MemoType, ReactNode } from "react";
 import { memo } from "react";
+
+type SelectedProps = { selected?: boolean };
+
 
 // ============================================================================
 // Base Automation Nodes
@@ -79,7 +82,7 @@ export type TaskNodeData = {
   tags?: string[];
 };
 
-export type TaskNodeProps = NodeProps & {
+export type TaskNodeProps = NodeProps & SelectedProps & {
   data: TaskNodeData;
 };
 
@@ -154,7 +157,7 @@ export type ConditionNodeData = {
   falseLabel?: string;
 };
 
-export type ConditionNodeProps = NodeProps & {
+export type ConditionNodeProps = NodeProps & SelectedProps & {
   data: ConditionNodeData;
 };
 
@@ -193,7 +196,7 @@ export type ActionNodeData = {
   result?: string;
 };
 
-export type ActionNodeProps = NodeProps & {
+export type ActionNodeProps = NodeProps & SelectedProps & {
   data: ActionNodeData;
 };
 
@@ -241,7 +244,7 @@ export type TriggerNodeData = {
   config?: Record<string, any>;
 };
 
-export type TriggerNodeProps = NodeProps & {
+export type TriggerNodeProps = NodeProps & SelectedProps & {
   data: TriggerNodeData;
 };
 

@@ -39,7 +39,7 @@ export function useCompliance(options: UseComplianceOptions = {}) {
   
   const checkMutation = trpc.compliance.check.useMutation({
     onSuccess: (data) => {
-      setResults(data);
+      setResults((data as ComplianceResult[]) || []);
     },
   });
 

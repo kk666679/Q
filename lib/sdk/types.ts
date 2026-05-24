@@ -4,7 +4,7 @@
  * Shared type definitions for the SDK layer.
  */
 
-import type { CoreMessage } from 'ai';
+import type { Message } from 'ai';
 
 // Re-export types from the SDK
 export type {
@@ -33,7 +33,7 @@ export interface AIConfig {
 /**
  * AI Message type (compatible with AI SDK)
  */
-export type AIMessage = CoreMessage;
+export type AIMessage = Message;
 
 /**
  * Options for text generation

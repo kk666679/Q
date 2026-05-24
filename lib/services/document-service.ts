@@ -11,7 +11,7 @@ import type { Document } from '@/lib/sdk/types';
 export interface CreateDocumentInput {
   title: string;
   content: string;
-  type: string;
+  type: 'procedure' | 'form' | 'policy' | 'template' | 'report';
   version?: string;
   tags?: string[];
 }
@@ -19,9 +19,9 @@ export interface CreateDocumentInput {
 export interface UpdateDocumentInput {
   title?: string;
   content?: string;
-  type?: string;
+  type?: 'procedure' | 'form' | 'policy' | 'template' | 'report';
   version?: string;
-  status?: Document['status'];
+  status?: 'draft' | 'review' | 'approved' | 'archived';
   tags?: string[];
 }
 

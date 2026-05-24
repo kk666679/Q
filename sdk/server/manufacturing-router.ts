@@ -68,8 +68,8 @@ export const manufacturingRouter = router({
   createDigitalTwin: publicProcedure
     .input(z.object({
       assetId: z.string(),
-      currentState: z.record(z.any()),
-      scenario: z.record(z.any()).optional(),
+      currentState: z.record(z.string(), z.any()),
+      scenario: z.record(z.string(), z.any()).optional(),
     }))
     .mutation(async ({ input }) => {
       const agent = agentRegistry.get('manufacturing-expert');
