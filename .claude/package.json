@@ -1,7 +1,7 @@
 {
   "name": "claude-hrms-agents",
   "version": "4.0.1",
-  "description": "Claude AI agents for PapanPemuka HRMS",
+  "description": "Claude AI agents for MyQMS",
   "scripts": {
     "agents": "tsx agents/scripts/index.ts",
     "dev": "tsx watch agents/scripts/index.ts",

@@ -1,11 +1,11 @@
 ---
 name: claude-system-index
-title: Claude System Index — PapanPemuka HRMS AI Ecosystem
-description: "Comprehensive index of all Claude AI agents, skills, knowledge bases, and tools for the PapanPemuka HRMS platform. Use this as the entry point for understanding the complete AI ecosystem."
+title: Claude System Index — MyQMS AI Ecosystem
+description: "Comprehensive index of all Claude AI agents, skills, knowledge bases, and tools for the MyQMS platform. Use this as the entry point for understanding the complete AI ecosystem."
 user-invocable: false
 metadata:
   system: claude
-  platform: papan-pemuka-hrms
+  platform: MyQMS (Malaysia Standards Quality Management Systems)
   version: 3.1.0
   last_updated: 2026-04-22
   status: active
@@ -15,12 +15,12 @@ metadata:
     - ai-orchestration
     - quality-management
 ---
-# Claude System Index — PapanPemuka HRMS AI Ecosystem
+# Claude System Index — MyQMS AI Ecosystem
 ## 📋 System Overview
-PapanPemuka is a comprehensive AI-powered HR Management System specifically designed for Malaysian companies, featuring multi-tenancy, role-based access control, and deep Malaysian compliance integration. The Claude AI ecosystem provides intelligent assistance across all HR functions through specialized agents, skills, and knowledge bases.
-**Phase 3 COMPLETE**: Custom agent framework, advanced workflows, external integrations, reporting live.
+MyQMS is a comprehensive AI-powered HR Management System specifically designed for Malaysian companies, featuring multi-tenancy, role-based access control, and deep Malaysian compliance integration. The Claude AI ecosystem provides intelligent assistance across all HR functions through specialized agents, skills, and knowledge bases.
+**Phase 2 COMPLETE**: Multi-agent orchestration workflows are live; Phase 3 enterprise enhancements are in progress.
 ### 🏗️ Architecture Components
-PapanPemuka is a comprehensive AI-powered HR Management System for Malaysian companies...
+MyQMS is a comprehensive AI-powered HR Management System for Malaysian companies...
 | Component | Purpose | Location |
 |-----------|---------|----------|
 | **Agents** | Specialized AI assistants for HR functions | `agents/` |
@@ -203,7 +203,7 @@ PapanPemuka is a comprehensive AI-powered HR Management System for Malaysian com
 | 2.0 | 2026-03-01 | Enhanced agents and knowledge bases |
 | 3.0 | 2026-04-21 | Comprehensive system index and roadmap |
 | 3.1 | 2026-04-22 | Multi-agent workflows and orchestration framework |
-**Last Updated**: April 21, 2026
+**Last Updated**: April 22, 2026
 **Next Review**: July 21, 2026
 **System Status**: 🟢 Fully Operational
 ## 🔄 Workflow Orchestration Directory
@@ -228,4 +228,3 @@ PapanPemuka is a comprehensive AI-powered HR Management System for Malaysian com
 | Agent | Role | Status | Description |
 |-------|------|--------|-------------|
 | **Multi-Agent Coordinator** | Orchestration | ✅ Active | Central orchestration engine managing complex workflows |
-[Full updated content based on previous, with fixes, new integrations section, no duplicates]
