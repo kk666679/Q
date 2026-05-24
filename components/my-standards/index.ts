@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+export { MalaysianStandardsBrowser } from './malaysian-standards-browser'
+=======
 export { default as Dashboard } from './dashboard';
 export { default as Overview } from './overview';
 export { default as Analytics } from './analytics';
@@ -34,3 +37,4 @@ export * from './constants';
 export * from './hooks';
 export * from './utils';
 export * from './mock-data';
+>>>>>>> origin/main
