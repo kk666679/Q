@@ -3,7 +3,7 @@
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar'
 import { AppSidebar } from '@/components/sidebar/app-sidebar'
 import { AppHeader } from '@/components/sidebar/app-header'
-import { MalaysianStandardsBrowser } from '@/components/standards/malaysian-standards-browser'
+import { MalaysianStandardsBrowser } from '@/components/my-standards/malaysian-standards-browser'
 
 export default function StandardsPage() {
   return (

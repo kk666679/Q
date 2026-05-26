@@ -1,5 +1,7 @@
 # QMS SDK
 
+Version: 0.2.0 (matches repository package.json)
+
 Comprehensive Quality Management System SDK with Multi-Agent AI, tRPC, and ISO Standards integration.
 
 ## 🚀 Features

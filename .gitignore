@@ -13,3 +13,4 @@ sdk/.env
 **/.env.production
 .DS_Store
 .vercel
+.env*

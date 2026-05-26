@@ -15,11 +15,11 @@ metadata:
     - architectural decision records
 ---
 
-# HRMS Skills Matrix & Technical Architecture — April 2026
+# MyQMS Skills Matrix & Technical Architecture — April 2026
 
 ## Purpose
 
-This skill provides a canonical, normalized inventory of the HRMS platform's technical capabilities, AI orchestration architecture, HR domain coverage, and engineering principles. It serves as the master reference for understanding how 19 intent-skill modules, 15 specialist agents, and modern web technologies integrate to deliver Malaysian workforce management solutions.
+This skill provides a canonical, normalized inventory of the **MyQMS** platform's technical capabilities, AI orchestration architecture, HR domain coverage, and engineering principles. It serves as the master reference for understanding how 19 intent-skill modules, 15 specialist agents, and modern web technologies integrate to deliver Malaysian workforce management solutions.
 
 ## Use when
 

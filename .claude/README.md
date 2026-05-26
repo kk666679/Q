@@ -1,11 +1,11 @@
 ---
 name: claude-system-index
-title: Claude System Index — MyQMS AI Ecosystem
+title: Claude System Index — **MyQMS** AI Ecosystem
 description: "Comprehensive index of all Claude AI agents, skills, knowledge bases, and tools for the MyQMS platform. Use this as the entry point for understanding the complete AI ecosystem."
 user-invocable: false
 metadata:
   system: claude
-  platform: MyQMS (Malaysia Standards Quality Management Systems)
+  platform: **MyQMS (Malaysia Standards Quality Management Systems)**
   version: 3.1.0
   last_updated: 2026-04-22
   status: active
@@ -17,10 +17,10 @@ metadata:
 ---
 # Claude System Index — MyQMS AI Ecosystem
 ## 📋 System Overview
-MyQMS is a comprehensive AI-powered HR Management System specifically designed for Malaysian companies, featuring multi-tenancy, role-based access control, and deep Malaysian compliance integration. The Claude AI ecosystem provides intelligent assistance across all HR functions through specialized agents, skills, and knowledge bases.
+**MyQMS** is a comprehensive AI-powered HR Management System specifically designed for Malaysian companies, featuring multi-tenancy, role-based access control, and deep Malaysian compliance integration. The Claude AI ecosystem provides intelligent assistance across all HR functions through specialized agents, skills, and knowledge bases.
 **Phase 2 COMPLETE**: Multi-agent orchestration workflows are live; Phase 3 enterprise enhancements are in progress.
 ### 🏗️ Architecture Components
-MyQMS is a comprehensive AI-powered HR Management System for Malaysian companies...
+**MyQMS** is a comprehensive AI-powered HR Management System for Malaysian companies...
 | Component | Purpose | Location |
 |-----------|---------|----------|
 | **Agents** | Specialized AI assistants for HR functions | `agents/` |

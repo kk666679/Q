@@ -1,6 +1,6 @@
 ---
 name: skill
-title:HRMS Skill Profile — Normalized Engineering, HR & AI Capability Taxonomy
+title:**MyQMS** Skill Profile — Normalized Engineering, HR & AI Capability Taxonomy
 description: "Use when reviewing the repository's normalized engineering, HR, and AI capability taxonomy in a human- and machine-readable format. Provides canonical skill definitions with versioning, relationships, and gap analysis."
 user-invocable: false
 metadata:
@@ -34,11 +34,11 @@ metadata:
     - intent-skills/organisation-development/SKILL.md
 ---
 
-# HRMS Skill Profile — July 2026
+# **MyQMS** Skill Profile — July 2026
 
 ## 1. Profile Summary
 
-HRMS (Human Resources Management System) is a multi-tenant HR and foreign worker management platform combining modern full-stack web engineering, Malaysian labour compliance workflows, and AI-assisted multi-agent orchestration. The system spans end-to-end type-safe API design, domain-specific HR automation, geolocation tracking, PDF generation, on-device ML embeddings, and structured knowledge routing for specialist agents.
+**MyQMS (Malaysia Quality Management System)** is a multi-tenant HR and foreign worker management platform combining modern full-stack web engineering, Malaysian labour compliance workflows, and AI-assisted multi-agent orchestration. The system spans end-to-end type-safe API design, domain-specific HR automation, geolocation tracking, PDF generation, on-device ML embeddings, and structured knowledge routing for specialist agents.
 
 **Key strengths**
 

@@ -15,11 +15,11 @@ metadata:
     - payroll reports
 ---
 
-# Payroll Processing & Compliance — FWMS (March 2026)
+# Payroll Processing & Compliance — MyQMS [Malaysia Quality Management System] (March 2026)
 
 ## Purpose
 
-This skill provides authoritative guidance on payroll processing within FWMS for Malaysian entities, covering statutory contributions (EPF, SOCSO, EIS, PCB), overtime calculations, payroll cycles, anomaly detection, and compliance with **Employment Act 1955 (amended 2025)** and **Income Tax Act 1967**.
+This skill provides authoritative guidance on payroll processing within **MyQMS** for Malaysian entities, covering statutory contributions (EPF, SOCSO, EIS, PCB), overtime calculations, payroll cycles, anomaly detection, and compliance with **Employment Act 1955 (amended 2025)** and **Income Tax Act 1967**.
 
 ## Use when
 

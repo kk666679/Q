@@ -1,5 +1,7 @@
 # QMS - Quality Management System Platform
 
+Version: 0.2.0 • Branch: main • Repo: kmt7977/Q
+
 **AI‑powered Integrated Management System with Multi-Agent Intelligence**
 
 Built with Next.js 16.2, tRPC 11, React 19, TypeScript 6, and the AI SDK.
