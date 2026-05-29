@@ -66,14 +66,14 @@ export function AIWorkflowOpsFullset() {
             <ToolHeader type="tool-invocation" state="output-available" />
             <ToolContent>
               <ToolInput input={{ tool: "risk_clustering", threshold: 0.72 }} />
-              <ToolOutput output={{ impactedAreas: ["Calibration", "Supplier QA"], estimatedSavings: "$48k/quarter" }} />
+              <ToolOutput output={{ impactedAreas: ["Calibration", "Supplier QA"], estimatedSavings: "$48k/quarter" }} errorText={undefined} />
             </ToolContent>
           </Tool>
         </ConversationContent>
         <ConversationEmptyState />
       </Conversation>
 
-      <PromptInput onSubmit={(e) => e.preventDefault()} className="border">
+      <PromptInput onSubmit={() => {}} className="border">
         <PromptInputBody>
           <PromptInputTextarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Ask AI to generate actions, checks, or executive updates..." />
         </PromptInputBody>

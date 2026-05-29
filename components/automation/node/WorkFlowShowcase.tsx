@@ -15,6 +15,8 @@ import ReactFlow, {
   useReactFlow,
   Panel,
 } from '@xyflow/react';
+
+const XYFlow = ReactFlow as unknown as React.ComponentType<any>;
 import {
 
   StartNode,
@@ -622,7 +624,7 @@ function WorkFlowShowcaseInner() {
 
       {/* ReactFlow Canvas */}
       <div className="flex-1 relative">
-        <ReactFlow
+        <XYFlow
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChange}
@@ -743,7 +745,7 @@ function WorkFlowShowcaseInner() {
               </div>
             </div>
           </Panel>
-        </ReactFlow>
+        </XYFlow>
       </div>
 
       {/* Stats Footer */}

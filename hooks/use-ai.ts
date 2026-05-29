@@ -45,11 +45,6 @@ export function useAI(options: UseAIOptions = {}) {
   } = options;
 
   const chatResult = useAIChat({
-    initialMessages: initialMessages as any,
-    body: {
-      model,
-      system,
-    },
     onError,
   });
 

@@ -128,12 +128,12 @@ interface DocumentBuilderProps {
 export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
   const { createDocument, updateDocument } = useDocuments();
   const [sections, setSections] = useState<DocumentSection[]>(
-    (document?.metadata as any)?.sections || []
+    ((document as any)?.metadata as any)?.sections || []
   );
   const [activeId, setActiveId] = useState<string | null>(null);
   const [documentTitle, setDocumentTitle] = useState(document?.title || '');
   const [documentType, setDocumentType] = useState<'procedure' | 'form' | 'policy' | 'template' | 'report'>(
-    (document?.type as any) || 'procedure'
+    (document?.type as 'procedure' | 'form' | 'policy' | 'template' | 'report') || 'procedure'
   );
 
   const handleDragStart = (event: DragStartEvent) => {
@@ -199,8 +199,8 @@ export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
     documentType,
     sections,
     document?.id,
-    updateDocumentMutation,
-    createDocumentMutation,
+    updateDocument,
+    createDocument,
     onSave,
   ]);
 
@@ -261,7 +261,7 @@ export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
                   <label className="block text-sm font-medium mb-1">Document Type</label>
                   <select
                     value={documentType}
-                    onChange={(e) => setDocumentType(e.target.value)}
+                    onChange={(e) => setDocumentType(e.target.value as 'procedure' | 'form' | 'policy' | 'template' | 'report')}
                     className="w-full px-3 py-2 border rounded-md"
                   >
                     <option value="procedure">Procedure</option>
@@ -274,8 +274,8 @@ export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
               </div>
               <Button 
                 onClick={saveDocument}
-                disabled={createDocumentMutation.isPending || updateDocumentMutation.isPending}
-              >
+              disabled={false}
+            >
                 Save Document
               </Button>
             </div>

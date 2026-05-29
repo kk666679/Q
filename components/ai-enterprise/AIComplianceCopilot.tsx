@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -43,6 +44,7 @@ import {
 import {
   Conversation,
   Message,
+  MessageContent,
   Reasoning,
   ChainOfThought,
   Suggestion,
@@ -300,10 +302,10 @@ export function AIComplianceCopilot({
                           {messages.map((message) => (
                             <Message
                               key={message.id}
-                              role={message.role}
-                              content={message.content}
-                              timestamp={message.timestamp}
-                            />
+                              from={message.role}
+                            >
+                              <MessageContent>{message.content}</MessageContent>
+                            </Message>
                           ))}
                         </Conversation>
                       </ScrollArea>
@@ -362,5 +364,4 @@ export function AIComplianceCopilot({
       </Card>
     </motion.div>
   );
-}</content>
-<parameter name="filePath">/workspaces/Q/components/ai-enterprise/AIComplianceCopilot.tsx
+}

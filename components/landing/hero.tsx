@@ -272,7 +272,7 @@ export function LandingHero({
         </div>
 
         <div className="mt-6 text-center text-sm text-muted-foreground">
-          © 2024 QMS Generator. All rights reserved.
+          © 2026 MyQMS Generator. All rights reserved.
         </div>
       </div>
     </section>

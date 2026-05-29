@@ -25,6 +25,11 @@ import {
   ChevronRight,
   BookOpen,
   Home,
+  Cpu,
+  Leaf,
+  HeartPulse,
+  Landmark,
+  Flag,
 } from 'lucide-react'
 
 import {
@@ -114,9 +119,19 @@ const industryNavSections = [
   {
     title: 'Industries',
     items: [
-      { title: 'Manufacturing', url: '/manufacturing', icon: Factory },
-      { title: 'Construction', url: '/construction', icon: Building2 },
-      { title: 'Insurance', url: '/insurance', icon: Shield },
+      { title: 'Manufacturing', url: '/industry/manufacturing', icon: Factory },
+      { title: 'Electronics & Semiconductor', url: '/industry/electronics', icon: Cpu },
+      { title: 'Medical Devices', url: '/industry/medical', icon: HeartPulse },
+      { title: 'Agro-processing & Halal', url: '/industry/halal', icon: Leaf },
+      { title: 'Financial Services', url: '/industry/financial', icon: Landmark },
+      { title: 'Construction', url: '/industry/construction', icon: Building2 },
+      { title: 'Insurance', url: '/industry/insurance', icon: Shield },
+    ],
+  },
+  {
+    title: 'Malaysia Automation',
+    items: [
+      { title: 'MY Regulatory Hub', url: '/automation/malaysia', icon: Flag },
     ],
   },
 ]

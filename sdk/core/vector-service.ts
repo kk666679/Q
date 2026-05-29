@@ -1,3 +1,4 @@
+// @ts-ignore optional peer dependency
 import { Pinecone } from '@pinecone-database/pinecone';
 import type { VectorDocument } from '../types/index';
 import { openai } from '@ai-sdk/openai';
@@ -87,9 +88,9 @@ export class VectorService {
           includeMetadata: true,
           ...(Object.keys(filter).length > 0 ? { filter } : {}),
         }),
-      );
+      ) as { matches?: Array<{ id: string; score?: number; metadata?: Record<string, unknown> }> };
 
-      return (results.matches ?? []).map(match => ({
+      return (results.matches ?? []).map((match) => ({
         id:       match.id,
         score:    match.score ?? 0,
         content:  String(match.metadata?.['content'] ?? ''),

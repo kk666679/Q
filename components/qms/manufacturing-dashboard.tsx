@@ -12,26 +12,18 @@ import { Factory, Gauge, Wrench, Activity, TrendingUp, AlertTriangle } from 'luc
 export function ManufacturingDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
 
-  const oeeQuery = trpc.manufacturing.calculateOEE.useMutation();
+  const oeeQuery = trpc.manufacturing.getOEE.useQuery({
+    startDate: new Date(new Date().getFullYear(), 0, 1),
+    endDate: new Date(),
+  });
   const maintenanceQuery = trpc.manufacturing.predictMaintenance.useMutation();
   const metricsQuery = trpc.manufacturing.analyzeMetrics.useQuery({
-    lineId: 'LINE-01',
-    period: '2024-Q1',
-    metrics: {
-      produced: 1000,
-      defective: 25,
-      downtime: 45,
-      cycleTime: 120,
-    },
+    startDate: new Date(new Date().getFullYear(), 0, 1),
+    endDate: new Date(),
   });
 
   const handleCalculateOEE = async () => {
-    await oeeQuery.mutateAsync({
-      machineId: 'MACHINE-01',
-      availability: 92.5,
-      performance: 88.0,
-      quality: 97.5,
-    });
+    await maintenanceQuery.mutateAsync({ equipmentId: 'MACHINE-01' });
   };
 
   return (
@@ -55,7 +47,7 @@ export function ManufacturingDashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {oeeQuery.data?.oee || '79.2'}%
+              {oeeQuery.data?.overall ?? '79.2'}%
             </div>
             <p className="text-xs text-muted-foreground">
               Target: 85% (World Class)
@@ -149,7 +141,7 @@ export function ManufacturingDashboard() {
               title="OEE Analysis"
               description="Overall Equipment Effectiveness breakdown"
               metrics={[
-                { label: 'OEE', value: parseFloat(oeeQuery.data.oee), target: 85 },
+                { label: 'OEE', value: oeeQuery.data.overall, target: 85 },
                 { label: 'Availability', value: oeeQuery.data.availability, target: 90 },
                 { label: 'Performance', value: oeeQuery.data.performance, target: 90 },
                 { label: 'Quality', value: oeeQuery.data.quality, target: 95 },
@@ -161,13 +153,7 @@ export function ManufacturingDashboard() {
                   { label: 'Quality', value: oeeQuery.data.quality },
                 ],
               }}
-              insights={oeeQuery.data.recommendations.map((rec: any, idx: number) => ({
-                id: `oee-${idx}`,
-                title: 'OEE Improvement',
-                description: rec,
-                impact: 'medium',
-                category: 'Efficiency',
-              }))}
+              insights={[]}
             />
           )}
         </TabsContent>

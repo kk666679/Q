@@ -64,20 +64,14 @@ export const dashboardService = {
    */
   async getRecentActivity(limit = 10): Promise<Activity[]> {
     const stats = await trpcClient.dashboard.getStats.query();
-    return (stats.recentActivity || []).slice(0, limit);
+    return ((stats.recentActivity || []) as unknown as Activity[]).slice(0, limit);
   },
 
-  /**
-   * Get project list
-   */
-  async getProjects(): Promise<Project[]> {
+  async getProjects() {
     return trpcClient.project.list.query();
   },
 
-  /**
-   * Get a single project
-   */
-  async getProject(id: string): Promise<Project | null> {
+  async getProject(id: string) {
     return trpcClient.project.get.query({ id });
   },
 

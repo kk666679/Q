@@ -53,7 +53,6 @@ import {
   AIRecommendationPanel,
   AILiveBadge,
   AIAlert,
-  AIMetricsDisplay
 } from '@/sdk/components/ai';
 
 import {
@@ -502,7 +501,7 @@ export function AIDashboardShell({
                 {/* AI Insights Preview */}
                 {aiInsights.length > 0 && (
                   <AIInsightCard
-                    insights={aiInsights.slice(0, 3)}
+                    insight={String(aiInsights[0])}
                     title="Recent AI Insights"
                     className="bg-slate-800/50 border-slate-700"
                   />
@@ -537,7 +536,7 @@ export function AIDashboardShell({
 
               <TabsContent value="ai-insights" className="mt-6">
                 <AIInsightCard
-                  insights={aiInsights}
+                  insight="AI insights will appear here as they become available."
                   title="All AI Insights"
                   className="bg-slate-800/50 border-slate-700"
                 />

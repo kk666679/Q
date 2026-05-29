@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { 
-  EdgeProps, 
+  type Edge,
+  type EdgeProps,
   getBezierPath, 
   getStraightPath,
   getSmoothStepPath,
@@ -20,6 +21,15 @@ import {
   Info
 } from 'lucide-react';
 
+type CustomEdgeData = {
+  label?: string;
+  count?: number;
+  icons?: unknown[];
+  info?: string;
+};
+
+type CustomEdgeProps = EdgeProps<Edge<CustomEdgeData>>;
+
 // Animated Gradient Edge
 export const AnimatedGradientEdge = memo(({
   id,
@@ -32,7 +42,7 @@ export const AnimatedGradientEdge = memo(({
   style = {},
   markerEnd,
   data,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -132,7 +142,7 @@ export const PulseEdge = memo(({
   style = {},
   markerEnd,
   data,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
     sourceY,
@@ -198,7 +208,7 @@ export const DashedConnectionEdge = memo(({
   style = {},
   markerEnd,
   data,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -258,7 +268,7 @@ export const ThickGradientEdge = memo(({
   markerEnd,
   data,
   selected,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
     sourceY,
@@ -343,7 +353,7 @@ export const BidirectionalEdge = memo(({
   targetPosition,
   style = {},
   data,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -424,7 +434,7 @@ export const StepEdgeWithIcons = memo(({
   style = {},
   markerEnd,
   data,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
     sourceY,
@@ -447,13 +457,14 @@ export const StepEdgeWithIcons = memo(({
         markerEnd={markerEnd}
       />
 
-      {data?.icons && data.icons.length > 0 && (
+      {Array.isArray(data?.icons) && data.icons.length > 0 && (
         <EdgeLabelRenderer>
-          {data.icons.map((iconData: any, index: number) => {
-            const position = (index + 1) / (data.icons.length + 1);
+          {(data.icons as unknown[]).map((_iconData: unknown, index: number) => {
+            const iconsLength = (data.icons as unknown[]).length;
+            const position = (index + 1) / (iconsLength + 1);
             const x = sourceX + (targetX - sourceX) * position;
             const y = sourceY + (targetY - sourceY) * position;
-            
+
             return (
               <div
                 key={`icon-${index}`}
@@ -502,19 +513,15 @@ export const StraightArrowEdge = memo(({
   sourceY,
   targetX,
   targetY,
-  sourcePosition,
-  targetPosition,
   style = {},
   markerEnd,
   data,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getStraightPath({
     sourceX,
     sourceY,
-    sourcePosition,
     targetX,
     targetY,
-    targetPosition,
   });
 
   return (
@@ -565,7 +572,7 @@ export const GlowingEdge = memo(({
   markerEnd,
   data,
   selected,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -651,7 +658,7 @@ export const InfoEdge = memo(({
   style = {},
   markerEnd,
   data,
-}: EdgeProps) => {
+}: CustomEdgeProps) => {
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
     sourceY,

@@ -19,7 +19,7 @@ import { Button } from '../../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';
 import { useCreateProcess, useUpdateProcess } from '../client/hooks';
-import type { Process, ProcessNode as QMSProcessNode, ProcessEdge } from '../types';
+import type { Process, ProcessNode as QMSProcessNode, ProcessEdge } from '../types/index';
 
 const nodeTypes = {
   start: 'input',
@@ -61,6 +61,9 @@ export function ProcessFlowDesigner({
   const [processName, setProcessName] = useState(process?.name || '');
   const [processDescription, setProcessDescription] = useState(process?.description || '');
 
+  // Mutations expect projectId; process may not include it in the current type.
+  const projectId = (process as any)?.projectId as string | undefined;
+
   const createProcessMutation = useCreateProcess();
   const updateProcessMutation = useUpdateProcess();
 
@@ -83,9 +86,12 @@ export function ProcessFlowDesigner({
   }, [nodes.length, selectedNodeType, setNodes]);
 
   const saveProcess = useCallback(async () => {
+    // create/update mutations expect: { name, description, type, projectId }
     const processData = {
       name: processName,
       description: processDescription,
+      type: 'process',
+      projectId: projectId ?? 'default-project',
       nodes: nodes as any,
       edges: edges as any,
     };
@@ -97,9 +103,9 @@ export function ProcessFlowDesigner({
           data: processData,
         });
       } else {
-        await createProcessMutation.mutateAsync(processData);
+        await createProcessMutation.mutateAsync(processData as unknown as Parameters<typeof createProcessMutation.mutateAsync>[0]);
       }
-      onSave?.(processData as Process);
+      onSave?.(processData as unknown as Process);
     } catch (error) {
       console.error('Failed to save process:', error);
     }
@@ -223,7 +229,7 @@ export function ProcessFlowDesigner({
         >
           <Controls />
           <MiniMap />
-          <Background variant="dots" gap={12} size={1} />
+          <Background gap={12} size={1} />
         </ReactFlow>
       </div>
     </motion.div>

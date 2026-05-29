@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/ca
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
 import { useCreateDocument, useUpdateDocument } from '../client/hooks';
-import type { Document } from '../types';
+import type { Document } from '../types/index';
 
 interface DocumentSection {
   id: string;
@@ -131,7 +131,7 @@ export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
   );
   const [activeId, setActiveId] = useState<string | null>(null);
   const [documentTitle, setDocumentTitle] = useState(document?.title || '');
-  const [documentType, setDocumentType] = useState(document?.type || 'procedure');
+  const [documentType, setDocumentType] = useState<Document["type"]>(document?.type || 'procedure');
 
   const createDocumentMutation = useCreateDocument();
   const updateDocumentMutation = useUpdateDocument();
@@ -193,7 +193,9 @@ export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
       } else {
         await createDocumentMutation.mutateAsync(documentData);
       }
-      onSave?.(documentData as Document);
+      // documentData matches the SDK mutation payload; the full Document type includes
+      // id/createdAt/updatedAt which are typically returned by the server.
+      onSave?.(documentData as unknown as Document);
     } catch (error) {
       console.error('Failed to save document:', error);
     }
@@ -264,7 +266,7 @@ export function DocumentBuilder({ document, onSave }: DocumentBuilderProps) {
                   <label className="block text-sm font-medium mb-1">Document Type</label>
                   <select
                     value={documentType}
-                    onChange={(e) => setDocumentType(e.target.value)}
+                    onChange={(e) => setDocumentType(e.target.value as Document["type"])}
                     className="w-full px-3 py-2 border rounded-md"
                   >
                     <option value="procedure">Procedure</option>

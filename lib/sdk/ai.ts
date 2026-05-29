@@ -43,7 +43,7 @@ export async function generate(options: AIGenerateOptions) {
     model: config.model,
     messages: config.messages,
     temperature: config.temperature,
-    maxTokens: config.maxTokens,
+    maxOutputTokens: config.maxTokens,
     system: config.system,
   });
 }
@@ -67,7 +67,7 @@ export async function streamGenerate(options: AIStreamOptions) {
     model: config.model,
     messages: config.messages,
     temperature: config.temperature,
-    maxTokens: config.maxTokens,
+    maxOutputTokens: config.maxTokens,
     system: config.system,
   });
 }

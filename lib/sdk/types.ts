@@ -4,8 +4,6 @@
  * Shared type definitions for the SDK layer.
  */
 
-import type { Message } from 'ai';
-
 // Re-export types from the SDK
 export type {
   ModelProvider,
@@ -20,20 +18,21 @@ export type {
  * AI Configuration
  */
 export interface AIConfig {
-  /** Model identifier (e.g., 'openai/gpt-4o-mini') */
   model: string;
-  /** Temperature for generation (0-2) */
   temperature?: number;
-  /** Maximum tokens to generate */
   maxTokens?: number;
-  /** System prompt */
   system?: string;
 }
 
 /**
- * AI Message type (compatible with AI SDK)
+ * AI Message type — simple role/content shape compatible with AI SDK ModelMessage
  */
-export type AIMessage = Message;
+export interface AIMessage {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+  id?: string;
+  timestamp?: Date;
+}
 
 /**
  * Options for text generation

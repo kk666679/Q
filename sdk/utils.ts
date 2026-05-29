@@ -25,6 +25,7 @@ export function getAPIKeyEnvVar(provider: ModelProvider): string {
     groq: 'GROQ_API_KEY',
     cerebras: 'CEREBRAS_API_KEY',
     ollama: 'OLLAMA_API_KEY',
+    'ollama-cloud': 'OLLAMA_API_KEY',
     cohere: 'COHERE_API_KEY',
     fireworks: 'FIREWORKS_API_KEY',
     deepinfra: 'DEEPINFRA_API_KEY',

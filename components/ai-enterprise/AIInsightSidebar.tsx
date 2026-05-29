@@ -35,7 +35,8 @@ import {
   MessageSquare,
   Share,
   Bookmark,
-  ExternalLink
+  ExternalLink,
+  Settings,
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -45,7 +46,6 @@ import {
   AIRecommendationPanel,
   AILiveBadge,
   AIAlert,
-  AIMetricsDisplay
 } from '@/sdk/components/ai';
 
 import {

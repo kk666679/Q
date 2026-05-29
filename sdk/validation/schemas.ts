@@ -55,7 +55,7 @@ export const CreateProcessSchema = z.object({
 
 // ── Compliance ────────────────────────────────────────────────────────────────
 export const ComplianceStandardSchema = z.enum([
-  'ISO9001', 'ISO14001', 'ISO45001', 'ISO17025', 'ISO17020', 'ISO27001',
+  'ISO13485', 'ISO9001', 'ISO14001', 'ISO45001', 'ISO17025', 'ISO17020', 'ISO27001', 'FDA21CFR820', 'MDSAP',
 ]);
 
 export const ComplianceCheckInputSchema = z.object({

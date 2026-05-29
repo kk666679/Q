@@ -89,10 +89,9 @@ const writeBlockchainAudit = useStep('writeBlockchainAudit', async (payload: { n
   return res;
 });
 
-const executeCorrectiveActions = useStep('executeCorrectiveActions', async (actions: string[], context: WorkflowContext) => {
-  // Mock automated corrective actions: in real world call actuators, invoke edge automation, etc.
-  console.log('[actions] executing', actions);
-  return { executed: actions, timestamp: new Date().toISOString() };
+const executeCorrectiveActions = useStep('executeCorrectiveActions', async (payload: { actions: string[]; context: WorkflowContext }) => {
+  console.log('[actions] executing', payload.actions);
+  return { executed: payload.actions, timestamp: new Date().toISOString() };
 });
 
 // --- Hook for human approval via mobile-friendly API
@@ -127,7 +126,7 @@ const qualityApprovalHook = useHook('qualityApprovalHook', {
 const sleep = workflowSleep;
 
 // --- Define the durable workflow
-export const qmsCAPAWorkflow = useWorkflow('qms-capa-workflow', async (input: { event?: IoTAnomalyEvent; deviceId?: string }, ctx) => {
+export const qmsCAPAWorkflow = useWorkflow('qms-capa-workflow', async (input: { event?: IoTAnomalyEvent; deviceId?: string }, _ctx: unknown) => {
   // 1. Listen to IoT anomaly event
   const event = await iotAnomalyListener({ event: input.event, deviceId: input.deviceId });
 
@@ -144,11 +143,11 @@ export const qmsCAPAWorkflow = useWorkflow('qms-capa-workflow', async (input: { 
   // Wait for external resume (approval) via hookResult.resumePromise
   await hookResult.resumePromise;
 
-  const approval = (ctx as unknown as WorkflowContext).approval;
+  const approval = (_ctx as unknown as WorkflowContext).approval;
 
   // 5. If approved, execute automated corrective actions and wait 7 days for re-validation
   if (approval?.approved) {
-    const exec = await executeCorrectiveActions(analysis.recommendedCorrectiveActions, { event, analysis } as any);
+    const exec = await executeCorrectiveActions({ actions: analysis.recommendedCorrectiveActions, context: { event, analysis } as WorkflowContext });
 
     // Wait 7 days for re-validation (sleep)
     await sleep('7d');

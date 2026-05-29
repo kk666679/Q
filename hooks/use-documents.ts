@@ -137,7 +137,7 @@ export function useDocument(id: string) {
 
   const update = useCallback(
     async (data: Partial<Document>) => {
-      return updateMutation.mutateAsync({ id, data });
+      return updateMutation.mutateAsync({ id, data: data as UpdateDocumentInput });
     },
     [id, updateMutation]
   );

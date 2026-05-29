@@ -21,6 +21,194 @@ import {
   ComplianceStandardSchema,
 } from '../validation/schemas';
 
+const sampleProjects: Project[] = [
+  {
+    id: 'proj-1',
+    name: 'Global Quality Management System',
+    description: 'ISO 9001 implementation for manufacturing and compliance operations.',
+    organizationType: 'Manufacturing',
+    industry: 'Electronics',
+    scope: 'Design, production, and delivery of safety-critical electronics components.',
+    status: 'active',
+    metadata: { region: 'APAC', country: 'Malaysia' },
+    createdAt: new Date('2025-09-12').toISOString(),
+    updatedAt: new Date('2026-05-15').toISOString(),
+    documentsCount: 18,
+    processesCount: 12,
+    complianceScore: 87,
+  },
+  {
+    id: 'proj-2',
+    name: 'Halal Certification Program',
+    description: 'JAKIM halal certification and audit readiness for food and beverage operations.',
+    organizationType: 'Food & Beverage',
+    industry: 'Halal',
+    scope: 'Procurement, manufacturing, labelling, and halal compliance monitoring.',
+    status: 'draft',
+    metadata: { region: 'APAC', country: 'Malaysia' },
+    createdAt: new Date('2025-11-03').toISOString(),
+    updatedAt: new Date('2026-04-22').toISOString(),
+    documentsCount: 11,
+    processesCount: 9,
+    complianceScore: 82,
+  },
+];
+
+const sampleDocuments: Document[] = [
+  {
+    id: 'doc-1',
+    projectId: 'proj-1',
+    title: 'ISO 9001 Quality Manual',
+    content: 'Defines the scope, policies, and structure of the QMS.',
+    type: 'quality-manual',
+    version: 2,
+    status: 'approved',
+    createdBy: 'Alice Quality',
+    metadata: {
+      isoClauses: ['4.1', '5.1', '7.5'],
+      keywords: ['Quality', 'ISO 9001', 'Manual'],
+      wordCount: 5230,
+    },
+    createdAt: new Date('2025-10-12').toISOString(),
+    updatedAt: new Date('2026-05-20').toISOString(),
+    approvedAt: new Date('2026-05-20').toISOString(),
+  },
+  {
+    id: 'doc-2',
+    projectId: 'proj-1',
+    title: 'Supplier Approval Procedure',
+    content: 'Procedure for qualifying and monitoring supplier performance.',
+    type: 'procedure',
+    version: 1,
+    status: 'draft',
+    createdBy: 'Bob Procurement',
+    metadata: {
+      isoClauses: ['8.4', '9.1'],
+      keywords: ['Supplier', 'Procurement', 'Procedure'],
+      wordCount: 2860,
+    },
+    createdAt: new Date('2026-02-14').toISOString(),
+    updatedAt: new Date('2026-05-18').toISOString(),
+  },
+  {
+    id: 'doc-3',
+    projectId: 'proj-1',
+    title: 'Compliance Scan Report',
+    content: 'Automated compliance scan summary for ISO 9001 requirements.',
+    type: 'compliance-report',
+    version: 1,
+    status: 'review',
+    createdBy: 'Charlie Auditor',
+    metadata: {
+      isoClauses: ['6.1', '8.3', '9.2'],
+      keywords: ['Compliance', 'Audit', 'Report'],
+      wordCount: 1890,
+    },
+    createdAt: new Date('2026-05-28').toISOString(),
+    updatedAt: new Date('2026-05-28').toISOString(),
+  },
+  {
+    id: 'doc-4',
+    projectId: 'proj-2',
+    title: 'Halal Audit Checklist',
+    content: 'Checklist used to verify halal production controls and documentation.',
+    type: 'procedure',
+    version: 1,
+    status: 'approved',
+    createdBy: 'Dana Compliance',
+    metadata: {
+      keywords: ['Halal', 'Checklist', 'JAKIM'],
+      wordCount: 1320,
+    },
+    createdAt: new Date('2026-01-09').toISOString(),
+    updatedAt: new Date('2026-04-10').toISOString(),
+    approvedAt: new Date('2026-04-10').toISOString(),
+  },
+  {
+    id: 'doc-5',
+    projectId: 'proj-1',
+    title: 'Training Record Template',
+    content: 'Template for capturing employee competence and training evidence.',
+    type: 'form',
+    version: 1,
+    status: 'draft',
+    createdBy: 'Eve HR',
+    metadata: {
+      isoClauses: ['7.2', '7.3'],
+      keywords: ['Training', 'HR', 'Records'],
+      wordCount: 740,
+    },
+    createdAt: new Date('2026-03-05').toISOString(),
+    updatedAt: new Date('2026-05-12').toISOString(),
+  },
+];
+
+const sampleComplianceReport: ComplianceReport = {
+  id: 'report-1',
+  documentId: 'doc-3',
+  projectId: 'proj-1',
+  findings: [
+    {
+      id: 'finding-1',
+      documentId: 'doc-2',
+      clause: '5.1',
+      status: 'partial',
+      severity: 'major',
+      explanation: 'Leadership commitment is referenced but not formally documented for the management review cycle.',
+      suggestion: 'Capture the management review schedule and attendees in the quality manual.',
+      reference: '5.1',
+      confidence: 0.91,
+    },
+    {
+      id: 'finding-2',
+      documentId: 'doc-5',
+      clause: '7.2',
+      status: 'compliant',
+      severity: 'observation',
+      explanation: 'Training records exist but are not linked to the competence matrix.',
+      suggestion: 'Add a traceability link from employee training records to the competence matrix.',
+      reference: '7.2',
+      confidence: 0.84,
+    },
+    {
+      id: 'finding-3',
+      documentId: 'doc-2',
+      clause: '8.3',
+      status: 'non-compliant',
+      severity: 'critical',
+      explanation: 'Design change control records are missing approval evidence for a recent process update.',
+      suggestion: 'Implement a change control log with approval sign-off and revision history.',
+      reference: '8.3',
+      confidence: 0.95,
+    },
+  ],
+  score: 87,
+  passed: false,
+  summary: 'The latest compliance scan found 3 findings across leadership, training, and design control.',
+  recommendations: ['Document management review evidence', 'Link training records to competence requirements', 'Formalize change control approvals.'],
+  scannedAt: new Date('2026-05-28T08:30:00.000Z').toISOString(),
+  metadata: {
+    documentsScanned: 14,
+    clausesChecked: ['4.1', '5.1', '6.1', '7.2', '8.3', '9.2'],
+    processingTime: 120,
+    modelUsed: 'compliance-ai-v1',
+  },
+};
+
+const sampleDashboardStats = {
+  totalProjects: 2,
+  activeProjects: 1,
+  totalDocuments: sampleDocuments.length,
+  approvedDocuments: sampleDocuments.filter((doc) => doc.status === 'approved').length,
+  totalProcesses: 12,
+  complianceScore: 87,
+  recentActivity: [
+    { id: 'act-1', title: 'Compliance scan completed', description: 'ISO 9001 compliance scan completed for Project 1.', timestamp: new Date('2026-05-28T08:30:00.000Z').toISOString() },
+    { id: 'act-2', title: 'Supplier approval updated', description: 'Supplier approval procedure draft updated.', timestamp: new Date('2026-05-25T16:12:00.000Z').toISOString() },
+    { id: 'act-3', title: 'Halal audit checklist approved', description: 'Halal audit checklist approved and published.', timestamp: new Date('2026-04-10T10:20:00.000Z').toISOString() },
+  ] as unknown[],
+};
+
 // ── Agent ─────────────────────────────────────────────────────────────────────
 export const agentRouter = router({
   list: publicProcedure.query(async () => [] as unknown[]),
@@ -59,11 +247,11 @@ export const agentRouter = router({
 
 // ── Project ───────────────────────────────────────────────────────────────────
 export const projectRouter = router({
-  list: publicProcedure.query(async () => [] as Project[]),
+  list: publicProcedure.query(async () => sampleProjects),
 
   get: publicProcedure
     .input(z.object({ id: z.string().min(1).max(128) }))
-    .query(async () => null as Project | null),
+    .query(async ({ input }) => sampleProjects.find((project) => project.id === input.id) ?? null),
 
   create: publicProcedure
     .input(z.object({
@@ -105,7 +293,16 @@ export const documentRouter = router({
       status: z.string().max(64).optional(),
       tags:   z.array(z.string().max(64)).max(20).optional(),
     }).optional())
-    .query(async () => [] as Document[]),
+    .query(async ({ input }) => sampleDocuments.filter((document) => {
+      if (!input) return true;
+      if (input.type && document.type !== input.type) return false;
+      if (input.status && document.status !== input.status) return false;
+      if (input.tags && input.tags.length > 0) {
+        const keywords = document.metadata?.keywords ?? [];
+        return input.tags.every((tag) => keywords.includes(tag));
+      }
+      return true;
+    })),
 
   get: publicProcedure
     .input(z.object({ id: DocumentIdSchema }))
@@ -162,11 +359,21 @@ export const processRouter = router({
 export const complianceRouter = router({
   check: publicProcedure
     .input(ComplianceCheckInputSchema)
-    .mutation(async () => [] as unknown[]),
+    .mutation(async () => sampleComplianceReport.findings.map((finding) => ({
+      clause: finding.clause,
+      severity: finding.severity,
+      status: finding.status,
+      explanation: finding.explanation,
+    }))),
 
   getReport: publicProcedure
     .input(z.object({ standard: ComplianceStandardSchema.optional(), id: z.string().max(128).optional() }))
-    .query(async () => null as ComplianceReport | null),
+    .query(async ({ input }) => {
+      if (input?.id) {
+        return sampleComplianceReport.id === input.id ? sampleComplianceReport : null;
+      }
+      return sampleComplianceReport;
+    }),
 });
 
 // ── Audit ─────────────────────────────────────────────────────────────────────
@@ -313,15 +520,7 @@ export const appRouter = router({
   iso:            isoRouter,
   ai:             aiRouter,
   dashboard: router({
-    getStats: publicProcedure.query(async () => ({
-      totalProjects:     0,
-      activeProjects:    0,
-      totalDocuments:    0,
-      approvedDocuments: 0,
-      totalProcesses:    0,
-      complianceScore:   0,
-      recentActivity:    [] as unknown[],
-    })),
+    getStats: publicProcedure.query(async () => sampleDashboardStats),
   }),
 });
 

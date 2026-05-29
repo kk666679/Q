@@ -113,8 +113,8 @@ export function useComplianceCheck() {
 }
 
 export function useComplianceReport(standard?: string) {
-  type StandardType = 'ISO9001' | 'ISO14001' | 'ISO45001' | 'ISO17025' | 'ISO17020' | 'ISO27001';
-  const validStandards: StandardType[] = ['ISO9001','ISO14001','ISO45001','ISO17025','ISO17020','ISO27001'];
+  type StandardType = 'ISO13485' | 'ISO9001' | 'ISO14001' | 'ISO45001' | 'ISO17025' | 'ISO17020' | 'ISO27001' | 'FDA21CFR820' | 'MDSAP';
+  const validStandards: StandardType[] = ['ISO13485','ISO9001','ISO14001','ISO45001','ISO17025','ISO17020','ISO27001','FDA21CFR820','MDSAP'];
   const typedStandard = validStandards.includes(standard as StandardType)
     ? (standard as StandardType)
     : undefined;

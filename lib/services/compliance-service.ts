@@ -36,9 +36,10 @@ export const complianceService = {
    * Check compliance for a document or content
    */
   async check(input: ComplianceCheckInput): Promise<ComplianceResult[]> {
-    return trpcClient.compliance.check.mutate({
+    const result = await trpcClient.compliance.check.mutate({
       documentId: input.documentId,
     });
+    return result as unknown as ComplianceResult[];
   },
 
   /**

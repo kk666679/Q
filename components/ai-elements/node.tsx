@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react";
+import type { NodeProps as FlowNodeProps } from "@xyflow/react";
 
 import {
   Card,
@@ -12,26 +13,47 @@ import {
 import { cn } from "@/lib/utils";
 import { Handle, Position } from "@xyflow/react";
 
-export type NodeProps = ComponentProps<typeof Card> & {
+export type NodeProps = ComponentProps<typeof Card> & Partial<Omit<FlowNodeProps, 'children'>> & {
   handles: {
     target: boolean;
     source: boolean;
   };
 };
 
-export const Node = ({ handles, className, ...props }: NodeProps) => (
-  <Card
-    className={cn(
-      "node-container relative size-full h-auto w-sm gap-0 rounded-md p-0",
-      className
-    )}
-    {...props}
-  >
-    {handles.target && <Handle position={Position.Left} type="target" />}
-    {handles.source && <Handle position={Position.Right} type="source" />}
-    {props.children}
-  </Card>
-);
+export const Node = ({ handles, className, children, ...props }: NodeProps) => {
+  const {
+    id,
+    type,
+    data,
+    selected,
+    draggable,
+    deletable,
+    dragHandle,
+    dragging,
+    parentId,
+    sourcePosition,
+    targetPosition,
+    width,
+    height,
+    zIndex,
+    selectable,
+    ...cardProps
+  } = props as Record<string, unknown>;
+
+  return (
+    <Card
+      className={cn(
+        "node-container relative size-full h-auto w-sm gap-0 rounded-md p-0",
+        className
+      )}
+      {...(cardProps as ComponentProps<typeof Card>)}
+    >
+      {handles.target && <Handle position={Position.Left} type="target" />}
+      {handles.source && <Handle position={Position.Right} type="source" />}
+      {children}
+    </Card>
+  );
+};
 
 export type NodeHeaderProps = ComponentProps<typeof CardHeader>;
 

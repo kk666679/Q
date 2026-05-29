@@ -62,7 +62,7 @@ export const DocumentSchema = z.object({
   version: z.string(),
   status: z.enum(['draft', 'review', 'approved', 'archived']),
   tags: z.array(z.string()),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
   createdAt: z.date(),
   updatedAt: z.date(),
 });

@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       }
 
       const ollamaModelId = getOllamaModelId(model);
-      const ollamaMessages = messages.map(convertToOllamaMessage);
+      const ollamaMessages = messages.map((m: Message) => convertToOllamaMessage(m as any));
 
       // Create ReadableStream for Ollama Cloud responses
       const stream = new ReadableStream({

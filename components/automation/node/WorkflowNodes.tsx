@@ -130,6 +130,7 @@ EndNode.displayName = 'EndNode';
 
 // Action Node
 export const ActionNode = memo(({ data, selected }: NodeProps) => {
+  const nodeData = data as Record<string, any>;
   const iconMap: { [key: string]: any } = {
     email: Mail,
     notification: Bell,
@@ -183,19 +184,19 @@ export const ActionNode = memo(({ data, selected }: NodeProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-white/80">Action</p>
-              <h4 className="text-sm font-semibold truncate">{data.label as React.ReactNode}</h4>
+              <h4 className="text-sm font-semibold truncate">{nodeData.label as React.ReactNode}</h4>
             </div>
           </div>
         </div>
 
         <div className="p-3">
-          {data.description && (
-            <p className="text-xs text-gray-600 mb-2">{data.description as React.ReactNode}</p>
+          {nodeData.description && (
+            <p className="text-xs text-gray-600 mb-2">{nodeData.description as React.ReactNode}</p>
           )}
-          {data.duration && (
+          {nodeData.duration && (
             <div className="flex items-center gap-1 text-xs text-gray-500">
               <Clock className="w-3 h-3" />
-              <span>{data.duration as React.ReactNode}</span>
+              <span>{nodeData.duration as React.ReactNode}</span>
             </div>
           )}
         </div>
@@ -277,6 +278,8 @@ DecisionNode.displayName = 'DecisionNode';
 
 // Approval Node
 export const ApprovalNode = memo(({ data, selected }: NodeProps) => {
+  const nodeData = data as Record<string, any>;
+
   return (
     <>
       <NodeToolbar
@@ -316,28 +319,28 @@ export const ApprovalNode = memo(({ data, selected }: NodeProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-white/80">Requires Approval</p>
-              <h4 className="text-sm font-semibold truncate">{data.label as React.ReactNode}</h4>
+              <h4 className="text-sm font-semibold truncate">{nodeData.label as React.ReactNode}</h4>
             </div>
           </div>
         </div>
 
         <div className="p-4 space-y-3">
-          {data.approver && (
+          {nodeData.approver && (
             <div className="flex items-center gap-2 text-sm">
               <Shield className="w-4 h-4 text-purple-400" />
-              <span className="text-gray-700">{data.approver as React.ReactNode}</span>
+              <span className="text-gray-700">{nodeData.approver as React.ReactNode}</span>
             </div>
           )}
-          {data.sla && (
+          {nodeData.sla && (
             <div className="flex items-center gap-2 text-sm">
               <Clock className="w-4 h-4 text-pink-400" />
-              <span className="text-gray-700">SLA: {data.sla as React.ReactNode}</span>
+              <span className="text-gray-700">SLA: {nodeData.sla as React.ReactNode}</span>
             </div>
           )}
-          {data.priority && (
+          {nodeData.priority && (
             <div className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
               <Award className="w-3 h-3" />
-              {data.priority as React.ReactNode}
+              {nodeData.priority as React.ReactNode}
             </div>
           )}
         </div>
@@ -365,6 +368,8 @@ ApprovalNode.displayName = 'ApprovalNode';
 
 // Wait/Delay Node
 export const WaitNode = memo(({ data, selected }: NodeProps) => {
+  const nodeData = data as Record<string, any>;
+
   return (
     <>
       <NodeToolbar
@@ -396,9 +401,9 @@ export const WaitNode = memo(({ data, selected }: NodeProps) => {
             <Clock className="w-6 h-6 text-white" />
           </div>
           <p className="text-xs text-gray-500 mb-1">Wait</p>
-          <p className="text-sm font-semibold text-gray-900">{data.duration as React.ReactNode || '1 hour'}</p>
-          {data.description && (
-            <p className="text-xs text-gray-600 mt-2">{data.description as React.ReactNode}</p>
+          <p className="text-sm font-semibold text-gray-900">{nodeData.duration as React.ReactNode || '1 hour'}</p>
+          {nodeData.description && (
+            <p className="text-xs text-gray-600 mt-2">{nodeData.description as React.ReactNode}</p>
           )}
         </div>
 
@@ -416,6 +421,8 @@ WaitNode.displayName = 'WaitNode';
 
 // Notification Node
 export const NotificationNode = memo(({ data, selected }: NodeProps) => {
+  const nodeData = data as Record<string, any>;
+
   return (
     <>
       <NodeToolbar
@@ -452,17 +459,17 @@ export const NotificationNode = memo(({ data, selected }: NodeProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-gray-500 mb-1">Send Notification</p>
-              <h4 className="text-sm font-semibold text-gray-900 mb-2">{data.label as React.ReactNode}</h4>
-              {data.recipients && (
+              <h4 className="text-sm font-semibold text-gray-900 mb-2">{nodeData.label as React.ReactNode}</h4>
+              {nodeData.recipients && (
                 <div className="flex items-center gap-1 text-xs text-gray-600">
                   <Users className="w-3 h-3" />
-                  <span>{data.recipients as React.ReactNode}</span>
+                  <span>{nodeData.recipients as React.ReactNode}</span>
                 </div>
               )}
-              {data.channel && (
+              {nodeData.channel && (
                 <div className="inline-flex items-center gap-1 px-2 py-1 bg-indigo-50 text-indigo-700 rounded text-xs mt-2">
-                  {data.channel === 'email' ? <Mail className="w-3 h-3" /> : <Bell className="w-3 h-3" />}
-                  {data.channel as React.ReactNode}
+                  {nodeData.channel === 'email' ? <Mail className="w-3 h-3" /> : <Bell className="w-3 h-3" />}
+                  {nodeData.channel as React.ReactNode}
                 </div>
               )}
             </div>

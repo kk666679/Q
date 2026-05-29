@@ -5,7 +5,7 @@
  * with their capabilities based on the official documentation
  */
 
-import type { ModelDefinition, ModelProvider, ProviderModels, ModelCapabilities } from './types';
+import type { ModelDefinition, ModelProvider, ProviderModels, ModelCapabilities } from '../types';
 
 // ============================================
 // CAPABILITY HELPERS
@@ -630,7 +630,7 @@ export function searchModelsByCapability(
  */
 export function getRecommendedModels(useCase: string): ModelDefinition[] {
   return allModels.filter(m => 
-    m.recommendedFor?.some(uc => uc.toLowerCase().includes(useCase.toLowerCase()))
+    m.recommendedFor?.some((uc: string) => uc.toLowerCase().includes(useCase.toLowerCase()))
   );
 }
 

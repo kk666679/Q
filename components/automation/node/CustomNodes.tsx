@@ -1,3 +1,4 @@
+
 /**
  * Custom Node Components for Automation Workflows
  * 
@@ -7,7 +8,8 @@
 
 "use client";
 
-import React, { memo } from 'react';
+import React, { memo, useId } from 'react';
+import type { Node } from '@xyflow/react';
 import { Handle, Position, NodeProps, NodeToolbar } from '@xyflow/react';
 
 // ============================================================================
@@ -81,6 +83,17 @@ export type MetricCardNodeData = {
   change?: string;
   trend?: 'up' | 'down' | 'neutral';
 };
+
+export type EmployeeNode = Node<EmployeeNodeData>;
+export type DepartmentGroupNode = Node<DepartmentGroupNodeData>;
+export type CompactCardNode = Node<CompactCardNodeData>;
+export type CircularNode = Node<CircularNodeData>;
+export type DiamondNode = Node<DiamondNodeData>;
+export type HexagonNode = Node<HexagonNodeData>;
+export type StadiumNode = Node<StadiumNodeData>;
+export type AnnotationNode = Node<AnnotationNodeData>;
+export type MetricCardNode = Node<MetricCardNodeData>;
+
 import { 
   User, 
   Building2, 
@@ -120,8 +133,9 @@ import {
 // Enhanced Employee Node with Toolbar
 // ============================================================================
 
-export const EnhancedEmployeeNode = memo(({ data, selected }: NodeProps) => {
-  const nodeData = data as Record<string, any>;
+export const EnhancedEmployeeNode = memo(({ data, selected }: NodeProps<EmployeeNode>) => {
+  const nodeData = data as EmployeeNodeData;
+  const isSelected = selected as boolean;
   
   const getDepartmentGradient = (department: string) => {
     const gradients: { [key: string]: string } = {
@@ -138,7 +152,7 @@ export const EnhancedEmployeeNode = memo(({ data, selected }: NodeProps) => {
   return (
     <>
       <NodeToolbar
-        isVisible={selected}
+        isVisible={isSelected}
         position={Position.Top}
         className="flex items-center gap-1 bg-white rounded-lg shadow-lg border-2 border-pink-200 p-1"
       >
@@ -260,7 +274,7 @@ export const EnhancedEmployeeNode = memo(({ data, selected }: NodeProps) => {
             <span className="text-xs px-2 py-1 bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 rounded-full font-medium">
               {nodeData.department}
             </span>
-            {selected && (
+            {isSelected && (
               <Sparkles className="w-4 h-4 text-pink-500 animate-pulse" />
             )}
           </div>
@@ -293,8 +307,9 @@ export const EnhancedEmployeeNode = memo(({ data, selected }: NodeProps) => {
 
 EnhancedEmployeeNode.displayName = 'EnhancedEmployeeNode';
 
-// Department Group Node
-export const DepartmentGroupNode = memo(({ data, selected }: NodeProps) => {
+export const DepartmentGroupNode = memo(({ data, selected }: NodeProps<DepartmentGroupNode>) => {
+  const nodeData = data as Record<string, any>;
+
   return (
     <div 
       className={`bg-gradient-to-br from-pink-50 to-purple-50 rounded-3xl border-2 border-dashed transition-all duration-300 ${
@@ -323,14 +338,14 @@ export const DepartmentGroupNode = memo(({ data, selected }: NodeProps) => {
         </div>
       </div>
 
-      {(data as any)?.description && (
-        <p className="text-sm text-gray-600 mb-4">{(data as any)?.description}</p>
+      {nodeData.description && (
+        <p className="text-sm text-gray-600 mb-4">{nodeData.description}</p>
       )}
 
       {/* Stats Grid */}
-      {data.stats && (
+      {nodeData.stats && (
         <div className="grid grid-cols-3 gap-3">
-          {Object.entries(data.stats).map(([key, value]) => (
+          {Object.entries(nodeData.stats).map(([key, value]) => (
             <div key={key} className="bg-white rounded-lg p-3 border border-pink-100">
               <p className="text-xs text-gray-500 capitalize">{key}</p>
               <p className="text-lg font-semibold text-gray-900">{value as string}</p>
@@ -350,12 +365,11 @@ export const DepartmentGroupNode = memo(({ data, selected }: NodeProps) => {
 
 DepartmentGroupNode.displayName = 'DepartmentGroupNode';
 
-// Compact Card Node
-export const CompactCardNode = memo(({ data, selected }: NodeProps) => {
+export const CompactCardNode = memo(({ data, selected }: NodeProps<CompactCardNode>) => {
   return (
     <>
       <NodeToolbar
-        isVisible={selected}
+        isVisible={selected as boolean}
         position={Position.Top}
         className="flex items-center gap-1 bg-white rounded-lg shadow-lg border border-pink-200 p-1"
       >
@@ -404,9 +418,9 @@ export const CompactCardNode = memo(({ data, selected }: NodeProps) => {
 
 CompactCardNode.displayName = 'CompactCardNode';
 
-// Circular Node
-export const CircularNode = memo(({ data, selected }: NodeProps) => {
-  const size = data.type === 'ceo' ? 160 : 120;
+export const CircularNode = memo(({ data, selected }: NodeProps<CircularNode>) => {
+  const nodeData = data as CircularNodeData;
+  const size = nodeData.type === 'ceo' ? 160 : 120;
   
   return (
     <div className="relative">
@@ -452,8 +466,7 @@ export const CircularNode = memo(({ data, selected }: NodeProps) => {
 
 CircularNode.displayName = 'CircularNode';
 
-// Diamond Node
-export const DiamondNode = memo(({ data, selected }: NodeProps) => {
+export const DiamondNode = memo(({ data, selected }: NodeProps<DiamondNode>) => {
   return (
     <div className="relative" style={{ width: 200, height: 200 }}>
       <Handle
@@ -494,8 +507,9 @@ export const DiamondNode = memo(({ data, selected }: NodeProps) => {
 
 DiamondNode.displayName = 'DiamondNode';
 
-// Hexagon Node
-export const HexagonNode = memo(({ data, selected }: NodeProps) => {
+export const HexagonNode = memo(({ data, selected }: NodeProps<HexagonNode>) => {
+  const gradientId = useId();
+
   return (
     <div className="relative" style={{ width: 180, height: 200 }}>
       <Handle
@@ -507,7 +521,7 @@ export const HexagonNode = memo(({ data, selected }: NodeProps) => {
 
       <svg width="180" height="200" viewBox="0 0 180 200" className={`transition-all duration-300 ${selected ? 'drop-shadow-2xl scale-105' : 'drop-shadow-xl'}`}>
         <defs>
-          <linearGradient id={`hexGrad-${data.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id={`hexGrad-${gradientId}`} x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#EC4899" />
             <stop offset="100%" stopColor="#A855F7" />
           </linearGradient>
@@ -521,7 +535,7 @@ export const HexagonNode = memo(({ data, selected }: NodeProps) => {
         </defs>
         <path
           d="M 90 15 L 165 60 L 165 140 L 90 185 L 15 140 L 15 60 Z"
-          fill={`url(#hexGrad-${data.id})`}
+          fill={`url(#hexGrad-${gradientId})`}
           stroke={selected ? '#F9A8D4' : 'white'}
           strokeWidth={selected ? '4' : '3'}
           filter={selected ? 'url(#glow)' : undefined}
@@ -553,8 +567,7 @@ export const HexagonNode = memo(({ data, selected }: NodeProps) => {
 
 HexagonNode.displayName = 'HexagonNode';
 
-// Pill/Stadium Node
-export const StadiumNode = memo(({ data, selected }: NodeProps) => {
+export const StadiumNode = memo(({ data, selected }: NodeProps<StadiumNode>) => {
   return (
     <div className="relative">
       <Handle
@@ -601,8 +614,7 @@ export const StadiumNode = memo(({ data, selected }: NodeProps) => {
 
 StadiumNode.displayName = 'StadiumNode';
 
-// Annotation Node
-export const AnnotationNode = memo(({ data, selected }: NodeProps) => {
+export const AnnotationNode = memo(({ data, selected }: NodeProps<AnnotationNode>) => {
   return (
     <div 
       className={`bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg p-3 transition-all ${
@@ -632,9 +644,8 @@ export const AnnotationNode = memo(({ data, selected }: NodeProps) => {
 
 AnnotationNode.displayName = 'AnnotationNode';
 
-// Metric Card Node
-export const MetricCardNode = memo(({ data, selected }: NodeProps) => {
-  const getColorScheme = (trend: string) => {
+export const MetricCardNode = memo(({ data, selected }: NodeProps<MetricCardNode>) => {
+  const getColorScheme = (trend?: MetricCardNodeData['trend']) => {
     if (trend === 'up') return { bg: 'from-green-500 to-emerald-500', icon: TrendingUp };
     if (trend === 'down') return { bg: 'from-red-500 to-rose-500', icon: TrendingUp };
     return { bg: 'from-blue-500 to-cyan-500', icon: TrendingUp };

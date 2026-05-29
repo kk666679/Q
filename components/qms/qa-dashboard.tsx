@@ -14,19 +14,15 @@ export function QADashboard() {
 
   const coverageQuery = trpc.testing.analyzeCoverage.useMutation();
   const metricsQuery = trpc.testing.calculateMetrics.useQuery({
-    metricType: 'coverage',
-    period: '2024-Q1',
+    projectId: 'default',
   });
   const defectsQuery = trpc.testing.analyzeDefects.useQuery({
-    period: '2024-Q1',
-    groupBy: 'severity',
+    projectId: 'default',
   });
 
   const handleAnalyzeCoverage = async () => {
     await coverageQuery.mutateAsync({
-      projectPath: '/project',
-      coverageType: 'code',
-      threshold: 80,
+      projectId: 'default',
     });
   };
 
@@ -91,7 +87,7 @@ export function QADashboard() {
               {defectsQuery.data?.totalDefects || 47}
             </div>
             <p className="text-xs text-muted-foreground">
-              {defectsQuery.data?.trend === 'decreasing' ? 'Decreasing' : 'Stable'}
+              {defectsQuery.data?.trend === 'down' ? 'Decreasing' : 'Stable'}
             </p>
           </CardContent>
         </Card>

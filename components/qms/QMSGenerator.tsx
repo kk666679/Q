@@ -677,11 +677,8 @@ flowchart TD
               <AIAlert
                 type="info"
                 title="AI Process Optimization"
-                description="AI can analyze your processes and suggest optimizations based on industry best practices."
-                showIcon
-                showAction
-                actionText="Optimize with AI"
-                onClick={() => console.log("AI optimization")}
+                message="AI can analyze your processes and suggest optimizations based on industry best practices."
+                action={{ label: "Optimize with AI", onClick: () => console.log("AI optimization") }}
               />
             )}
           </div>
@@ -796,11 +793,9 @@ flowchart TD
 
           <div className="flex items-center gap-3">
             <AIToggle
-              checked={aiMode}
-              onChange={setAiMode}
+              defaultChecked={aiMode}
+              onToggle={setAiMode}
               label="AI Mode"
-              showIcon
-              icon={Brain}
             />
 
             <GlassButton variant="secondary" onClick={() => console.log("Load template")}>
@@ -813,7 +808,7 @@ flowchart TD
         {/* Live Status */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <AILiveBadge status="active" pulse={aiMode} size="lg" />
+            <AILiveBadge status="live" pulse={aiMode} size="lg" />
             <span className="text-sm text-muted-foreground">
               {aiMode ? "AI Generation Active - ISO 9001:2015 Compliance" : "Manual Mode"}
             </span>
@@ -836,13 +831,7 @@ flowchart TD
                 icon={stat.icon}
                 gradient={stat.gradient}
                 description={stat.description}
-                onClick={() => console.log(`View ${stat.label}`)}
-                animation="scale"
-                delay={index * 0.1}
-                enhanced={aiMode}
-                precision={stat.label === "Risk Score" ? 1 : 0}
                 suffix={stat.label === "ISO Compliance" ? "%" : ""}
-                size="sm"
               />
             </StaggerItem>
           ))}
@@ -862,17 +851,12 @@ flowchart TD
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {aiInsights.map((insight) => (
-                  <AIInsightCard
+                    <AIInsightCard
                     key={insight.id}
                     title={insight.title}
-                    description={insight.description}
-                    icon={insight.icon}
-                    severity={insight.severity}
-                    confidence={insight.confidence}
-                    onClick={() => console.log("View insight:", insight.title)}
-                    showAction
-                    actionText={insight.action}
-                    size="sm"
+                    insight={insight.description}
+                    type={insight.severity === 'warning' ? 'warning' : 'info'}
+                    tags={[insight.confidence ? `${insight.confidence}% confidence` : '']}
                   />
                 ))}
               </div>

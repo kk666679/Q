@@ -43,8 +43,6 @@ export {
   // React hooks for client-side AI
   useChat,
   useCompletion,
-  useObject,
-  useAssistant,
   // Model utilities
   availableModels,
   getModelInfo,
