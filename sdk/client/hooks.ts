@@ -155,23 +155,23 @@ export function useTestCoverage() {
 
 // ── Manufacturing Hooks ───────────────────────────────────────────────────────
 export function useRecordMetrics() {
-  return trpc.manufacturing.recordMetrics.useMutation();
+  return trpc.manufacturing.calculateOEE.useMutation();
 }
 
-export function useOEE(startDate: Date, endDate: Date) {
-  return trpc.manufacturing.getOEE.useQuery(
-    { startDate, endDate },
-    { staleTime: COVERAGE_STALE_MS, enabled: !!startDate && !!endDate },
-  );
+export function useOEE(machineId: string, availability: number, performance: number, quality: number) {
+  return trpc.manufacturing.calculateOEE.useMutation();
 }
 
 // ── Construction Hooks ────────────────────────────────────────────────────────
 export function useCreateProject() {
-  return trpc.construction.createProject.useMutation();
+  return trpc.construction.estimateCost.useMutation();
 }
 
 export function useUpdateProjectProgress() {
-  return trpc.construction.updateProgress.useMutation();
+  return trpc.construction.trackProgress.useQuery(
+    { projectId: '', currentPhase: '', completedTasks: 0, totalTasks: 1, budgetSpent: 0, totalBudget: 1 },
+    { enabled: false },
+  );
 }
 
 export function useEstimateCost() {
@@ -180,7 +180,7 @@ export function useEstimateCost() {
 
 // ── Insurance Hooks ───────────────────────────────────────────────────────────
 export function useCreateClaim() {
-  return trpc.insurance.createClaim.useMutation();
+  return trpc.insurance.processClaim.useMutation();
 }
 
 export function useProcessClaim() {

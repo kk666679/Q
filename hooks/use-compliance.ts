@@ -69,8 +69,11 @@ export function useCompliance(options: UseComplianceOptions = {}) {
  * Hook for compliance reports
  */
 export function useComplianceReport(standard?: ISOStandard) {
+  type StandardType = 'ISO13485' | 'ISO9001' | 'ISO14001' | 'ISO45001' | 'ISO17025' | 'ISO17020' | 'ISO27001' | 'FDA21CFR820' | 'MDSAP';
+  const validStandards: StandardType[] = ['ISO13485','ISO9001','ISO14001','ISO45001','ISO17025','ISO17020','ISO27001','FDA21CFR820','MDSAP'];
+  const typedStandard = validStandards.includes(standard as StandardType) ? (standard as StandardType) : undefined;
   const { data: report, isLoading, error, refetch } = trpc.compliance.getReport.useQuery(
-    { id: standard },
+    { standard: typedStandard },
     { enabled: !!standard }
   );
 

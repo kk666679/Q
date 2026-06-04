@@ -30,6 +30,14 @@ import {
   HeartPulse,
   Landmark,
   Flag,
+  Zap,
+  Settings2,
+  Layers,
+  Brain,
+  Link2,
+  BarChart2,
+  Database,
+  BookMarked,
 } from 'lucide-react'
 
 import {
@@ -60,19 +68,32 @@ const mainNavSections = [
     ],
   },
   {
-    title: 'Automation',
+    title: 'Quick Access',
     items: [
-      { title: 'Flow Process', url: '/flow-process', icon: Workflow },
-      { title: 'Flow Process (Enhanced)', url: '/flow-process/enhanced', icon: Workflow },
+      { title: 'AI Components', url: '/ai-components', icon: Brain },
+      { title: 'Compliance RAG', url: '/compliance/rag', icon: Database },
     ],
   },
+]
+
+// Automation subsections
+const automationNavSections = [
   {
-    title: 'QMS Tools',
+    title: 'Automation Modules',
     items: [
-      { title: 'QMS Generator', url: '/generator', icon: Wand2 },
-      { title: 'Risk Assessment', url: '/iso/risk/assess', icon: AlertTriangle },
-      { title: 'Risk Matrix', url: '/iso/risk/matrix', icon: Scale },
-      { title: 'Climate Risk', url: '/iso/risk/climate', icon: CloudRain },
+      { title: 'AAOS', url: '/automation/aaos', icon: Zap },
+      { title: 'Administration', url: '/automation/administration', icon: Settings2 },
+      { title: 'Analytics', url: '/automation/analytics', icon: BarChart2 },
+      { title: 'Catalog', url: '/automation/catalog', icon: BookMarked },
+      { title: 'Collaboration', url: '/automation/collaboration', icon: Link2 },
+      { title: 'Data Locker', url: '/automation/datalocker', icon: Database },
+      { title: 'Designer', url: '/automation/designer', icon: Wand2 },
+      { title: 'Governance', url: '/automation/governance', icon: ShieldCheck },
+      { title: 'Integrations', url: '/automation/integrations', icon: Link2 },
+      { title: 'Marketplace', url: '/automation/marketplace', icon: FolderKanban },
+      { title: 'MLOps Models', url: '/automation/models', icon: Brain },
+      { title: 'Operations Center', url: '/automation/operations', icon: Settings },
+      { title: 'Templates', url: '/automation/templates', icon: Layers },
     ],
   },
 ]
@@ -258,10 +279,24 @@ export function Sidebar({ userData }: SidebarProps) {
       <AppSidebarHeader />
       
       <SidebarContent>
-        {/* Main sections - Dashboard, Automation, QMS Tools */}
+        {/* Main sections - Dashboard, Standards, Quick Access */}
         {mainNavSections.map((section) => (
           <StandardNavSection key={section.title} title={section.title} items={section.items} />
         ))}
+
+        {/* Automation Modules - Collapsible */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Automation</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {automationNavSections.map((section) => (
+                <SidebarMenuItem key={section.title}>
+                  <CollapsibleGroup title={section.title} items={section.items} defaultOpen={false} />
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
         {/* ISO Management - Collapsible subgroups */}
         <SidebarGroup>
@@ -297,6 +332,17 @@ export function Sidebar({ userData }: SidebarProps) {
           <StandardNavSection key={section.title} title={section.title} items={section.items} />
         ))}
       </SidebarContent>
+
+      {/* Compact CTA block above footer for quick access */}
+      <div className="px-4 py-3">
+        <div className="flex flex-col gap-2">
+          <Link href="/generator" className="text-sm font-semibold rounded-md bg-cyan-600 text-white px-3 py-2 text-center">Get Started</Link>
+          <div className="flex gap-2">
+            <Link href="/docs" className="flex-1 text-sm rounded-md border border-border px-3 py-2 text-center">Docs</Link>
+            <Link href="/projects" className="flex-1 text-sm rounded-md bg-secondary px-3 py-2 text-center">Projects</Link>
+          </div>
+        </div>
+      </div>
 
       <SidebarFooterComponent userData={userData} />
     </UISidebar>

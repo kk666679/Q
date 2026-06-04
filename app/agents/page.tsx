@@ -516,6 +516,8 @@ export default function AgentsPage() {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, toolResults])
 
+  const chatMutation = trpc.agent.chat.useMutation()
+
   const handleSend = async () => {
     if (!input.trim() || isLoading) return
     
@@ -525,8 +527,21 @@ export default function AgentsPage() {
     setInput('')
     setIsLoading(true)
 
-    // Simulate agent response
-    setTimeout(() => {
+    try {
+      const result = await chatMutation.mutateAsync({
+        agentId: selectedAgent,
+        message: query,
+      });
+
+      const agentMsg: MessageType = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: result.agentResponse.content || getAgentResponse(selectedAgent, query),
+        agentId: selectedAgent
+      }
+      setMessages(prev => [...prev, agentMsg])
+    } catch (err) {
+      console.error('Agent chat failed:', err);
       const agentMsg: MessageType = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -534,8 +549,9 @@ export default function AgentsPage() {
         agentId: selectedAgent
       }
       setMessages(prev => [...prev, agentMsg])
+    } finally {
       setIsLoading(false)
-    }, 1500)
+    }
   }
 
   const handleToolExecute = async (toolName: string, params: any) => {

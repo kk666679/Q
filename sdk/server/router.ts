@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { TRPCError } from '@trpc/server';
 import { router, publicProcedure } from './trpc';
 import type { Project, Document, Process, ComplianceReport } from '@/lib/types';
 import {
@@ -11,11 +10,6 @@ import {
   ComplianceCheckInputSchema,
   GenerateChecklistSchema,
   CreateAuditSchema,
-  RecordMetricsSchema,
-  OEEQuerySchema,
-  CreateProjectSchema,
-  GenerateQuoteSchema,
-  CreateClaimSchema,
   AgentIdSchema,
   DocumentIdSchema,
   ComplianceStandardSchema,
@@ -435,74 +429,14 @@ export const testingRouter = router({
     })),
 });
 
-// ── Manufacturing ─────────────────────────────────────────────────────────────
-export const manufacturingRouter = router({
-  recordMetrics: publicProcedure
-    .input(RecordMetricsSchema)
-    .mutation(async ({ input }) => ({ id: `metric-${Date.now()}`, ...input })),
-
-  getOEE: publicProcedure
-    .input(OEEQuerySchema)
-    .query(async () => ({ availability: 0, performance: 0, quality: 0, overall: 0 })),
-
-  analyzeMetrics: publicProcedure
-    .input(z.object({ startDate: z.coerce.date(), endDate: z.coerce.date() }))
-    .query(async () => ({
-      recommendations: [] as string[], yieldRate: '97.5', defectRate: '2.5', efficiency: '88.5',
-    })),
-
-  predictMaintenance: publicProcedure
-    .input(z.object({ equipmentId: z.string().min(1).max(128) }))
-    .mutation(async () => ({ predictions: [] as unknown[], recommendations: [] as string[] })),
-});
-
-// ── Construction ──────────────────────────────────────────────────────────────
-export const constructionRouter = router({
-  createProject: publicProcedure
-    .input(CreateProjectSchema)
-    .mutation(async ({ input }) => ({ id: `cproj-${Date.now()}`, ...input, progress: 0 })),
-
-  updateProgress: publicProcedure
-    .input(z.object({
-      id:       z.string().min(1).max(128),
-      progress: z.number().min(0).max(100),
-      notes:    z.string().max(2000).optional(),
-    }))
-    .mutation(async ({ input }) => input),
-
-  estimateCost: publicProcedure
-    .input(z.object({ projectId: z.string().min(1).max(128) }))
-    .mutation(async () => ({ estimated: 0, breakdown: {} as Record<string, number> })),
-});
-
-// ── Insurance ─────────────────────────────────────────────────────────────────
-export const insuranceRouter = router({
-  createClaim: publicProcedure
-    .input(CreateClaimSchema)
-    .mutation(async ({ input }) => ({
-      id: `claim-${Date.now()}`, ...input, status: 'reported' as const, reportedDate: new Date(),
-    })),
-
-  processClaim: publicProcedure
-    .input(z.object({
-      id:     z.string().min(1).max(128),
-      action: z.enum(['approve', 'deny', 'investigate']),
-      notes:  z.string().max(2000).optional(),
-    }))
-    .mutation(async ({ input }) => input),
-
-  generateQuote: publicProcedure
-    .input(GenerateQuoteSchema)
-    .mutation(async ({ input }) => ({
-      policyType: input.policyType, coverage: input.coverage,
-      premium: input.coverage * 0.02, riskFactors: input.riskFactors,
-    })),
-});
-
 // ── Imports ───────────────────────────────────────────────────────────────────
-import { msRouter }           from './ms-router';
-import { isoRouter }          from './iso-router';
-import { aiRouter }           from './ai-router';
+import { msRouter }              from './ms-router';
+import { isoRouter }             from './iso-router';
+import { aiRouter }              from './ai-router';
+import { modelsRouter }          from './models-router';
+import { manufacturingRouter }   from './manufacturing-router';
+import { constructionRouter }    from './construction-router';
+import { insuranceRouter }       from './insurance-router';
 
 // ── App Router ────────────────────────────────────────────────────────────────
 export const appRouter = router({
@@ -519,6 +453,7 @@ export const appRouter = router({
   ms:             msRouter,
   iso:            isoRouter,
   ai:             aiRouter,
+  models:         modelsRouter,
   dashboard: router({
     getStats: publicProcedure.query(async () => sampleDashboardStats),
   }),

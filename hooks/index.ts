@@ -36,6 +36,20 @@ export { useCompliance, useComplianceReport, useComplianceScore } from './use-co
 // AI hooks
 export { useAI, useCompletion, useStructuredGeneration } from './use-ai';
 
+// Industry hooks
+export { useManufacturing } from './use-manufacturing';
+export { useConstruction } from './use-construction';
+export { useInsurance } from './use-insurance';
+
+// ISO Engine hooks
+export { useRiskManagement, useAuditManagement } from './use-iso-engines';
+
+// AI Operations hooks
+export { useAgents as useAgentsOps, useAIOperations } from './use-ai-operations';
+
+// Compliance Engines hooks
+export { useCompliance as useComplianceEngine, useCAPAOperations } from './use-compliance-engines';
+
 // Mobile detection
 export { useIsMobile } from './use-mobile';
 

@@ -35,26 +35,27 @@ High-level automation architecture showing integration points:
 
 ```mermaid
 flowchart LR
-		subgraph Frontend
-				UI[Process Designer (xyflow)] -->|Saves JSON| Repo[Process Store]
-				UI -->|Start| OrchestratorClient[Orchestrator Client]
-		end
 
-		subgraph Backend
-				OrchestratorServer[Orchestrator Service]
-				OrchestratorServer --> TRPC[tRPC Routers]
-				OrchestratorServer --> DB[(Postgres / Prisma)]
-				TRPC --> SDK[QMS SDK Services]
-				SDK --> Agents[AI Agents (Ollama/OpenAI/Anthropic)]
-				SDK --> Vector[Pinecone / Vector DB]
-				SDK --> External[External Services / Webhooks]
-		end
+    subgraph Frontend
+        UI["Process Designer (xyflow)"] -->|Saves JSON| Repo["Process Store"]
+        UI -->|Start| OrchestratorClient["Orchestrator Client"]
+    end
 
-		UI -->|calls| TRPC
-		OrchestratorClient --> OrchestratorServer
-		Repo --> OrchestratorServer
-		Agents -->|responses| OrchestratorServer
-		External -->|events| OrchestratorServer
+    subgraph Backend
+        OrchestratorServer["Orchestrator Service"]
+        OrchestratorServer --> TRPC["tRPC Routers"]
+        OrchestratorServer --> DB[("Postgres / Prisma")]
+        TRPC --> SDK["QMS SDK Services"]
+        SDK --> Agents["AI Agents (Ollama/OpenAI/Anthropic)"]
+        SDK --> Vector["Pinecone / Vector DB"]
+        SDK --> External["External Services / Webhooks"]
+    end
+
+    UI -->|calls| TRPC
+    OrchestratorClient --> OrchestratorServer
+    Repo --> OrchestratorServer
+    Agents -->|responses| OrchestratorServer
+    External -->|events| OrchestratorServer
 ```
 
 Runtime flow

@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { downloadCSV } from '@/lib/exportUtils';
+import { useManufacturing } from '@/hooks/use-manufacturing';
 
 import {
   AIChartContainer,
@@ -90,6 +91,16 @@ const downtimeData = [
 ];
 
 export default function ManufacturingPage() {
+  const { oeeData, loading } = useManufacturing();
+  
+  // Use hook data if available, otherwise use defaults
+  const displayOee = oeeData || {
+    availability: 92.5,
+    performance: 88.3,
+    quality: 95.7,
+    oee: 78.2,
+  };
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -100,7 +111,7 @@ export default function ManufacturingPage() {
             <div className="grid gap-4 md:grid-cols-4">
               <AIMetricCard
                 title="OEE"
-                value={oeeData.oee}
+                value={displayOee.oee}
                 icon={Activity}
                 gradient="from-blue-500/80 to-cyan-500/80"
                 trend="up"
@@ -109,7 +120,7 @@ export default function ManufacturingPage() {
               />
               <AIMetricCard
                 title="Availability"
-                value={oeeData.availability}
+                value={displayOee.availability}
                 icon={Factory}
                 gradient="from-green-500/80 to-emerald-500/80"
                 trend="up"
@@ -118,7 +129,7 @@ export default function ManufacturingPage() {
               />
               <AIMetricCard
                 title="Performance"
-                value={oeeData.performance}
+                value={displayOee.performance}
                 icon={TrendingUp}
                 gradient="from-orange-500/80 to-amber-500/80"
                 trend="up"
@@ -127,7 +138,7 @@ export default function ManufacturingPage() {
               />
               <AIMetricCard
                 title="Quality"
-                value={oeeData.quality}
+                value={displayOee.quality}
                 icon={Shield}
                 gradient="from-purple-500/80 to-pink-500/80"
                 trend="up"

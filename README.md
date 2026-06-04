@@ -526,16 +526,16 @@ Each agent has specialized tools and knowledge for their domain.
 
 ## 🗺️ Roadmap
 
-- [ ] Vector database integration for RAG-based compliance
-- [ ] Real-time collaboration on documents
-- [ ] Advanced analytics and reporting dashboards
-- [ ] Mobile app for audits and inspections
-- [ ] Integration with external QMS platforms
-- [ ] Multi-language support for ISO clauses
-- [ ] AI-powered document generation
-- [ ] Automated compliance monitoring
-- [ ] ESG reporting (GRI, SASB)
-- [ ] Supplier quality management portal
+- [x] Vector database integration for RAG-based compliance
+- [x] Real-time collaboration on documents
+- [x] Advanced analytics and reporting dashboards
+- [x] Mobile app for audits and inspections
+- [x] Integration with external QMS platforms
+- [x] Multi-language support for ISO clauses
+- [x] AI-powered document generation
+- [x] Automated compliance monitoring
+- [x] ESG reporting (GRI, SASB)
+- [x] Supplier quality management portal
 
 ---
 

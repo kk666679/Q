@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { ChartContainer } from '@/components/ui/chart';
+import { useConstruction } from '@/hooks/use-construction';
 import {
   LineChart,
   Line,
@@ -85,6 +86,49 @@ const chartConfig = {
 }
 
 export default function ConstructionPage() {
+  const { estimateCost, calculateSchedule, assessSafety, detectClashes, loading, error } = useConstruction();
+  const [selectedProject, setSelectedProject] = useState('1');
+  
+  const handleEstimate = async () => {
+    try {
+      await estimateCost('commercial_office', 25000, {
+        customDesign: true,
+        sustainableMaterials: true,
+        complexSite: false,
+      });
+    } catch (err) {
+      console.error('Estimate failed:', err);
+    }
+  };
+
+  const handleSchedule = async () => {
+    try {
+      await calculateSchedule('proj-1', [
+        { name: 'Site Prep', duration: 14, predecessors: [] },
+        { name: 'Foundation', duration: 30, predecessors: ['Site Prep'] },
+        { name: 'Structure', duration: 60, predecessors: ['Foundation'] },
+        { name: 'Interior', duration: 45, predecessors: ['Structure'] },
+      ]);
+    } catch (err) {
+      console.error('Schedule failed:', err);
+    }
+  };
+
+  const handleSafety = async () => {
+    try {
+      await assessSafety('proj-1', 'Inspector A');
+    } catch (err) {
+      console.error('Safety assessment failed:', err);
+    }
+  };
+
+  const handleClashDetection = async () => {
+    try {
+      await detectClashes(['model-1', 'model-2'], ['structural', 'mechanical', 'electrical']);
+    } catch (err) {
+      console.error('Clash detection failed:', err);
+    }
+  }
   return (
     <SidebarProvider>
       <AppSidebar />

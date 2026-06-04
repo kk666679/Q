@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AlertTriangle, Shield, Activity, CheckCircle } from 'lucide-react';
+import { trpc } from '@/sdk/client/trpc';
 import type { RiskCategory, Likelihood, Consequence, RiskLevel } from '@/sdk/types/iso';
 
 interface RiskAssessProps {
@@ -52,26 +53,20 @@ export function RiskAssess({ defaultCategory = 'quality' }: RiskAssessProps) {
     consequence: 'moderate' as Consequence,
     controls: '',
   });
-  const [isAssessing, setIsAssessing] = useState(false);
+  const assessMutation = trpc.iso.risk.assess.useMutation();
+  const isAssessing = assessMutation.isPending;
 
-  const calculateRiskLevel = (likelihood: Likelihood, consequence: Consequence): RiskLevel => {
-    const score = likelihoodScores[likelihood] * consequenceScores[consequence];
-    if (score >= 17) return 'extreme';
-    if (score >= 10) return 'high';
-    if (score >= 5) return 'medium';
-    return 'low';
-  };
-
-  const assessRisk = () => {
+  const assessRisk = async () => {
     if (!newRisk.description.trim()) return;
-    setIsAssessing(true);
 
-    setTimeout(() => {
-      const score = likelihoodScores[newRisk.likelihood] * consequenceScores[newRisk.consequence];
-      const riskLevel = calculateRiskLevel(newRisk.likelihood, newRisk.consequence);
-      
-      const controls = newRisk.controls.split('\n').filter(c => c.trim());
-      const recommendations = getRecommendations(newRisk.category, riskLevel);
+    try {
+      const result = await assessMutation.mutateAsync({
+        description: newRisk.description,
+        category: newRisk.category,
+        likelihood: newRisk.likelihood,
+        consequence: newRisk.consequence,
+        existingControls: newRisk.controls.split('\n').filter(c => c.trim()),
+      });
 
       const risk: RiskEntry = {
         id: `risk-${Date.now()}`,
@@ -79,22 +74,17 @@ export function RiskAssess({ defaultCategory = 'quality' }: RiskAssessProps) {
         category: newRisk.category,
         likelihood: newRisk.likelihood,
         consequence: newRisk.consequence,
-        riskScore: score,
-        riskLevel,
-        controls,
-        recommendations,
+        riskScore: result.riskScore,
+        riskLevel: (result.riskLevel === 'very_high' ? 'extreme' : result.riskLevel === 'very_low' ? 'low' : result.riskLevel) as RiskLevel,
+        controls: [],
+        recommendations: result.recommendations,
       };
 
       setRisks(prev => [...prev, risk]);
-      setNewRisk({
-        description: '',
-        category: defaultCategory,
-        likelihood: 'possible',
-        consequence: 'moderate',
-        controls: '',
-      });
-      setIsAssessing(false);
-    }, 1000);
+      setNewRisk({ description: '', category: defaultCategory, likelihood: 'possible', consequence: 'moderate', controls: '' });
+    } catch (err) {
+      console.error('Risk assessment failed:', err);
+    }
   };
 
   const getRecommendations = (category: RiskCategory, level: RiskLevel): string[] => {

@@ -1,6 +1,7 @@
 'use client'
 
 import { Bell, Search } from 'lucide-react'
+import Link from 'next/link'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -36,6 +37,18 @@ export function AppHeader({ title, description }: AppHeaderProps) {
       )}
 
       <div className="ml-auto flex items-center gap-2">
+        {/* CTAs in header */}
+        <div className="hidden sm:flex items-center gap-2">
+          <Button asChild size="sm" className="bg-cyan-500">
+            <Link href="/generator">Get Started</Link>
+          </Button>
+          <Button asChild size="sm" variant="outline">
+            <Link href="/docs">Learn More</Link>
+          </Button>
+          <Button asChild size="sm" variant="secondary">
+            <Link href="/projects">Start Trial</Link>
+          </Button>
+        </div>
         <div className="relative hidden md:block">
           <Search className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input

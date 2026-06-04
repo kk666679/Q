@@ -1,18 +1,22 @@
 'use client';
 
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/sidebar/app-sidebar';
+import { AppHeader } from '@/components/sidebar/app-header';
 import { ComplianceCheck } from '@/components/iso';
 
 export default function ComplianceCheckPage() {
   return (
-    <div className="container mx-auto p-6 space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Compliance Check</h1>
-        <p className="text-gray-600 mt-2">
-          Check compliance against ISO standards clause by clause
-        </p>
-      </div>
-      <ComplianceCheck />
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <AppHeader title="Compliance Check" description="Check compliance against ISO standards clause by clause" />
+        <main className="flex-1 overflow-auto p-6">
+          <div className="mx-auto max-w-4xl">
+            <ComplianceCheck />
+          </div>
+        </main>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
-

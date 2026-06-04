@@ -19,6 +19,7 @@ import {
   ComplianceChecker,
   MSStandardsViewer
 } from '@/sdk/components/ai/index';
+import { trpc } from '@/sdk/client/trpc';
 
 const QMSGenerator = dynamic(() => import('@/components/qms/QMSGenerator').then(mod => ({ default: mod.QMSGenerator })), { ssr: false });
 
@@ -60,7 +61,7 @@ Top management demonstrates leadership and commitment by establishing quality po
     { id: 'ai-chat', label: 'AI Assistant', icon: Sparkles },
   ];
 
-  const handleSendMessage = (message: string) => {
+  const handleSendMessage = async (message: string) => {
     const newMessage = {
       id: Date.now().toString(),
       role: 'user' as const,
@@ -69,15 +70,41 @@ Top management demonstrates leadership and commitment by establishing quality po
     };
     setChatMessages(prev => [...prev, newMessage]);
     
-    setTimeout(() => {
-      const response = {
+    try {
+      // Try to generate document if message mentions document
+      if (message.toLowerCase().includes('document') || message.toLowerCase().includes('generate')) {
+        const result = await trpc.ai.generateDocument.mutate({
+          documentType: 'procedure',
+          context: message,
+        });
+        
+        const response = {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant' as const,
+          content: `Generated document based on your requirements:\n\n${result.document || 'Document generation successful'}`,
+          timestamp: new Date(),
+        };
+        setChatMessages(prev => [...prev, response]);
+      } else {
+        // Default fallback response
+        const response = {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant' as const,
+          content: `I can help you with: QMS documentation, ISO compliance, process mapping, and quality management. What would you like to know?`,
+          timestamp: new Date(),
+        };
+        setChatMessages(prev => [...prev, response]);
+      }
+    } catch (err) {
+      console.error('Message handling failed:', err);
+      const errorResponse = {
         id: (Date.now() + 1).toString(),
         role: 'assistant' as const,
-        content: `I can help you with: QMS documentation, ISO compliance, process mapping, and quality management. What would you like to know?`,
+        content: 'Sorry, I encountered an error processing your request. Please try again.',
         timestamp: new Date(),
       };
-      setChatMessages(prev => [...prev, response]);
-    }, 1000);
+      setChatMessages(prev => [...prev, errorResponse]);
+    }
   };
 
   return (
