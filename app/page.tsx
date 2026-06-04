@@ -127,7 +127,7 @@ export default function DashboardPage() {
                 onRefresh={() => window.location.reload()}
               >
 
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height={280} minWidth={0}>
                   <AreaChart data={activityTrendData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                     <defs>
                       <linearGradient id="colorDocuments" x1="0" y1="0" x2="0" y2="1">
@@ -166,7 +166,7 @@ export default function DashboardPage() {
                 onRefresh={() => window.location.reload()}
               >
 
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height={280} minWidth={0}>
                   <PieChart>
                     <Pie
                       data={projectStatusData}
@@ -209,7 +209,7 @@ export default function DashboardPage() {
                 onRefresh={() => window.location.reload()}
               >
 
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height={280} minWidth={0}>
                   <LineChart data={complianceTrendData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                     <XAxis dataKey="month" className="text-xs" />
@@ -235,7 +235,7 @@ export default function DashboardPage() {
                 onRefresh={() => window.location.reload()}
               >
 
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height={280} minWidth={0}>
                   <BarChart data={documentTypeData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                     <XAxis dataKey="type" className="text-xs" />

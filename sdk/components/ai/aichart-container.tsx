@@ -157,7 +157,7 @@ export function AIChartContainer({
             </div>
           )}
           
-          <div className="p-6 h-[300px] w-full">
+          <div className="p-6 h-[320px] w-full min-w-0">
             <ClientOnlyChart fallback={<div className="flex items-center justify-center h-full text-muted-foreground">Loading chart...</div>}>
               {children}
             </ClientOnlyChart>

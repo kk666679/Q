@@ -19,6 +19,29 @@
   --color-input: #e5e5e5;
   --color-ring: #3b82f6;
 
+  /* Sidebar colors */
+  --color-sidebar: #fafafa;
+  --color-sidebar-foreground: #171717;
+  --color-sidebar-border: #e5e5e5;
+  --color-sidebar-accent: #f5f5f5;
+  --color-sidebar-accent-foreground: #171717;
+  --color-sidebar-ring: #3b82f6;
+
+  /* Card colors */
+  --color-card: #ffffff;
+  --color-card-foreground: #000000;
+
+  /* Popover colors */
+  --color-popover: #ffffff;
+  --color-popover-foreground: #000000;
+
+  /* Chart colors */
+  --color-chart-1: #3b82f6;
+  --color-chart-2: #22c55e;
+  --color-chart-3: #f59e0b;
+  --color-chart-4: #8b5cf6;
+  --color-chart-5: #ec4899;
+
   /* Status colors */
   --color-success: #22c55e;          /* green-500 */
   --color-success-foreground: #ffffff;
@@ -62,6 +85,29 @@
   --color-border: #262626;
   --color-input: #262626;
   --color-ring: #3b82f6;
+
+  /* Sidebar colors */
+  --color-sidebar: #0a0a0a;
+  --color-sidebar-foreground: #e5e5e5;
+  --color-sidebar-border: #262626;
+  --color-sidebar-accent: #171717;
+  --color-sidebar-accent-foreground: #e5e5e5;
+  --color-sidebar-ring: #3b82f6;
+
+  /* Card colors */
+  --color-card: #0a0a0a;
+  --color-card-foreground: #ffffff;
+
+  /* Popover colors */
+  --color-popover: #0a0a0a;
+  --color-popover-foreground: #ffffff;
+
+  /* Chart colors */
+  --color-chart-1: #3b82f6;
+  --color-chart-2: #22c55e;
+  --color-chart-3: #f59e0b;
+  --color-chart-4: #8b5cf6;
+  --color-chart-5: #ec4899;
 
   /* Status colors */
   --color-success: #22c55e;          /* green-500 */
