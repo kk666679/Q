@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,56 +6,444 @@ datasource db {
   provider = "postgresql"
 }
 
-model Agent {
-  id           String   @id @default(cuid())
-  name         String
-  type         String
+// ── Organisation & Identity ───────────────────────────────────────────────────
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  industry    String?
+  country     String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users        User[]
+  departments  Department[]
+  projects     QMSProject[]
+  risks        Risk[]
+  capas        CAPA[]
+  audits       QMSAudit[]
+  suppliers    Supplier[]
+  kpis         KPI[]
+  objectives   Objective[]
+  mgmtReviews  ManagementReview[]
+  notifications Notification[]
+  auditTrails  AuditTrail[]
+
+  @@map("organizations")
+}
+
+model Department {
+  id             String       @id @default(cuid())
+  organizationId String
+  name           String
+  code           String?
+  managerId      String?
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  users          User[]
+
+  @@map("departments")
+}
+
+model User {
+  id             String       @id @default(cuid())
+  organizationId String
+  departmentId   String?
+  email          String       @unique
+  name           String
+  role           String       @default("viewer") // admin | manager | auditor | viewer
+  permissions    String[]
+  isActive       Boolean      @default(true)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  department     Department?  @relation(fields: [departmentId], references: [id])
+  trainings      Training[]
+  competencies   Competency[]
+
+  @@map("users")
+}
+
+// ── Document Control ──────────────────────────────────────────────────────────
+
+model Document {
+  id          String    @id @default(cuid())
+  projectId   String?
+  title       String
+  content     String    @db.Text
+  type        String
+  version     Int       @default(1)
+  status      String    @default("draft") // draft | review | approved | obsolete
+  createdBy   String
+  approvedBy  String?
+  approvedAt  DateTime?
+  tags        String[]
+  isoClauses  String[]
+  metadata    Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  versions    DocumentVersion[]
+  findings    AuditFinding[]
+
+  @@map("documents")
+}
+
+model DocumentVersion {
+  id         String   @id @default(cuid())
+  documentId String
+  version    Int
+  content    String   @db.Text
+  changedBy  String
+  changeNote String?
+  createdAt  DateTime @default(now())
+
+  document   Document @relation(fields: [documentId], references: [id])
+
+  @@map("document_versions")
+}
+
+// ── Project ───────────────────────────────────────────────────────────────────
+
+model QMSProject {
+  id             String       @id @default(cuid())
+  organizationId String
+  name           String
+  description    String?
+  organizationType String?
+  industry       String?
+  scope          String?
+  status         String       @default("draft")
+  metadata       Json?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("qms_projects")
+}
+
+// ── Risk Management ───────────────────────────────────────────────────────────
+
+model Risk {
+  id             String       @id @default(cuid())
+  organizationId String
+  title          String
+  description    String
+  category       String       // quality | environmental | safety | security | operational | strategic | climate
+  likelihood     String       // rare | unlikely | possible | likely | certain
+  severity       String       // negligible | minor | moderate | major | catastrophic
+  inherentRisk   Int
+  residualRisk   Int
+  controls       String[]
+  treatment      String       @default("mitigate") // accept | mitigate | transfer | avoid
+  owner          String
+  dueDate        DateTime?
+  status         String       @default("identified") // identified | in_progress | controlled | closed
+  standard       String?      // ISO9001 | ISO14001 | ISO45001 | ISO27001
+  metadata       Json?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  capas          CAPA[]
+
+  @@map("risks")
+}
+
+// ── CAPA ──────────────────────────────────────────────────────────────────────
+
+model CAPA {
+  id             String       @id @default(cuid())
+  organizationId String
+  riskId         String?
+  auditFindingId String?
+  title          String
+  description    String
+  type           String       // corrective | preventive
+  source         String       // audit | complaint | nonconformity | risk | improvement
+  rootCause      String?
+  proposedAction String
+  preventiveAction String?
+  owner          String
+  dueDate        DateTime
+  priority       String       @default("medium") // low | medium | high | critical
+  status         String       @default("open") // open | in-progress | completed | verified | closed
+  effectivenessNote String?
+  closedAt       DateTime?
+  metadata       Json?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  risk           Risk?        @relation(fields: [riskId], references: [id])
+  auditFinding   AuditFinding? @relation(fields: [auditFindingId], references: [id])
+
+  @@map("capas")
+}
+
+// ── Audit ─────────────────────────────────────────────────────────────────────
+
+model QMSAudit {
+  id             String         @id @default(cuid())
+  organizationId String
+  type           String         // internal | external | supplier | management-review
+  standard       String?
+  scope          String
+  auditor        String
+  auditee        String
+  plannedDate    DateTime
+  completedDate  DateTime?
+  status         String         @default("planned") // planned | in-progress | completed | closed
+  metadata       Json?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  organization   Organization   @relation(fields: [organizationId], references: [id])
+  findings       AuditFinding[]
+
+  @@map("qms_audits")
+}
+
+model AuditFinding {
+  id           String     @id @default(cuid())
+  auditId      String
+  documentId   String?
+  clause       String
+  type         String     // major | minor | observation | opportunity
   description  String
-  capabilities String[]
-  tools        String[]
-  status       String   @default("active")
-  metadata     Json?
+  evidence     String?
+  status       String     @default("open") // open | capa-raised | closed
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  audit        QMSAudit   @relation(fields: [auditId], references: [id])
+  document     Document?  @relation(fields: [documentId], references: [id])
+  capas        CAPA[]
+
+  @@map("audit_findings")
+}
+
+// ── Training & Competency ─────────────────────────────────────────────────────
+
+model Training {
+  id             String   @id @default(cuid())
+  userId         String
+  title          String
+  type           String   // induction | technical | iso | safety | other
+  provider       String?
+  completedDate  DateTime?
+  expiryDate     DateTime?
+  score          Float?
+  status         String   @default("planned") // planned | in-progress | completed | expired
+  certificateRef String?
+  metadata       Json?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user           User     @relation(fields: [userId], references: [id])
+
+  @@map("trainings")
+}
+
+model Competency {
+  id           String   @id @default(cuid())
+  userId       String
+  skill        String
+  level        String   // novice | competent | proficient | expert
+  assessedDate DateTime
+  assessedBy   String?
+  evidence     String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  messages     Message[]
+  user         User     @relation(fields: [userId], references: [id])
+
+  @@map("competencies")
+}
+
+// ── Supplier ──────────────────────────────────────────────────────────────────
+
+model Supplier {
+  id             String          @id @default(cuid())
+  organizationId String
+  name           String
+  code           String?
+  category       String?         // raw-material | service | subcontractor | critical
+  status         String          @default("active") // active | suspended | approved | rejected
+  qualityScore   Float?
+  riskLevel      String?         // low | medium | high
+  country        String?
+  contactEmail   String?
+  metadata       Json?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  organization   Organization    @relation(fields: [organizationId], references: [id])
+  audits         SupplierAudit[]
+
+  @@map("suppliers")
+}
+
+model SupplierAudit {
+  id          String   @id @default(cuid())
+  supplierId  String
+  auditor     String
+  auditDate   DateTime
+  score       Float?
+  status      String   @default("planned")
+  findings    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  supplier    Supplier @relation(fields: [supplierId], references: [id])
+
+  @@map("supplier_audits")
+}
+
+// ── KPI & Objectives ──────────────────────────────────────────────────────────
+
+model KPI {
+  id             String       @id @default(cuid())
+  organizationId String
+  name           String
+  category       String       // compliance | audit | capa | risk | training | supplier | process
+  target         Float
+  actual         Float?
+  unit           String?      // % | count | days | score
+  period         String?      // monthly | quarterly | annual
+  status         String       @default("on-track") // on-track | at-risk | breached
+  calculatedAt   DateTime?
+  metadata       Json?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("kpis")
+}
+
+model Objective {
+  id             String       @id @default(cuid())
+  organizationId String
+  title          String
+  description    String?
+  standard       String?
+  owner          String
+  targetDate     DateTime
+  status         String       @default("active") // active | achieved | cancelled
+  progress       Float        @default(0)
+  metadata       Json?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("objectives")
+}
+
+// ── Management Review ─────────────────────────────────────────────────────────
+
+model ManagementReview {
+  id             String       @id @default(cuid())
+  organizationId String
+  title          String
+  scheduledDate  DateTime
+  completedDate  DateTime?
+  attendees      String[]
+  agenda         Json?        // array of agenda items
+  inputs         Json?        // performance data, audit results, KPIs
+  outputs        Json?        // decisions, actions, resources
+  status         String       @default("planned") // planned | completed | approved
+  metadata       Json?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("management_reviews")
+}
+
+// ── Notifications ─────────────────────────────────────────────────────────────
+
+model Notification {
+  id             String       @id @default(cuid())
+  organizationId String
+  userId         String?
+  type           String       // capa-due | audit-scheduled | kpi-breach | training-expired | document-review
+  title          String
+  message        String
+  entityType     String?      // Risk | CAPA | Audit | KPI | Document
+  entityId       String?
+  isRead         Boolean      @default(false)
+  priority       String       @default("medium") // low | medium | high | critical
+  createdAt      DateTime     @default(now())
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@map("notifications")
+}
+
+// ── Audit Trail (ISO 27001 A.12.4) ───────────────────────────────────────────
+
+model AuditTrail {
+  id             String       @id @default(cuid())
+  organizationId String?
+  userId         String?
+  action         String       // CREATE | UPDATE | DELETE | APPROVE | LOGIN | EXPORT
+  entityType     String       // Document | Risk | CAPA | Audit | Supplier | KPI
+  entityId       String
+  before         Json?
+  after          Json?
+  ipAddress      String?
+  userAgent      String?
+  timestamp      DateTime     @default(now())
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+
+  @@index([entityType, entityId])
+  @@index([userId, timestamp])
+  @@map("audit_trail")
+}
+
+// ── Legacy / unchanged models ─────────────────────────────────────────────────
+
+model Agent {
+  id             String          @id @default(cuid())
+  name           String
+  type           String
+  description    String
+  capabilities   String[]
+  tools          String[]
+  status         String          @default("active")
+  metadata       Json?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  messages       Message[]
   toolExecutions ToolExecution[]
 
   @@map("agents")
 }
 
 model Message {
-  id        String   @id @default(cuid())
+  id        String      @id @default(cuid())
   agentId   String
   content   String
   type      String
-  timestamp DateTime @default(now())
+  timestamp DateTime    @default(now())
   metadata  Json?
 
-  agent     Agent @relation(fields: [agentId], references: [id])
+  agent     Agent       @relation(fields: [agentId], references: [id])
   session   ChatSession? @relation(fields: [sessionId], references: [id])
   sessionId String?
 
   @@map("messages")
 }
 
-model Document {
-  id        String   @id @default(cuid())
-  title     String
-  content   String
-  type      String
-  version   String
-  status    String   @default("draft")
-  tags      String[]
-  metadata  Json?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("documents")
-}
-
 model Process {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
   description String
   nodes       Json
@@ -83,21 +468,6 @@ model ComplianceCheck {
   updatedAt       DateTime @updatedAt
 
   @@map("compliance_checks")
-}
-
-model Audit {
-  id        String   @id @default(cuid())
-  type      String
-  scope     String
-  auditor   String
-  auditee   String
-  date      DateTime
-  findings  Json
-  status    String   @default("planned")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("audits")
 }
 
 model ManufacturingMetrics {
@@ -184,7 +554,7 @@ model ToolExecution {
   status     String   @default("pending")
   timestamp  DateTime @default(now())
 
-  agent Agent @relation(fields: [agentId], references: [id])
+  agent      Agent    @relation(fields: [agentId], references: [id])
 
   @@map("tool_executions")
 }
@@ -196,7 +566,7 @@ model ChatSession {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  messages Message[]
+  messages     Message[]
 
   @@map("chat_sessions")
 }
