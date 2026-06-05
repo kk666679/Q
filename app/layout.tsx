@@ -4,8 +4,10 @@ import './globals.css'
 // Providers - centralized SDK provider
 import { SDKProvider } from '@/lib/sdk/provider'
 import { ThemeProvider } from '@/components/theme-provider'
+import { ErrorBoundary } from '@/components/errors/ErrorBoundary'
 
 export const metadata: Metadata = {
+
   title: {
     default: 'QMS Generator - ISO 9001 Quality Management System',
     template: '%s | QMS Generator',
@@ -62,10 +64,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SDKProvider>
-            {children}
+            <ErrorBoundary>{children}</ErrorBoundary>
           </SDKProvider>
         </ThemeProvider>
       </body>
     </html>
   )
 }
+

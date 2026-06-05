@@ -1,132 +1,156 @@
 @import "tailwindcss";
 
-/* 2. Theme variables – light mode defaults + dark mode */
+/* ── Backward-compat aliases (used by shadcn components & app pages) ── */
+:root {
+  /* Chart aliases */
+  --chart-1: var(--color-chart-1);
+  --chart-2: var(--color-chart-2);
+  --chart-3: var(--color-chart-3);
+  --chart-4: var(--color-chart-4);
+  --chart-5: var(--color-chart-5);
+
+  /* Sidebar layout dimensions */
+  --sidebar-width:      16rem;
+  --sidebar-width-icon: 3.5rem;
+}
+
 @theme {
-  /* Light mode – clean white background */
-  --color-background: #ffffff;
-  --color-foreground: #000000;
-  --color-primary: #3b82f6;        /* blue-500 – accent */
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #f5f5f5;       /* subtle light gray */
-  --color-secondary-foreground: #171717;
-  --color-muted: #f5f5f5;           /* borders, separators */
-  --color-muted-foreground: #737373;
-  --color-accent: #3b82f6;
-  --color-accent-foreground: #ffffff;
-  --color-destructive: #ef4444;      /* red-500 */
-  --color-destructive-foreground: #ffffff;
-  --color-border: #e5e5e5;
-  --color-input: #e5e5e5;
-  --color-ring: #3b82f6;
+  /* ── Core palette ── */
+  --color-background:            #ffffff;
+  --color-foreground:            #0a0a0a;
 
-  /* Sidebar colors */
-  --color-sidebar: #fafafa;
-  --color-sidebar-foreground: #171717;
-  --color-sidebar-border: #e5e5e5;
-  --color-sidebar-accent: #f5f5f5;
-  --color-sidebar-accent-foreground: #171717;
-  --color-sidebar-ring: #3b82f6;
+  --color-primary:               #3b82f6;
+  --color-primary-foreground:    #ffffff;
 
-  /* Card colors */
-  --color-card: #ffffff;
-  --color-card-foreground: #000000;
+  --color-secondary:             #f5f5f5;
+  --color-secondary-foreground:  #171717;
 
-  /* Popover colors */
-  --color-popover: #ffffff;
-  --color-popover-foreground: #000000;
+  --color-muted:                 #f5f5f5;
+  --color-muted-foreground:      #737373;
 
-  /* Chart colors */
-  --color-chart-1: #3b82f6;
-  --color-chart-2: #22c55e;
-  --color-chart-3: #f59e0b;
-  --color-chart-4: #8b5cf6;
-  --color-chart-5: #ec4899;
+  --color-accent:                #f5f5f5;
+  --color-accent-foreground:     #171717;
 
-  /* Status colors */
-  --color-success: #22c55e;          /* green-500 */
-  --color-success-foreground: #ffffff;
-  --color-warning: #f59e0b;           /* amber-500 */
-  --color-warning-foreground: #000000;
-  --color-info: #0ea5e9;             /* sky-500 */
-  --color-info-foreground: #ffffff;
+  --color-destructive:           #ef4444;
+  --color-destructive-foreground:#ffffff;
 
-  /* Glassmorphism variables – fully customisable */
-  --glass-bg: rgba(255, 255, 255, 0.7);           /* semi‑transparent white */
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --glass-blur: blur(12px);
-  --glass-blur-sm: blur(8px);
-  --glass-blur-lg: blur(20px);
+  --color-border:                #e5e5e5;
+  --color-input:                 #e5e5e5;
+  --color-ring:                  #3b82f6;
 
-  /* Border radius */
-  --radius: 0.5rem;
+  /* ── Card ── */
+  --color-card:                  #ffffff;
+  --color-card-foreground:       #0a0a0a;
 
-  /* Typography */
+  /* ── Popover ── */
+  --color-popover:               #ffffff;
+  --color-popover-foreground:    #0a0a0a;
+
+  /* ── Status ── */
+  --color-success:               #22c55e;
+  --color-success-foreground:    #ffffff;
+  --color-warning:               #f59e0b;
+  --color-warning-foreground:    #000000;
+  --color-info:                  #0ea5e9;
+  --color-info-foreground:       #ffffff;
+
+  /* ── Charts ── */
+  --color-chart-1:               #3b82f6;
+  --color-chart-2:               #10b981;
+  --color-chart-3:               #f59e0b;
+  --color-chart-4:               #8b5cf6;
+  --color-chart-5:               #ef4444;
+
+  /* ── Sidebar ── */
+  --color-sidebar:               #fafafa;
+  --color-sidebar-foreground:    #0a0a0a;
+  --color-sidebar-primary:       #3b82f6;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent:        #f5f5f5;
+  --color-sidebar-accent-foreground:  #171717;
+  --color-sidebar-border:        #e5e5e5;
+  --color-sidebar-ring:          #3b82f6;
+
+  /* ── Border radius ── */
+  --radius:                      0.5rem;
+  --radius-sm:                   calc(var(--radius) - 4px);
+  --radius-md:                   calc(var(--radius) - 2px);
+  --radius-lg:                   var(--radius);
+  --radius-xl:                   calc(var(--radius) + 4px);
+
+  /* ── Typography ── */
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
+
+  /* ── Glassmorphism ── */
+  --glass-bg:       rgba(255, 255, 255, 0.7);
+  --glass-border:   rgba(0, 0, 0, 0.1);
+  --glass-blur:     blur(12px);
+  --glass-blur-sm:  blur(8px);
+  --glass-blur-lg:  blur(20px);
 }
 
-/* Dark mode overrides */
+/* ── Dark mode ── */
 .dark {
-  /* Core palette – deep black background, crisp white text */
-  --color-background: #000000;
-  --color-foreground: #ffffff;
-  --color-primary: #3b82f6;        /* blue-500 – accent */
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #1e1e1e;       /* subtle dark gray */
-  --color-secondary-foreground: #e5e5e5;
-  --color-muted: #262626;            /* borders, separators */
-  --color-muted-foreground: #a3a3a3;
-  --color-accent: #3b82f6;
-  --color-accent-foreground: #ffffff;
-  --color-destructive: #ef4444;      /* red-500 */
-  --color-destructive-foreground: #ffffff;
-  --color-border: #262626;
-  --color-input: #262626;
-  --color-ring: #3b82f6;
+  --color-background:            #0a0a0a;
+  --color-foreground:            #fafafa;
 
-  /* Sidebar colors */
-  --color-sidebar: #0a0a0a;
-  --color-sidebar-foreground: #e5e5e5;
-  --color-sidebar-border: #262626;
-  --color-sidebar-accent: #171717;
-  --color-sidebar-accent-foreground: #e5e5e5;
-  --color-sidebar-ring: #3b82f6;
+  --color-primary:               #3b82f6;
+  --color-primary-foreground:    #ffffff;
 
-  /* Card colors */
-  --color-card: #0a0a0a;
-  --color-card-foreground: #ffffff;
+  --color-secondary:             #1e1e1e;
+  --color-secondary-foreground:  #e5e5e5;
 
-  /* Popover colors */
-  --color-popover: #0a0a0a;
-  --color-popover-foreground: #ffffff;
+  --color-muted:                 #262626;
+  --color-muted-foreground:      #a3a3a3;
 
-  /* Chart colors */
-  --color-chart-1: #3b82f6;
-  --color-chart-2: #22c55e;
-  --color-chart-3: #f59e0b;
-  --color-chart-4: #8b5cf6;
-  --color-chart-5: #ec4899;
+  --color-accent:                #262626;
+  --color-accent-foreground:     #fafafa;
 
-  /* Status colors */
-  --color-success: #22c55e;          /* green-500 */
-  --color-success-foreground: #ffffff;
-  --color-warning: #f59e0b;           /* amber-500 */
-  --color-warning-foreground: #000000;
-  --color-info: #0ea5e9;             /* sky-500 */
-  --color-info-foreground: #ffffff;
+  --color-destructive:           #ef4444;
+  --color-destructive-foreground:#ffffff;
 
-  /* Glassmorphism variables – fully customisable */
-  --glass-bg: rgba(0, 0, 0, 0.7);           /* semi‑transparent black */
+  --color-border:                #262626;
+  --color-input:                 #262626;
+  --color-ring:                  #3b82f6;
+
+  --color-card:                  #0a0a0a;
+  --color-card-foreground:       #fafafa;
+
+  --color-popover:               #0a0a0a;
+  --color-popover-foreground:    #fafafa;
+
+  --color-success:               #22c55e;
+  --color-success-foreground:    #ffffff;
+  --color-warning:               #f59e0b;
+  --color-warning-foreground:    #000000;
+  --color-info:                  #0ea5e9;
+  --color-info-foreground:       #ffffff;
+
+  --color-chart-1:               #60a5fa;
+  --color-chart-2:               #34d399;
+  --color-chart-3:               #fbbf24;
+  --color-chart-4:               #a78bfa;
+  --color-chart-5:               #f87171;
+
+  --color-sidebar:               #0a0a0a;
+  --color-sidebar-foreground:    #fafafa;
+  --color-sidebar-primary:       #3b82f6;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent:        #1e1e1e;
+  --color-sidebar-accent-foreground:  #fafafa;
+  --color-sidebar-border:        #262626;
+  --color-sidebar-ring:          #3b82f6;
+
+  --glass-bg:     rgba(0, 0, 0, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* 3. Base layer – reset and global styles */
+/* ── Base reset ── */
 @layer base {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     box-sizing: border-box;
     border-color: var(--color-border, currentColor);
   }
@@ -136,7 +160,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
-    height: 100%;                       /* full viewport height */
+    height: 100%;
   }
 
   body {
@@ -147,76 +171,49 @@
     font-family: var(--font-sans);
     line-height: 1.5;
     -webkit-tap-highlight-color: transparent;
-    overflow-x: hidden;                  /* prevent horizontal scroll */
+    overflow-x: hidden;
   }
 
-  /* Root containers for frameworks (Next.js, Remix, CRA, Vite) */
-  #root,
-  #__next {
+  #root, #__next {
     height: 100%;
-    isolation: isolate;                  /* new stacking context */
+    isolation: isolate;
   }
 
-  /* Media defaults */
-  img,
-  picture,
-  video,
-  canvas,
-  svg {
+  img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
   }
 
-  /* Form elements inherit typography */
-  input,
-  button,
-  textarea,
-  select {
+  input, button, textarea, select {
     font: inherit;
     color: inherit;
-    background: transparent;
-    border: none;
-    padding: 0;
   }
 
-  /* Buttons are clickable */
-  button,
-  [role='button'] {
+  button, [role='button'] {
     cursor: pointer;
   }
 
-  button:disabled,
-  [role='button']:disabled {
+  button:disabled, [role='button']:disabled {
     cursor: default;
     opacity: 0.6;
   }
 
-  /* Respect user motion preferences */
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
-  /* Accessible focus rings */
   :focus-visible {
     outline: 2px solid var(--color-ring);
     outline-offset: 2px;
   }
 }
 
-/* 4. Glassmorphism component layer */
+/* ── Glassmorphism components ── */
 @layer components {
-  /* Base glass effect – apply to any element */
   .glass {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur); /* Safari */
+    -webkit-backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius);
   }
 
-  /* Glass card – with padding and shadow for depth */
   .glass-card {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -227,7 +224,6 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
-  /* Glass panel – wider, e.g., navbar or sidebar */
   .glass-panel {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -238,7 +234,6 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
 
-  /* Subtle blur */
   .glass-sm {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur-sm);
@@ -247,59 +242,31 @@
     border-radius: calc(var(--radius) - 0.125rem);
   }
 
-  /* Strong blur – dreamy effect */
   .glass-lg {
-    background: rgba(0, 0, 0, 0.6); /* slightly lower opacity */
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: var(--glass-blur-lg);
     -webkit-backdrop-filter: var(--glass-blur-lg);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: calc(var(--radius) + 0.25rem);
   }
-
-  /* Glass without border – ideal for overlays */
-  .glass-borderless {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: none;
-    border-radius: var(--radius);
-  }
 }
 
-/* 5. Framer Motion utilities – performance & accessibility */
+/* ── Utilities ── */
 @layer utilities {
-  .will-change-transform {
-    will-change: transform;
-  }
-  .will-change-opacity {
-    will-change: opacity;
-  }
-  .backface-hidden {
-    backface-visibility: hidden;
-  }
-  .motion-safe {
-    @media (prefers-reduced-motion: no-preference) {
-      transition: all 0.2s ease;
-    }
-  }
-}
+  .will-change-transform { will-change: transform; }
+  .will-change-opacity   { will-change: opacity; }
+  .backface-hidden       { backface-visibility: hidden; }
 
-/* 6. Responsive container adjustments */
-@layer utilities {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
   @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
+    .container { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
+
   @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
+    .container { padding-left: 2rem; padding-right: 2rem; }
   }
 }
