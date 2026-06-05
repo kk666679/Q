@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -73,7 +73,7 @@ Top management demonstrates leadership and commitment by establishing quality po
     try {
       // Try to generate document if message mentions document
       if (message.toLowerCase().includes('document') || message.toLowerCase().includes('generate')) {
-        const result = await trpc.ai.generateDocument.mutate({
+        const result = await (trpc.ai.generateDocument as any).mutateAsync({
           documentType: 'procedure',
           context: message,
         });

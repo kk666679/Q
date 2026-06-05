@@ -1,0 +1,14 @@
+- [x] Inspect existing routing/navigation architecture (AppShell, Sidebar, Layout patterns)
+- [x] Read and understand `components/islamic-manufacturing-process/*` exports and how they compose `domain-fullset` modules
+- [x] Create route segment `app/islamic-manufacturing-process/`
+- [x] Add landing page + overview page
+- [x] Add dedicated pages for dashboard/analytics/metrics/activity-feed/timeline/live-monitor/compliance-monitor
+- [x] Add dedicated pages for AI features (copilot/insights/recommendations/agent-panel/risk-engine/orchestrator)
+- [x] Add dedicated pages for workflow builder/canvas/sidebar
+- [x] Add dedicated pages for forms (create/edit/approval), checklist, wizard
+- [x] Add dedicated pages for monitoring/alerts/notifications
+- [x] Add dedicated pages for charts/heatmap/risk-matrix/sankey/radar
+- [x] Generate `docs/islamic-manufacturing-process-component-mapping.md` mapping matrix
+- [ ] Run `npm run lint`
+- [ ] Run `npm run build`
+

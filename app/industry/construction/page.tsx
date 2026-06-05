@@ -2,9 +2,7 @@
 
 import { useState } from 'react';
 import { HardHat, Building2, AlertTriangle, DollarSign } from 'lucide-react';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/sidebar/app-sidebar';
-import { AppHeader } from '@/components/sidebar/app-header';
+import { PageLayout } from '@/components/layout/page-layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
@@ -130,12 +128,8 @@ export default function ConstructionPage() {
     }
   }
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <AppHeader title="Construction" description="Project management and safety tracking" />
-        <main className="flex-1 overflow-auto p-6">
-          <div className="mx-auto max-w-7xl space-y-6">
+    <PageLayout title="Construction" description="Project management and safety tracking">
+      <div>
             <div className="grid gap-4 md:grid-cols-4">
               <Card>
                 <CardHeader className="pb-2">
@@ -376,10 +370,8 @@ export default function ConstructionPage() {
                 </Card>
               </TabsContent>
             </Tabs>
-          </div>
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
+      </div>
+    </PageLayout>
   );
 }
 

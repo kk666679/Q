@@ -1,9 +1,7 @@
 'use client';
 
 import { Factory, TrendingUp, AlertCircle, Activity, Shield } from 'lucide-react';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/sidebar/app-sidebar';
-import { AppHeader } from '@/components/sidebar/app-header';
+import { PageLayout } from '@/components/layout/page-layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
@@ -102,12 +100,8 @@ export default function ManufacturingPage() {
   };
 
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <AppHeader title="Manufacturing" description="OEE monitoring and production analytics" />
-        <main className="flex-1 overflow-auto p-6">
-          <div className="mx-auto max-w-7xl space-y-6">
+    <PageLayout title="Manufacturing" description="OEE monitoring and production analytics">
+      <div>
             <div className="grid gap-4 md:grid-cols-4">
               <AIMetricCard
                 title="OEE"
@@ -371,10 +365,8 @@ export default function ManufacturingPage() {
                 <HACCPPlanForm />
               </TabsContent>
             </Tabs>
-          </div>
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
+      </div>
+    </PageLayout>
   );
 }
 

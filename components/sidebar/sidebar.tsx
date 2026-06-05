@@ -24,7 +24,6 @@ import {
   ChevronDown,
   ChevronRight,
   BookOpen,
-  Home,
   Cpu,
   Leaf,
   HeartPulse,
@@ -57,8 +56,7 @@ const mainNavSections = [
   {
     title: 'Home',
     items: [
-      { title: 'Landing', url: '/landing', icon: Home },
-      { title: 'Dashboard', url: '/', icon: LayoutDashboard },
+      { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard },
     ],
   },
   {
@@ -185,9 +183,7 @@ interface NavItemProps {
 
 function NavItem({ title, url, icon: Icon }: NavItemProps) {
   const pathname = usePathname()
-  const isActive = url === '/' 
-    ? pathname === '/' 
-    : pathname.startsWith(url)
+  const isActive = pathname === url || (url !== '/dashboard' && pathname.startsWith(url))
 
   return (
     <SidebarMenuButton asChild isActive={isActive}>
@@ -336,7 +332,7 @@ export function Sidebar({ userData }: SidebarProps) {
       {/* Compact CTA block above footer for quick access */}
       <div className="px-4 py-3">
         <div className="flex flex-col gap-2">
-          <Link href="/generator" className="text-sm font-semibold rounded-md bg-cyan-600 text-white px-3 py-2 text-center">Get Started</Link>
+          <Link href="/dashboard" className="text-sm font-semibold rounded-md bg-cyan-600 text-white px-3 py-2 text-center">Dashboard</Link>
           <div className="flex gap-2">
             <Link href="/docs" className="flex-1 text-sm rounded-md border border-border px-3 py-2 text-center">Docs</Link>
             <Link href="/projects" className="flex-1 text-sm rounded-md bg-secondary px-3 py-2 text-center">Projects</Link>

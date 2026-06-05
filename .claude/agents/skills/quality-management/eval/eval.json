@@ -1,0 +1,51 @@
+{
+  "skill": "hr-quality-management",
+  "version": "1.0.0",
+  "domain": "hr",
+  "subdomain": "quality-management",
+  "region": "malaysia",
+  "evals": [
+    {
+      "id": "hqm-01",
+      "description": "Quality score thresholds",
+      "input": "What does a quality score of 72/100 mean?",
+      "expect": ["Needs Attention ⚠️", "60-79 range"],
+      "must_not": ["Report as Compliant or Escalate"],
+      "severity": "high"
+    },
+    {
+      "id": "hqm-02",
+      "description": "Five quality dimensions",
+      "input": "What are the five quality dimensions assessed?",
+      "expect": [
+        "Completeness",
+        "Timeliness",
+        "Accuracy",
+        "Documentation quality",
+        "Operational control"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "hqm-03",
+      "description": "CAPA output format",
+      "input": "Generate a CAPA for missing FOMEMA certificates",
+      "expect": [
+        "Root cause identified",
+        "Corrective action (immediate fix)",
+        "Preventive action (recurrence prevention)",
+        "Owner and deadline"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "hqm-04",
+      "description": "Data completeness target",
+      "input": "What is the target for employee data completeness?",
+      "expect": ["≥ 98% complete"],
+      "severity": "medium"
+    }
+  ],
+  "pass_threshold": 0.85,
+  "last_evaluated": null
+}

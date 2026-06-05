@@ -2,9 +2,7 @@
 
 import { useState } from 'react';
 import { Shield, FileText, DollarSign, TrendingUp } from 'lucide-react';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/sidebar/app-sidebar';
-import { AppHeader } from '@/components/sidebar/app-header';
+import { PageLayout } from '@/components/layout/page-layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
@@ -83,12 +81,8 @@ const chartConfig = {
 
 export default function InsurancePage() {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <AppHeader title="Insurance" description="Policy and claims management" />
-        <main className="flex-1 overflow-auto p-6">
-          <div className="mx-auto max-w-7xl space-y-6">
+    <PageLayout title="Insurance" description="Policy and claims management">
+      <div>
             <div className="grid gap-4 md:grid-cols-4">
               <Card>
                 <CardHeader className="pb-2">
@@ -287,10 +281,8 @@ export default function InsurancePage() {
                 </Card>
               </TabsContent>
             </Tabs>
-          </div>
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
+      </div>
+    </PageLayout>
   );
 }
 
