@@ -60,9 +60,20 @@ const NODE_TYPES = { etlNode: ETLCanvasNode };
 // ── Designer Page ─────────────────────────────────────────────────────────────
 export default function AutomationDesignerPage() {
   const [tab, setTab] = React.useState<'etl'|'analytics'|'mlops'|'control'>('etl');
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+
+  // Explicit generics to prevent `never[]` inference when initial state is []
+  type ETLCanvasNodeType = Node<{
+    label: string;
+    category: string;
+    defId: string;
+    execStatus?: string;
+    rowCount?: number;
+  }>;
+
+  // Keep edges typed as the library's Edge so `useEdgesState` and callbacks match.
+  const [nodes, setNodes, onNodesChange] = useNodesState<ETLCanvasNodeType>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [selected, setSelected] = React.useState<Node | null>(null);
+  const [selected, setSelected] = React.useState<ETLCanvasNodeType | null>(null);
   const [nodeConfigs, setNodeConfigs] = React.useState<Record<string, Record<string, string>>>({});
   const [execResults, setExecResults] = React.useState<Record<string, NodeExecResult>>({});
   const [runState, setRunState] = React.useState<'idle'|'running'|'done'|'failed'>('idle');
@@ -83,7 +94,7 @@ export default function AutomationDesignerPage() {
   };
 
   // Node selection
-  const handleSelectionChange = React.useCallback(({ nodes: sel }: { nodes: Node[] }) => {
+  const handleSelectionChange = React.useCallback(({ nodes: sel }: { nodes: ETLCanvasNodeType[] }) => {
     setSelected(sel[0] ?? null);
   }, []);
 
@@ -121,9 +132,9 @@ export default function AutomationDesignerPage() {
   };
 
   const selectedConfig = selected ? (nodeConfigs[selected.id] ?? {}) : {};
-  const selectedDefId = selected ? (selected.data as Record<string, unknown>)?.defId as string : null;
-  const selectedLabel = selected ? (selected.data as Record<string, unknown>)?.label as string : null;
-  const selectedCategory = selected ? (selected.data as Record<string, unknown>)?.category as string : null;
+  const selectedDefId = selected ? selected.data.defId : null;
+  const selectedLabel = selected ? selected.data.label : null;
+  const selectedCategory = selected ? selected.data.category : null;
   const selectedRowCount = selected ? (execResults[selected.id]?.rowCount ?? null) : null;
 
   const doneCount = Object.values(execResults).filter(r => r.status === 'done').length;
