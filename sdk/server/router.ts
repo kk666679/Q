@@ -437,25 +437,84 @@ import { modelsRouter }          from './models-router';
 import { manufacturingRouter }   from './manufacturing-router';
 import { constructionRouter }    from './construction-router';
 import { insuranceRouter }       from './insurance-router';
+import { kpiRouter }             from './kpi-router';
+import { notificationRouter }    from './notification-router';
+import { trainingRouter }        from './training-router';
+import { supplierRouter }        from './supplier-router';
+import { managementReviewRouter } from './management-review-router';
+import { agentRegistry }         from '../core/registry';
+import { registerAllAgents }     from '../agents/index';
+
+// Bootstrap agent registry once
+registerAllAgents();
+
+// ── Live agent router (reads from populated registry) ─────────────────────────
+const agentRouterLive = router({
+  list: publicProcedure.query(async () => agentRegistry.getAll()),
+
+  get: publicProcedure
+    .input(z.object({ id: AgentIdSchema }))
+    .query(async ({ input }) => agentRegistry.get(input.id) ?? null),
+
+  chat: publicProcedure
+    .input(ChatInputSchema)
+    .mutation(async ({ input, ctx }) => {
+      const agent = agentRegistry.get(input.agentId);
+      return {
+        userMessage:   { id: `msg-${Date.now()}`, agentId: input.agentId, content: input.message, type: 'user' as const, timestamp: new Date() },
+        agentResponse: { id: `msg-${Date.now() + 1}`, agentId: input.agentId, content: agent ? `[${agent.name}] Processing: ${input.message}` : 'Agent not found', type: 'agent' as const, timestamp: new Date() },
+        sessionId: input.sessionId ?? `session-${Date.now()}`,
+        userId: ctx.userId,
+      };
+    }),
+
+  executeTool: publicProcedure
+    .input(ExecuteToolInputSchema)
+    .mutation(async ({ input }) => ({ executionId: `exec-${Date.now()}`, result: { success: true, toolId: input.toolId } })),
+
+  getByCapability: publicProcedure
+    .input(z.object({ capabilities: z.array(z.string()) }))
+    .query(async ({ input }) => agentRegistry.getByCapabilities(input.capabilities)),
+});
+
+// ── Live dashboard stats ──────────────────────────────────────────────────────
+const dashboardRouter = router({
+  getStats: publicProcedure.query(async () => ({
+    ...sampleDashboardStats,
+    totalAgents: agentRegistry.size,
+    activeAgents: agentRegistry.getActive().length,
+  })),
+});
 
 // ── App Router ────────────────────────────────────────────────────────────────
 export const appRouter = router({
-  agent:          agentRouter,
-  project:        projectRouter,
-  document:       documentRouter,
-  process:        processRouter,
-  compliance:     complianceRouter,
-  audit:          auditRouter,
-  testing:        testingRouter,
-  manufacturing:  manufacturingRouter,
-  construction:   constructionRouter,
-  insurance:      insuranceRouter,
-  ms:             msRouter,
-  iso:            isoRouter,
-  ai:             aiRouter,
-  models:         modelsRouter,
-  dashboard: router({
-    getStats: publicProcedure.query(async () => sampleDashboardStats),
+  agent:           agentRouterLive,
+  project:         projectRouter,
+  document:        documentRouter,
+  process:         processRouter,
+  compliance:      complianceRouter,
+  audit:           auditRouter,
+  testing:         testingRouter,
+  manufacturing:   manufacturingRouter,
+  construction:    constructionRouter,
+  insurance:       insuranceRouter,
+  ms:              msRouter,
+  iso:             isoRouter,
+  ai:              aiRouter,
+  models:          modelsRouter,
+  kpi:             kpiRouter,
+  notification:    notificationRouter,
+  training:        trainingRouter,
+  supplier:        supplierRouter,
+  managementReview: managementReviewRouter,
+  dashboard:       dashboardRouter,
+  health: router({
+    check: publicProcedure.query(async () => ({
+      status: 'ok',
+      version: '0.2.0',
+      agents: agentRegistry.size,
+      timestamp: new Date().toISOString(),
+    })),
   }),
 });
 
