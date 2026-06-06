@@ -1,4 +1,6 @@
-export const OriginDemoNode: React.FC<NodeProps<{ label: string }>> = ({ data }) => (
+import { Handle, Position, type NodeProps } from '@xyflow/react'
+
+export const OriginDemoNode: React.FC<any> = ({ data }: any) => (
   <div
     style={{
       padding: 8,

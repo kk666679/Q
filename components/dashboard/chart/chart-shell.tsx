@@ -16,13 +16,25 @@ import {
   ChartEmpty,
 } from './chart-empty'
 
+import type React from 'react'
+
+interface ChartShellProps {
+  loading?: boolean
+  data: any[]
+  children?: React.ReactNode
+  title?: string
+  description?: string
+  toolbar?: React.ReactNode
+  footer?: React.ReactNode
+}
+
 export function ChartShell({
   loading,
   data,
   children,
 
   ...props
-}: any) {
+}: ChartShellProps) {       
   return (
     <ChartCard
       title={

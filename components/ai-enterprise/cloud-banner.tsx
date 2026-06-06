@@ -226,15 +226,13 @@ export function CloudBanner() {
             </div>
 
             <h1 className="mt-5 text-4xl font-black tracking-tight text-white sm:text-5xl">
-              Enterprise AI on elastic infrastructure.
-              <span className="block bg-gradient-to-r from-cyan-300 via-emerald-300 to-violet-300 bg-clip-text text-transparent">
-                Neural automation, pipelines & real-time insights.
-              </span>
+              Scalable Enterprise AI Platform
             </h1>
 
             <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-300">
-              Build once, scale globally. Accelerate inference, orchestrate intelligent flows, and enforce security
-              policies—without sacrificing compliance.
+              Automate workflows, accelerate inference, and generate real-time insights.
+              <br />
+              Deploy globally with built-in security, governance, and compliance.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">

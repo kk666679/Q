@@ -5,14 +5,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion, useReducedMotion } from "framer-motion";
-import { Chrome, Github, Twitter } from "lucide-react";
+import { LayoutGrid, Globe, Mail } from "lucide-react";
 import { FormEvent } from "react";
 
 const socialProviders = [
-  { name: "Google", icon: Chrome },
-  { name: "Twitter", icon: Twitter },
-  { name: "GitHub", icon: Github },
-];
+  { name: "Google", icon: LayoutGrid },
+  { name: "Twitter", icon: Globe },
+  { name: "GitHub", icon: Mail },
+] as const;
 
 export function GlassSignInCard() {
   const shouldReduceMotion = useReducedMotion();

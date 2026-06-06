@@ -208,7 +208,7 @@ function DashboardCanvas() {
                         <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0"/>
                         <XAxis dataKey="month" tick={{fontSize:10}}/>
                         <YAxis tick={{fontSize:10}} tickFormatter={v=>`${(v/1000).toFixed(0)}k`}/>
-                        <Tooltip formatter={(v:number)=>`RM ${v.toLocaleString()}`}/>
+                        <Tooltip formatter={(v) => `RM ${(v ?? 0).toLocaleString()}`}/>
                         <Bar dataKey="revenue" fill="#3b82f6" radius={[3,3,0,0]}/>
                         <Bar dataKey="cost"    fill="#f59e0b" radius={[3,3,0,0]}/>
                       </BarChart>
@@ -300,7 +300,7 @@ function ForecastChart() {
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0"/>
             <XAxis dataKey="month" tick={{fontSize:10}}/>
             <YAxis tick={{fontSize:10}} tickFormatter={v=>`${(v/1000).toFixed(0)}k`}/>
-            <Tooltip formatter={(v:number)=>`RM ${v?.toLocaleString()}`}/>
+            <Tooltip formatter={(v) => `RM ${((v ?? 0) as number).toLocaleString()}`}/>
             <Legend wrapperStyle={{fontSize:11}}/>
             <Line type="monotone" dataKey="actual"   stroke="#3b82f6" strokeWidth={2} dot={{r:3}} name="Actual"/>
             <Line type="monotone" dataKey="forecast" stroke="#10b981" strokeWidth={2} strokeDasharray="5 5" dot={{r:3}} name="Forecast"/>

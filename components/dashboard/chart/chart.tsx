@@ -1,8 +1,8 @@
 'use client'
 
-import {
-  ChartShell,
-} from './chart-shell'
+import { ChartShell } from './chart-shell'
+
+
 
 import {
   LineChart,
@@ -61,6 +61,7 @@ export function Chart({
 
   ...props
 }: Props) {
+  const ChartShellTyped = ChartShell as unknown as React.FC<Props>
   const map = {
     line:
       LineChart,
@@ -83,7 +84,13 @@ export function Chart({
 
   return (
     <ChartShell
-      {...props}
+      {...(props as any)}
+      title={props.title}
+      description={props.description}
+      loading={props.loading}
+      data={props.data}
+      toolbar={props.toolbar}
+      footer={props.footer}
     >
       <Variant
         {...props}

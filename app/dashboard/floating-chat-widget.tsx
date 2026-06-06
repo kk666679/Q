@@ -5,15 +5,16 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@uitripled/react-shadcn/ui/avatar";
-import { Button } from "@uitripled/react-shadcn/ui/button";
+} from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@uitripled/react-shadcn/ui/select";
+} from "@/components/ui/select";
+
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import {
   Brain,
