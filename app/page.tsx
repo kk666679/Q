@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 
 import CloudBanner from '@/components/ai-enterprise/cloud-banner';
+import { ThemeAwareLogo } from '@/components/theme-aware-logo';
+
 
 /* ─── Nav structure ─────────────────────────────────────────── */
 const NAV = [
@@ -223,14 +225,7 @@ export default function LandingPage() {
       <nav className="relative z-30 flex items-center justify-between border-b border-white/5 px-6 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <Image
-            src="/MyQMS.png"
-            alt="MyQMS"
-            width={36}
-            height={36}
-            priority
-            className="rounded-xl object-contain"
-          />
+          <ThemeAwareLogo width={36} height={36} className="rounded-xl object-contain" />
           <span className="text-base font-bold text-white tracking-tight">MyQMS</span>
         </Link>
 

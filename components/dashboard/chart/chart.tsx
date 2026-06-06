@@ -79,8 +79,7 @@ export function Chart({
       ScatterChart,
   }
 
-  const Variant =
-    map[type]
+  const Variant = map[type] as React.ComponentType<Props>
 
   return (
     <ChartShell
@@ -92,9 +91,7 @@ export function Chart({
       toolbar={props.toolbar}
       footer={props.footer}
     >
-      <Variant
-        {...props}
-      />
+      <Variant {...props} />
     </ChartShell>
   )
 }

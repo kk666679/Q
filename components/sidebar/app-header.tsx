@@ -3,14 +3,19 @@
 import { useEffect } from 'react';
 import { Bell, Search } from 'lucide-react';
 import Link from 'next/link';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import {
-  DropdownMenu, DropdownMenuContent, DropdownMenuItem,
-  DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { trpc } from '@/lib/sdk';
 import { useNotificationStore } from '@/sdk/store/index';
@@ -22,19 +27,19 @@ interface AppHeaderProps {
 
 export function AppHeader({ title, description }: AppHeaderProps) {
   const { data: notifData } = trpc.notification.list.useQuery({ unreadOnly: false });
-  const markAllRead         = trpc.notification.markAllRead.useMutation();
-  const utils               = trpc.useUtils();
+  const markAllRead = trpc.notification.markAllRead.useMutation();
+  const utils = trpc.useUtils();
 
   const { unreadCount, setUnreadCount, clear } = useNotificationStore();
 
   // Sync unread count from server into Zustand
   useEffect(() => {
     if (notifData) {
-      setUnreadCount((notifData as any[]).filter(n => !n.isRead).length);
+      setUnreadCount((notifData as any[]).filter((n) => !n.isRead).length);
     }
   }, [notifData, setUnreadCount]);
 
-  const unreadNotifs = ((notifData ?? []) as any[]).filter(n => !n.isRead).slice(0, 5);
+  const unreadNotifs = ((notifData ?? []) as any[]).filter((n) => !n.isRead).slice(0, 5);
 
   function handleMarkAllRead() {
     markAllRead.mutate(undefined, {
@@ -66,6 +71,8 @@ export function AppHeader({ title, description }: AppHeaderProps) {
             <Link href="/iso">ISO Tools</Link>
           </Button>
         </div>
+
+        <ThemeToggle />
 
         <div className="relative hidden md:block">
           <Search className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -115,3 +122,4 @@ export function AppHeader({ title, description }: AppHeaderProps) {
     </header>
   );
 }
+
