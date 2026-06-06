@@ -5,7 +5,18 @@
 > **Automate workflows**, **accelerate inference,** and **generate real-time insights.**
 Deploy globally with built-in security, governance, and compliance.
 
-Built with Next.js 16.2, tRPC 11, React 19, TypeScript 6, and the AI SDK.
+![Status](https://img.shields.io/badge/status-active-success?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript)
+![tRPC](https://img.shields.io/badge/tRPC-11-398CCE?style=for-the-badge&logo=trpc)
+![Prisma](https://img.shields.io/badge/Prisma-6-2D3748?style=for-the-badge&logo=prisma)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=for-the-badge&logo=tailwindcss)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![AI SDK](https://img.shields.io/badge/AI%20SDK-Vercel-000000?style=for-the-badge&logo=vercel)
+![Multi‑Agent](https://img.shields.io/badge/Multi‑Agent-10%2B%20specialized-FF6B6B?style=for-the-badge)
+![ISO Ready](https://img.shields.io/badge/ISO-9001%20%7C%2014001%20%7C%2045001%20%7C%2027001-0A5C36?style=for-the-badge)
+![Ollama Cloud](https://img.shields.io/badge/Ollama%20Cloud-Ready-FF9E0F?style=for-the-badge&logo=ollama)
 
 > Repository status: **Active**
 > Multi-agent orchestration, ISO compliance checking, audit automation, process flow designer, and document management.
