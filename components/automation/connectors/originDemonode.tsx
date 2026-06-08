@@ -1,6 +1,10 @@
 import { Handle, Position, type NodeProps } from '@xyflow/react'
 
-export const OriginDemoNode: React.FC<any> = ({ data }: any) => (
+type OriginDemoNodeData = {
+  label: string
+}
+
+export const OriginDemoNode = ({ data }: NodeProps<any>) => (
   <div
     style={{
       padding: 8,
@@ -11,7 +15,8 @@ export const OriginDemoNode: React.FC<any> = ({ data }: any) => (
       textAlign: 'center',
     }}
   >
-    {data.label}
+    {(data as OriginDemoNodeData).label}
     <Handle type="source" position={Position.Right} id="out" />
   </div>
 );
+

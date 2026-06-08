@@ -20,6 +20,13 @@ import { downloadCSV } from '@/lib/exportUtils';
 import {
   AIChartContainer,
   AIInsightCard,
+  AIChatAssistant,
+  AIRecommendationPanel,
+  AIDataTable,
+  AILiveBadge,
+  AIStatusIndicator,
+  AIBadge,
+  AISearchBar,
 } from '@/sdk/components/ai/index';
 import {
   TrendingUp, TrendingDown, Minus,
@@ -64,7 +71,10 @@ function NotifPriorityIcon({ priority }: { priority: string }) {
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
+import { MagicPageWrapper } from "@/components/layouts/MagicPageWrapper";
+
 export default function DashboardPage() {
+
   const { data: rawStats }      = trpc.dashboard.getStats.useQuery();
   const { data: projects }      = trpc.project.list.useQuery();
   const { data: kpis = [] }     = trpc.kpi.list.useQuery();
@@ -98,8 +108,10 @@ export default function DashboardPage() {
           title="Enterprise Dashboard"
           description={`QMS Intelligence Platform${healthData ? ` · ${healthData.agents} agents active` : ''}`}
         />
-        <main className="flex-1 overflow-auto p-6">
+        <MagicPageWrapper>
+          <main className="flex-1 overflow-auto p-6">
           <div className="mx-auto max-w-7xl space-y-6">
+
 
             {/* KPI Summary Cards */}
             <StatsCards stats={stats} />
@@ -262,27 +274,187 @@ export default function DashboardPage() {
               </Card>
             </div>
 
-            {/* AI Insights */}
+            {/* AI Insights + Trust Surfaces */}
             <div className="grid gap-6 lg:grid-cols-3">
-              <AIInsightCard title="Compliance Improving"   insight="ISO 9001 score rose 13pts over 6 months (+5% MoM)" type="success" recommendation="Continue monitoring process performance metrics" tags={['ISO 9001', 'Compliance']} />
-              <AIInsightCard title="CAPA Action Required"   insight={`${kpis.find((k: any) => k.id === 'capa-overdue')?.value ?? 2} overdue CAPAs — risk of audit finding`}  type="warning" recommendation="Assign owners and set firm closure dates" tags={['CAPA', 'Audit']} />
-              <AIInsightCard title="Supplier Risk Detected" insight="1 supplier suspended with quality score below 50" type="warning" recommendation="Initiate supplier CAPA and evaluate alternatives" tags={['Supplier', 'Risk']} />
+              <Card className="lg:col-span-1 relative overflow-hidden">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                    AI Copilot
+                    <AILiveBadge status="live" />
+                  </CardTitle>
+                  <CardDescription>Ask questions or get next-step recommendations.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <AISearchBar placeholder="Ask: Which CAPAs are overdue?" />
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="text-xs text-muted-foreground">AI status</div>
+                      <AIStatusIndicator status="online" label="Ready" />
+                    </div>
+                    <div className="rounded-lg border bg-muted/20 overflow-hidden">
+                      <AIChatAssistant height="260px" />
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <AIBadge variant="success">High confidence</AIBadge>
+                      <span>based on recent audit + KPI signals</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <AIInsightCard
+                title="Compliance Improving"
+                insight="ISO 9001 score rose 13pts over 6 months (+5% MoM)"
+                type="success"
+                recommendation="Continue monitoring process performance metrics"
+                tags={['ISO 9001', 'Compliance']}
+                className="lg:col-span-1"
+              />
+
+              <AIInsightCard
+                title="CAPA Action Required"
+                insight={`${kpis.find((k: any) => k.id === 'capa-overdue')?.value ?? 2} overdue CAPAs — risk of audit finding`}
+                type="warning"
+                recommendation="Assign owners and set firm closure dates"
+                tags={['CAPA', 'Audit']}
+              />
+
+              <AIInsightCard
+                title="Supplier Risk Detected"
+                insight="1 supplier suspended with quality score below 50"
+                type="warning"
+                recommendation="Initiate supplier CAPA and evaluate alternatives"
+                tags={['Supplier', 'Risk']}
+              />
             </div>
 
-            {/* Projects + Activity + Compliance */}
+            {/* Phase 2: Conversion enhancements (Recommendations + AI Data Discovery) */}
             <div className="grid gap-6 lg:grid-cols-3">
-              <div className="lg:col-span-2">
-                <ProjectsList projects={projects ?? []} />
+              <div className="lg:col-span-1">
+                <AIRecommendationPanel
+                  title="Do these next"
+                  recommendations={[
+                    {
+                      id: "rec-capa-overdue",
+                      title: "Triage overdue CAPAs",
+                      description:
+                        "Assign owners, confirm evidence gaps, and set closure dates based on current risk signals.",
+                      priority: "high",
+                      category: "CAPA",
+                      impact: "Prevents audit finding",
+                      effort: "medium",
+                      actions: [
+                        {
+                          label: "Open CAPA queue",
+                          onClick: () => {
+                            // preserve business logic routing (placeholder): dashboard users can navigate manually
+                            window.location.href = "/iso/capa";
+                          },
+                          variant: "default",
+                        },
+                        {
+                          label: "Generate closure plan",
+                          onClick: () => {
+                            window.location.href = "/generator";
+                          },
+                          variant: "outline",
+                        },
+                      ],
+                    },
+                    {
+                      id: "rec-supplier-risk",
+                      title: "Address supplier quality risk",
+                      description:
+                        "Initiate supplier CAPA, review evidence, and schedule follow-up evaluation.",
+                      priority: "medium",
+                      category: "Supplier Risk",
+                      impact: "Improves external provider control",
+                      effort: "low",
+                      actions: [
+                        {
+                          label: "Review supplier scorecard",
+                          onClick: () => {
+                            window.location.href = "/dashboard";
+                          },
+                          variant: "outline",
+                        },
+                      ],
+                    },
+                  ]}
+                  metrics={{
+                    totalRecommendations: 2,
+                    completedCount: 0,
+                    inProgressCount: 1,
+                    impactScore: 84,
+                  }}
+                  onActionClick={() => {
+                    // analytics hook point; keep side effects in actions above
+                  }}
+                />
               </div>
-              <div className="space-y-6">
-                <ActivityFeed activities={stats.recentActivity ?? []} />
-                <ComplianceOverview />
+
+              <Card className="lg:col-span-2">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-semibold">AI Discovery Table</CardTitle>
+                  <CardDescription>
+                    Natural-language powered discovery surface (seeded with KPI-driven rows).
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <AIDataTable
+                    data={[
+                      {
+                        id: "row-capa",
+                        subject: "Overdue CAPAs",
+                        priority:
+                          (kpis.find((k: any) => k.id === "capa-overdue")?.value ?? 2) > 5
+                            ? "High"
+                            : "Medium",
+                        count:
+                          kpis.find((k: any) => k.id === "capa-overdue")?.value ?? 2,
+                        suggestedNext: "Assign owners & set closure dates",
+                      },
+                      {
+                        id: "row-supplier",
+                        subject: "High-risk suppliers",
+                        priority: "High",
+                        count:
+                          (kpis.find((k: any) => k.id === "supplier-risk")?.value ?? 1) > 0
+                            ? (kpis.find((k: any) => k.id === "supplier-risk")?.value ?? 1)
+                            : 1,
+                        suggestedNext: "Initiate supplier CAPA and schedule follow-up",
+                      },
+                    ]}
+                    columns={[
+                      { key: "subject", label: "Subject", sortable: true },
+                      { key: "priority", label: "Priority", sortable: true },
+                      { key: "count", label: "Count", sortable: true },
+                      { key: "suggestedNext", label: "Suggested next" },
+                    ]}
+                  />
+                </CardContent>
+              </Card>
+
+              {/* Projects + Activity + Compliance */}
+              <div className="lg:col-span-3">
+                <div className="grid gap-6 lg:grid-cols-3">
+                  <div className="lg:col-span-2">
+                    <ProjectsList projects={projects ?? []} />
+                  </div>
+                  <div className="space-y-6">
+                    <ActivityFeed activities={stats.recentActivity ?? []} />
+                    <ComplianceOverview />
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
-        </main>
+          </main>
+        </MagicPageWrapper>
       </SidebarInset>
     </SidebarProvider>
   );
 }
+
+

@@ -1,6 +1,10 @@
 import { Handle, Position, type NodeProps } from '@xyflow/react';
 
-export const ValidatedNode: React.FC<any> = ({ data }: any) => (
+type ValidatedNodeData = {
+  label: string
+}
+
+export const ValidatedNode = ({ data }: NodeProps<any>) => (
   <div
     style={{
       padding: 10,
@@ -11,9 +15,11 @@ export const ValidatedNode: React.FC<any> = ({ data }: any) => (
       textAlign: 'center',
     }}
   >
-    <div>{data.label}</div>
+    <div>{(data as ValidatedNodeData).label}</div>
     <Handle type="target" position={Position.Left} id="in" />
     <Handle type="source" position={Position.Right} id="out" />
     <div style={{ fontSize: 10, color: '#666' }}>Validated Connection</div>
   </div>
 );
+
+

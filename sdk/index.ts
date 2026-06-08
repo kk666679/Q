@@ -22,6 +22,10 @@ export { riskEngine } from './services/risk-engine';
 // Types
 export * from './types';
 
+// MYQMS workflow primitives (roadmap Phase 1)
+export * from './myqms';
+
+
 // Client hooks (React — only import in client components)
 export {
   useAgent,

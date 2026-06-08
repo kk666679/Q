@@ -1,6 +1,10 @@
 import { Handle, Position, type NodeProps } from '@xyflow/react'
 
-export const MultiHandleNode: React.FC<any> = ({ data }: any) => (
+type MultiHandleNodeData = {
+  label: string
+}
+
+export const MultiHandleNode = ({ data }: NodeProps<any>) => (
   <div
     style={{
       padding: 10,
@@ -11,10 +15,11 @@ export const MultiHandleNode: React.FC<any> = ({ data }: any) => (
       textAlign: 'center',
     }}
   >
-    <div style={{ fontWeight: 'bold' }}>{data.label}</div>
+    <div style={{ fontWeight: 'bold' }}>{(data as MultiHandleNodeData).label}</div>
     <Handle type="target" position={Position.Top} id="top" style={{ top: -8 }} />
     <Handle type="source" position={Position.Bottom} id="bottom" style={{ bottom: -8 }} />
     <Handle type="target" position={Position.Left} id="left" />
     <Handle type="source" position={Position.Right} id="right" />
   </div>
 );
+
