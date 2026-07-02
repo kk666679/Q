@@ -1,10 +1,10 @@
 # QMS SDK Architecture
 
-# 🏗️ Overview
+### 🏗️ Overview
 
 The QMS SDK is built with a modular, scalable architecture that supports multi-agent AI systems, real-time collaboration, and comprehensive quality management workflows. The design separates concerns across four primary layers—Frontend, SDK, API, and Data—ensuring maintainability and clear boundaries.
 
-# 📊 High‑Level Architecture
+### 📊 High‑Level Architecture
 
 ```mermaid
 flowchart TB
@@ -39,7 +39,7 @@ flowchart TB
 
 ---
 
-# 🧩 Core Components
+### 🧩 Core Components
 
 1. Multi‑Agent System
 
@@ -64,7 +64,7 @@ class AgentOrchestrator {
 }
 ```
 
-Class Diagram
+#### Class Diagram
 
 ```mermaid
 classDiagram
@@ -128,7 +128,7 @@ export const appRouter = router({
 });
 ```
 
-API Router Structure
+#### API Router Structure
 
 ```mermaid
 flowchart LR
@@ -145,7 +145,7 @@ flowchart LR
 
 ---
 
-# 🔄 Data Flows
+### 🔄 Data Flows
 
 1. Agent Communication Flow
 
@@ -221,7 +221,7 @@ sequenceDiagram
 
 ---
 
-# 🎯 Design Patterns
+### 🎯 Design Patterns
 
 1. Repository Pattern
 
@@ -322,7 +322,7 @@ class ISO13485Strategy implements ComplianceStrategy {
 
 ---
 
-# 🔐 Security Architecture
+### 🔐 Security Architecture
 
 Security is enforced through authentication, authorization, input validation, and rate limiting.
 
@@ -391,7 +391,7 @@ const rateLimiter = rateLimit({
 
 ---
 
-# 📈 Scalability Considerations
+### 📈 Scalability Considerations
 
 1. Horizontal Scaling
 
@@ -460,7 +460,7 @@ interface ServiceBoundary {
 
 ---
 
-# 🔄 State Management
+### 🔄 State Management
 
 1. Client State (React Query)
 
@@ -536,7 +536,7 @@ await prisma.$transaction(async (tx) => {
 
 ---
 
-# 🧪 Testing Strategy
+### 🧪 Testing Strategy
 
 1. Unit Tests
 
@@ -597,7 +597,7 @@ test('complete compliance check workflow', async ({ page }) => {
 
 ---
 
-# 📊 Performance Optimization
+### 📊 Performance Optimization
 
 1. Bundle Optimization
 
@@ -620,7 +620,7 @@ CREATE INDEX idx_compliance_checks_standard ON compliance_checks(standard);
 CREATE INDEX idx_messages_agent_timestamp ON messages(agent_id, timestamp);
 ```
 
-Index Impact
+#### Index Impact
 
 ```mermaid
 flowchart LR
@@ -655,7 +655,7 @@ flowchart LR
 
 ---
 
-# 🔮 Future Enhancements
+### 🔮 Future Enhancements
 
 1. Real‑time Collaboration
 
@@ -714,7 +714,7 @@ interface MobileSDK {
 
 ---
 
-# 📝 Development Guidelines
+### 📝 Development Guidelines
 
 1. Code Organization
 
@@ -752,7 +752,7 @@ class QMSError extends Error {
 }
 ```
 
-Error Flow
+#### Error Flow
 
 ```mermaid
 flowchart TD
