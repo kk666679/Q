@@ -1,0 +1,22 @@
+{
+  "name": ".devtools",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "analyze": "tsx tools/analyze.ts",
+    "validate": "tsx tools/validate.ts",
+    "report": "tsx tools/report.ts",
+    "maintain": "tsx tools/maintain.ts",
+    "clean": "tsx tools/maintain.ts --dry-run --cleanup-days 90 --rotate-days 180",
+    "consolidate": "tsx tools/maintain.ts --consolidate",
+    "check": "tsx tools/validate.ts --strict"
+  },
+  "dependencies": {
+    "commander": "^13.1.0",
+    "zod": "^3.23.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "@types/node": "^22.7.6"
+  }
+}
