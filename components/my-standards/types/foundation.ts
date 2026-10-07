@@ -232,3 +232,287 @@ export const ValidationResultSchema = z.object({
 });
 export type ValidationResult = z.infer<typeof ValidationResultSchema>;
 
+// ─────────────────────────────────────────────────────────────────────────
+// Registry-Driven Execution Types (Phase A+B)
+// ─────────────────────────────────────────────────────────────────────────
+
+/**
+ * Validator hook - runs before/after node execution
+ */
+export const ValidatorHookSchema = z.object({
+  id: z.string().min(1),
+  type: z.enum(['pre', 'post', 'condition']),
+  name: z.string().min(1),
+  description: z.string().optional(),
+  // Function stored as string reference for serialization
+  functionRef: z.string().min(1),
+});
+export type ValidatorHook = z.infer<typeof ValidatorHookSchema>;
+
+/**
+ * KPI signal - metrics emitted by nodes
+ */
+export const KPISignalSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  category: z.enum(['compliance', 'performance', 'quality', 'security', 'risk', 'operational']),
+  value: z.number(),
+  unit: z.string().optional(),
+  threshold: z.number().optional(),
+  status: z.enum(['green', 'yellow', 'red']).optional(),
+  timestamp: z.date().optional(),
+  nodeId: z.string().optional(),
+  metadata: z.record(z.any()).optional(),
+});
+export type KPISignal = z.infer<typeof KPISignalSchema>;
+
+/**
+ * Registry node executor configuration
+ */
+export const RegistryNodeExecutorSchema = z.object({
+  nodeTypeId: z.string().min(1),
+  name: z.string().min(1),
+  description: z.string().optional(),
+  category: z.enum(['trigger', 'processor', 'validator', 'decision', 'output']),
+  inputSchema: z.record(z.any()).optional(),
+  outputSchema: z.record(z.any()).optional(),
+  // Function stored as string reference for serialization
+  executorRef: z.string().min(1),
+  validators: z.array(ValidatorHookSchema).optional().default([]),
+  kpiSignals: z.array(KPISignalSchema).optional().default([]),
+  metadata: z.record(z.any()).optional(),
+});
+export type RegistryNodeExecutor = z.infer<typeof RegistryNodeExecutorSchema>;
+
+/**
+ * MY Standards specific node types
+ */
+export const MyStandardsNodeTypeSchema = z.enum([
+  'registry-trigger',
+  'compliance-check',
+  'standard-validator',
+  'audit-node',
+  'capa-generator',
+  'kpi-aggregator',
+  'risk-assessor',
+  'workflow-orchestrator',
+  'document-processor',
+  'notification-hub',
+  'data-processor',
+  'custom',
+]);
+export type MyStandardsNodeType = z.infer<typeof MyStandardsNodeTypeSchema>;
+
+/**
+ * Execution context - passed through workflow execution
+ */
+export const ExecutionContextSchema = z.object({
+  executionId: z.string().min(1),
+  workflowId: z.string().optional(),
+  userId: z.string().optional(),
+  timestamp: z.date(),
+  variables: z.record(z.any()).optional(),
+  kpiSignals: z.array(KPISignalSchema).optional().default([]),
+  complianceState: z.record(z.any()).optional(),
+  auditTrail: z.array(z.object({
+    timestamp: z.date(),
+    nodeId: z.string(),
+    action: z.string(),
+    details: z.record(z.any()).optional(),
+  })).optional().default([]),
+});
+export type ExecutionContext = z.infer<typeof ExecutionContextSchema>;
+
+/**
+ * Node execution result with compliance findings
+ */
+export const NodeExecutionResultSchema = z.object({
+  nodeId: z.string(),
+  nodeType: z.string(),
+  status: z.enum(['pending', 'running', 'success', 'error', 'skipped', 'warning']),
+  output: z.any().optional(),
+  error: z.string().optional(),
+  kpiSignals: z.array(KPISignalSchema).optional().default([]),
+  complianceFindings: z.array(z.object({
+    standard: z.string(),
+    status: z.enum(['compliant', 'non-compliant', 'needs-review', 'na']),
+    details: z.string().optional(),
+    severity: z.enum(['critical', 'major', 'minor']).optional(),
+  })).optional().default([]),
+  startTime: z.date(),
+  endTime: z.date().optional(),
+  duration: z.number().optional(),
+  validationErrors: z.array(z.object({
+    validator: z.string(),
+    message: z.string(),
+    severity: z.enum(['error', 'warning']),
+  })).optional().default([]),
+});
+export type NodeExecutionResult = z.infer<typeof NodeExecutionResultSchema>;
+
+/**
+ * Compliance & Standards node type definitions
+ */
+export const ComplianceCheckNodeSchema = z.object({
+  nodeType: z.literal('compliance-check'),
+  standard: z.string().min(1),
+  framework: z.enum(['ISO', 'IEC', 'HACCP', 'GMP', 'REGULATORY', 'CUSTOM', 'MY_STANDARD']),
+  requirements: z.array(z.string()).optional().default([]),
+  severity: z.enum(['critical', 'major', 'minor']).optional(),
+  emitKPIs: z.boolean().optional().default(true),
+});
+export type ComplianceCheckNode = z.infer<typeof ComplianceCheckNodeSchema>;
+
+export const StandardValidatorNodeSchema = z.object({
+  nodeType: z.literal('standard-validator'),
+  standardId: z.string().min(1),
+  validationRules: z.record(z.any()).optional(),
+  emitKPIs: z.boolean().optional().default(true),
+  failureMode: z.enum(['block', 'warn', 'log']).optional().default('warn'),
+});
+export type StandardValidatorNode = z.infer<typeof StandardValidatorNodeSchema>;
+
+export const AuditNodeSchema = z.object({
+  nodeType: z.literal('audit-node'),
+  auditType: z.enum(['internal', 'external', 'self-assessment', 'compliance']),
+  scope: z.array(z.string()).min(1),
+  checklist: z.array(z.object({
+    id: z.string().min(1),
+    question: z.string().min(1),
+    expectedResult: z.string().min(1),
+    weight: z.number().optional(),
+  })).optional(),
+  generateReport: z.boolean().optional().default(true),
+});
+export type AuditNode = z.infer<typeof AuditNodeSchema>;
+
+export const CapaGeneratorNodeSchema = z.object({
+  nodeType: z.literal('capa-generator'),
+  nonconformanceId: z.string().min(1),
+  rootCauseAnalysis: z.boolean().optional().default(true),
+  automatedAction: z.boolean().optional().default(false),
+  riskMitigation: z.boolean().optional().default(true),
+});
+export type CapaGeneratorNode = z.infer<typeof CapaGeneratorNodeSchema>;
+
+export const KPIAggregatorNodeSchema = z.object({
+  nodeType: z.literal('kpi-aggregator'),
+  metrics: z.array(z.string()).min(1),
+  aggregationMethod: z.enum(['sum', 'avg', 'max', 'min', 'weighted', 'custom']),
+  weights: z.record(z.number()).optional(),
+  outputFormat: z.enum(['dashboard', 'report', 'alert', 'raw']).optional().default('dashboard'),
+  thresholds: z.record(z.number()).optional(),
+});
+export type KPIAggregatorNode = z.infer<typeof KPIAggregatorNodeSchema>;
+
+export const RiskAssessorNodeSchema = z.object({
+  nodeType: z.literal('risk-assessor'),
+  riskFramework: z.enum(['FMEA', 'HAZOP', 'CUSTOM', 'ISO_31000']),
+  probability: z.number().min(0).max(1).optional(),
+  impact: z.number().min(0).max(1).optional(),
+  mitigation: z.string().optional(),
+  treatmentPlan: z.string().optional(),
+});
+export type RiskAssessorNode = z.infer<typeof RiskAssessorNodeSchema>;
+
+export const WorkflowOrchestratorNodeSchema = z.object({
+  nodeType: z.literal('workflow-orchestrator'),
+  subWorkflowId: z.string().min(1),
+  passthrough: z.boolean().optional().default(true),
+  parallel: z.boolean().optional().default(false),
+  timeout: z.number().optional(),
+});
+export type WorkflowOrchestratorNode = z.infer<typeof WorkflowOrchestratorNodeSchema>;
+
+export const DocumentProcessorNodeSchema = z.object({
+  nodeType: z.literal('document-processor'),
+  documentType: z.enum(['standard', 'procedure', 'work-instruction', 'form', 'report']),
+  action: z.enum(['generate', 'validate', 'publish', 'archive', 'review']),
+  template: z.string().optional(),
+});
+export type DocumentProcessorNode = z.infer<typeof DocumentProcessorNodeSchema>;
+
+export const NotificationHubNodeSchema = z.object({
+  nodeType: z.literal('notification-hub'),
+  channels: z.array(z.enum(['email', 'sms', 'dashboard', 'audit-log', 'webhook'])),
+  recipients: z.array(z.string()).optional(),
+  template: z.string().optional(),
+  urgency: z.enum(['low', 'medium', 'high', 'critical']).optional(),
+});
+export type NotificationHubNode = z.infer<typeof NotificationHubNodeSchema>;
+
+/**
+ * Union of all MY Standards node types
+ */
+export const MyStandardsNodeDataSchema = z.union([
+  ComplianceCheckNodeSchema,
+  StandardValidatorNodeSchema,
+  AuditNodeSchema,
+  CapaGeneratorNodeSchema,
+  KPIAggregatorNodeSchema,
+  RiskAssessorNodeSchema,
+  WorkflowOrchestratorNodeSchema,
+  DocumentProcessorNodeSchema,
+  NotificationHubNodeSchema,
+]);
+export type MyStandardsNodeData = z.infer<typeof MyStandardsNodeDataSchema>;
+
+/**
+ * Dashboard & Reporting Types
+ */
+export const ComplianceDashboardStateSchema = z.object({
+  overallStatus: z.enum(['compliant', 'non-compliant', 'needs-review', 'unknown']),
+  complianceScore: z.number().min(0).max(100),
+  kpis: z.array(KPISignalSchema).default([]),
+  nonconformances: z.array(z.object({
+    id: z.string().min(1),
+    standard: z.string().min(1),
+    severity: z.enum(['critical', 'major', 'minor']),
+    status: z.enum(['open', 'in-progress', 'closed', 'deferred']),
+    dueDays: z.number().optional(),
+    owner: z.string().optional(),
+  })).optional().default([]),
+  lastAudit: z.date().optional(),
+  nextAudit: z.date().optional(),
+  updatedAt: z.date(),
+});
+export type ComplianceDashboardState = z.infer<typeof ComplianceDashboardStateSchema>;
+
+/**
+ * Safe validator wrapper
+ */
+export function createValidator<T>(
+  schema: z.ZodSchema<T>,
+  name: string = 'validator'
+): (data: unknown) => { valid: boolean; error?: string; data?: T } {
+  return (data: unknown) => {
+    try {
+      const result = schema.parse(data);
+      return { valid: true, data: result };
+    } catch (error) {
+      const message = error instanceof z.ZodError 
+        ? error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join('; ')
+        : String(error);
+      return { valid: false, error: `${name}: ${message}` };
+    }
+  };
+}
+
+/**
+ * Export validators for each node type
+ */
+export const validators = {
+  complianceCheck: createValidator(ComplianceCheckNodeSchema, 'ComplianceCheckNode'),
+  standardValidator: createValidator(StandardValidatorNodeSchema, 'StandardValidatorNode'),
+  audit: createValidator(AuditNodeSchema, 'AuditNode'),
+  capaGenerator: createValidator(CapaGeneratorNodeSchema, 'CapaGeneratorNode'),
+  kpiAggregator: createValidator(KPIAggregatorNodeSchema, 'KPIAggregatorNode'),
+  riskAssessor: createValidator(RiskAssessorNodeSchema, 'RiskAssessorNode'),
+  workflowOrchestrator: createValidator(WorkflowOrchestratorNodeSchema, 'WorkflowOrchestratorNode'),
+  documentProcessor: createValidator(DocumentProcessorNodeSchema, 'DocumentProcessorNode'),
+  notificationHub: createValidator(NotificationHubNodeSchema, 'NotificationHubNode'),
+  myStandardsNodeData: createValidator(MyStandardsNodeDataSchema, 'MyStandardsNodeData'),
+  executionContext: createValidator(ExecutionContextSchema, 'ExecutionContext'),
+  kpiSignal: createValidator(KPISignalSchema, 'KPISignal'),
+};
+

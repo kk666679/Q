@@ -1,6 +1,7 @@
 # AAOS Automation Layer
 
-Version: 0.2.0
+Version: 0.3.0
+
 
 AAOS (Automation & Orchestration Service) is the automation layer used by the QMS platform to implement workflow automation, process orchestration, and runtime execution of xyflow process graphs.
 

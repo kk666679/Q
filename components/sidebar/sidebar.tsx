@@ -74,6 +74,21 @@ const mainNavSections = [
   },
 ]
 
+// MY Standards subsections
+const myStandardsNavSections = [
+  {
+    title: 'MY Standards',
+    items: [
+      { title: 'Overview', url: '/my-standards', icon: BarChart3 },
+      { title: 'Library', url: '/my-standards/library', icon: BookOpen },
+      { title: 'Registry', url: '/my-standards/registry', icon: Layers },
+      { title: 'Workflows', url: '/my-standards/workflows', icon: Workflow },
+      { title: 'Analytics', url: '/my-standards/analytics', icon: BarChart2 },
+      { title: 'Templates', url: '/my-standards/templates', icon: Layers },
+    ],
+  },
+]
+
 // Automation subsections
 const automationNavSections = [
   {
@@ -279,6 +294,20 @@ export function Sidebar({ userData }: SidebarProps) {
         {mainNavSections.map((section) => (
           <StandardNavSection key={section.title} title={section.title} items={section.items} />
         ))}
+
+        {/* MY Standards - Collapsible */}
+        <SidebarGroup>
+          <SidebarGroupLabel>MY Standards</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {myStandardsNavSections.map((section) => (
+                <SidebarMenuItem key={section.title}>
+                  <CollapsibleGroup title={section.title} items={section.items} defaultOpen={false} />
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
         {/* Automation Modules - Collapsible */}
         <SidebarGroup>

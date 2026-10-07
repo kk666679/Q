@@ -1,5 +1,4 @@
 import type { LucideIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
 
 import { automationNodeTypes } from '@/components/automation/node/AutomationNodes';
 import { customNodeTypes } from '@/components/automation/node/CustomNodes';
@@ -14,6 +13,63 @@ import {
   ParallelNode,
   ErrorNode,
 } from '@/components/automation/node/WorkflowNodes';
+
+import {
+  MSComplianceCheckNode,
+  MSAuditNode,
+  MSCertificationNode,
+  MSStandardsBrowserNode,
+} from '@/components/my-standards/nodes';
+
+import {
+  HalalAuditNode,
+  JAKIMCertificateNode,
+  HalalRiskNode,
+  HaramIngredientCheckNode,
+} from '@/components/islamic-manufacturing-process/nodes';
+
+import {
+  GMPWorkflowNode,
+  GMPDeviationNode,
+  GMPCleanlinessNode,
+} from './domain-nodes/gmp-nodes';
+
+import {
+  LSSWasteAnalyzerNode,
+  LSSValueStreamNode,
+  LSSControlChartNode,
+} from './domain-nodes/lss-nodes';
+
+import {
+  HRApprovalNode,
+  HRComplianceNode,
+  HROnboardingNode,
+} from './domain-nodes/hr-nodes';
+
+import {
+  DMAICPhaseNode,
+  SixSigmaRiskNode,
+  SixSigmaMeasurementNode,
+} from './domain-nodes/six-sigma-nodes';
+
+import {
+  ISOAuditPlanNode,
+  ISOCAPANode,
+  ISOComplianceCheckNode,
+} from './domain-nodes/iso-nodes';
+
+import {
+  QMSRiskAssessmentNode,
+  QMSDocumentControlNode,
+  QMSSPCChartNode,
+} from './domain-nodes/qms-nodes';
+
+import {
+  SlackConnectorNode,
+  TeamsConnectorNode,
+  WebhookConnectorNode,
+  EmailConnectorNode,
+} from './domain-nodes/integration-connector-nodes';
 
 import {
   Play,
@@ -38,12 +94,23 @@ import {
   Shield,
   FileText,
   XCircle,
+  TrendingDown,
+  Users,
+  Gauge,
+  MessageSquare,
+  Mail,
+  Webhook,
 } from 'lucide-react';
-
-import type { NodeProps } from '@xyflow/react';
 
 const MS_ACCENT = '#0ea5e9';
 const IM_ACCENT = '#10b981';
+const GMP_ACCENT = '#dc2626';
+const LSS_ACCENT = '#14b8a6';
+const HR_ACCENT = '#8b5cf6';
+const SS_ACCENT = '#ef4444';
+const ISO_ACCENT = '#06b6d4';
+const QMS_ACCENT = '#3b82f6';
+const INT_ACCENT = '#6b7280';
 
 
 import type { DomainConfig } from '@/components/domain-fullset/types';
@@ -122,17 +189,60 @@ export const workflowNodeTypes: NodeTypeMap = {
 };
 
 export const myStandardsNodeTypes: NodeTypeMap = {
-  'ms-compliance-check': require('@/components/my-standards').MSComplianceCheckNode,
-  'ms-audit': require('@/components/my-standards').MSAuditNode,
-  'ms-certification': require('@/components/my-standards').MSCertificationNode,
-  'ms-standards-browser': require('@/components/my-standards').MSStandardsBrowserNode,
+  'ms-compliance-check': MSComplianceCheckNode,
+  'ms-audit': MSAuditNode,
+  'ms-certification': MSCertificationNode,
+  'ms-standards-browser': MSStandardsBrowserNode,
 };
 
 export const islamicManufacturingNodeTypes: NodeTypeMap = {
-  'halal-audit': require('@/components/islamic-manufacturing-process').HalalAuditNode,
-  'jakim-certificate': require('@/components/islamic-manufacturing-process').JAKIMCertificateNode,
-  'halal-risk': require('@/components/islamic-manufacturing-process').HalalRiskNode,
-  'haram-ingredient-check': require('@/components/islamic-manufacturing-process').HaramIngredientCheckNode,
+  'halal-audit': HalalAuditNode,
+  'jakim-certificate': JAKIMCertificateNode,
+  'halal-risk': HalalRiskNode,
+  'haram-ingredient-check': HaramIngredientCheckNode,
+};
+
+export const gmpNodeTypes: NodeTypeMap = {
+  'gmp-workflow': GMPWorkflowNode,
+  'gmp-deviation': GMPDeviationNode,
+  'gmp-cleanliness': GMPCleanlinessNode,
+};
+
+export const lssNodeTypes: NodeTypeMap = {
+  'lss-waste-analyzer': LSSWasteAnalyzerNode,
+  'lss-value-stream': LSSValueStreamNode,
+  'lss-control-chart': LSSControlChartNode,
+};
+
+export const hrNodeTypes: NodeTypeMap = {
+  'hr-approval': HRApprovalNode,
+  'hr-compliance': HRComplianceNode,
+  'hr-onboarding': HROnboardingNode,
+};
+
+export const sixSigmaNodeTypes: NodeTypeMap = {
+  'dmaic-phase': DMAICPhaseNode,
+  'six-sigma-risk': SixSigmaRiskNode,
+  'six-sigma-measurement': SixSigmaMeasurementNode,
+};
+
+export const isoNodeTypes: NodeTypeMap = {
+  'iso-audit-plan': ISOAuditPlanNode,
+  'iso-capa': ISOCAPANode,
+  'iso-compliance-check': ISOComplianceCheckNode,
+};
+
+export const qmsNodeTypes: NodeTypeMap = {
+  'qms-risk-assessment': QMSRiskAssessmentNode,
+  'qms-document-control': QMSDocumentControlNode,
+  'qms-spc-chart': QMSSPCChartNode,
+};
+
+export const integrationConnectorNodeTypes: NodeTypeMap = {
+  'slack-connector': SlackConnectorNode,
+  'teams-connector': TeamsConnectorNode,
+  'webhook-connector': WebhookConnectorNode,
+  'email-connector': EmailConnectorNode,
 };
 
 export const nodeTypeRegistry: NodeTypeMap = {
@@ -141,6 +251,13 @@ export const nodeTypeRegistry: NodeTypeMap = {
   ...customNodeTypes,
   ...myStandardsNodeTypes,
   ...islamicManufacturingNodeTypes,
+  ...gmpNodeTypes,
+  ...lssNodeTypes,
+  ...hrNodeTypes,
+  ...sixSigmaNodeTypes,
+  ...isoNodeTypes,
+  ...qmsNodeTypes,
+  ...integrationConnectorNodeTypes,
 };
 
 
@@ -443,6 +560,258 @@ export const nodeCatalog: NodeDefinition[] = [
     color: islamicManufacturingDomainConfig.accent,
     domain: IM_DOMAIN_KEY,
     defaultData: { label: 'Haram Ingredient Check', result: 'pass' },
+  },
+
+  // ─── GMP Domain Nodes (3) ────────────────────────────────────────────
+  {
+    id: 'gmp-workflow',
+    type: 'gmp-workflow',
+    label: 'GMP Workflow',
+    category: 'gmp',
+    description: 'Manage GMP compliance workflow step.',
+    icon: CheckCircle2,
+    color: GMP_ACCENT,
+    domain: 'gmp',
+    defaultData: { label: 'GMP Workflow', complianceStatus: 'pending' },
+  },
+  {
+    id: 'gmp-deviation',
+    type: 'gmp-deviation',
+    label: 'GMP Deviation',
+    category: 'gmp',
+    description: 'Track and manage GMP deviations.',
+    icon: AlertTriangle,
+    color: GMP_ACCENT,
+    domain: 'gmp',
+    defaultData: { label: 'GMP Deviation', deviationType: 'major' },
+  },
+  {
+    id: 'gmp-cleanliness',
+    type: 'gmp-cleanliness',
+    label: 'Cleanliness Check',
+    category: 'gmp',
+    description: 'Perform GMP cleanliness verification.',
+    icon: Shield,
+    color: GMP_ACCENT,
+    domain: 'gmp',
+    defaultData: { label: 'Cleanliness Check', zoneStatus: 'clean' },
+  },
+
+  // ─── LSS Domain Nodes (3) ────────────────────────────────────────────
+  {
+    id: 'lss-waste-analyzer',
+    type: 'lss-waste-analyzer',
+    label: 'Waste Analyzer',
+    category: 'lean-six-sigma',
+    description: 'Analyze waste using DOWNTIME framework.',
+    icon: TrendingDown,
+    color: LSS_ACCENT,
+    domain: 'lean_six_sigma',
+    defaultData: { label: 'Waste Analyzer', wasteSeverity: 'medium' },
+  },
+  {
+    id: 'lss-value-stream',
+    type: 'lss-value-stream',
+    label: 'Value Stream Map',
+    category: 'lean-six-sigma',
+    description: 'Create value stream mapping.',
+    icon: Layers,
+    color: LSS_ACCENT,
+    domain: 'lean_six_sigma',
+    defaultData: { label: 'Value Stream', leadTime: '0', cycleTime: '0' },
+  },
+  {
+    id: 'lss-control-chart',
+    type: 'lss-control-chart',
+    label: 'Control Chart',
+    category: 'lean-six-sigma',
+    description: 'Track SPC control limits.',
+    icon: BarChart2,
+    color: LSS_ACCENT,
+    domain: 'lean_six_sigma',
+    defaultData: { label: 'Control Chart', controlLimitStatus: 'in-control' },
+  },
+
+  // ─── HR Domain Nodes (3) ──────────────────────────────────────────────
+  {
+    id: 'hr-approval',
+    type: 'hr-approval',
+    label: 'HR Approval',
+    category: 'human-resources',
+    description: 'Request HR approval.',
+    icon: CheckCircle2,
+    color: HR_ACCENT,
+    domain: 'human_resources',
+    defaultData: { label: 'HR Approval', approvalType: 'leave' },
+  },
+  {
+    id: 'hr-compliance',
+    type: 'hr-compliance',
+    label: 'Statutory Compliance',
+    category: 'human-resources',
+    description: 'Check statutory body compliance.',
+    icon: Shield,
+    color: HR_ACCENT,
+    domain: 'human_resources',
+    defaultData: { label: 'Compliance', statutoryBody: 'SOCSO' },
+  },
+  {
+    id: 'hr-onboarding',
+    type: 'hr-onboarding',
+    label: 'Onboarding',
+    category: 'human-resources',
+    description: 'Track employee onboarding progress.',
+    icon: Users,
+    color: HR_ACCENT,
+    domain: 'human_resources',
+    defaultData: { label: 'Onboarding', onboardingStage: 'documentation' },
+  },
+
+  // ─── Six Sigma Domain Nodes (3) ───────────────────────────────────────
+  {
+    id: 'dmaic-phase',
+    type: 'dmaic-phase',
+    label: 'DMAIC Phase',
+    category: 'six-sigma',
+    description: 'Track DMAIC project phases.',
+    icon: Gauge,
+    color: SS_ACCENT,
+    domain: 'six_sigma',
+    defaultData: { label: 'DMAIC Phase', dmaikPhase: 'Define' },
+  },
+  {
+    id: 'six-sigma-risk',
+    type: 'six-sigma-risk',
+    label: 'Risk & Defect',
+    category: 'six-sigma',
+    description: 'Track defect and risk metrics.',
+    icon: AlertTriangle,
+    color: SS_ACCENT,
+    domain: 'six_sigma',
+    defaultData: { label: 'Risk Tracking', defectType: 'Process' },
+  },
+  {
+    id: 'six-sigma-measurement',
+    type: 'six-sigma-measurement',
+    label: 'Measurement System',
+    category: 'six-sigma',
+    description: 'Validate measurement system.',
+    icon: BarChart2,
+    color: SS_ACCENT,
+    domain: 'six_sigma',
+    defaultData: { label: 'Measurement', acceptability: 'acceptable' },
+  },
+
+  // ─── ISO Domain Nodes (3) ─────────────────────────────────────────────
+  {
+    id: 'iso-audit-plan',
+    type: 'iso-audit-plan',
+    label: 'ISO Audit Plan',
+    category: 'iso',
+    description: 'Plan and schedule ISO audits.',
+    icon: FileText,
+    color: ISO_ACCENT,
+    domain: 'iso',
+    defaultData: { label: 'Audit Plan', auditDate: '2024-01-01' },
+  },
+  {
+    id: 'iso-capa',
+    type: 'iso-capa',
+    label: 'ISO CAPA',
+    category: 'iso',
+    description: 'Manage corrective/preventive actions.',
+    icon: CheckCircle2,
+    color: ISO_ACCENT,
+    domain: 'iso',
+    defaultData: { label: 'CAPA', status: 'open' },
+  },
+  {
+    id: 'iso-compliance-check',
+    type: 'iso-compliance-check',
+    label: 'ISO Compliance Check',
+    category: 'iso',
+    description: 'Verify ISO framework compliance.',
+    icon: Shield,
+    color: ISO_ACCENT,
+    domain: 'iso',
+    defaultData: { label: 'Compliance', frameworkVersion: 'ISO 9001:2015' },
+  },
+
+  // ─── QMS Domain Nodes (3) ─────────────────────────────────────────────
+  {
+    id: 'qms-risk-assessment',
+    type: 'qms-risk-assessment',
+    label: 'Risk Assessment',
+    category: 'qms',
+    description: 'Assess QMS-related risks.',
+    icon: AlertTriangle,
+    color: QMS_ACCENT,
+    domain: 'qms',
+    defaultData: { label: 'Risk Assessment', riskLevel: 'medium' },
+  },
+  {
+    id: 'qms-document-control',
+    type: 'qms-document-control',
+    label: 'Document Control',
+    category: 'qms',
+    description: 'Manage QMS document control.',
+    icon: FileText,
+    color: QMS_ACCENT,
+    domain: 'qms',
+    defaultData: { label: 'Document', documentStatus: 'approved' },
+  },
+  {
+    id: 'qms-spc-chart',
+    type: 'qms-spc-chart',
+    label: 'SPC Chart',
+    category: 'qms',
+    description: 'Track statistical process control.',
+    icon: BarChart2,
+    color: QMS_ACCENT,
+    domain: 'qms',
+    defaultData: { label: 'SPC Chart', controlLimitStatus: 'in-control' },
+  },
+
+  // ─── Integration Nodes (4) ────────────────────────────────────────────
+  {
+    id: 'slack-connector',
+    type: 'slack-connector',
+    label: 'Slack Connector',
+    category: 'integrations',
+    description: 'Send messages to Slack channels.',
+    icon: MessageSquare,
+    color: INT_ACCENT,
+    defaultData: { label: 'Slack', connectionStatus: 'disconnected' },
+  },
+  {
+    id: 'teams-connector',
+    type: 'teams-connector',
+    label: 'Teams Connector',
+    category: 'integrations',
+    description: 'Integrate with Microsoft Teams.',
+    icon: Users,
+    color: INT_ACCENT,
+    defaultData: { label: 'Teams', connectionStatus: 'disconnected' },
+  },
+  {
+    id: 'webhook-connector',
+    type: 'webhook-connector',
+    label: 'Webhook Connector',
+    category: 'integrations',
+    description: 'Send data via webhook.',
+    icon: Webhook,
+    color: INT_ACCENT,
+    defaultData: { label: 'Webhook', connectionStatus: 'disconnected' },
+  },
+  {
+    id: 'email-connector',
+    type: 'email-connector',
+    label: 'Email Connector',
+    category: 'integrations',
+    description: 'Send email notifications.',
+    icon: Mail,
+    color: INT_ACCENT,
+    defaultData: { label: 'Email', connectionStatus: 'disconnected' },
   },
 ];
 
