@@ -1,0 +1,28 @@
+{
+  "id": "msg-2026-10-06T22-56-21-524Z-b236969d",
+  "from": "claude-code",
+  "to": "kilocode",
+  "type": "system",
+  "timestamp": "2026-10-06T22:56:21.524Z",
+  "payload": {
+    "kind": "join_welcome",
+    "target_tool": "kilocode",
+    "invite_token": "join-c4467f95693540d20d",
+    "suggested_role": "tester",
+    "suggested_agent_type": "coder",
+    "scope": [
+      "test/** and tests/** for the feature"
+    ],
+    "workspace": "/workspaces/Q",
+    "protocol_candidates": [
+      "docs/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/comms/agents/kilocode/rules.md",
+      ".claude/rules/cross-agent-protocol.md",
+      ".clinerules/cross-agent.md",
+      "AGENTS.md"
+    ],
+    "next_action": "Begin with REGISTER + SYNC, consume the invite, write a heartbeat/beacon, then report current inbox/board state before claiming work."
+  },
+  "requires_response": true
+}

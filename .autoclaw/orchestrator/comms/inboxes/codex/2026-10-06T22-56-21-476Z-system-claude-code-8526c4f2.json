@@ -1,0 +1,28 @@
+{
+  "id": "msg-2026-10-06T22-56-21-476Z-8526c4f2",
+  "from": "claude-code",
+  "to": "codex",
+  "type": "system",
+  "timestamp": "2026-10-06T22:56:21.476Z",
+  "payload": {
+    "kind": "join_welcome",
+    "target_tool": "codex",
+    "invite_token": "join-45d13b333812d8f3c1",
+    "suggested_role": "architect",
+    "suggested_agent_type": "coder",
+    "scope": [
+      "design notes + the module interfaces/scaffolding"
+    ],
+    "workspace": "/workspaces/Q",
+    "protocol_candidates": [
+      "docs/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/comms/agents/codex/rules.md",
+      ".claude/rules/cross-agent-protocol.md",
+      ".clinerules/cross-agent.md",
+      "AGENTS.md"
+    ],
+    "next_action": "Begin with REGISTER + SYNC, consume the invite, write a heartbeat/beacon, then report current inbox/board state before claiming work."
+  },
+  "requires_response": true
+}

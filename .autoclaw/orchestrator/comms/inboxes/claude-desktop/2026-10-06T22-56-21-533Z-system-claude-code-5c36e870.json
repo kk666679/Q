@@ -1,0 +1,28 @@
+{
+  "id": "msg-2026-10-06T22-56-21-533Z-5c36e870",
+  "from": "claude-code",
+  "to": "claude-desktop",
+  "type": "system",
+  "timestamp": "2026-10-06T22:56:21.533Z",
+  "payload": {
+    "kind": "join_welcome",
+    "target_tool": "claude-desktop",
+    "invite_token": "join-422c633d8ce00892c3",
+    "suggested_role": "reviewer",
+    "suggested_agent_type": "auditor",
+    "scope": [
+      "all changed paths, read-only"
+    ],
+    "workspace": "/workspaces/Q",
+    "protocol_candidates": [
+      "docs/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/comms/agents/claude-desktop/rules.md",
+      ".claude/rules/cross-agent-protocol.md",
+      ".clinerules/cross-agent.md",
+      "AGENTS.md"
+    ],
+    "next_action": "Begin with REGISTER + SYNC, consume the invite, write a heartbeat/beacon, then report current inbox/board state before claiming work."
+  },
+  "requires_response": true
+}

@@ -1,0 +1,21 @@
+{
+  "token": "join-c4467f95693540d20d",
+  "issued_by": "claude-code",
+  "project": "Q",
+  "workspace": "/workspaces/Q",
+  "suggested_role": "tester",
+  "suggested_agent_type": "coder",
+  "transports": [
+    "fs",
+    "mcp",
+    "http"
+  ],
+  "trust": "off",
+  "admit_policy": "auto-preapproved",
+  "preapproved_types": [
+    "coder"
+  ],
+  "issued_at": "2026-10-06T22:56:21.516Z",
+  "expires": "2026-10-07T22:56:21.516Z",
+  "consumed_by": null
+}

@@ -1,0 +1,21 @@
+{
+  "token": "join-ae66b1d9f241adc28c",
+  "issued_by": "claude-code",
+  "project": "Q",
+  "workspace": "/workspaces/Q",
+  "suggested_role": "orchestrator",
+  "suggested_agent_type": "supervisor",
+  "transports": [
+    "fs",
+    "mcp",
+    "http"
+  ],
+  "trust": "off",
+  "admit_policy": "auto-preapproved",
+  "preapproved_types": [
+    "supervisor"
+  ],
+  "issued_at": "2026-10-06T23:00:24.277Z",
+  "expires": "2026-10-07T23:00:24.277Z",
+  "consumed_by": null
+}

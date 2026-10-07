@@ -1,0 +1,27 @@
+{
+  "id": "msg-2026-10-06T23-00-24-556Z-ffca72d2",
+  "from": "claude-code",
+  "to": "openclaw",
+  "type": "system",
+  "timestamp": "2026-10-06T23:00:24.556Z",
+  "payload": {
+    "kind": "join_welcome",
+    "target_tool": "openclaw",
+    "invite_token": "join-ae66b1d9f241adc28c",
+    "suggested_role": "orchestrator",
+    "suggested_agent_type": "supervisor",
+    "scope": [],
+    "workspace": "/workspaces/Q",
+    "protocol_candidates": [
+      "docs/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/AGENT_SESSION_PROTOCOL.md",
+      ".autoclaw/orchestrator/comms/agents/openclaw/rules.md",
+      ".claude/rules/cross-agent-protocol.md",
+      ".clinerules/cross-agent.md",
+      "AGENTS.md"
+    ],
+    "bridge_url": "https://github.com/kmt7977/Q.git",
+    "next_action": "Begin with REGISTER + SYNC, consume the invite, write a heartbeat/beacon, then report current inbox/board state before claiming work."
+  },
+  "requires_response": true
+}
